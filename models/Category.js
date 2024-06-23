@@ -10,6 +10,9 @@ const CategorySchema = new Schema(
             type: String,
             required: true,
         },
+        fa_name: {
+            type: String,
+        },
         parent: {
             type: Schema.Types.ObjectId,
             ref: "Category",
