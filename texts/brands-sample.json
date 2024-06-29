@@ -1,0 +1,439 @@
+[
+  {
+    "name": "apple",
+    "slug": "apple",
+    "categories": [
+      "6676a2260a8aeafc039f708a",
+      "6676a2260a8aeafc039f708c",
+      "6676a2260a8aeafc039f7090",
+      "6676a2260a8aeafc039f7091"
+    ],
+    "description": "",
+    "country_of_origin": "USA",
+    "established_year": 1976,
+    "website": "https://www.apple.com",
+    "logo_url": ""
+  },
+  {
+    "name": "baumen",
+    "slug": "baumen",
+    "categories": [],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "bentlie",
+    "slug": "bentlie",
+    "categories": [],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "beyond",
+    "slug": "beyond",
+    "categories": [
+      "6676a2260a8aeafc039f708b",
+      "6676a2260a8aeafc039f7090",
+      "6676a2260a8aeafc039f7091",
+      "6676a2260a8aeafc039f708d"
+    ],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "bocsh",
+    "slug": "bocsh",
+    "categories": [
+      "6676a2260a8aeafc039f7092",
+      "6676a2260a8aeafc039f7093",
+      "6676a2260a8aeafc039f7094",
+      "6676a2260a8aeafc039f7095"
+    ],
+    "description": "",
+    "country_of_origin": "Germany",
+    "established_year": 1886,
+    "website": "https://www.bosch.com",
+    "logo_url": ""
+  },
+  {
+    "name": "braun",
+    "slug": "braun",
+    "categories": [
+      "6676a2260a8aeafc039f709c",
+      "6676a2260a8aeafc039f709d",
+      "6676a2260a8aeafc039f7098",
+      "6676a2260a8aeafc039f709a"
+    ],
+    "description": "",
+    "country_of_origin": "Germany",
+    "established_year": 1921,
+    "website": "https://www.braun.com",
+    "logo_url": ""
+  },
+  {
+    "name": "breville",
+    "slug": "breville",
+    "categories": [
+      "6676a2260a8aeafc039f709e",
+      "6676a2260a8aeafc039f709d",
+      "6676a2260a8aeafc039f709c",
+      "6676a2260a8aeafc039f709b"
+    ],
+    "description": "",
+    "country_of_origin": "Australia",
+    "established_year": 1932,
+    "website": "https://www.breville.com",
+    "logo_url": ""
+  },
+  {
+    "name": "delongi",
+    "slug": "delongi",
+    "categories": [
+      "6676a2260a8aeafc039f7098",
+      "6676a2260a8aeafc039f7099",
+      "6676a2260a8aeafc039f709a",
+      "6676a2260a8aeafc039f709b"
+    ],
+    "description": "",
+    "country_of_origin": "Italy",
+    "established_year": 1902,
+    "website": "https://www.delonghi.com",
+    "logo_url": ""
+  },
+  {
+    "name": "fuma",
+    "slug": "fuma",
+    "categories": [],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "Gemilai",
+    "slug": "gemilai",
+    "categories": [],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "gplus",
+    "slug": "gplus",
+    "categories": [
+      "6676a2260a8aeafc039f70a1",
+      "6676a2260a8aeafc039f7092",
+      "6676a2260a8aeafc039f7093",
+      "6676a2260a8aeafc039f7094"
+    ],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "hisense",
+    "slug": "hisense",
+    "categories": [
+      "6676a2260a8aeafc039f70a1",
+      "6676a2260a8aeafc039f7092",
+      "6676a2260a8aeafc039f7093",
+      "6676a2260a8aeafc039f70a4"
+    ],
+    "description": "",
+    "country_of_origin": "China",
+    "established_year": 1969,
+    "website": "https://www.hisense.com",
+    "logo_url": ""
+  },
+  {
+    "name": "hp",
+    "slug": "hp",
+    "categories": [
+      "6676a2260a8aeafc039f708c",
+      "6676a2260a8aeafc039f7090",
+      "6676a2260a8aeafc039f7091"
+    ],
+    "description": "",
+    "country_of_origin": "USA",
+    "established_year": 1939,
+    "website": "https://www.hp.com",
+    "logo_url": ""
+  },
+  {
+    "name": "huawei",
+    "slug": "huawei",
+    "categories": [
+      "6676a2260a8aeafc039f708a",
+      "6676a2260a8aeafc039f708c",
+      "6676a2260a8aeafc039f7090",
+      "6676a2260a8aeafc039f7091"
+    ],
+    "description": "",
+    "country_of_origin": "China",
+    "established_year": 1987,
+    "website": "https://www.huawei.com",
+    "logo_url": ""
+  },
+  {
+    "name": "jbl",
+    "slug": "jbl",
+    "categories": ["6676a2260a8aeafc039f70a2", "6676a2260a8aeafc039f70a3"],
+    "description": "",
+    "country_of_origin": "USA",
+    "established_year": 1946,
+    "website": "https://www.jbl.com",
+    "logo_url": ""
+  },
+  {
+    "name": "kazuki",
+    "slug": "kazuki",
+    "categories": [],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "kenwood",
+    "slug": "kenwood",
+    "categories": [
+      "6676a2260a8aeafc039f709c",
+      "6676a2260a8aeafc039f709d",
+      "6676a2260a8aeafc039f709a",
+      "6676a2260a8aeafc039f709b"
+    ],
+    "description": "",
+    "country_of_origin": "UK",
+    "established_year": 1947,
+    "website": "https://www.kenwoodworld.com",
+    "logo_url": ""
+  },
+  {
+    "name": "lenovo",
+    "slug": "lenovo",
+    "categories": [
+      "6676a2260a8aeafc039f708c",
+      "6676a2260a8aeafc039f7090",
+      "6676a2260a8aeafc039f7091"
+    ],
+    "description": "",
+    "country_of_origin": "China",
+    "established_year": 1984,
+    "website": "https://www.lenovo.com",
+    "logo_url": ""
+  },
+  {
+    "name": "lg",
+    "slug": "lg",
+    "categories": [
+      "6676a2260a8aeafc039f70a1",
+      "6676a2260a8aeafc039f7092",
+      "6676a2260a8aeafc039f7093",
+      "6676a2260a8aeafc039f70a4"
+    ],
+    "description": "",
+    "country_of_origin": "South Korea",
+    "established_year": 1958,
+    "website": "https://www.lg.com",
+    "logo_url": ""
+  },
+  {
+    "name": "logitech",
+    "slug": "logitech",
+    "categories": [
+      "6676a2260a8aeafc039f7090",
+      "6676a2260a8aeafc039f7091",
+      "6676a2260a8aeafc039f708e",
+      "6676a2260a8aeafc039f708f"
+    ],
+    "description": "",
+    "country_of_origin": "Switzerland",
+    "established_year": 1981,
+    "website": "https://www.logitech.com",
+    "logo_url": ""
+  },
+  {
+    "name": "luwak",
+    "slug": "luwak",
+    "categories": ["6676a2260a8aeafc039f70a7", "6676a2260a8aeafc039f70a8"],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "mebashi",
+    "slug": "mebashi",
+    "categories": [
+      "6676a2260a8aeafc039f7098",
+      "6676a2260a8aeafc039f7099",
+      "6676a2260a8aeafc039f709a",
+      "6676a2260a8aeafc039f709e"
+    ],
+    "description": "",
+    "country_of_origin": "Japan",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "microsoft",
+    "slug": "microsoft",
+    "categories": [
+      "6676a2260a8aeafc039f708c",
+      "6676a2260a8aeafc039f7091",
+      "6676a2260a8aeafc039f708f",
+      "6676a2260a8aeafc039f708e"
+    ],
+    "description": "",
+    "country_of_origin": "USA",
+    "established_year": 1975,
+    "website": "https://www.microsoft.com",
+    "logo_url": ""
+  },
+  {
+    "name": "nova",
+    "slug": "nova",
+    "categories": [
+      "6676a2260a8aeafc039f709a",
+      "6676a2260a8aeafc039f709b",
+      "6676a2260a8aeafc039f7098",
+      "6676a2260a8aeafc039f709e"
+    ],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "philips",
+    "slug": "philips",
+    "categories": [
+      "6676a2260a8aeafc039f709c",
+      "6676a2260a8aeafc039f709d",
+      "6676a2260a8aeafc039f709e",
+      "6676a2260a8aeafc039f7096"
+    ],
+    "description": "",
+    "country_of_origin": "Netherlands",
+    "established_year": 1891,
+    "website": "https://www.philips.com",
+    "logo_url": ""
+  },
+  {
+    "name": "rashamall",
+    "slug": "rashamall",
+    "categories": [
+      "6676a2260a8aeafc039f70a7",
+      "6676a2260a8aeafc039f70a8",
+      "6676a2260a8aeafc039f7087"
+    ],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "samsung",
+    "slug": "samsung",
+    "categories": [
+      "6676a2260a8aeafc039f70a1",
+      "6676a2260a8aeafc039f7092",
+      "6676a2260a8aeafc039f7093",
+      "6676a2260a8aeafc039f708a"
+    ],
+    "description": "",
+    "country_of_origin": "South Korea",
+    "established_year": 1938,
+    "website": "https://www.samsung.com",
+    "logo_url": ""
+  },
+  {
+    "name": "sony",
+    "slug": "sony",
+    "categories": [
+      "6676a2260a8aeafc039f70a1",
+      "6676a2260a8aeafc039f7089",
+      "6676a2260a8aeafc039f70a2",
+      "6676a2260a8aeafc039f70a3"
+    ],
+    "description": "",
+    "country_of_origin": "Japan",
+    "established_year": 1946,
+    "website": "https://www.sony.com",
+    "logo_url": ""
+  },
+  {
+    "name": "sterling",
+    "slug": "sterling",
+    "categories": [],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  },
+  {
+    "name": "tefal",
+    "slug": "tefal",
+    "categories": [
+      "6676a2260a8aeafc039f709c",
+      "6676a2260a8aeafc039f709d",
+      "6676a2260a8aeafc039f709e",
+      "6676a2260a8aeafc039f709b"
+    ],
+    "description": "",
+    "country_of_origin": "France",
+    "established_year": 1956,
+    "website": "https://www.tefal.com",
+    "logo_url": ""
+  },
+  {
+    "name": "xiaomi",
+    "slug": "xiaomi",
+    "categories": [
+      "6676a2260a8aeafc039f708a",
+      "6676a2260a8aeafc039f708c",
+      "6676a2260a8aeafc039f7090",
+      "6676a2260a8aeafc039f7091"
+    ],
+    "description": "",
+    "country_of_origin": "China",
+    "established_year": 2010,
+    "website": "https://www.mi.com",
+    "logo_url": ""
+  },
+  {
+    "name": "xp",
+    "slug": "xp",
+    "categories": [
+      "6676a2260a8aeafc039f708b",
+      "6676a2260a8aeafc039f708e",
+      "6676a2260a8aeafc039f7091",
+      "6676a2260a8aeafc039f70a2"
+    ],
+    "description": "",
+    "country_of_origin": "",
+    "established_year": null,
+    "website": "",
+    "logo_url": ""
+  }
+]

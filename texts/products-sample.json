@@ -1,157 +1,122 @@
 [
-    {
-        "_id": "60d5ec49f3b8c4e3c8c47d93",
-        "name": "MacBook Pro MQKP3",
-        "slug": "macbook-pro-mqkp3",
-        "brand": "60d5ec49f3b8c4e3c8c47d88",
-        "category": "60d5ec49f3b8c4e3c8c47d84",
-        "price": 25000000,
-        "description": "Apple MacBook Pro MQKP3 with M1 chip.",
-        "technical_spec": {
-            "energy_rate": "A",
-            "capacity": "",
-            "dimensions": {
-                "width": "30.41 cm",
-                "height": "1.56 cm",
-                "depth": "21.24 cm"
-            }
-        },
-        "features": [
-            "M1 Chip",
-            "16GB RAM",
-            "512GB SSD"
-        ],
-        "services": [
-            "1 Year Warranty",
-            "Free Shipping"
-        ],
-        "comments": [],
-        "_stock": 10,
-        "_stock_status": "in stock",
-        "date_added": "2024-06-18"
+  {
+    "_id": "60d5ec49f3b8c4e3c8c47d93",
+    "name": "MacBook Pro MQKP3",
+    "slug": "macbook-pro-mqkp3",
+    "brand": "60d5ec49f3b8c4e3c8c47d88",
+    "category": "60d5ec49f3b8c4e3c8c47d84",
+    "price": 25000000,
+    "description": "Apple MacBook Pro MQKP3 with M1 chip.",
+    "technical_spec": {
+      "energy_rate": "A",
+      "capacity": "",
+      "dimensions": {
+        "width": "30.41 cm",
+        "height": "1.56 cm",
+        "depth": "21.24 cm"
+      }
     },
-    {
-        "_id": "60d5ec49f3b8c4e3c8c47d94",
-        "name": "HP Pavilion 15-ec1024ax",
-        "slug": "hp-pavilion-15-ec1024ax",
-        "brand": "60d5ec49f3b8c4e3c8c47d89",
-        "category": "60d5ec49f3b8c4e3c8c47d84",
-        "price": 15000000,
-        "description": "HP Pavilion 15-ec1024ax with AMD Ryzen 5.",
-        "technical_spec": {
-            "energy_rate": "A",
-            "capacity": "",
-            "dimensions": {
-                "width": "36 cm",
-                "height": "2.35 cm",
-                "depth": "25.7 cm"
-            }
-        },
-        "features": [
-            "AMD Ryzen 5",
-            "8GB RAM",
-            "512GB SSD"
-        ],
-        "services": [
-            "1 Year Warranty",
-            "Free Shipping"
-        ],
-        "comments": [],
-        "_stock": 15,
-        "_stock_status": "in stock",
-        "date_added": "2024-06-18"
+    "features": ["M1 Chip", "16GB RAM", "512GB SSD"],
+    "services": ["1 Year Warranty", "Free Shipping"],
+    "comments": [],
+    "_stock": 10,
+    "_stock_status": "in stock",
+    "date_added": "2024-06-18"
+  },
+  {
+    "_id": "60d5ec49f3b8c4e3c8c47d94",
+    "name": "HP Pavilion 15-ec1024ax",
+    "slug": "hp-pavilion-15-ec1024ax",
+    "brand": "60d5ec49f3b8c4e3c8c47d89",
+    "category": "60d5ec49f3b8c4e3c8c47d84",
+    "price": 15000000,
+    "description": "HP Pavilion 15-ec1024ax with AMD Ryzen 5.",
+    "technical_spec": {
+      "energy_rate": "A",
+      "capacity": "",
+      "dimensions": {
+        "width": "36 cm",
+        "height": "2.35 cm",
+        "depth": "25.7 cm"
+      }
     },
-    {
-        "_id": "60d5ec49f3b8c4e3c8c47d95",
-        "name": "Lenovo IdeaPad 3 15IIL05",
-        "slug": "lenovo-ideapad-3-15iil05",
-        "brand": "60d5ec49f3b8c4e3c8c47d90",
-        "category": "60d5ec49f3b8c4e3c8c47d84",
-        "price": 12000000,
-        "description": "Lenovo IdeaPad 3 15IIL05 with Intel i5 10th Gen.",
-        "technical_spec": {
-            "energy_rate": "A",
-            "capacity": "",
-            "dimensions": {
-                "width": "36.2 cm",
-                "height": "2 cm",
-                "depth": "25.3 cm"
-            }
-        },
-        "features": [
-            "Intel i5 10th Gen",
-            "8GB RAM",
-            "256GB SSD"
-        ],
-        "services": [
-            "1 Year Warranty",
-            "Free Shipping"
-        ],
-        "comments": [],
-        "_stock": 20,
-        "_stock_status": "in stock",
-        "date_added": "2024-06-18"
+    "features": ["AMD Ryzen 5", "8GB RAM", "512GB SSD"],
+    "services": ["1 Year Warranty", "Free Shipping"],
+    "comments": [],
+    "_stock": 15,
+    "_stock_status": "in stock",
+    "date_added": "2024-06-18"
+  },
+  {
+    "_id": "60d5ec49f3b8c4e3c8c47d95",
+    "name": "Lenovo IdeaPad 3 15IIL05",
+    "slug": "lenovo-ideapad-3-15iil05",
+    "brand": "60d5ec49f3b8c4e3c8c47d90",
+    "category": "60d5ec49f3b8c4e3c8c47d84",
+    "price": 12000000,
+    "description": "Lenovo IdeaPad 3 15IIL05 with Intel i5 10th Gen.",
+    "technical_spec": {
+      "energy_rate": "A",
+      "capacity": "",
+      "dimensions": {
+        "width": "36.2 cm",
+        "height": "2 cm",
+        "depth": "25.3 cm"
+      }
     },
-    {
-        "_id": "60d5ec49f3b8c4e3c8c47d96",
-        "name": "Samsung Galaxy S21",
-        "slug": "samsung-galaxy-s21",
-        "brand": "60d5ec49f3b8c4e3c8c47d91",
-        "category": "60d5ec49f3b8c4e3c8c47d85",
-        "price": 22000000,
-        "description": "Samsung Galaxy S21 with Exynos 2100.",
-        "technical_spec": {
-            "energy_rate": "",
-            "capacity": "128GB Storage",
-            "dimensions": {
-                "width": "71.2 mm",
-                "height": "151.7 mm",
-                "depth": "7.9 mm"
-            }
-        },
-        "features": [
-            "Exynos 2100",
-            "8GB RAM",
-            "128GB Storage"
-        ],
-        "services": [
-            "1 Year Warranty",
-            "Free Shipping"
-        ],
-        "comments": [],
-        "_stock": 25,
-        "_stock_status": "in stock",
-        "date_added": "2024-06-18"
+    "features": ["Intel i5 10th Gen", "8GB RAM", "256GB SSD"],
+    "services": ["1 Year Warranty", "Free Shipping"],
+    "comments": [],
+    "_stock": 20,
+    "_stock_status": "in stock",
+    "date_added": "2024-06-18"
+  },
+  {
+    "_id": "60d5ec49f3b8c4e3c8c47d96",
+    "name": "Samsung Galaxy S21",
+    "slug": "samsung-galaxy-s21",
+    "brand": "60d5ec49f3b8c4e3c8c47d91",
+    "category": "60d5ec49f3b8c4e3c8c47d85",
+    "price": 22000000,
+    "description": "Samsung Galaxy S21 with Exynos 2100.",
+    "technical_spec": {
+      "energy_rate": "",
+      "capacity": "128GB Storage",
+      "dimensions": {
+        "width": "71.2 mm",
+        "height": "151.7 mm",
+        "depth": "7.9 mm"
+      }
     },
-    {
-        "_id": "60d5ec49f3b8c4e3c8c47d97",
-        "name": "Hisense 8kg Washing Machine WFH8012D",
-        "slug": "hisense-8kg-washing-machine-wfh8012d",
-        "brand": "60d5ec49f3b8c4e3c8c47d92",
-        "category": "60d5ec49f3b8c4e3c8c47d87",
-        "price": 20500000,
-        "description": "Hisense WFH8012D is a reliable and efficient washing machine with multiple wash programs and a high spin speed.",
-        "technical_spec": {
-            "energy_rate": "A+++",
-            "capacity": "8 kg",
-            "dimensions": {
-                "width": "60 cm",
-                "height": "85 cm",
-                "depth": "60 cm"
-            }
-        },
-        "features": [
-            "Quick Wash",
-            "Child Lock",
-            "Delay Start"
-        ],
-        "services": [
-            "18 Month Warranty",
-            "Free Delivery"
-        ],
-        "comments": [],
-        "_stock": 30,
-        "_stock_status": "in stock",
-        "date_added": "2024-06-18"
-    }
+    "features": ["Exynos 2100", "8GB RAM", "128GB Storage"],
+    "services": ["1 Year Warranty", "Free Shipping"],
+    "comments": [],
+    "_stock": 25,
+    "_stock_status": "in stock",
+    "date_added": "2024-06-18"
+  },
+  {
+    "_id": "60d5ec49f3b8c4e3c8c47d97",
+    "name": "Hisense 8kg Washing Machine WFH8012D",
+    "slug": "hisense-8kg-washing-machine-wfh8012d",
+    "brand": "60d5ec49f3b8c4e3c8c47d92",
+    "category": "60d5ec49f3b8c4e3c8c47d87",
+    "price": 20500000,
+    "description": "Hisense WFH8012D is a reliable and efficient washing machine with multiple wash programs and a high spin speed.",
+    "technical_spec": {
+      "energy_rate": "A+++",
+      "capacity": "8 kg",
+      "dimensions": {
+        "width": "60 cm",
+        "height": "85 cm",
+        "depth": "60 cm"
+      }
+    },
+    "features": ["Quick Wash", "Child Lock", "Delay Start"],
+    "services": ["18 Month Warranty", "Free Delivery"],
+    "comments": [],
+    "_stock": 30,
+    "_stock_status": "in stock",
+    "date_added": "2024-06-18"
+  }
 ]

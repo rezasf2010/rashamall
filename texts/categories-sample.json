@@ -1,275 +1,275 @@
 [
-    {
-        "name": "Home Appliances",
-        "slug": "home-appliances",
-        "fa_name": "لوازم خانگی",
-        "parent": null,
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Digital Goods",
-        "slug": "digital-goods",
-        "fa_name": "کالای دیجیتال",
-        "parent": null,
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Kitchen Goods",
-        "slug": "kitchen-goods",
-        "fa_name": "لوازم آشپزخانه",
-        "parent": null,
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Consumer Electronics",
-        "slug": "consumer-electronics",
-        "fa_name": "صوتی و تصویری",
-        "parent": null,
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "HVAC Systems",
-        "slug": "hvac-systems",
-        "fa_name": "تهویه، کرمایش و سرمایش",
-        "parent": null,
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Food Products",
-        "slug": "food-products",
-        "fa_name": "مواد غذایی",
-        "parent": null,
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Wholesale",
-        "slug": "wholesale",
-        "fa_name": "فروش عمده",
-        "parent": null,
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Gaming Console",
-        "slug": "gaming-console",
-        "fa_name": "کنسول بازی",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Mobile Phones",
-        "slug": "mobile-phones",
-        "fa_name": "گوشی موبایل",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Cables and Chargers",
-        "slug": "cables-and-chargers",
-        "fa_name": "کابل و شارژر",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Laptops",
-        "slug": "laptops",
-        "fa_name": "لپ تاپ",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Headphones and Headsets",
-        "slug": "headphones-and-headsets",
-        "fa_name": "هدفون،هدست",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Mouses",
-        "slug": "mouses",
-        "fa_name": "ماوس",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Keyboards",
-        "slug": "keyboards",
-        "fa_name": "کیبورد",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Monitors",
-        "slug": "monitors",
-        "fa_name": "مانیتور و نمایشگر",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Computer Accessories",
-        "slug": "computer-accessories",
-        "fa_name": "لوازم جانبی و تجهیزات کامپیوتر",
-        "parent": "6676908b0a8aeafc039f7083",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Refrigerators",
-        "slug": "refrigerators",
-        "fa_name": "یخچال و فریزر",
-        "parent": "6676908b0a8aeafc039f7082",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Washing Machines",
-        "slug": "washing-machines",
-        "fa_name": "ماشین لباسشویی",
-        "parent": "6676908b0a8aeafc039f7082",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Dishwashers",
-        "slug": "dishwashers",
-        "fa_name": "ماشین ظرفشویی",
-        "parent": "6676908b0a8aeafc039f7082",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Microwaves and Ovens",
-        "slug": "microwaves-and-ovens",
-        "fa_name": "فر و ماکروفر",
-        "parent": "6676908b0a8aeafc039f7082",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Vacuum Cleaners",
-        "slug": "vacuum-cleaners",
-        "fa_name": "جارو برقی",
-        "parent": "6676908b0a8aeafc039f7082",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Irons",
-        "slug": "irons",
-        "fa_name": "اتو",
-        "parent": "6676908b0a8aeafc039f7082",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Coffee Maker",
-        "slug": "coffee-maker",
-        "fa_name": "قهوه ساز",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Coffee Grinder",
-        "slug": "coffee-grinder",
-        "fa_name": "آسیاب قهوه",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Kettles",
-        "slug": "kettles",
-        "fa_name": "کتری برقی",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Toasters",
-        "slug": "toasters",
-        "fa_name": "توستر",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Food Processors and Mixers",
-        "slug": "food-processors-and-mixers",
-        "fa_name": "غذاساز - همزن",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Juicers and Blenders",
-        "slug": "juicers-and-blenders",
-        "fa_name": "آبمیوه گیری - مخلوط کن",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Deep Fryers and Air Fryers",
-        "slug": "deep-fryers-and-air-fryers",
-        "fa_name": "سرخ کن - هواپز",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Sandwich Makers",
-        "slug": "sandwich-makers",
-        "fa_name": "ساندویچ ساز",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Fruit Dehydrators",
-        "slug": "fruit-dehydrators",
-        "fa_name": "میوه خشک کن",
-        "parent": "6676908b0a8aeafc039f7084",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "TVs",
-        "slug": "tvs",
-        "fa_name": "تلویزیون",
-        "parent": "6676908b0a8aeafc039f7085",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Speakers",
-        "slug": "speakers",
-        "fa_name": "اسپیکر و بلندگو",
-        "parent": "6676908b0a8aeafc039f7085",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Audio and Video Cables",
-        "slug": "audio-and-video-cables",
-        "fa_name": "کابل های صوتی و تصویری",
-        "parent": "6676908b0a8aeafc039f7085",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Air Conditioners",
-        "slug": "air-conditioner",
-        "fa_name": "کولر گازی",
-        "parent": "6676908b0a8aeafc039f7086",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Ducted Split Systems",
-        "slug": "ducted-split-systems",
-        "fa_name": "داکت اسپلیت",
-        "parent": "6676908b0a8aeafc039f7086",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Air Purifiers",
-        "slug": "air-purifiers",
-        "fa_name": "دستگاه تصفیه هوا",
-        "parent": "6676908b0a8aeafc039f7086",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Coffee",
-        "slug": "coffee",
-        "fa_name": "قهوه",
-        "parent": "6676908b0a8aeafc039f7087",
-        "date_added": "2024-06-18"
-    },
-    {
-        "name": "Instant Coffee and Hot Chocolate",
-        "slug": "instant-coffee-and-hot-chocolate",
-        "fa_name": "قهوه فوری، هات چاکلت",
-        "parent": "6676908b0a8aeafc039f7087",
-        "date_added": "2024-06-18"
-    }
+  {
+    "name": "Home Appliances",
+    "slug": "home-appliances",
+    "fa_name": "لوازم خانگی",
+    "parent": null,
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Digital Goods",
+    "slug": "digital-goods",
+    "fa_name": "کالای دیجیتال",
+    "parent": null,
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Kitchen Goods",
+    "slug": "kitchen-goods",
+    "fa_name": "لوازم آشپزخانه",
+    "parent": null,
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Consumer Electronics",
+    "slug": "consumer-electronics",
+    "fa_name": "صوتی و تصویری",
+    "parent": null,
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "HVAC Systems",
+    "slug": "hvac-systems",
+    "fa_name": "تهویه، کرمایش و سرمایش",
+    "parent": null,
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Food Products",
+    "slug": "food-products",
+    "fa_name": "مواد غذایی",
+    "parent": null,
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Wholesale",
+    "slug": "wholesale",
+    "fa_name": "فروش عمده",
+    "parent": null,
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Gaming Console",
+    "slug": "gaming-console",
+    "fa_name": "کنسول بازی",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Mobile Phones",
+    "slug": "mobile-phones",
+    "fa_name": "گوشی موبایل",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Cables and Chargers",
+    "slug": "cables-and-chargers",
+    "fa_name": "کابل و شارژر",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Laptops",
+    "slug": "laptops",
+    "fa_name": "لپ تاپ",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Headphones and Headsets",
+    "slug": "headphones-and-headsets",
+    "fa_name": "هدفون،هدست",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Mouses",
+    "slug": "mouses",
+    "fa_name": "ماوس",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Keyboards",
+    "slug": "keyboards",
+    "fa_name": "کیبورد",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Monitors",
+    "slug": "monitors",
+    "fa_name": "مانیتور و نمایشگر",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Computer Accessories",
+    "slug": "computer-accessories",
+    "fa_name": "لوازم جانبی و تجهیزات کامپیوتر",
+    "parent": "6676908b0a8aeafc039f7083",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Refrigerators",
+    "slug": "refrigerators",
+    "fa_name": "یخچال و فریزر",
+    "parent": "6676908b0a8aeafc039f7082",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Washing Machines",
+    "slug": "washing-machines",
+    "fa_name": "ماشین لباسشویی",
+    "parent": "6676908b0a8aeafc039f7082",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Dishwashers",
+    "slug": "dishwashers",
+    "fa_name": "ماشین ظرفشویی",
+    "parent": "6676908b0a8aeafc039f7082",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Microwaves and Ovens",
+    "slug": "microwaves-and-ovens",
+    "fa_name": "فر و ماکروفر",
+    "parent": "6676908b0a8aeafc039f7082",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Vacuum Cleaners",
+    "slug": "vacuum-cleaners",
+    "fa_name": "جارو برقی",
+    "parent": "6676908b0a8aeafc039f7082",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Irons",
+    "slug": "irons",
+    "fa_name": "اتو",
+    "parent": "6676908b0a8aeafc039f7082",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Coffee Maker",
+    "slug": "coffee-maker",
+    "fa_name": "قهوه ساز",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Coffee Grinder",
+    "slug": "coffee-grinder",
+    "fa_name": "آسیاب قهوه",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Kettles",
+    "slug": "kettles",
+    "fa_name": "کتری برقی",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Toasters",
+    "slug": "toasters",
+    "fa_name": "توستر",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Food Processors and Mixers",
+    "slug": "food-processors-and-mixers",
+    "fa_name": "غذاساز - همزن",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Juicers and Blenders",
+    "slug": "juicers-and-blenders",
+    "fa_name": "آبمیوه گیری - مخلوط کن",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Deep Fryers and Air Fryers",
+    "slug": "deep-fryers-and-air-fryers",
+    "fa_name": "سرخ کن - هواپز",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Sandwich Makers",
+    "slug": "sandwich-makers",
+    "fa_name": "ساندویچ ساز",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Fruit Dehydrators",
+    "slug": "fruit-dehydrators",
+    "fa_name": "میوه خشک کن",
+    "parent": "6676908b0a8aeafc039f7084",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "TVs",
+    "slug": "tvs",
+    "fa_name": "تلویزیون",
+    "parent": "6676908b0a8aeafc039f7085",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Speakers",
+    "slug": "speakers",
+    "fa_name": "اسپیکر و بلندگو",
+    "parent": "6676908b0a8aeafc039f7085",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Audio and Video Cables",
+    "slug": "audio-and-video-cables",
+    "fa_name": "کابل های صوتی و تصویری",
+    "parent": "6676908b0a8aeafc039f7085",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Air Conditioners",
+    "slug": "air-conditioner",
+    "fa_name": "کولر گازی",
+    "parent": "6676908b0a8aeafc039f7086",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Ducted Split Systems",
+    "slug": "ducted-split-systems",
+    "fa_name": "داکت اسپلیت",
+    "parent": "6676908b0a8aeafc039f7086",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Air Purifiers",
+    "slug": "air-purifiers",
+    "fa_name": "دستگاه تصفیه هوا",
+    "parent": "6676908b0a8aeafc039f7086",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Coffee",
+    "slug": "coffee",
+    "fa_name": "قهوه",
+    "parent": "6676908b0a8aeafc039f7087",
+    "date_added": "2024-06-18"
+  },
+  {
+    "name": "Instant Coffee and Hot Chocolate",
+    "slug": "instant-coffee-and-hot-chocolate",
+    "fa_name": "قهوه فوری، هات چاکلت",
+    "parent": "6676908b0a8aeafc039f7087",
+    "date_added": "2024-06-18"
+  }
 ]
