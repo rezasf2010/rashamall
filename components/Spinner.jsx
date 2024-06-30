@@ -1,19 +1,19 @@
 "use client";
 
-import { PulseLoader } from "react-spinners";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const override = {
   display: "block",
-  margin: "0 auto",
+  margin: "100px auto",
 };
 
 const Spinner = ({ loading }) => {
   return (
-    <PulseLoader
-      color="#1F305E"
+    <ClipLoader
+      color="#3b82f6"
       loading={loading}
       cssOverride={override}
-      size={15}
+      size={150}
       aria-label="Loading Spinner"
     />
   );

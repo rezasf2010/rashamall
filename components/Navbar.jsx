@@ -35,9 +35,9 @@ const Navbar = () => {
     fetchCategories();
   }, []);
 
-  const mainCategories = categories.filter(
-    (category) => category.parent === null,
-  );
+  const mainCategories = categories
+    .filter((category) => category.parent === null)
+    .sort((a, b) => a._id.localeCompare(b._id));
 
   return (
     <nav className="border border-blue-400 flex">
@@ -152,6 +152,8 @@ const Navbar = () => {
                 categories={categories}
                 openDropdown={openDropdown}
                 setOpenDropdown={setOpenDropdown}
+                isMobileMenuOpen={isMobileMenuOpen}
+                setIsMobileMenuOpen={setIsMobileMenuOpen}
               />
             ))}
           {/* )} */}

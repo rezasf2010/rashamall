@@ -24,7 +24,7 @@ const ProductCategoryNavButton = ({
         }`}
       >
         <Link
-          href={`/products/${slug}`}
+          href={`/products/${slug}-${_id}`}
           id="category-button"
           onClick={() => {
             setIsMobileMenuOpen(false);

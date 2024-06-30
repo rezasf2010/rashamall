@@ -9,7 +9,9 @@ const CategoryDropdownItem = ({
   parentSlug,
 }) => {
   const categoryId = category._id;
-  const subCategories = categories.filter((cat) => cat.parent === categoryId);
+  const subCategories = categories
+    .filter((cat) => cat.parent === categoryId)
+    .sort((a, b) => a._id.localeCompare(b._id));
 
   return (
     <div
@@ -23,7 +25,7 @@ const CategoryDropdownItem = ({
       {subCategories.map((subCategory) => (
         <Link
           key={subCategory._id}
-          href={`/products/${parentSlug}/${subCategory.slug}`}
+          href={`/products/${parentSlug}/${subCategory.slug}-${subCategory._id}`}
           className="flex px-4 py-2 text-sm text-gray-700 border-b border-gray-300 md:border-gray-200 mx-2"
           role="menuitem"
           tabIndex="-1"

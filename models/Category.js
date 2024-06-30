@@ -13,6 +13,9 @@ const CategorySchema = new Schema(
     fa_name: {
       type: String,
     },
+    fa_slug: {
+      type: String,
+    },
     parent: {
       type: Schema.Types.ObjectId,
       ref: "Category",

@@ -252,7 +252,7 @@ const ProductAddForm = () => {
         <div className="mb-4">
           <label
             htmlFor="price"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
+            className="flex pr-2 text-gray-700 font-bold mb-2"
           >
             قیمت (تومان)
           </label>

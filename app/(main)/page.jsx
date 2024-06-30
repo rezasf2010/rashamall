@@ -1,7 +1,9 @@
+import ProductCard from "@/components/ProductCard";
+
 const HomePage = () => {
   return (
-    <div>
-      <div>HomePage</div>
+    <div className="flex mt-4 gap-4 sm:justify-center lg:justify-start">
+      HomePage
     </div>
   );
 };
