@@ -3,7 +3,7 @@ import Category from "@/models/Category";
 
 export const dynamic = "force-dynamic";
 
-// GET /api/categories/[id]
+// GET /api/categories/:id
 export const GET = async (request) => {
   try {
     await connectDB();

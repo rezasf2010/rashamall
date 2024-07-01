@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import ProductCategoryItems from "@/components/ProductCategoryItems";
+import Spinner from "@/components/Spinner";
 
 const ProductCategoryPage = () => {
   const [categoryObj, setCategoryObj] = useState({});
+  const [loading, setLoading] = useState(true);
   const pathName = usePathname();
   const categoryId = pathName.split("-").pop();
 
@@ -22,6 +24,8 @@ const ProductCategoryPage = () => {
         setCategoryObj(data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -30,10 +34,14 @@ const ProductCategoryPage = () => {
 
   const pageTitle = categoryObj.fa_name;
 
-  return (
+  return loading ? (
+    <Spinner loading={loading} />
+  ) : (
     <div className=" flex flex-col items-center my-6 md:items-start md:mr-6">
-      <div className="flex pr-2 text-gray-700 font-bold mb-4">{pageTitle}</div>
-      <ProductCategoryItems categoryId={categoryId} />
+      <div className="flex p-4 text-gray-700 text-2xl font-bold border-b-2 border-blue-500 mb-6">
+        {pageTitle}
+      </div>
+      <ProductCategoryItems key={categoryId} categoryId={categoryId} />
     </div>
   );
 };

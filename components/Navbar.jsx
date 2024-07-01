@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/rashamall-logo.png";
 import ProductCategoryNavButton from "@/components/ProductCategoryNavButton";
-import Spinner from "@/components/Spinner";
+import SpinnerH from "./SpinnerH";
 import { FaChevronDown, FaChevronLeft } from "react-icons/fa";
 
 const Navbar = () => {
@@ -69,13 +69,13 @@ const Navbar = () => {
                   className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
                   href="/"
                 >
-                  محصولات حراجی
+                  کالاهای حراجی
                 </Link>
                 <Link
                   className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
                   href="/"
                 >
-                  مقایسه محصولات
+                  مقایسه کالاها
                 </Link>
               </div>
               <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:w-auto md:my-0 md:justify-center md:gap-1 lg:gap-3 lg:w-1/2">
@@ -103,7 +103,7 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <div className="w-full justify-between px-4 relative border border-gray-400 flex py-2 rounded-lg focus:outline-none focus:bg-blue-300 focus:ring-1 focus:ring-offset-1 focus:ring-offset-gray-800">
             <Link href="/products" onClick={() => setIsMobileMenuOpen(false)}>
-              محصولات
+              همه کالاها
             </Link>
             <button
               className="mt-1 mr-2"
@@ -141,22 +141,24 @@ const Navbar = () => {
           lang="fa"
           className="p-2 justify-center gap-1 hidden md:flex flex-row-reverse lg:gap-4"
         >
-          {/* {loading ? (<Spinner loading={loading}/>) : ( */}
-          {mainCategories
-            .slice()
-            .reverse()
-            .map((category) => (
-              <ProductCategoryNavButton
-                key={category._id}
-                category={category}
-                categories={categories}
-                openDropdown={openDropdown}
-                setOpenDropdown={setOpenDropdown}
-                isMobileMenuOpen={isMobileMenuOpen}
-                setIsMobileMenuOpen={setIsMobileMenuOpen}
-              />
-            ))}
-          {/* )} */}
+          {loading ? (
+            <SpinnerH loading={loading} />
+          ) : (
+            mainCategories
+              .slice()
+              .reverse()
+              .map((category) => (
+                <ProductCategoryNavButton
+                  key={category._id}
+                  category={category}
+                  categories={categories}
+                  openDropdown={openDropdown}
+                  setOpenDropdown={setOpenDropdown}
+                  isMobileMenuOpen={isMobileMenuOpen}
+                  setIsMobileMenuOpen={setIsMobileMenuOpen}
+                />
+              ))
+          )}
         </div>
       </div>
     </nav>

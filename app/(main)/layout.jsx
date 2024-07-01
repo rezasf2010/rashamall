@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import "@/assets/styles/globals.css";
 
 export const metadata = {
@@ -18,7 +18,7 @@ const MainLayout = ({ children }) => {
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </body>
     </html>
   );

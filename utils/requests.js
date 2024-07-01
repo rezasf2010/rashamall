@@ -29,7 +29,9 @@ async function fetchProduct(id) {
       return null;
     }
 
-    const res = await fetch(`${apiDomain}/products/${id}`);
+    const res = await fetch(
+      `${apiDomain}/products/product-category/category/${id}`,
+    );
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");

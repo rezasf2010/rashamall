@@ -22,9 +22,19 @@ const ProductCard = ({ product }) => {
             {product.name}
           </h3>
         </div>
-        <h3 className="absolute top-[10px] right-[10px] bg-blue-50 px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
-          {product._stock_status}
-        </h3>
+        {product._stock_status === "in stock" ? (
+          <div
+            className={`absolute top-[10px] right-[10px] flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center md:text-center lg:text-right bg-blue-50 text-blue-500`}
+          >
+            <p>موجود</p>
+          </div>
+        ) : (
+          <div
+            className={` absolute top-[10px] right-[10px] flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center md:text-center lg:text-right bg-red-50 text-red-500`}
+          >
+            <p>ناموجود</p>
+          </div>
+        )}
 
         <div className="text-end font-bold text-green-900 mb-4">
           {product.price.toLocaleString()}
@@ -34,7 +44,7 @@ const ProductCard = ({ product }) => {
 
         <div className="flex flex-col lg:flex-row justify-between mb-4">
           <Link
-            href={`/`}
+            href={`/products/${product.main_category}/${product.sub_category}/${product._id}`}
             className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm"
           >
             جزییات محصول

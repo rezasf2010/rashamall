@@ -1,6 +1,10 @@
 "use client";
 
-import ClipLoader from "react-spinners/ClipLoader";
+import dynamic from "next/dynamic";
+
+const ClipLoader = dynamic(() => import("react-spinners/ClipLoader"), {
+  ssr: false,
+});
 
 const override = {
   display: "block",

@@ -1,5 +1,5 @@
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import "@/assets/styles/globals.css";
 
 const AdminLayout = ({ children }) => {
@@ -7,7 +7,7 @@ const AdminLayout = ({ children }) => {
     <html lang="en">
       <body>
         <main>{children}</main>
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </body>
     </html>
   );
