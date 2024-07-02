@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import ProductCategoryItems from "@/components/ProductCategoryItems";
+import { fetchCategories } from "@/utils/requests";
 import Spinner from "@/components/Spinner";
 
 const CategoryPage = () => {
-  const [categoryObj, setCategoryObj] = useState({});
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const params = useParams();
@@ -15,27 +16,25 @@ const CategoryPage = () => {
   const categoryId = category.split("-").pop();
 
   useEffect(() => {
-    const fetchCategory = async () => {
+    const fetchCategoriesData = async () => {
       try {
-        const res = await fetch(`/api/categories/${categoryId}`);
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const data = await res.json();
-        setCategoryObj(data);
+        const categories = await fetchCategories();
+        setCategories(categories);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching categories:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCategory();
+    fetchCategoriesData();
   }, []);
 
-  const pageTitle = categoryObj.fa_name;
+  const categoryObj = categories.filter(
+    (category) => category._id === categoryId,
+  );
+
+  const pageTitle = categoryObj.length > 0 ? categoryObj[0].fa_name : "";
 
   return loading ? (
     <Spinner loading={loading} />

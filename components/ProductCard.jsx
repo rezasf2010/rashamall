@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ProductCard = ({ product }) => {
+  const discountedPrice = product.is_onSale
+    ? Math.ceil(product.price - (product.price * product.discount) / 100)
+    : Math.ceil(product.price);
+
   return (
     <div
       lang="fa"
@@ -16,6 +20,11 @@ const ProductCard = ({ product }) => {
         className="w-full h-auto rounded-t-xl"
         priority={true}
       />
+      {product.is_onSale && (
+        <div className="absolute top-2 left-0 bg-red-500 text-white px-4 py-1 rounded-tr-xl rounded-br-xl font-bold">
+          SALE
+        </div>
+      )}
       <div className="p-4">
         <div className="mb-6">
           <h3 className="text-xl font-bold md:text-sm lg:text-xl">
@@ -37,7 +46,19 @@ const ProductCard = ({ product }) => {
         )}
 
         <div className="text-end font-bold text-green-900 mb-4">
-          {product.price.toLocaleString()}
+          {product.is_onSale ? (
+            <div className="flex flex-col">
+              <span className="line-through text-gray-700">
+                {Math.ceil(product.price).toLocaleString()} تومان
+              </span>
+              <span className="text-red-400">
+                {" "}
+                {discountedPrice.toLocaleString()} تومان
+              </span>
+            </div>
+          ) : (
+            product.price.toLocaleString() + " تومان"
+          )}
         </div>
 
         <div className="border border-gray-100 mb-5"></div>

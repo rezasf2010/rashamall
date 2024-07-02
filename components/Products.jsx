@@ -3,30 +3,25 @@
 import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Spinner from "@/components/Spinner";
+import { fetchProducts } from "@/utils/requests";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProductsData = async () => {
       try {
-        const res = await fetch("/api/products");
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const data = await res.json();
-        setProducts(data);
+        const products = await fetchProducts();
+        setProducts(products);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching products:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchProducts();
+    fetchProductsData();
   }, []);
 
   return loading ? (

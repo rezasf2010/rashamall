@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/rashamall-logo.png";
 import ProductCategoryNavButton from "@/components/ProductCategoryNavButton";
+import { fetchCategories } from "@/utils/requests";
 import SpinnerH from "./SpinnerH";
 import { FaChevronDown, FaChevronLeft } from "react-icons/fa";
 
@@ -15,24 +16,18 @@ const Navbar = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchCategoriesData = async () => {
       try {
-        const res = await fetch("/api/categories");
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const data = await res.json();
-        setCategories(data);
+        const categories = await fetchCategories();
+        setCategories(categories);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching categories:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCategories();
+    fetchCategoriesData();
   }, []);
 
   const mainCategories = categories

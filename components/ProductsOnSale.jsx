@@ -1,10 +1,11 @@
-"use Client";
+"use client";
+
 import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Spinner from "@/components/Spinner";
 import { fetchProducts } from "@/utils/requests";
 
-const ProductCategoryItems = ({ categoryId }) => {
+const ProductsOnSale = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -23,28 +24,25 @@ const ProductCategoryItems = ({ categoryId }) => {
     fetchProductsData();
   }, []);
 
-  const categoryProducts = products.filter(
-    (product) =>
-      product.main_category === categoryId ||
-      product.sub_category === categoryId,
-  );
+  const saleProducts = products.filter((product) => product.is_onSale);
 
   return loading ? (
     <Spinner loading={loading} />
   ) : (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {categoryProducts.length === 0 ? (
-        <p className="text-center text-xl font-semibold mt-10">
-          {" "}
-          کالایی یافت نشد!{" "}
-        </p>
-      ) : (
-        categoryProducts.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))
-      )}
-    </div>
+    <section className="px-4 py-6">
+      <div className="container-xl lg:container m-auto px-4 py-6">
+        {saleProducts.length === 0 ? (
+          <p>No products found</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {saleProducts.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 
-export default ProductCategoryItems;
+export default ProductsOnSale;

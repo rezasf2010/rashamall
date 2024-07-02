@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import SpecAddInput from "@/componentsAdmin/SpecAddInput";
 import FeaturesAddInput from "@/componentsAdmin/FeaturesAddInput";
 import ServicesAddInput from "@/componentsAdmin/ServicesAddInput";
+import { fetchCategories, fetchBrands } from "@/utils/requests";
 
 const ProductAddForm = () => {
   const [categories, setCategories] = useState([]);
@@ -22,38 +23,35 @@ const ProductAddForm = () => {
     features: [],
     services: [],
     images: [],
+    is_onSale: false,
+    discount: "",
     _stock: "",
     _stock_status: "",
   });
 
   useEffect(() => {
     setMounted(true);
-    const fetchCategories = async () => {
+    const fetchData = async () => {
       try {
-        const res = await fetch("/api/categories");
-        const brandsRes = await fetch("/api/brands");
-
-        if (!res.ok || !brandsRes.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const data = await res.json();
-        const brandsData = await brandsRes.json();
-        setCategories(data);
-        setBrands(brandsData);
+        const categories = await fetchCategories();
+        const brands = await fetchBrands();
+        setCategories(categories);
+        setBrands(brands);
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchCategories();
+    fetchData();
   }, []);
 
-  const mainCategories = categories.filter(
-    (category) => category.parent === null,
-  );
+  const mainCategories = categories
+    .filter((category) => category.parent === null)
+    .sort((a, b) => a._id.localeCompare(b._id));
 
-  const subCategoriesArr = categories.filter((category) => category.parent);
+  const subCategoriesArr = categories
+    .filter((category) => category.parent)
+    .sort((a, b) => a._id.localeCompare(b._id));
 
   function capitalizeFLetter(string) {
     return string[0].toUpperCase() + string.slice(1);
@@ -81,6 +79,16 @@ const ProductAddForm = () => {
 
   const handleBrandChange = (e) => {
     setFields({ ...fields, brand: e.target.value });
+  };
+
+  const handleOnSaleChange = (e) => {
+    const { checked } = e.target;
+
+    setFields((prevFields) => ({
+      ...prevFields,
+      is_onSale: checked,
+      discount: checked ? fields.discount : "", // Clear discount if not on sale
+    }));
   };
 
   const handleStockChange = (e) => {
@@ -222,11 +230,13 @@ const ProductAddForm = () => {
             <option value="" disabled>
               برند را انتخاب کنید
             </option>
-            {brands.map((brand) => (
-              <option key={brand._id} value={brand._id}>
-                {capitalizeFLetter(brand.name)}
-              </option>
-            ))}
+            {brands
+              .sort((a, b) => a._id.localeCompare(b._id))
+              .map((brand) => (
+                <option key={brand._id} value={brand._id}>
+                  {capitalizeFLetter(brand.name)}
+                </option>
+              ))}
           </select>
         </div>
 
@@ -302,10 +312,50 @@ const ProductAddForm = () => {
           setServices={(services) => setFields({ ...fields, services })}
         />
 
+        <div className="mb-4 flex items-center gap-2">
+          <label
+            htmlFor="is_onSale"
+            className="flex pr-2 text-gray-700 font-bold"
+          >
+            تخفیف دارد
+          </label>
+          <input
+            type="checkbox"
+            id="is_onSale"
+            name="is_onSale"
+            value={fields.is_onSale}
+            className="mr-2 transform scale-150"
+            checked={fields.is_onSale}
+            onChange={handleOnSaleChange}
+          />
+        </div>
+
+        {fields.is_onSale && (
+          <div className="mb-4">
+            <label
+              htmlFor="discount"
+              className="flex pr-2 text-gray-700 font-bold mb-2"
+            >
+              درصد تخفیف
+            </label>
+            <input
+              type="number"
+              id="discount"
+              name="discount"
+              className="border border-gray-300 rounded w-full py-2 px-3 mb-2"
+              placeholder="مثال: 10"
+              min="0"
+              max="100"
+              value={fields.discount}
+              onChange={handleChange}
+            />
+          </div>
+        )}
+
         <div className="mb-4">
           <label
             htmlFor="stock"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
+            className="flex pr-2 text-gray-700 font-bold mb-2"
           >
             موجودی
           </label>

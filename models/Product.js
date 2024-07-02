@@ -66,6 +66,14 @@ const ProductSchema = new Schema(
         type: String,
       },
     ],
+    is_onSale: {
+      type: Boolean,
+      default: false,
+    },
+    discount: {
+      type: Number,
+      default: 0,
+    },
     _stock: {
       type: Number,
     },

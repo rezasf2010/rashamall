@@ -1,7 +1,6 @@
 import connectDB from "@/config/database";
 import Product from "@/models/Product";
 import cloudinary from "@/config/cloudinary";
-import { toast } from "react-toastify";
 
 // GET /api/products
 export const GET = async (request) => {
@@ -74,6 +73,10 @@ export const POST = async (request) => {
       features,
       services,
       comments,
+      is_onSale: formData.get("is_onSale") === "on", // Convert to boolean
+      discount: formData.get("discount")
+        ? parseInt(formData.get("discount"), 10)
+        : 0,
       _stock: formData.get("stock"),
       _stock_status: formData.get("_stock_status"),
     };
