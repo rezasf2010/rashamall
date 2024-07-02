@@ -14,9 +14,9 @@ export const metadata = {
 const MainLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body className="w-full flex flex-col items-center">
         <Navbar />
-        <main>{children}</main>
+        <main className="w-full flex flex-col items-center">{children}</main>
         <Footer />
         {/* <ToastContainer /> */}
       </body>

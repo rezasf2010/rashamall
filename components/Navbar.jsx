@@ -40,7 +40,7 @@ const Navbar = () => {
     .sort((a, b) => a._id.localeCompare(b._id));
 
   return (
-    <nav className="border border-blue-400 flex">
+    <nav className="border border-blue-400 flex w-full">
       <div className="w-full bg-blue-200 ">
         <div
           lang="fa"
@@ -67,13 +67,13 @@ const Navbar = () => {
               <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:w-auto md:my-0 md:justify-center md:gap-1 lg:gap-3 lg:w-1/2">
                 <Link
                   className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
-                  href="/"
+                  href="/onsale"
                 >
                   کالاهای حراجی
                 </Link>
                 <Link
                   className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
-                  href="/"
+                  href="/comparison"
                 >
                   مقایسه کالاها
                 </Link>
@@ -81,13 +81,13 @@ const Navbar = () => {
               <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:w-auto md:my-0 md:justify-center md:gap-1 lg:gap-3 lg:w-1/2">
                 <Link
                   className=" w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
-                  href="/"
+                  href="/rashamall-mag"
                 >
                   مجله راشامال
                 </Link>
                 <Link
                   className=" w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
-                  href="/"
+                  href="/contact-us"
                 >
                   تماس با ما
                 </Link>

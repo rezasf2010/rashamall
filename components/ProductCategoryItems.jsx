@@ -38,8 +38,11 @@ const ProductCategoryItems = ({ categoryId }) => {
     <Spinner loading={loading} />
   ) : (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {categoryProducts === 0 ? (
-        <p> No products found </p>
+      {categoryProducts.length === 0 ? (
+        <p className="text-center text-xl font-semibold mt-10">
+          {" "}
+          کالایی یافت نشد!{" "}
+        </p>
       ) : (
         categoryProducts.map((product) => (
           <ProductCard key={product._id} product={product} />

@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-200 p-4 mt-24">
+    <footer className="bg-gray-200 p-4 mt-16 w-full">
       <h1 lang="fa" className="my-2 text-lg">
         فروشگاه اینترنتی راشامال
       </h1>

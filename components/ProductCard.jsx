@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => {
   return (
     <div
       lang="fa"
-      className="rounded-xl shadow-lg relative mx-8 max-w-96 border border-red-500"
+      className="rounded-xl shadow-lg relative mx-8 max-w-96 border border-gray-100"
     >
       <Image
         src={product.images[0]}
