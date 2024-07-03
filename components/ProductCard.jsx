@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
         <div className="text-end font-bold text-green-900 mb-4">
           {product.is_onSale ? (
             <div className="flex flex-col">
-              <span className="line-through text-gray-700">
+              <span className="line-through text-green-900">
                 {Math.ceil(product.price).toLocaleString()} تومان
               </span>
               <span className="text-red-400">

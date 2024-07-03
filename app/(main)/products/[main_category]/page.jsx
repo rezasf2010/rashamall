@@ -1,19 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import ProductCategoryItems from "@/components/ProductCategoryItems";
 import { fetchCategories } from "@/utils/requests";
 import Spinner from "@/components/Spinner";
+import Breadcrumb from "@/components/Breadcrumb";
 
-const CategoryPage = () => {
+const ProductCategoryPage = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const params = useParams();
-  const category = params.category;
-
-  const categoryId = category.split("-").pop();
+  const pathName = usePathname();
+  const categoryId = pathName.split("-").pop();
 
   useEffect(() => {
     const fetchCategoriesData = async () => {
@@ -36,10 +34,17 @@ const CategoryPage = () => {
 
   const pageTitle = categoryObj.length > 0 ? categoryObj[0].fa_name : "";
 
+  const pathSegments = [
+    { name: "خانه", link: "/" },
+    { name: "همه کالاها", link: "/products" },
+    { name: pageTitle },
+  ];
+
   return loading ? (
     <Spinner loading={loading} />
   ) : (
     <div className=" flex flex-col items-center my-6 md:items-start md:mr-6">
+      <Breadcrumb pathSegments={pathSegments} />
       <div className="flex p-4 text-gray-700 text-2xl font-bold border-b-2 border-blue-500 mb-6">
         {pageTitle}
       </div>
@@ -48,4 +53,4 @@ const CategoryPage = () => {
   );
 };
 
-export default CategoryPage;
+export default ProductCategoryPage;

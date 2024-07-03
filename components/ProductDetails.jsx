@@ -9,7 +9,7 @@ const ProductDetails = ({ product }) => {
 
   return (
     <>
-      <div className="relative  flex flex-col items-center border-b border-gray-400 pb-4 lg:flex-row lg:items-start">
+      <div className="relative flex flex-col mt-4 items-center border-b border-gray-400 pb-4 lg:flex-row lg:items-start">
         {product.is_onSale && (
           <div className="absolute top-0 left-0  bg-red-500 text-white pl-6 pr-10 py-2 rounded-tr-xl rounded-bl-xl text-xl font-bold">
             SALE
@@ -28,7 +28,7 @@ const ProductDetails = ({ product }) => {
             />
           </div>
           <div className=" flex-grow md:w-1/2 lg:w-2/5 py-2 px-4">
-            <div className="my-2">Path section</div>
+            {/* <div className="my-2">Path section</div> */}
             <h1 className="text-xl font-bold mb-6 md:text-base md:font-semibold lg:text-xl lg:font-bold">
               {product.name}
             </h1>
