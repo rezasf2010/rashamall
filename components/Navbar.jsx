@@ -82,7 +82,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                   className=" w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
-                  href="/contact-us"
+                  href="/contact_us"
                 >
                   تماس با ما
                 </Link>
