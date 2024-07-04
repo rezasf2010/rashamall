@@ -1,9 +1,13 @@
-import ProductCard from "@/components/ProductCard";
+import Hero from "@/components/Hero";
+import InfoBoxes from "@/components/InfoBoxes";
+import HomeCategoriesSection from "@/components/HomeCategoriesSection";
 
 const HomePage = () => {
   return (
-    <div className=" w-full mt-4 gap-4 sm:justify-center lg:justify-center">
-      HomePage
+    <div className=" w-full gap-4 flex flex-col items-center sm:justify-center lg:justify-center">
+      <Hero />
+      <InfoBoxes />
+      <HomeCategoriesSection />
     </div>
   );
 };

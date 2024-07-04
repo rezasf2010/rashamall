@@ -60,7 +60,7 @@ const CategoryPage = () => {
   return loading ? (
     <Spinner loading={loading} />
   ) : (
-    <div className=" flex flex-col items-center my-6 md:items-start md:mr-6">
+    <div className="w-full flex flex-col items-center my-6 md:items-start md:mr-12">
       <Breadcrumb pathSegments={pathSegments} />
       <div className="flex p-4 text-gray-700 text-2xl font-bold border-b-2 border-blue-500 mb-6">
         {pageTitle}

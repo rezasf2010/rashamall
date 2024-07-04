@@ -9,41 +9,43 @@ const ProductCard = ({ product }) => {
   return (
     <div
       lang="fa"
-      className="rounded-xl shadow-lg relative mx-8 max-w-96 border border-gray-100"
+      className="bg-gray-50 w-96 md:w-80 h-[36rem] md:h-[32rem] lg:h-[40rem] lg:w-72 hxlg:w-80 2xl:w-96 rounded-xl shadow-2xl relative border border-gray-200 flex flex-col"
     >
-      <Image
-        src={product.images[0]}
-        alt=""
-        width={0}
-        height={0}
-        sizes="100vw"
-        className="w-full h-auto rounded-t-xl"
-        priority={true}
-      />
+      <div className="w-full h-2/3 flex rounded-t-xl justify-center items-center">
+        <Image
+          src={product.images[0]}
+          alt=""
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="w-full h-full rounded-t-xl object-contain"
+          priority={true}
+        />
+      </div>
       {product.is_onSale && (
         <div className="absolute top-2 left-0 bg-red-500 text-white px-4 py-1 rounded-tr-xl rounded-br-xl font-bold">
           SALE
         </div>
       )}
-      <div className="p-4">
-        <div className="mb-6">
-          <h3 className="text-xl font-bold md:text-sm lg:text-xl">
+      {product._stock_status === "in stock" ? (
+        <div
+          className={`absolute top-[10px] right-[10px] flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center md:text-center lg:text-right bg-blue-50 text-blue-500`}
+        >
+          <p>موجود</p>
+        </div>
+      ) : (
+        <div
+          className={` absolute top-[10px] right-[10px] flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center md:text-center lg:text-right bg-red-50 text-red-500`}
+        >
+          <p>ناموجود</p>
+        </div>
+      )}
+      <div className="relative px-4 flex flex-col h-1/3">
+        <div className="mb-2">
+          <h3 className="text-lg font-semibold md:text-sm lg:text-lg">
             {product.name}
           </h3>
         </div>
-        {product._stock_status === "in stock" ? (
-          <div
-            className={`absolute top-[10px] right-[10px] flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center md:text-center lg:text-right bg-blue-50 text-blue-500`}
-          >
-            <p>موجود</p>
-          </div>
-        ) : (
-          <div
-            className={` absolute top-[10px] right-[10px] flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center md:text-center lg:text-right bg-red-50 text-red-500`}
-          >
-            <p>ناموجود</p>
-          </div>
-        )}
 
         <div className="text-end font-bold text-green-900 mb-4">
           {product.is_onSale ? (
@@ -61,9 +63,9 @@ const ProductCard = ({ product }) => {
           )}
         </div>
 
-        <div className="border border-gray-100 mb-5"></div>
+        <div className="border border-gray-200 mb-2"></div>
 
-        <div className="flex flex-col lg:flex-row justify-between mb-4">
+        <div className="absolute bottom-3 flex flex-col lg:flex-row justify-between">
           <Link
             href={`/products/${product.main_category}/${product.sub_category}/${product._id}`}
             className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm"

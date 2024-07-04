@@ -6,15 +6,16 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-200 p-4 mt-16 w-full">
-      <h1 lang="fa" className="my-2 text-lg">
-        فروشگاه اینترنتی راشامال
-      </h1>
-      <div className=" flex items-center">
-        <div className="mb-4 md:mb-0">
-          <Image src={logo} alt="Logo" className="h-16 w-auto" />
-        </div>
-        <div className="container mx-auto flex md:flex-row items-center justify-between px-4">
+    <footer className="bg-gray-200 p-4 mt-16 w-full flex flex-col items-center md:flex-row md:gap-4">
+      <div className="mb-4 md:mb-0">
+        <Image src={logo} alt="Logo" className="h-16 w-auto" />
+      </div>
+      <div className="w-full px-4 flex flex-col items-center md:items-start">
+        {" "}
+        <h1 lang="fa" className="my-2 text-lg">
+          فروشگاه اینترنتی راشامال
+        </h1>
+        <div className=" w-full flex md:flex-row items-center justify-between px-2">
           <div>
             <p lang="fa" className="flex  text-sm my-2">
               راشامال به عنوان یکی از قدیمی‌ترین فروشگاه های اینترنتی لوازم

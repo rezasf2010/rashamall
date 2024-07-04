@@ -1,7 +1,7 @@
 import connectDB from "@/config/database";
 import Product from "@/models/Product";
 
-// GET /api/properties/:id
+// GET /api/products/:id
 export const GET = async (request, { params }) => {
   console.log(params.id);
   try {
