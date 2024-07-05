@@ -56,7 +56,7 @@ const ContactUsPage = () => {
         </h2>
 
         <form className="border border-blue-200 shadow-lg mx-8 p-3 rounded-lg flex flex-col items-center">
-          <div className="flex gap-4 items-center mb-4 w-full">
+          <div className="flex flex-col items-start sm:flex-row gap-4 sm:items-center mb-4 w-full">
             <label
               htmlFor="name"
               className="p-2 font-bold text-gray-700  flex-shrink-0"
@@ -70,7 +70,7 @@ const ContactUsPage = () => {
               className="border border-gray-300 rounded-lg h-10 px-2 text-gray-700 w-full"
             />
           </div>
-          <div className="flex gap-4 items-center mb-4 w-full">
+          <div className="flex flex-col items-start sm:flex-row gap-4 sm:items-center mb-4 w-full">
             <label htmlFor="email" className="p-2 font-bold text-gray-700">
               ایمیل:{" "}
             </label>
@@ -81,7 +81,7 @@ const ContactUsPage = () => {
               className="border border-gray-300 rounded-lg h-10 px-2 text-gray-700 w-full text-end"
             />
           </div>
-          <div className="flex gap-4 items-center mb-4 w-full">
+          <div className="flex flex-col items-start sm:flex-row gap-4 sm:items-center mb-4 w-full">
             <label htmlFor="subject" className="p-2 font-bold text-gray-700">
               موضوع:{" "}
             </label>
@@ -92,7 +92,7 @@ const ContactUsPage = () => {
               className="border border-gray-300 rounded-lg h-10 px-2 text-gray-700 w-full"
             />
           </div>
-          <div className="flex gap-4 items-center mb-4 w-full">
+          <div className="flex flex-col items-start sm:flex-row gap-4 sm:items-center mb-4 w-full">
             <label htmlFor="message" className="p-2 font-bold text-gray-700">
               پیام:{" "}
             </label>

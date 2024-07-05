@@ -29,7 +29,7 @@ const InfoBoxes = () => {
             </InfoBox>
 
             <InfoBox>
-              <Link href="/">
+              <Link href="/return_policy">
                 <Image
                   className="w-full rounded-xl"
                   src={InfoImageThree}

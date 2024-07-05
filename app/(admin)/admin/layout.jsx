@@ -4,7 +4,7 @@ import "@/assets/styles/globals.css";
 
 const AdminLayout = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="fa">
       <body>
         <main>{children}</main>
         {/* <ToastContainer /> */}

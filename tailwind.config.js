@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Vazirmatn", "ui-sans-serif", "system-ui"],
+        sans: ["iransansx", "tahoma"],
       },
     },
     screens: {

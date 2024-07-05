@@ -2,79 +2,60 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@layer base {
+  body {
+    font-family: iransansx, tahoma;
+    direction: rtl; /* Reverse the direction */
+    -moz-font-feature-settings: "ss02", "ss03", "ss04";
+    -webkit-font-feature-settings: "ss02", "ss03", "ss04";
+    font-feature-settings: "ss02", "ss03", "ss04";
+  }
+
+  @supports (font-variation-settings: normal) {
+    body {
+      font-family: "iransansxv", tahoma;
+    }
+  }
+}
+
+/* Add your font-face definitions */
 @font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-Thin.ttf") format("ttf");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
+  font-family: "iransansxv";
+  src:
+    url("/fonts/IRANSansXV.woff") format("woff-variations"),
+    url("/fonts/IRANSansXV.woff2") format("woff-variations"),
+    /* will be the standard and works in Safari now */
+      url("/fonts/IRANSansXV.woff") format("woff");
+  font-weight: 100 1000;
+  font-display: fallback;
 }
 
 @font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-ExtraLight.ttf") format("ttf");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
+  font-family: iransansx;
+  src: url("/fonts/IRANSansX-Regular.woff") format("woff");
 }
 
 @font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-Light.ttf") format("ttf");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-Regular.ttf") format("ttf");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-Medium.ttf") format("ttf");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-SemiBold.ttf") format("ttf");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-Bold.ttf") format("ttf");
+  font-family: iransansx;
+  src: url("/fonts/IRANSansXV.woff") format("woff");
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
 }
 
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-ExtraBold.ttf") format("ttf");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
+/* Define the ss02, ss03, and ss04 utility classes in case you need to apply them selectively */
+.ss02 {
+  -moz-font-feature-settings: "ss02";
+  -webkit-font-feature-settings: "ss02";
+  font-feature-settings: "ss02";
 }
 
-@font-face {
-  font-family: "Vazirmatn";
-  src: url("/public/fonts/vazir/Vazirmatn-Black.ttf") format("ttf");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
+.ss03 {
+  -moz-font-feature-settings: "ss03";
+  -webkit-font-feature-settings: "ss03";
+  font-feature-settings: "ss03";
 }
 
-body {
-  font-family: "Vazirmatn", sans-serif;
-  direction: rtl; /* Reverse the direction */
+.ss04 {
+  -moz-font-feature-settings: "ss04";
+  -webkit-font-feature-settings: "ss04";
+  font-feature-settings: "ss04";
 }
