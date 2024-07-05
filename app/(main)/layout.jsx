@@ -1,19 +1,20 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import "@/assets/styles/globals.css";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-import "@/assets/styles/globals.css";
 
 export const metadata = {
   title: "RashaMall",
   description:
     "online shopping, shopping electronic devices, shopping Home apliances",
   keywords: "online, home apliances, electronic devices",
+  language: "fa",
 };
 
 const MainLayout = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="fa">
       <body className="w-full flex flex-col items-center">
         <Navbar />
         <main className="w-full flex flex-col items-center">{children}</main>
