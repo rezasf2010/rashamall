@@ -32,18 +32,22 @@ const ProductCategoryItems = ({ categoryId }) => {
   return loading ? (
     <Spinner loading={loading} />
   ) : (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {categoryProducts.length === 0 ? (
-        <p className="text-center text-xl font-semibold mt-10">
-          {" "}
-          کالایی یافت نشد!{" "}
-        </p>
-      ) : (
-        categoryProducts.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))
-      )}
-    </div>
+    <section className="px-4 py-6">
+      <div className="container-xl lg:container m-auto">
+        {categoryProducts.length === 0 ? (
+          <p className="text-center text-xl font-semibold mt-10">
+            {" "}
+            کالایی یافت نشد!{" "}
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:place-items-center">
+            {categoryProducts.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 

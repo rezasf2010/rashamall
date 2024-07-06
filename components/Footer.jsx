@@ -12,12 +12,10 @@ const Footer = () => {
       </div>
       <div className="w-full px-4 flex flex-col items-center md:items-start">
         {" "}
-        <h1 lang="fa" className="my-2 text-lg">
-          فروشگاه اینترنتی راشامال
-        </h1>
+        <h1 className="my-2 text-lg">فروشگاه اینترنتی راشامال</h1>
         <div className=" w-full flex md:flex-row items-center justify-between px-2">
           <div>
-            <p lang="fa" className="flex  text-sm my-2">
+            <p className="flex  text-sm my-2">
               راشامال به عنوان یکی از قدیمی‌ترین فروشگاه های اینترنتی لوازم
               الکترونیک و لوازم خانگی، با پایبندی به شعار، تضمین اصل‌بودن کالا
               موفق شده است همگام با بزرگ ترین نمایندگی های فروش، به بزرگ‌ترین

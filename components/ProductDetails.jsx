@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SpecificationCard from "./SpecificationCard";
+import ProductImages from "./ProductImages";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
 const ProductDetails = ({ product }) => {
@@ -17,7 +18,8 @@ const ProductDetails = ({ product }) => {
         )}
         <div className=" flex flex-col items-center md:flex-row md:justify-between md:w-full md:gap-6 lg:w-auto lg:gap-0 ">
           <div className="w-2/3 md:w-1/2 lg:w-1/3">
-            <Image
+            <ProductImages images={product.images} />
+            {/* <Image
               src={product.images[0]}
               alt=""
               width={0}
@@ -25,7 +27,7 @@ const ProductDetails = ({ product }) => {
               sizes="100vw"
               className="w-full h-auto rounded-t-xl"
               priority={true}
-            />
+            /> */}
           </div>
           <div className=" flex-grow md:w-1/2 lg:w-2/5 py-2 px-4">
             {/* <div className="my-2">Path section</div> */}
@@ -41,7 +43,7 @@ const ProductDetails = ({ product }) => {
           </div>
         </div>
         <div className=" px-4 py-2 flex flex-col flex-grow w-full lg:w-2/5">
-          <div lang="fa" className="text-xl font-semibold mb-6">
+          <div className="text-xl font-semibold mb-6">
             <span>قیمت: </span>
             {product.is_onSale ? (
               <div className="flex flex-col">

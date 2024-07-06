@@ -148,12 +148,7 @@ const ProductAddForm = () => {
 
   return (
     mounted && (
-      <form
-        lang="fa"
-        action="/api/products"
-        method="POST"
-        encType="multipart/form-data"
-      >
+      <form action="/api/products" method="POST" encType="multipart/form-data">
         <h2 className="text-3xl text-center font-semibold mb-6">
           افزودن محصول جدید
         </h2>
