@@ -37,10 +37,7 @@ const Navbar = () => {
   return (
     <nav className="border border-blue-400 flex w-full">
       <div className="w-full bg-blue-200 ">
-        <div
-          lang="fa"
-          className="md:border-b md:border-blue-400 px-4 flex flex-col sm:flex-row gap-2 sm:justify-around items-center md:px-1 "
-        >
+        <div className="md:border-b md:border-blue-400 px-4 flex flex-col sm:flex-row gap-2 sm:justify-around items-center md:px-1 ">
           {/* Logo */}
           <Link
             className="flex flex-shrink-0 bg-blue-200 items-center px-2 justify-center"
@@ -116,7 +113,7 @@ const Navbar = () => {
 
         {isMobileMenuOpen && (
           <div id="mobile-menu">
-            <div lang="fa" className="py-2 px-6 flex flex-col gap-2 md:hidden">
+            <div className="py-2 px-6 flex flex-col gap-2 md:hidden">
               {mainCategories.map((category) => (
                 <ProductCategoryNavButton
                   key={category._id}
@@ -132,10 +129,7 @@ const Navbar = () => {
           </div>
         )}
 
-        <div
-          lang="fa"
-          className="p-2 justify-center gap-1 hidden md:flex flex-row-reverse lg:gap-4"
-        >
+        <div className="p-2 justify-center gap-1 hidden md:flex flex-row-reverse lg:gap-4">
           {loading ? (
             <SpinnerH loading={loading} />
           ) : (
