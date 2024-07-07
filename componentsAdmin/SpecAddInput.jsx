@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 
 const AdminSpecAddInput = ({ specifications, setSpecifications }) => {
   const handleChange = (index, event) => {
