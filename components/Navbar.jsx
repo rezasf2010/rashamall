@@ -102,7 +102,9 @@ const Navbar = () => {
               aria-label="Toggle menu"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
-              {!isMobileMenuOpen ? (
+              {loading ? (
+                <SpinnerH loading={loading} />
+              ) : !isMobileMenuOpen ? (
                 <FaChevronLeft className="text-gray-400" />
               ) : (
                 <FaChevronDown className="text-gray-400" />
@@ -111,7 +113,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {isMobileMenuOpen && (
+        {isMobileMenuOpen && !loading && (
           <div id="mobile-menu">
             <div className="py-2 px-6 flex flex-col gap-2 md:hidden">
               {mainCategories.map((category) => (

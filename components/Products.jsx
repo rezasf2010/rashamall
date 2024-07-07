@@ -27,7 +27,7 @@ const Products = () => {
   return loading ? (
     <Spinner loading={loading} />
   ) : (
-    <section className="px-4 py-6">
+    <section className="py-6">
       <div className="container-xl lg:container m-auto">
         {products.length === 0 ? (
           <p> کالایی یافت نشد! </p>

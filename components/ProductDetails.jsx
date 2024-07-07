@@ -19,18 +19,8 @@ const ProductDetails = ({ product }) => {
         <div className=" flex flex-col items-center md:flex-row md:justify-between md:w-full md:gap-6 lg:w-auto lg:gap-0 ">
           <div className="w-2/3 md:w-1/2 lg:w-1/3">
             <ProductImages images={product.images} />
-            {/* <Image
-              src={product.images[0]}
-              alt=""
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-auto rounded-t-xl"
-              priority={true}
-            /> */}
           </div>
           <div className=" flex-grow md:w-1/2 lg:w-2/5 py-2 px-4">
-            {/* <div className="my-2">Path section</div> */}
             <h1 className="text-xl font-bold mb-6 md:text-base md:font-semibold lg:text-xl lg:font-bold">
               {product.name}
             </h1>
