@@ -6,6 +6,7 @@
   body {
     font-family: iransansx, tahoma;
     direction: rtl; /* Reverse the direction */
+    overflow-x: hidden;
     -moz-font-feature-settings: "ss02", "ss03", "ss04";
     -webkit-font-feature-settings: "ss02", "ss03", "ss04";
     font-feature-settings: "ss02", "ss03", "ss04";

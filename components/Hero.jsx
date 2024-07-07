@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+
 import Slider from "react-slick";
 import ProductSearchForm from "./ProductSearchForm";
 import Image from "next/image";
@@ -7,7 +7,6 @@ import heroImg1 from "@/assets/images/heroImg1.jpg";
 import heroImg2 from "@/assets/images/heroImg2.jpg";
 import heroImg3 from "@/assets/images/heroImg3.jpg";
 import { FaGreaterThan, FaLessThan } from "react-icons/fa";
-import Link from "next/link";
 
 const Hero = () => {
   const images = [heroImg1, heroImg2, heroImg3];
@@ -38,10 +37,10 @@ const Hero = () => {
     customPaging: (i) => (
       <div
         style={{
-          width: "10px",
-          height: "10px",
+          width: "5px",
+          height: "5px",
           borderRadius: "50%",
-          background: "#fff",
+          background: "#9d9e9f",
         }}
       />
     ),

@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
     : Math.ceil(product.price);
 
   return (
-    <div className="bg-gray-50 w-44 h-80 p-2 md:w-80 md:h-[28rem] lg:h-[28rem] lg:w-72 hxlg:w-80 2xl:w-96 rounded-xl shadow-2xl relative border border-gray-200 flex flex-col justify-between">
+    <div className="bg-gray-50 w-44 min-h-80 p-2 md:w-80 md:h-[28rem] lg:h-[28rem] lg:w-72 hxlg:w-80 2xl:w-96 rounded-xl shadow-2xl relative border border-gray-200 flex flex-col justify-between">
       <div>
         <div className="w-full h-auto md:h-2/3 flex rounded-t-xl justify-center items-center">
           <Image

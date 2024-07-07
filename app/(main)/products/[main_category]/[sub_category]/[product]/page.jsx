@@ -90,7 +90,7 @@ const ProductPage = () => {
     <>
       {loading && <Spinner loading={loading} />}
       {!loading && product && (
-        <div className="p-2 mt-6">
+        <div className="p-4 mt-6">
           <Breadcrumb pathSegments={pathSegments} />
           <ProductDetails product={product} />
         </div>
