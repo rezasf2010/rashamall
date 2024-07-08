@@ -60,7 +60,7 @@ const MagazinePostAddForm = () => {
 
         <div className="mb-4">
           <label
-            htmlFor="title"
+            htmlFor="mainTitle"
             className="flex  pr-2 text-gray-700 font-bold mb-2"
           >
             عنوان پست
