@@ -5,15 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/rashamall-logo.png";
 import ProductCategoryNavButton from "@/components/ProductCategoryNavButton";
+import UserLoginMenu from "./UserLoginMenu";
 import { fetchCategories } from "@/utils/requests";
 import SpinnerH from "./SpinnerH";
 import { FaChevronDown, FaChevronLeft } from "react-icons/fa";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
+  const { data: session } = useSession();
   const [categories, setCategories] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [providers, setProviders] = useState(false);
 
   useEffect(() => {
     const fetchCategoriesData = async () => {
@@ -28,6 +32,15 @@ const Navbar = () => {
     };
 
     fetchCategoriesData();
+  }, []);
+
+  useEffect(() => {
+    const setAuthProviders = async () => {
+      const res = await getProviders();
+      setProviders(res);
+    };
+
+    setAuthProviders();
   }, []);
 
   const mainCategories = categories
@@ -54,39 +67,48 @@ const Navbar = () => {
               priority={true}
             />
           </Link>
-          <div className="w-full px-2 md:flex md:flex-row md:justify-between md:items-center">
-            <div className="w-full sm:flex sm:justify-around sm:gap-2 md:items-center md:justify-end md:gap-1 lg:gap-4 md:w-auto lg:w-2/3">
-              <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:w-auto md:my-0 md:justify-center md:gap-1 lg:gap-3 lg:w-1/2">
+          <div className="w-full px-2 lg:flex lg:flex-row lg:justify-between lg:items-center">
+            <div className="w-full sm:flex sm:justify-around md:justify-around sm:gap-2 md:gap-1 md:items-center lg:justify-around lg:gap-1 xl:gap-4 md:w-full lg:w-2/3">
+              <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:my-2 md:justify-around lg:justify-around md:gap-1 lg:gap-3 md:w-1/2">
                 <Link
-                  className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
+                  className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center"
                   href="/onsale"
                 >
                   کالاهای حراجی
                 </Link>
                 <Link
-                  className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
+                  className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center"
                   href="/comparison"
                 >
                   مقایسه کالاها
                 </Link>
               </div>
-              <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:w-auto md:my-0 md:justify-center md:gap-1 lg:gap-3 lg:w-1/2">
+              <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:my-2 md:justify-around lg:justify-around md:gap-1 lg:gap-3 md:w-1/2">
                 <Link
-                  className=" w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
+                  className=" w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center"
                   href="/rashamall-mag"
                 >
                   مجله راشامال
                 </Link>
                 <Link
-                  className=" w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center md:w-auto lg:w-1/2 md:"
+                  className=" w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center"
                   href="/contact_us"
                 >
                   تماس با ما
                 </Link>
               </div>
             </div>
-            <div className="border border-orange-300 flex justify-center p-2">
-              contact
+            <div className="w-full lg:w-1/3 border border-orange-300 flex justify-around items-center p-2">
+              <div className="border border-green-500 flex items-center">
+                contact
+              </div>
+              <div className="flex justify-center">
+                <UserLoginMenu
+                  session={session}
+                  providers={providers}
+                  setProviders={setProviders}
+                />
+              </div>
             </div>
           </div>
         </div>
