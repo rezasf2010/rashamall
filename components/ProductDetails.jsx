@@ -2,6 +2,7 @@ import Image from "next/image";
 import SpecificationCard from "./SpecificationCard";
 import ProductImages from "./ProductImages";
 import { FaTimes, FaCheck } from "react-icons/fa";
+import AddToCart from "./AddToCart";
 
 const ProductDetails = ({ product }) => {
   const discountedPrice = product.is_onSale
@@ -65,9 +66,7 @@ const ProductDetails = ({ product }) => {
                 <FaTimes className="inline-block text-red-500" />
               </div>
             )}
-            <button className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm">
-              افزودن به سبد خرید
-            </button>
+            <AddToCart productId={product._id} />
           </div>
           <p className="text-orange-500 my-6">
             لطفا برای خرید محصول با ما تماس بگیرید
