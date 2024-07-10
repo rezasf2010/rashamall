@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
+import { GlobalProvider } from "@/context/GlobalContext";
 import "@/assets/styles/globals.css";
 import "@/assets/styles/hero.css";
 import "photoswipe/dist/photoswipe.css";
@@ -19,16 +20,20 @@ export const metadata = {
 
 const MainLayout = ({ children }) => {
   return (
-    <AuthProvider>
-      <html lang="fa">
-        <body className="w-full flex flex-col items-center">
-          <Navbar />
-          <main className="w-full flex flex-col items-center">{children}</main>
-          <Footer />
-          {/* <ToastContainer /> */}
-        </body>
-      </html>
-    </AuthProvider>
+    <GlobalProvider>
+      <AuthProvider>
+        <html lang="fa">
+          <body className="w-full flex flex-col items-center">
+            <Navbar />
+            <main className="w-full flex flex-col items-center">
+              {children}
+            </main>
+            <Footer />
+            {/* <ToastContainer /> */}
+          </body>
+        </html>
+      </AuthProvider>
+    </GlobalProvider>
   );
 };
 

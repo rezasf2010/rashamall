@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FaGoogle } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 import profileDefault from "@/assets/images/profile.png";
 import googleLogo from "@/assets/images/google-color-icon.png";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import CartCount from "./CartCount";
 
 const UserLoginMenu = ({
   session,
@@ -47,10 +48,21 @@ const UserLoginMenu = ({
         {/* <!-- Profile dropdown button --> */}
         {session && (
           <div className="relative">
-            <div>
+            <div className="flex items-center gap-3">
+              <Link href="/cart" className="relative group">
+                <button
+                  type="button"
+                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                >
+                  <span className="absolute -inset-1.5"></span>
+                  <span className="sr-only">View notifications</span>
+                  <FaCartPlus className="h-6 w-6" />
+                </button>
+                <CartCount session={session} />
+              </Link>
               <button
                 type="button"
-                className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative rounded-full bg-gray-800 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 id="user-menu-button"
                 aria-expanded="false"
                 aria-haspopup="true"
@@ -59,10 +71,10 @@ const UserLoginMenu = ({
                 <span className="absolute -inset-1.5"></span>
                 <span className="sr-only">Open user menu</span>
                 <Image
-                  className="h-6 w-6 rounded-full"
+                  className="h-8 w-8 rounded-full"
                   src={profileImage || profileDefault}
-                  width={40}
-                  height={40}
+                  width={60}
+                  height={60}
                   alt=""
                   priority={true}
                 />
