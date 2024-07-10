@@ -2,11 +2,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaGoogle } from "react-icons/fa";
 import profileDefault from "@/assets/images/profile.png";
+import googleLogo from "@/assets/images/google-color-icon.png";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
-const UserLoginMenu = ({ session, providers }) => {
+const UserLoginMenu = ({
+  session,
+  providers,
+  isProfileMenuOpen,
+  setIsProfileMenuOpen,
+}) => {
+  const profileImage = session?.user?.image;
+
   return (
-    <div className="border-3 border-red-500">
+    <div className="">
       {/* <!-- Right Side Menu (Logged Out) --> */}
       {!session && (
         <div className="md:block md:ml-6">
@@ -18,7 +26,14 @@ const UserLoginMenu = ({ session, providers }) => {
                   className=" border border-gray-400 flex items-center text-gray-700 hover:bg-gray-300 hover:text-gray-700 rounded-md px-3 py-2"
                   onClick={() => signIn(provider.id)}
                 >
-                  <FaGoogle className="text-gray-500 ml-2" />
+                  <Image
+                    className="h-6 w-6 rounded-full ml-2"
+                    src={googleLogo}
+                    width={6}
+                    height={6}
+                    alt=""
+                    priority={true}
+                  />
                   <span className="font-semibold">ورود / ثبت نام</span>
                 </button>
               ))}
@@ -30,63 +45,80 @@ const UserLoginMenu = ({ session, providers }) => {
       <div className="flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
         <Link href="/" className="relative group"></Link>
         {/* <!-- Profile dropdown button --> */}
-        <div className="relative hidden">
-          <div>
-            <button
-              type="button"
-              className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              id="user-menu-button"
-              aria-expanded="false"
-              aria-haspopup="true"
-            >
-              <span className="absolute -inset-1.5"></span>
-              <span className="sr-only">Open user menu</span>
-              <Image
-                className="h-8 w-8 rounded-full"
-                src={profileDefault}
-                alt=""
-              />
-            </button>
-          </div>
+        {session && (
+          <div className="relative">
+            <div>
+              <button
+                type="button"
+                className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                id="user-menu-button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                onClick={() => setIsProfileMenuOpen((prev) => !prev)}
+              >
+                <span className="absolute -inset-1.5"></span>
+                <span className="sr-only">Open user menu</span>
+                <Image
+                  className="h-6 w-6 rounded-full"
+                  src={profileImage || profileDefault}
+                  width={40}
+                  height={40}
+                  alt=""
+                  priority={true}
+                />
+              </button>
+            </div>
 
-          {/* <!-- Profile dropdown --> */}
-          <div
-            id="user-menu"
-            className="hidden mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="user-menu-button"
-            tabIndex="-1"
-          >
-            <Link
-              href="/"
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex="-1"
-              id="user-menu-item-0"
-            >
-              پروفایل شما
-            </Link>
-            <Link
-              href="/"
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex="-1"
-              id="user-menu-item-2"
-            >
-              کالا های ذخیره شده
-            </Link>
-            <Link
-              href="/"
-              className="block px-4 py-2 text-sm text-gray-700"
-              role="menuitem"
-              tabIndex="-1"
-              id="user-menu-item-2"
-            >
-              خروج از حساب کاربری
-            </Link>
+            {/* <!-- Profile dropdown --> */}
+            {isProfileMenuOpen && (
+              <div
+                id="user-menu"
+                className="absolute left-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="user-menu-button"
+                tabIndex="-1"
+              >
+                <Link
+                  href="/profile"
+                  className="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabIndex="-1"
+                  id="user-menu-item-0"
+                  onClick={() => {
+                    setIsProfileMenuOpen(false);
+                  }}
+                >
+                  پروفایل شما
+                </Link>
+                <Link
+                  href="/products/saved"
+                  className="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabIndex="-1"
+                  id="user-menu-item-1"
+                  onClick={() => {
+                    setIsProfileMenuOpen(false);
+                  }}
+                >
+                  کالا های ذخیره شده
+                </Link>
+                <button
+                  onClick={() => {
+                    setIsProfileMenuOpen(false);
+                    signOut();
+                  }}
+                  className="block px-4 py-2 text-sm text-gray-700"
+                  role="menuitem"
+                  tabIndex="-1"
+                  id="user-menu-item-2"
+                >
+                  خروج از حساب کاربری
+                </button>
+              </div>
+            )}
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

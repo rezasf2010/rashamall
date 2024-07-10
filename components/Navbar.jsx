@@ -18,6 +18,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [providers, setProviders] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchCategoriesData = async () => {
@@ -107,6 +108,8 @@ const Navbar = () => {
                   session={session}
                   providers={providers}
                   setProviders={setProviders}
+                  isProfileMenuOpen={isProfileMenuOpen}
+                  setIsProfileMenuOpen={setIsProfileMenuOpen}
                 />
               </div>
             </div>
