@@ -34,7 +34,7 @@ const ProductsOnSale = () => {
         {saleProducts.length === 0 ? (
           <p>No products found</p>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
             {saleProducts.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}

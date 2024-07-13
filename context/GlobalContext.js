@@ -1,32 +1,39 @@
 "use client";
-import { set } from "mongoose";
 import { createContext, useContext, useState, useEffect } from "react";
 
-// Creat context
+// Create context
 const GlobalContext = createContext();
 
 // Create a provider
 export function GlobalProvider({ children }) {
-  const [cartCount, setCartCount] = useState(0);
-  const [cart, setCart] = useState({});
-
-  useEffect(() => {
-    // Clear cart on page refresh
-    localStorage.removeItem("cart");
-    localStorage.removeItem("cartCount");
-
-    // Set initial cart state
-    setCart({});
-    setCartCount(0);
-  }, []);
-
-  useEffect(() => {
+  const [cartCount, setCartCount] = useState(() => {
+    // Get the saved cart from localStorage and parse it
     const savedCart = JSON.parse(localStorage.getItem("cart")) || {};
-    const savedCartCount = JSON.parse(localStorage.getItem("cartCount")) || 0;
-    setCart(savedCart);
-    setCartCount(savedCartCount);
-  }, []);
+    // Calculate the initial cart count
+    return Object.values(savedCart).reduce((acc, count) => acc + count, 0);
+  });
 
+  const [cart, setCart] = useState(() => {
+    // Parse the cart from localStorage or initialize as an empty object
+    return JSON.parse(localStorage.getItem("cart")) || {};
+  });
+
+  const updateCart = (productId, quantity) => {
+    setCart((prevCart) => {
+      const newCart = { ...prevCart };
+      if (quantity <= 0) {
+        delete newCart[productId];
+      } else {
+        newCart[productId] = quantity;
+      }
+      setCartCount(
+        Object.values(newCart).reduce((acc, count) => acc + count, 0),
+      );
+      return newCart;
+    });
+  };
+
+  // Persist cart and cartCount to localStorage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
     localStorage.setItem("cartCount", JSON.stringify(cartCount));
@@ -36,9 +43,9 @@ export function GlobalProvider({ children }) {
     <GlobalContext.Provider
       value={{
         cartCount,
-        setCartCount,
         cart,
         setCart,
+        updateCart,
       }}
     >
       {children}

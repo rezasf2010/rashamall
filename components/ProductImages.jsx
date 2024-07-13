@@ -19,7 +19,7 @@ const ProductImages = ({ images }) => {
                   onClick={open}
                   src={images[0]}
                   alt=""
-                  className="object-cover h-[300px] mx-auto rounded-xl p-1"
+                  className="object-cover w-auto h-[300px] mx-auto rounded-xl p-1"
                   width={0}
                   height={0}
                   sizes="100vw"
