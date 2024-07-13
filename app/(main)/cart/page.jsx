@@ -39,7 +39,7 @@ const CartPage = () => {
   }, 0);
 
   return (
-    <div className="border border-red-500 w-full my-12 px-6 flex flex-col lg:flex-row gap-4 items-center lg:items-start justify-center">
+    <div className="w-full my-12 px-6 flex flex-col lg:flex-row gap-4 items-center lg:items-start justify-center">
       <div className="top right w-full lg:w-2/3">
         <div className="border border-gray-300 bg-blue-50 w-full md:w-full p-4 rounded-2xl shadow-2xl">
           <h4 className="font-bold text-lg mb-4">سبد خرید شما</h4>
