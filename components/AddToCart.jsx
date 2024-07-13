@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useGlobalContext } from "@/context/GlobalContext";
 
 const AddToCart = ({ productId }) => {
-  const { cart, setCart, setCartCount } = useGlobalContext();
+  const { cart, updateCart } = useGlobalContext();
   const [numberOfOrder, setNumberOfOrder] = useState(0);
 
   useEffect(() => {
@@ -13,20 +13,15 @@ const AddToCart = ({ productId }) => {
   }, [cart, productId]);
 
   const handleAddToCart = () => {
-    const newCart = { ...cart, [productId]: (cart[productId] || 0) + 1 };
-    setCart(newCart);
-    setCartCount(Object.values(newCart).reduce((a, b) => a + b, 0));
-    setNumberOfOrder(newCart[productId]);
+    const newQuantity = numberOfOrder + 1;
+    setNumberOfOrder(newQuantity);
+    updateCart(productId, newQuantity);
   };
 
   const handleRemoveFromCart = () => {
-    const newCart = { ...cart, [productId]: (cart[productId] || 0) - 1 };
-    if (newCart[productId] <= 0) {
-      delete newCart[productId];
-    }
-    setCart(newCart);
-    setCartCount(Object.values(newCart).reduce((a, b) => a + b, 0));
-    setNumberOfOrder(newCart[productId] || 0);
+    const newQuantity = numberOfOrder - 1;
+    setNumberOfOrder(newQuantity);
+    updateCart(productId, newQuantity);
   };
 
   return (

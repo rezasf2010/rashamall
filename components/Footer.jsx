@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-200 p-4 mt-16 w-full flex flex-col items-center md:flex-row md:gap-4">
       <div className="mb-4 md:mb-0">
-        <Image src={logo} alt="Logo" className="h-16 w-auto" />
+        <Image src={logo} alt="Logo" className="h-16 w-auto" priority={true} />
       </div>
       <div className="w-full px-4 flex flex-col items-center md:items-start">
         {" "}
