@@ -1,32 +1,33 @@
+// /pages/api/users/[email].js
 import connectDB from "@/config/database";
 import User from "@/models/User";
-import { getSessionUser } from "@/utils/getSessionUser";
-import cloudinary from "@/config/cloudinary";
 
-// GET /api/users
-export const GET = async (request) => {
+export async function GET(req, { params }) {
+  const { email } = params;
+
+  await connectDB();
+
   try {
-    await connectDB();
-
-    const users = await User.find({});
-
-    return new Response(JSON.stringify(users), { status: 200 });
-  } catch (error) {
-    console.log(error);
-    return new Response("Something went wrong", { status: 500 });
-  }
-};
-
-// POST /api/users
-export const POST = async (request) => {
-  try {
-    await connectDB();
-    const sessionUser = await getSessionUser(request);
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
+    const user = await User.findOne({ email });
+    if (!user) {
+      return new Response(JSON.stringify({ message: "User not found" }), {
+        status: 404,
+      });
     }
+    return new Response(JSON.stringify(user), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ message: "Server error" }), {
+      status: 500,
+    });
+  }
+}
+
+export async function POST(request) {
+  try {
+    await connectDB();
 
     const formData = await request.formData();
+
     const images = formData
       .getAll("images")
       .filter((image) => image.name !== "");
@@ -48,35 +49,36 @@ export const POST = async (request) => {
     };
 
     const imageUploadPromises = [];
+
     for (const image of images) {
       const imageBuffer = await image.arrayBuffer();
       const imageArray = Array.from(new Uint8Array(imageBuffer));
       const imageData = Buffer.from(imageArray);
+
       const imageBase64 = imageData.toString("base64");
+
       const result = await cloudinary.uploader.upload(
         `data:image/png;base64,${imageBase64}`,
-        { folder: "user" },
+        {
+          folder: "user",
+        },
       );
+
       imageUploadPromises.push(result.secure_url);
     }
+
     const uploadedImages = await Promise.all(imageUploadPromises);
+
     userData.receipt_image = uploadedImages;
 
-    const existingUser = await User.findOne({ email: userData.email });
-    if (existingUser) {
-      // Update existing user
-      await User.updateOne({ email: userData.email }, userData);
-    } else {
-      // Create new user
-      const newUser = new User(userData);
-      await newUser.save();
-    }
+    const newUser = new User(userData);
+    await newUser.save();
 
     return new Response(JSON.stringify({ message: "Success" }), {
       status: 200,
     });
   } catch (error) {
-    console.error("Error adding/updating user:", error);
-    return new Response("Failed to add/update user", { status: 500 });
+    console.error("Error adding user:", error);
+    return new Response("Failed to add user", { status: 500 });
   }
-};
+}

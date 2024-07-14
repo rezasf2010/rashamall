@@ -5,15 +5,28 @@ const ProvinceCitySelect = ({ formData, setFormData }) => {
   const [selectedProvince, setSelectedProvince] = useState("");
   const [cities, setCities] = useState([]);
 
+  useEffect(() => {
+    if (formData.address.state) {
+      setSelectedProvince(formData.address.state);
+      setCities(provincesAndCities[formData.address.state] || []);
+    }
+  }, [formData.address.state]);
+
   const handleProvinceChange = (e) => {
     const province = e.target.value;
     setSelectedProvince(province);
     setCities(provincesAndCities[province] || []);
-    setFormData({ ...formData, state: province, city: "" });
+    setFormData({
+      ...formData,
+      address: { ...formData.address, state: province, city: "" },
+    });
   };
 
   const handleCityChange = (e) => {
-    setFormData({ ...formData, city: e.target.value });
+    setFormData({
+      ...formData,
+      address: { ...formData.address, city: e.target.value },
+    });
   };
 
   return (
@@ -26,7 +39,7 @@ const ProvinceCitySelect = ({ formData, setFormData }) => {
           id="state"
           name="address.state"
           className="mt-1 block w-full p-2 border rounded"
-          value={formData.state}
+          value={formData.address.state || ""}
           onChange={handleProvinceChange}
           required
         >
@@ -49,7 +62,7 @@ const ProvinceCitySelect = ({ formData, setFormData }) => {
           id="city"
           name="address.city"
           className="mt-1 block w-full p-2 border rounded"
-          value={formData.city}
+          value={formData.address.city || ""}
           onChange={handleCityChange}
           required
         >

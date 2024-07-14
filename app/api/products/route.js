@@ -21,13 +21,13 @@ export const POST = async (request) => {
   try {
     await connectDB();
 
-    //   const sessionUser = await getSessionUser();
+    const sessionUser = await getSessionUser();
 
-    //   if (!sessionUser || !sessionUser.userId) {
-    //     return new Response("user ID is required", { status: 401 });
-    //   }
+    if (!sessionUser || !sessionUser.userId) {
+      return new Response("user ID is required", { status: 401 });
+    }
 
-    //   const { userId } = sessionUser;
+    const { userId } = sessionUser;
 
     const formData = await request.formData();
 

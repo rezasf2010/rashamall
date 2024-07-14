@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import ProvinceCitySelect from "./ProvinceCitySelect";
 import PaymentInfo from "./PaymentInfo";
+import axios from "axios";
 
 const UserInfo = () => {
   const { data: session } = useSession();
   const [mounted, setMounted] = useState(false);
-
+  const [isNewUser, setIsNewUser] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     username: "",
     mobile: "",
     phone: "",
@@ -19,7 +19,7 @@ const UserInfo = () => {
       street: "",
       city: "",
       state: " ",
-      zipcode: "",
+      zip: "",
     },
     details: "",
     paymentMethod: "",
@@ -29,12 +29,39 @@ const UserInfo = () => {
   useEffect(() => {
     setMounted(true);
 
-    if (session?.user?.email) {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        email: session.user.email,
-      }));
-    }
+    const fetchUserData = async () => {
+      if (session?.user?.email) {
+        try {
+          const response = await axios.get(`/api/users/${session.user.email}`);
+          const user = response.data;
+
+          if (!user) {
+            setIsNewUser(true);
+          } else {
+            setFormData({
+              name: user.name || "",
+              username: user.username || "",
+              mobile: user.mobile || "0912",
+              phone: user.phone || "021",
+              email: user.email || session.user.email,
+              address: {
+                street: user.address?.street || "خیابان شریعتی",
+                city: user.address?.city || "",
+                state: user.address?.state || "",
+                zip: user.address?.zip || "1234",
+              },
+              details: user.details || "تست",
+              paymentMethod: user.paymentMethod || "",
+              receiptImage: null,
+            });
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      }
+    };
+
+    fetchUserData();
   }, [session]);
 
   const handleChange = (e) => {
@@ -60,18 +87,19 @@ const UserInfo = () => {
     }
   };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handleSubmit = (e) => {
+  // const handleSubmit = async (e) => {
   //   e.preventDefault();
-  //   // Handle form submission, e.g., send data to the server
-  //   console.log(formData);
+  //   try {
+  //     await axios.post("/api/users", formData, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     alert("User information updated successfully!");
+  //   } catch (error) {
+  //     console.error("Error updating user information:", error);
+  //     alert("Failed to update user information.");
+  //   }
   // };
 
   return (
@@ -84,128 +112,99 @@ const UserInfo = () => {
           encType="multipart/form-data"
           className="flex flex-col"
         >
-          {!session && (
-            <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <label htmlFor="firstName" className="block text-gray-700">
-                    نام
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    className="mt-1 block w-full p-2 border rounded"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-gray-700">
-                    نام خانوادگی
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    className="mt-1 block w-full p-2 border rounded"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="mb-6">
-                  <label htmlFor="username" className="block text-gray-700">
-                    نام کاربری
-                  </label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    className="mt-1 block w-full p-2 border rounded text-end"
-                    value={formData.username}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="mb-6">
-                <label htmlFor="mobile" className="block text-gray-700">
-                  تلفن همراه (با اعداد انگلیسی)
+          <div>
+            <div className="grid grid-cols-1 gap-4 mb-6">
+              <div>
+                <label htmlFor="name" className="block text-gray-700">
+                  نام و نام خانوادگی
                 </label>
                 <input
-                  type="number"
-                  id="mobile"
-                  name="mobile"
+                  type="text"
+                  id="name"
+                  name="name"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={formData.mobile}
+                  value={formData.name || ""}
                   onChange={handleChange}
                   required
                 />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="phone" className="block text-gray-700">
-                  تلفن (با اعداد انگلیسی)
-                </label>
-                <input
-                  type="number"
-                  id="phone"
-                  name="phone"
-                  className="mt-1 block w-full p-2 border rounded"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-6">
-                <label htmlFor="email" className="block text-gray-700">
-                  ایمیل
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="mt-1 block w-full p-2 border rounded text-end"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 justify-center border border-gray-300 rounded-xl shadow-xl bg-blue-100 w-full">
-                <ProvinceCitySelect
-                  formData={formData}
-                  setFormData={setFormData}
-                />
-                <div className="mb-6 col-span-2">
-                  <label htmlFor="street" className="block text-gray-700">
-                    آدرس
-                  </label>
-                  <input
-                    type="text"
-                    id="street"
-                    name="address.street"
-                    className="mt-1 w-full p-2 border rounded"
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="mb-6 col-span-2">
-                  <label htmlFor="zip" className="block text-gray-700">
-                    کدپستی (بدون فاصله و با اعداد انگلیسی)
-                  </label>
-                  <input
-                    type="number"
-                    id="zip"
-                    name="address.zip"
-                    className="mt-1 block w-full p-2 border rounded"
-                    value={formData.zip}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
               </div>
             </div>
-          )}
+            <div className="mb-6">
+              <label htmlFor="mobile" className="block text-gray-700">
+                تلفن همراه (با اعداد انگلیسی)
+              </label>
+              <input
+                type="number"
+                id="mobile"
+                name="mobile"
+                className="mt-1 block w-full p-2 border rounded"
+                value={formData.mobile || ""}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label htmlFor="phone" className="block text-gray-700">
+                تلفن (با اعداد انگلیسی)
+              </label>
+              <input
+                type="number"
+                id="phone"
+                name="phone"
+                className="mt-1 block w-full p-2 border rounded"
+                value={formData.phone || ""}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-6">
+              <label htmlFor="email" className="block text-gray-700">
+                ایمیل
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="mt-1 block w-full p-2 border rounded text-end"
+                value={formData.email || ""}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 justify-center border border-gray-300 rounded-xl shadow-xl bg-blue-100 w-full">
+              <ProvinceCitySelect
+                formData={formData}
+                setFormData={setFormData}
+              />
+              <div className="mb-6 col-span-2">
+                <label htmlFor="street" className="block text-gray-700">
+                  آدرس
+                </label>
+                <input
+                  type="text"
+                  id="street"
+                  name="address.street"
+                  className="mt-1 w-full p-2 border rounded"
+                  value={formData.address.street || ""}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="mb-6 col-span-2">
+                <label htmlFor="zip" className="block text-gray-700">
+                  کدپستی (بدون فاصله و با اعداد انگلیسی)
+                </label>
+                <input
+                  type="number"
+                  id="zip"
+                  name="address.zip"
+                  className="mt-1 block w-full p-2 border rounded"
+                  value={formData.address.zip || ""}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+          </div>
           <div className="grid grid-cols-1 gap-4 mb-6">
             <div>
               <label htmlFor="details" className="block text-gray-700">
@@ -216,7 +215,7 @@ const UserInfo = () => {
                 name="details"
                 rows="4"
                 className="mt-1 block w-full p-2 border rounded resize-none"
-                value={formData.details}
+                value={formData.details || ""}
                 onChange={handleChange}
               />
             </div>
