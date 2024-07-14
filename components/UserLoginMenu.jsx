@@ -43,7 +43,7 @@ const UserLoginMenu = ({
       )}
 
       {/* <!-- Right Side Menu (Logged In) --> */}
-      <div className="flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+      <div className="flex items-center md:static md:inset-auto md:ml-6 md:pr-0">
         <Link href="/" className="relative group"></Link>
         {/* <!-- Profile dropdown button --> */}
         {session && (
@@ -52,11 +52,11 @@ const UserLoginMenu = ({
               <Link href="/cart" className="relative group">
                 <button
                   type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">View notifications</span>
-                  <FaCartPlus className="h-6 w-6" />
+                  <FaCartPlus className="h-5 w-5" />
                 </button>
                 <CartCount session={session} />
               </Link>

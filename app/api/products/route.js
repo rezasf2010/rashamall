@@ -119,6 +119,6 @@ export const POST = async (request) => {
     // });
   } catch (error) {
     console.error("Error adding product:", error);
-    return new Response("Failded to add property", { status: 500 });
+    return new Response("Failded to add product", { status: 500 });
   }
 };

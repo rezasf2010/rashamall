@@ -12,7 +12,7 @@ const SpinnerH = ({ loading }) => {
       color="#00366b"
       cssOverride={{}}
       loading={loading}
-      margin={1}
+      margin={2}
       size={10}
       speedMultiplier={1}
     />
