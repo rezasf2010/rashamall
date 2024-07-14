@@ -31,7 +31,9 @@ export const authOptions = {
         await User.create({
           email: profile.email,
           username,
+          name: profile.name, // Ensure the name is stored
           image: profile.picture,
+          mobile: "09",
         });
       }
       // 4. Return true to allow sign in

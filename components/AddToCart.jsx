@@ -1,8 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { useGlobalContext } from "@/context/GlobalContext";
+import { toast } from "react-toastify";
 
 const AddToCart = ({ productId }) => {
+  const { data: session } = useSession();
   const { cart, updateCart } = useGlobalContext();
   const [numberOfOrder, setNumberOfOrder] = useState(0);
 
@@ -13,6 +16,10 @@ const AddToCart = ({ productId }) => {
   }, [cart, productId]);
 
   const handleAddToCart = () => {
+    if (!session) {
+      toast.error("ابتدا وارد حساب کاربری شوید");
+      return;
+    }
     const newQuantity = numberOfOrder + 1;
     setNumberOfOrder(newQuantity);
     updateCart(productId, newQuantity);
