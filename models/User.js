@@ -11,6 +11,44 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "Username is required"],
     },
+    firstname: {
+      type: String,
+      required: [true, "Firstname is required"],
+    },
+    lastname: {
+      type: String,
+      required: [true, "lastname is required"],
+    },
+    mobile: {
+      type: Number,
+      required: [true, "mobile is required"],
+    },
+    phone: {
+      type: Number,
+    },
+    address: {
+      street: {
+        type: String,
+      },
+      city: {
+        type: String,
+      },
+      state: {
+        type: String,
+      },
+      zip: {
+        type: String,
+      },
+    },
+    details: {
+      type: String,
+    },
+    paymentMethod: {
+      type: String,
+    },
+    receiptImage: {
+      type: String,
+    },
     image: {
       type: String,
     },

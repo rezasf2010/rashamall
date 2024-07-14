@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import CartProduct from "@/components/CartProduct";
 import { useGlobalContext } from "@/context/GlobalContext";
 import SpinnerH from "@/components/SpinnerH";
@@ -7,8 +8,9 @@ import { fetchProducts } from "@/utils/requests";
 
 const CartPage = () => {
   const [products, setProducts] = useState([]);
-  const { cart } = useGlobalContext();
+  const { cart, clearCart } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchProductsData = async () => {
@@ -38,6 +40,10 @@ const CartPage = () => {
     return total + unitPrice * cart[product._id];
   }, 0);
 
+  const handleNext = () => {
+    router.push("/checkout"); // Change this to your actual next step route
+  };
+
   return (
     <div className="w-full my-12 px-6 flex flex-col lg:flex-row gap-4 items-center lg:items-start justify-center">
       <div className="top right w-full lg:w-2/3">
@@ -63,6 +69,20 @@ const CartPage = () => {
           {totalCartPrice.toLocaleString()}
           {"  "}
           <span>تومان</span>
+        </div>
+        <div className="flex justify-between mt-4">
+          <button
+            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full"
+            onClick={clearCart}
+          >
+            خالی کردن سبد خرید
+          </button>
+          <button
+            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full"
+            onClick={handleNext}
+          >
+            مرحله بعد
+          </button>
         </div>
       </div>
     </div>
