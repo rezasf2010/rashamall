@@ -3,10 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const CartProduct = ({ product, quantity }) => {
   const { updateCart } = useGlobalContext();
   const [productQuantity, setProductQuantity] = useState(quantity);
+  const pathname = usePathname();
 
   useEffect(() => {
     setProductQuantity(quantity);
@@ -15,7 +17,7 @@ const CartProduct = ({ product, quantity }) => {
   const handleQuantityChange = (e) => {
     const newQuantity = Number(e.target.value);
     setProductQuantity(newQuantity);
-    updateCart(product._id, newQuantity);
+    updateCart(product._id, newQuantity, product.price);
   };
 
   const discountedPrice = product.is_onSale
@@ -50,13 +52,19 @@ const CartProduct = ({ product, quantity }) => {
         <div className="flex items-center mb-2 gap-2">
           <span className="font-bold">تعداد : </span>
           {"  "}
-          <input
-            type="number"
-            value={productQuantity}
-            min="0"
-            onChange={handleQuantityChange}
-            className="w-16 p-1 border rounded text-center"
-          />
+          {pathname === "/order_success" ? (
+            <div className="w-12 p-1 bg-gray-100 border border-gray-300 rounded text-center">
+              {productQuantity}
+            </div>
+          ) : (
+            <input
+              type="number"
+              value={productQuantity}
+              min="0"
+              onChange={handleQuantityChange}
+              className="w-16 p-1 border border-gray-300 rounded text-center"
+            />
+          )}
         </div>
         <div className="mb-2">
           <span className="font-bold">مجموع :</span>

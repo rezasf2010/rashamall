@@ -72,9 +72,11 @@ export const POST = async (request) => {
       await newUser.save();
     }
 
-    return new Response(JSON.stringify({ message: "Success" }), {
-      status: 200,
-    });
+    return Response.redirect(`${process.env.NEXT_PUBLIC_DOMAIN}/order_success`);
+
+    // return new Response(JSON.stringify({ message: "Success" }), {
+    //   status: 200,
+    // });
   } catch (error) {
     console.error("Error adding/updating user:", error);
     return new Response("Failed to add/update user", { status: 500 });

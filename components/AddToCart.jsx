@@ -4,14 +4,14 @@ import { useSession } from "next-auth/react";
 import { useGlobalContext } from "@/context/GlobalContext";
 import { toast } from "react-toastify";
 
-const AddToCart = ({ productId }) => {
+const AddToCart = ({ productId, price }) => {
   const { data: session } = useSession();
   const { cart, updateCart } = useGlobalContext();
   const [numberOfOrder, setNumberOfOrder] = useState(0);
 
   useEffect(() => {
     if (cart[productId]) {
-      setNumberOfOrder(cart[productId]);
+      setNumberOfOrder(cart[productId].quantity); // Update to reflect correct cart structure);
     }
   }, [cart, productId]);
 
@@ -22,13 +22,13 @@ const AddToCart = ({ productId }) => {
     }
     const newQuantity = numberOfOrder + 1;
     setNumberOfOrder(newQuantity);
-    updateCart(productId, newQuantity);
+    updateCart(productId, newQuantity, price);
   };
 
   const handleRemoveFromCart = () => {
     const newQuantity = numberOfOrder - 1;
     setNumberOfOrder(newQuantity);
-    updateCart(productId, newQuantity);
+    updateCart(productId, newQuantity, price);
   };
 
   return (

@@ -10,7 +10,7 @@ const InfoBoxes = () => {
     <section>
       <div className="lg:container m-auto">
         <div className="mx-auto flex flex-col items-center">
-          <div className="grid grid-cols-1 w-11/12 sm:w-3/4 md:w-auto md:grid-cols-3 gap-4 p-4 rounded-lg">
+          <div className="grid grid-cols-1 w-11/12 sm:w-auto sm:grid-cols-3 gap-4 p-4 rounded-lg">
             <InfoBox>
               <Image
                 className="w-full rounded-xl"

@@ -60,3 +60,10 @@
   -webkit-font-feature-settings: "ss04";
   font-feature-settings: "ss04";
 }
+
+/* For Chrome, Safari, Edge, Opera */
+.input-number::-webkit-outer-spin-button,
+.input-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

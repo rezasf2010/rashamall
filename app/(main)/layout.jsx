@@ -20,8 +20,8 @@ export const metadata = {
 
 const MainLayout = ({ children }) => {
   return (
-    <GlobalProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <GlobalProvider>
         <html lang="fa">
           <body className="w-full flex flex-col items-center">
             <Navbar />
@@ -32,8 +32,8 @@ const MainLayout = ({ children }) => {
             <ToastContainer />
           </body>
         </html>
-      </AuthProvider>
-    </GlobalProvider>
+      </GlobalProvider>
+    </AuthProvider>
   );
 };
 
