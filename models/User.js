@@ -54,6 +54,12 @@ const UserSchema = new Schema(
         ref: "Product",
       },
     ],
+    orders: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Order",
+      },
+    ],
   },
   {
     timestamps: true,

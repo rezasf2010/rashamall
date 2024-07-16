@@ -66,7 +66,7 @@ const ProductDetails = ({ product }) => {
                 <FaTimes className="inline-block text-red-500" />
               </div>
             )}
-            <AddToCart productId={product._id} />
+            <AddToCart productId={product._id} price={discountedPrice} />
           </div>
           <p className="text-orange-500 my-6">
             لطفا برای خرید محصول با ما تماس بگیرید

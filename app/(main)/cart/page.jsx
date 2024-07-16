@@ -37,7 +37,7 @@ const CartPage = () => {
     const unitPrice = product.is_onSale
       ? Math.ceil(product.price - (product.price * product.discount) / 100)
       : Math.ceil(product.price);
-    return total + unitPrice * cart[product._id];
+    return total + unitPrice * cart[product._id].quantity;
   }, 0);
 
   const handleNext = () => {
@@ -56,7 +56,7 @@ const CartPage = () => {
               <CartProduct
                 key={product._id}
                 product={product}
-                quantity={cart[product._id]}
+                quantity={cart[product._id].quantity}
               />
             ))
           )}

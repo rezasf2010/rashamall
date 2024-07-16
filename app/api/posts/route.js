@@ -95,8 +95,6 @@ export const POST = async (request) => {
     const newPost = new Post(postData);
     await newPost.save();
 
-    console.log(postData);
-
     return Response.redirect(`${process.env.NEXT_PUBLIC_DOMAIN}/admin/mag-add`);
 
     // return new Response(JSON.stringify({ message: "Success" }), {

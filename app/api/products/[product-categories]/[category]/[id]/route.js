@@ -3,7 +3,6 @@ import Product from "@/models/Product";
 
 // GET /api/products/:id
 export const GET = async (request, { params }) => {
-  console.log(params.id);
   try {
     await connectDB();
 
