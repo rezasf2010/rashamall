@@ -23,8 +23,8 @@ const CheckoutPage = () => {
 
   const handleAddToOrders = async (e) => {
     e.preventDefault();
-
     setLoading(true);
+
     const orderItems = Object.keys(cart).map((productId) => {
       const quantity = Number(cart[productId].quantity);
       const price = Number(cart[productId].price);
@@ -46,20 +46,19 @@ const CheckoutPage = () => {
       0,
     );
 
-    const orderData = {
-      user: userId, // Getting the users Id from session
-      items: orderItems,
-      totalQuantity,
-      totalAmount,
-      details: customer.details, // Additional details from the customer
-      paymentMethod: customer.paymentMethod, // Payment method from the customer
-      receiptImage: customer.receiptImage, // Receipt image if any
-    };
+    const formData = new FormData();
+    formData.append("user", userId);
+    formData.append("items", JSON.stringify(orderItems));
+    formData.append("totalQuantity", totalQuantity);
+    formData.append("totalAmount", totalAmount);
+    formData.append("details", customer.details || "");
+    formData.append("paymentMethod", customer.paymentMethod || "");
+    formData.append("receiptImage", customer.receiptImage || "");
 
     try {
-      const response = await axios.post("/api/orders", orderData, {
+      const response = await axios.post("/api/orders", formData, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       });
       if (response.status === 200) {
@@ -77,8 +76,10 @@ const CheckoutPage = () => {
     setLoading(false);
   };
 
+  console.log(customer);
+
   return (
-    <div className="container md:w-3/4 mx-auto">
+    <div className=" w-11/12 mx-auto">
       <div className="py-8 px-12 border border-gray-300 shadow-xl bg-blue-50 rounded-xl mt-4">
         <h1 className="text-2xl font-bold mb-4">اطلاعات شخصی</h1>
 

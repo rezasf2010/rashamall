@@ -1,6 +1,7 @@
 import connectDB from "@/config/database";
 import Order from "@/models/Order";
 import User from "@/models/User";
+import cloudinary from "@/config/cloudinary";
 import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET api/orders
@@ -36,16 +37,35 @@ export const POST = async (request) => {
       return new Response("user ID is required", { status: 401 });
     }
 
-    const { userId } = sessionUser;
+    const formData = await request.formData(); // Initialize formData
 
-    const {
-      items,
-      totalQuantity,
-      totalAmount,
-      details,
-      paymentMethod,
-      receiptImage,
-    } = await request.json();
+    console.log(formData);
+
+    const userId = sessionUser.userId;
+    const items = JSON.parse(formData.get("items"));
+    const totalQuantity = Number(formData.get("totalQuantity"));
+    const totalAmount = Number(formData.get("totalAmount"));
+    const details = formData.get("details");
+    const paymentMethod = formData.get("paymentMethod");
+    const receiptImageFile = formData.get("receiptImage");
+
+    // Upload single receipt image to Cloudinary
+    let receiptImageUrl = "";
+    if (receiptImageFile && receiptImageFile.size > 0) {
+      const imageBuffer = await receiptImageFile.arrayBuffer();
+      const imageArray = Array.from(new Uint8Array(imageBuffer));
+      const imageData = Buffer.from(imageArray);
+      const imageBase64 = imageData.toString("base64");
+
+      const result = await cloudinary.uploader.upload(
+        `data:image/png;base64,${imageBase64}`,
+        {
+          folder: "receiptImage",
+        },
+      );
+
+      receiptImageUrl = result.secure_url;
+    }
 
     const newOrder = new Order({
       user: userId,
@@ -54,8 +74,10 @@ export const POST = async (request) => {
       totalAmount,
       details,
       paymentMethod,
-      receiptImage,
+      receiptImage: receiptImageUrl,
     });
+
+    console.log(newOrder);
 
     const savedOrder = await newOrder.save();
 
