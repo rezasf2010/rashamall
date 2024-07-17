@@ -4,8 +4,9 @@ import { useSession } from "next-auth/react";
 import ProvinceCitySelect from "./ProvinceCitySelect";
 import PaymentInfo from "./PaymentInfo";
 import axios from "axios";
+import { set } from "mongoose";
 
-const UserInfo = () => {
+const UserInfo = ({ customer, setCustomer }) => {
   const { data: session } = useSession();
   const [mounted, setMounted] = useState(false);
   const [isNewUser, setIsNewUser] = useState(false);
@@ -86,6 +87,8 @@ const UserInfo = () => {
       }));
     }
   };
+
+  setCustomer(formData);
 
   return (
     mounted && (

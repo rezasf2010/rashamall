@@ -49,13 +49,13 @@ const PaymentInfo = ({ formData, setFormData }) => {
             </label>
           </div>
           <div>
-            <label htmlFor="receipt" className="block text-gray-700">
+            <label htmlFor="receiptImage" className="block text-gray-700">
               بارگذاری تصویر رسید
             </label>
             <input
               type="file"
-              id="receipt"
-              name="receipt"
+              id="receiptImage"
+              name="receiptImage"
               className="mt-1 block w-full p-2 border rounded"
               onChange={handleFileChange}
             />
