@@ -3,6 +3,7 @@ import SpecificationCard from "./SpecificationCard";
 import ProductImages from "./ProductImages";
 import { FaTimes, FaCheck } from "react-icons/fa";
 import AddToCart from "./AddToCart";
+import ShareButtons from "./ShareButtons";
 
 const ProductDetails = ({ product }) => {
   const discountedPrice = product.is_onSale
@@ -67,6 +68,9 @@ const ProductDetails = ({ product }) => {
               </div>
             )}
             <AddToCart productId={product._id} price={discountedPrice} />
+          </div>
+          <div className="mt-4">
+            <ShareButtons product={product} />
           </div>
           <p className="text-orange-500 my-6">
             لطفا برای خرید محصول با ما تماس بگیرید
