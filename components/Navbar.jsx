@@ -9,6 +9,7 @@ import UserLoginMenu from "./UserLoginMenu";
 import { fetchCategories } from "@/utils/requests";
 import SpinnerH from "./SpinnerH";
 import { FaChevronDown, FaChevronLeft } from "react-icons/fa";
+import ContactUsIcons from "./ContactUsIcons";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
@@ -99,9 +100,9 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-            <div className="w-full lg:w-1/3 border border-orange-300 flex justify-around items-center p-2">
-              <div className="border border-green-500 flex items-center">
-                contact
+            <div className="w-full lg:w-1/3 flex justify-around items-center p-2">
+              <div className="flex items-center">
+                <ContactUsIcons />
               </div>
               <div className="flex justify-center">
                 <UserLoginMenu
