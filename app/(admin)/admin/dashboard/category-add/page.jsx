@@ -1,7 +1,11 @@
 import React from "react";
 
 const CategoryAddPage = () => {
-  return <div>CategoryAddPage</div>;
+  return (
+    <div className="flex justify-center">
+      <div>CategoryAddPage</div>
+    </div>
+  );
 };
 
 export default CategoryAddPage;

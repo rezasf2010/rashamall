@@ -1,6 +1,6 @@
 const AdminDashboardPage = () => {
   return (
-    <div>
+    <div className="flex justify-center">
       <div>AdminDashboardPage</div>
     </div>
   );
