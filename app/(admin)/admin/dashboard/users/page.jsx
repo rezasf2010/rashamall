@@ -1,7 +1,11 @@
 import React from "react";
 
 const UsersListPage = () => {
-  return <div>UsersListPage</div>;
+  return (
+    <div className="flex justify-center">
+      <div>UsersListPage</div>
+    </div>
+  );
 };
 
 export default UsersListPage;
