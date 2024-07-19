@@ -15,9 +15,7 @@ export const GET = async (request) => {
       return new Response("user ID is required", { status: 401 });
     }
 
-    const orders = await Order.find({ user: sessionUser.userId }).populate(
-      "items.product",
-    );
+    const orders = await Order.find({});
 
     return new Response(JSON.stringify(orders), { status: 200 });
   } catch (error) {

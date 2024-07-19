@@ -41,7 +41,7 @@ const CartPage = () => {
   }, 0);
 
   const handleNext = () => {
-    router.push("/checkout"); // Change this to your actual next step route
+    router.push("/checkout");
   };
 
   return (

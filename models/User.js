@@ -36,15 +36,6 @@ const UserSchema = new Schema(
         type: String,
       },
     },
-    details: {
-      type: String,
-    },
-    paymentMethod: {
-      type: String,
-    },
-    receiptImage: {
-      type: String,
-    },
     image: {
       type: String,
     },

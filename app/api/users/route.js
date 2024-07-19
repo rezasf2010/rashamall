@@ -43,8 +43,6 @@ export const POST = async (request) => {
         state: formData.get("address.state"),
         zip: formData.get("address.zip"),
       },
-      details: formData.get("details"),
-      paymentMethod: formData.get("paymentMethod"),
     };
 
     const imageUploadPromises = [];
