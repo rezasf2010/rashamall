@@ -52,6 +52,9 @@ const OrderSuccessPage = () => {
   return (
     <div className="w-full my-12 px-6 flex flex-col  items-center justify-center">
       <h2 className="font-bold text-xl text-green-700 text-center mb-6">
+        با سپاس از خرید شما
+      </h2>
+      <h2 className="font-bold text-xl text-green-700 text-center mb-6">
         سفارش شما با موفقیت ثبت شد. به زودی با شما تماس می گیریم ...
       </h2>
       <button

@@ -14,10 +14,24 @@ const CartProduct = ({ product, quantity }) => {
     setProductQuantity(quantity);
   }, [quantity]);
 
-  const handleQuantityChange = (e) => {
+  const handleQuantityChange = (newQuantity) => {
+    if (newQuantity >= 0) {
+      setProductQuantity(newQuantity);
+      updateCart(product._id, newQuantity, product.price);
+    }
+  };
+
+  const handleInputChange = (e) => {
     const newQuantity = Number(e.target.value);
-    setProductQuantity(newQuantity);
-    updateCart(product._id, newQuantity, product.price);
+    handleQuantityChange(newQuantity);
+  };
+
+  const handleIncrease = () => {
+    handleQuantityChange(productQuantity + 1);
+  };
+
+  const handleDecrease = () => {
+    handleQuantityChange(productQuantity - 1);
   };
 
   const discountedPrice = product.is_onSale
@@ -29,7 +43,7 @@ const CartProduct = ({ product, quantity }) => {
   const totalPrice = unitPrice * productQuantity;
 
   return (
-    <div className=" text-gray-700 mb-4 flex items-center gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
+    <div className="text-gray-700 mb-4 flex items-center gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
       <Link href={`/products/1/1/${product._id}`} className="image">
         <Image
           src={product.images[0]}
@@ -57,13 +71,27 @@ const CartProduct = ({ product, quantity }) => {
               {productQuantity}
             </div>
           ) : (
-            <input
-              type="number"
-              value={productQuantity}
-              min="0"
-              onChange={handleQuantityChange}
-              className="w-16 p-1 border border-gray-300 rounded text-center"
-            />
+            <div className="flex items-center gap-1">
+              <button
+                onClick={handleDecrease}
+                className="border border-gray-300 bg-gray-200 p-1 w-7 h-7 text-xl rounded flex items-center justify-center"
+              >
+                -
+              </button>
+              <input
+                type="number"
+                value={productQuantity}
+                min="0"
+                onChange={handleInputChange}
+                className="input-number w-12 p-1 border border-gray-300 rounded text-center"
+              />
+              <button
+                onClick={handleIncrease}
+                className="border border-gray-300 bg-gray-200 p-1 w-7 h-7 text-xl rounded flex items-center justify-center"
+              >
+                +
+              </button>
+            </div>
           )}
         </div>
         <div className="mb-2">

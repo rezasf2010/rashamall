@@ -86,4 +86,75 @@ async function fetchProduct(mainCategoryId, subCategoryId, productId) {
   }
 }
 
-export { fetchCategories, fetchBrands, fetchProducts, fetchProduct };
+// Fetch all users
+const fetchUsers = async () => {
+  //Handle the case where the domain is not available yet
+  if (!apiDomain) {
+    return [];
+  }
+
+  try {
+    const res = await fetch(`${apiDomain}/users`);
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// Fetch all orders
+const fetchOrders = async () => {
+  //Handle the case where the domain is not available yet
+  if (!apiDomain) {
+    return [];
+  }
+
+  try {
+    const res = await fetch(`${apiDomain}/orders`);
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+// Fetch single order
+async function fetchOrder(orderId) {
+  try {
+    //Handle the case where the domain is not available yet
+    if (!apiDomain) {
+      return null;
+    }
+
+    const res = await fetch(`${apiDomain}/orders/${orderId}`);
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+export {
+  fetchCategories,
+  fetchBrands,
+  fetchProducts,
+  fetchProduct,
+  fetchUsers,
+  fetchOrders,
+  fetchOrder,
+};
