@@ -48,8 +48,8 @@ const OrderCardAdmin = ({ order }) => {
         </div>
 
         <div className="orderer-adress">
-          <span className="font-semibold">آدرس :</span>{" "}
-          {`${user[0].address.state}, ${user[0].address.city}, ${user[0].address.street}`}
+          <span className="font-semibold">مبلغ کل :</span>{" "}
+          {order.totalAmount.toLocaleString()} <span>تومان</span>
         </div>
       </div>
       <div className="w-full flex justify-center md:justify-end">

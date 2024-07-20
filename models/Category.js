@@ -20,6 +20,9 @@ const CategorySchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Category",
     },
+    date_added: {
+      type: String,
+    },
   },
   {
     timestamps: true,

@@ -42,7 +42,7 @@ const OrderDetail = () => {
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-3xl text-center font-semibold mb-6">
+      <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
         جزییات سفارش مشتری
       </h2>
       <div className="border border-gray-200 rounded-xl shadow-xl p-3 flex flex-col gap-3">

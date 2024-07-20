@@ -111,3 +111,11 @@
 //     "is_onSale": false,
 //     "discount": 0
 // }
+
+// {
+//     "categoryType": "subCategory",
+//     "mainCategoryName": "6676908b0a8aeafc039f7083",
+//     "mainCategoryNameEn": "",
+//     "subCategoryName": "رضا برقی",
+//     "subCategoryNameEn": "electric reza"
+// }
