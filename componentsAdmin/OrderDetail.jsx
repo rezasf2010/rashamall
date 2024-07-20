@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { convertToJalaali } from "@/utils/calenderConvert";
 import { fetchUsers, fetchOrder } from "@/utils/requests";
+import Spinner from "@/components/Spinner";
 import SpinnerH from "@/components/SpinnerH";
 import OrderItem from "./OrderItem";
 import Link from "next/link";
@@ -37,7 +38,7 @@ const OrderDetail = () => {
   const user = users.filter((user) => user._id === order.user);
 
   if (loading) {
-    return <SpinnerH loading={loading} />;
+    return <Spinner loading={loading} />;
   }
 
   return (

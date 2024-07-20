@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchCategories, fetchProducts, fetchBrands } from "@/utils/requests";
 import SpinnerH from "./SpinnerH";
 import HomeCategorySection from "./HomeCategorySection";
+import { HomeCategorySectionSkeleton } from "@/ui/skeletons";
 
 const HomeCategoriesSection = () => {
   const [categories, setCategories] = useState([]);
@@ -64,7 +65,13 @@ const HomeCategoriesSection = () => {
   );
 
   return loading ? (
-    <SpinnerH loading={loading} />
+    <div className="w-11/12 flex flex-col gap-12 items-center">
+      {Array(5)
+        .fill()
+        .map((_, index) => (
+          <HomeCategorySectionSkeleton key={index} />
+        ))}
+    </div>
   ) : (
     <div className="w-11/12 flex flex-col gap-12 items-center">
       <HomeCategorySection heading="جدیدترین ها" products={newestProducts} />

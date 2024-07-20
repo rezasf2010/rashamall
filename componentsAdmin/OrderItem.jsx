@@ -26,7 +26,7 @@ const OrderItem = ({ item, index }) => {
 
   if (loading) {
     return (
-      <tr>
+      <tr className="flex justify-center">
         <td colSpan="5">
           <SpinnerH loading={loading} />
         </td>

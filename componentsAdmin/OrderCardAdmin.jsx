@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { convertToJalaali } from "@/utils/calenderConvert";
 import { fetchUsers } from "@/utils/requests";
+import { OrderCardSkeleton } from "@/ui/skeletons";
 import SpinnerH from "@/components/SpinnerH";
 import Link from "next/link";
 
@@ -25,7 +26,7 @@ const OrderCardAdmin = ({ order }) => {
   }, []);
 
   if (loading) {
-    return <SpinnerH loading={loading} />;
+    return <OrderCardSkeleton />;
   }
 
   const persianDateAndTime = convertToJalaali(order.date);

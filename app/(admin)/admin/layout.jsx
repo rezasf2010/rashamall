@@ -5,6 +5,7 @@ import "@/assets/styles/hero.css";
 import "photoswipe/dist/photoswipe.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-loading-skeleton/dist/skeleton.css";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
