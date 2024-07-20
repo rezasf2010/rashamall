@@ -1,10 +1,26 @@
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ProductCardSkeleton } from "@/ui/skeletons";
 
 const ProductCard = ({ product }) => {
+  const [loading, setLoading] = useState(true);
+
   const discountedPrice = product.is_onSale
     ? Math.ceil(product.price - (product.price * product.discount) / 100)
     : Math.ceil(product.price);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simulating loading time
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <ProductCardSkeleton />;
+  }
 
   return (
     <div className="bg-gray-50 w-44 min-h-80 p-2 md:w-80 md:h-[28rem] lg:h-[28rem] lg:w-72 hxlg:w-80 2xl:w-96 rounded-xl shadow-2xl relative border border-gray-200 flex flex-col justify-between">

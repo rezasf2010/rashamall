@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { fetchOrders } from "@/utils/requests";
 import OrderCardAdmin from "@/componentsAdmin/OrderCardAdmin";
+import { OrderCardSkeleton } from "@/ui/skeletons";
 import Spinner from "@/components/Spinner";
 
 const AdminOrdersPage = () => {
@@ -32,7 +33,9 @@ const AdminOrdersPage = () => {
           </h2>
           <div className="">
             {loading ? (
-              <Spinner loading={loading} />
+              Array(5)
+                .fill(null)
+                .map((_, index) => <OrderCardSkeleton key={index} />)
             ) : orders.length === 0 ? (
               <p>سفارشی موجود نیست</p>
             ) : (
