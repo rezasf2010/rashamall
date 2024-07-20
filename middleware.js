@@ -1,3 +1,9 @@
+export { default } from "next-auth/middleware";
+
+export const config = {
+  matcher: ["/admin/:path*", "/profile", "/products/saved"],
+};
+
 // import { getToken } from "next-auth/jwt";
 // import { NextResponse } from "next/server";
 
@@ -19,9 +25,3 @@
 
 //   return NextResponse.next();
 // }
-
-// export const config = {
-//   matcher: ["/admin/:path*", "/profile", "/products/saved"],
-// };
-
-export { default } from "next-auth/middleware";

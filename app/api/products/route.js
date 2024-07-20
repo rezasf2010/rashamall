@@ -1,6 +1,7 @@
 import connectDB from "@/config/database";
 import Product from "@/models/Product";
 import cloudinary from "@/config/cloudinary";
+import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET /api/products
 export const GET = async (request) => {
@@ -112,7 +113,9 @@ export const POST = async (request) => {
     const newProduct = new Product(productData);
     await newProduct.save();
 
-    return Response.redirect(`${process.env.NEXT_PUBLIC_DOMAIN}/admin/add`);
+    return Response.redirect(
+      `${process.env.NEXT_PUBLIC_DOMAIN}/admin/dashboard/add`,
+    );
 
     // return new Response(JSON.stringify({ message: "Success" }), {
     //   status: 200,
