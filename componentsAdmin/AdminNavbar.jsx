@@ -63,7 +63,7 @@ const AdminNavbar = () => {
 
             <Link
               className="border border-blue-200 shadow-md flex justify-between items-center w-full py-2 rounded-lg px-4"
-              href="/admin/dashboard/product-list"
+              href="/admin/dashboard/products-list"
               onClick={toggleMenu}
             >
               لیست کالاها

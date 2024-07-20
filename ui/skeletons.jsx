@@ -70,6 +70,33 @@ const OrderCardSkeleton = () => {
   );
 };
 
+const ProductListCardSkeleton = () => {
+  return (
+    <div className="text-gray-700 mb-4 flex items-center gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
+      <div className="image">
+        <Skeleton width={128} height={128} />
+      </div>
+      <div className="info w-full">
+        <div className="mb-2">
+          <Skeleton width={200} height={20} />
+        </div>
+        <div className="mb-2">
+          <Skeleton width={150} height={20} />
+        </div>
+        <div className="mb-2">
+          <Skeleton width={100} height={20} />
+        </div>
+        <div className="flex items-center mb-2 gap-2">
+          <Skeleton width={50} height={20} />
+        </div>
+        <div className="w-full">
+          <Skeleton width={100} height={30} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 //   const OrderCardAdminSkeleton = () => {
 //     return (
 //       <div className="animate-pulse text-gray-700 mb-4 flex flex-col md:flex-row items-center md:items-end gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
@@ -98,4 +125,9 @@ const OrderCardSkeleton = () => {
 //     );
 //   };
 
-export { OrderCardSkeleton, ProductCardSkeleton, HomeCategorySectionSkeleton };
+export {
+  OrderCardSkeleton,
+  ProductCardSkeleton,
+  HomeCategorySectionSkeleton,
+  ProductListCardSkeleton,
+};
