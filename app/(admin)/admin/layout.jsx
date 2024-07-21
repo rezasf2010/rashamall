@@ -6,8 +6,8 @@ import "photoswipe/dist/photoswipe.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-loading-skeleton/dist/skeleton.css";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminLayout = ({ children }) => {
   return (
@@ -15,8 +15,8 @@ const AdminLayout = ({ children }) => {
       <html lang="fa">
         <body className="flex flex-row min-h-screen">
           <AdminNavbar />
-          <main className="flex-grow p-6 lg:mr-64">{children}</main>
-          {/* <ToastContainer /> */}
+          <main className="flex-grow px-6 py-16 lg:mr-64">{children}</main>
+          <ToastContainer theme="colored" />
         </body>
       </html>
     </AuthProvider>

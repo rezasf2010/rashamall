@@ -72,7 +72,7 @@ const OrderCardSkeleton = () => {
 
 const ProductListCardSkeleton = () => {
   return (
-    <div className="text-gray-700 mb-4 flex items-center gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
+    <div className="text-gray-700 mb-4 flex flex-col sm:flex-row items-center gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
       <div className="image">
         <Skeleton width={128} height={128} />
       </div>
@@ -89,8 +89,13 @@ const ProductListCardSkeleton = () => {
         <div className="flex items-center mb-2 gap-2">
           <Skeleton width={50} height={20} />
         </div>
-        <div className="w-full">
-          <Skeleton width={100} height={30} />
+        <div className="w-full flex gap-2  md:justify-end ">
+          <div className="w-1/2 md:w-auto">
+            <Skeleton width={200} height={30} />
+          </div>
+          <div className="w-1/2 md:w-auto">
+            <Skeleton width={200} height={30} />
+          </div>
         </div>
       </div>
     </div>

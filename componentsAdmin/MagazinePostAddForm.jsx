@@ -2,10 +2,13 @@
 import { useState, useEffect } from "react";
 import MagazinePostSection from "./MagazinePostSection";
 import MagazinePostTags from "./MagazinePostTags";
+import { useRouter } from "next/navigation";
 
 const MagazinePostAddForm = () => {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  const [fields, setFields] = useState({
+
+  const initialFields = {
     mainTitle: "",
     slug: "",
     intro: "",
@@ -13,7 +16,9 @@ const MagazinePostAddForm = () => {
     tags: [],
     outro: "",
     images: [],
-  });
+  };
+
+  const [fields, setFields] = useState(initialFields);
 
   useEffect(() => {
     setMounted(true);
@@ -51,9 +56,36 @@ const MagazinePostAddForm = () => {
     }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData(e.target);
+
+      const res = await fetch("/api/posts", {
+        method: "POST",
+        body: formData,
+        encType: "multipart/form-data",
+      });
+
+      if (res.status === 200) {
+        toast.success("مقاله با موفقیت افزوده شد");
+        setFields(initialFields); // Reset form fields to initial state
+        router.push(`/admin/dashboard/mag-add`);
+      } else if (res.status === 401 || res.status === 403) {
+        toast.error("Permission denied");
+      } else {
+        toast.error("مشکل در افزودن مقاله");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("مشکل در افزودن مقاله");
+    }
+  };
+
   return (
     mounted && (
-      <form action="/api/posts" method="POST" encType="multipart/form-data">
+      <form onSubmit={handleSubmit}>
         <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
           افزودن پست جدید
         </h2>
