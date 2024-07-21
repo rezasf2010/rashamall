@@ -1,20 +1,25 @@
 "use client";
 import { useState, useEffect } from "react";
 import { fetchCategories } from "@/utils/requests";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const CategoryAddFrom = () => {
+  const router = useRouter();
   const [categories, setCategories] = useState([]);
   const [categoryType, setCategoryType] = useState("");
   const [mounted, setMounted] = useState(true);
   const [selectedMainCategory, setSelectedMainCategory] = useState("");
 
-  const [categoryData, setCategoryData] = useState({
+  const initialCategoryData = {
     categoryType: "",
     mainCategoryName: "",
     mainCategoryNameEn: "",
     subCategoryName: "",
     subCategoryNameEn: "",
-  });
+  };
+
+  const [categoryData, setCategoryData] = useState(initialCategoryData);
 
   const handleCategoryChange = (e) => {
     setCategoryType(e.target.value);
@@ -61,13 +66,38 @@ const CategoryAddFrom = () => {
     }
   }, [categoryType]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData(e.target);
+
+      const res = await fetch("/api/categories", {
+        method: "POST",
+        body: formData,
+        encType: "multipart/form-data",
+      });
+
+      if (res.status === 200) {
+        toast.success("دسته بندی با موفقیت افزوده شد");
+        setCategoryType("");
+        setCategoryData(initialCategoryData);
+        setSelectedMainCategory("");
+        router.push(`/admin/dashboard/category-add`);
+      } else if (res.status === 401 || res.status === 403) {
+        toast.error("Permission denied");
+      } else {
+        toast.error("مشکل در افزودن دسته بندی");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("مشکل در افزودن دسته بندی");
+    }
+  };
+
   return (
     mounted && (
-      <form
-        action="/api/categories"
-        method="POST"
-        encType="multipart/form-data"
-      >
+      <form onSubmit={handleSubmit}>
         <h2 className="text-lg md:text-3xl text-center font-semibold mb-6">
           افزودن دسته بندی جدید
         </h2>

@@ -28,11 +28,12 @@ const ProductsListPage = () => {
 
   return (
     <div className=" w-full bg-blue-50 gap-4 flex flex-col items-center">
-      <div className="w-11/12 py-24">
-        <h2 className="text-lg md:text-3xl text-center font-semibold mb-6">
-          لیست کالاها
-        </h2>
-        <div className="bg-white  min-h-3/4 flex flex-col px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+      <div className="w-11/12 m-auto py-16">
+        <div className="bg-white min-h-3/4 flex flex-col items-center px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+          <h2 className="text-lg md:text-3xl text-center font-semibold mb-6">
+            لیست کالاها
+          </h2>
+
           {loading
             ? Array.from({ length: 5 }).map((_, index) => (
                 <ProductListCardSkeleton key={index} />

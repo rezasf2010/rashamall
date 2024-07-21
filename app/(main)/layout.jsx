@@ -30,7 +30,7 @@ const MainLayout = ({ children }) => {
               {children}
             </main>
             <Footer />
-            <ToastContainer />
+            <ToastContainer theme="colored" />
           </body>
         </html>
       </GlobalProvider>

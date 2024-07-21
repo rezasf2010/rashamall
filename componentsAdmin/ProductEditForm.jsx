@@ -3,19 +3,21 @@ import { useState, useEffect } from "react";
 import SpecAddInput from "@/componentsAdmin/SpecAddInput";
 import FeaturesAddInput from "@/componentsAdmin/FeaturesAddInput";
 import ServicesAddInput from "@/componentsAdmin/ServicesAddInput";
-import { fetchCategories, fetchBrands } from "@/utils/requests";
+import { fetchCategories, fetchBrands, fetchProduct } from "@/utils/requests";
+import { useParams, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import Spinner from "@/components/Spinner";
 
-const ProductAddForm = () => {
+const ProductEditForm = () => {
+  const { id } = useParams();
   const router = useRouter();
+
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [mounted, setMounted] = useState(false);
   const [selectedMainCategory, setSelectedMainCategory] = useState("");
   const [subCategories, setSubCategories] = useState([]);
-
-  const initialFields = {
+  const [fields, setFields] = useState({
     name: "",
     slug: "",
     brand: "",
@@ -26,29 +28,35 @@ const ProductAddForm = () => {
     specifications: [],
     features: [],
     services: [],
-    images: [],
     is_onSale: false,
     discount: "",
     _stock: "",
     _stock_status: "",
-  };
-
-  const [fields, setFields] = useState(initialFields);
+  });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setMounted(true);
-    const fetchData = async () => {
+
+    // fetch product data for form
+    const fetchProductData = async () => {
       try {
+        const productData = await fetchProduct("1", "1", id);
         const categories = await fetchCategories();
         const brands = await fetchBrands();
+
+        setFields(productData);
         setCategories(categories);
         setBrands(brands);
+        setSelectedMainCategory(productData.main_category); // Set main category
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchData();
+    fetchProductData();
   }, []);
 
   const mainCategories = categories
@@ -69,10 +77,24 @@ const ProductAddForm = () => {
         (subCategory) => subCategory.parent === selectedMainCategory,
       );
       setSubCategories(filteredSubCategories);
+      setFields((prevFields) => ({
+        ...prevFields,
+        main_category: selectedMainCategory,
+      }));
     } else {
       setSubCategories([]);
     }
   }, [selectedMainCategory]);
+
+  useEffect(() => {
+    // Set the subcategory when the main category is set
+    if (fields.main_category && fields.sub_category) {
+      const filteredSubCategories = subCategoriesArr.filter(
+        (subCategory) => subCategory.parent === fields.main_category,
+      );
+      setSubCategories(filteredSubCategories);
+    }
+  }, [fields.main_category]);
 
   const handleMainCategoryChange = (e) => {
     setSelectedMainCategory(e.target.value);
@@ -134,57 +156,40 @@ const ProductAddForm = () => {
     setFields({ ...fields, specifications });
   };
 
-  const handleImageChange = (e) => {
-    const { files } = e.target;
-
-    // Clone image array
-    const updatedImages = [...fields.images];
-
-    // Add new files to the array
-    for (const file of files) {
-      updatedImages.push(file);
-    }
-
-    //Upadte state with arraye of images
-    setFields((prevFields) => ({
-      ...prevFields,
-      images: updatedImages,
-    }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const formData = new FormData(e.target);
 
-      const res = await fetch("/api/products", {
-        method: "POST",
+      const res = await fetch(`/api/products/1/1/${id}`, {
+        method: "PUT",
         body: formData,
-        encType: "multipart/form-data",
       });
 
       if (res.status === 200) {
-        toast.success("محصول با موفقیت افزوده شد");
-        setFields(initialFields); // Reset form fields to initial state
-        setSelectedMainCategory(""); // Reset main category selection
-        router.push(`/admin/dashboard/add`);
+        router.push(`/admin/dashboard/products-list`);
       } else if (res.status === 401 || res.status === 403) {
         toast.error("Permission denied");
       } else {
-        toast.error("مشکل در افزودن محصول");
+        toast.error("Something went wrong");
       }
     } catch (error) {
       console.log(error);
-      toast.error("مشکل در افزودن محصول");
+      toast.error("Something went wrong");
     }
   };
 
+  if (loading) {
+    return <Spinner loading={loading} />;
+  }
+
   return (
-    mounted && (
+    mounted &&
+    !loading && (
       <form onSubmit={handleSubmit}>
         <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
-          افزودن محصول جدید
+          ویرایش محصول
         </h2>
 
         <div className="mb-4">
@@ -421,31 +426,12 @@ const ProductAddForm = () => {
           </select>
         </div>
 
-        <div className="mb-4">
-          <label
-            htmlFor="images"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
-            عکس محصول (حداکثر 4 عکس)
-          </label>
-          <input
-            type="file"
-            id="images"
-            name="images"
-            className="border border-gray-300 rounded w-full py-2 px-4 drop-down"
-            accept="image/*"
-            multiple
-            onChange={handleImageChange}
-            required
-          />
-        </div>
-
         <div>
           <button
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            افزودن محصول
+            بروز رسانی محصول
           </button>
         </div>
       </form>
@@ -453,4 +439,4 @@ const ProductAddForm = () => {
   );
 };
 
-export default ProductAddForm;
+export default ProductEditForm;
