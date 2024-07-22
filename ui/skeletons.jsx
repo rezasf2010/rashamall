@@ -124,10 +124,62 @@ const OrderItemSkeleton = () => {
   );
 };
 
+const CategoryListCardSkeleton = () => {
+  return (
+    <div className="text-gray-700 mb-4 flex flex-col md:flex-row items-center md:items-end gap-6 border border-gray-300 w-full p-4 rounded-2xl shadow-xl bg-gray-50">
+      <div className="info w-full">
+        <div className="mb-2">
+          <Skeleton width="100%" height="20px" className="rounded" />
+        </div>
+        <div className="mb-2">
+          <Skeleton width="100%" height="20px" className="rounded" />
+        </div>
+        <div className="mb-2">
+          <Skeleton width="100%" height="20px" className="rounded" />
+        </div>
+        <div className="w-full flex gap-2 md:justify-end">
+          <Skeleton width="100px" height="40px" className="rounded" />
+          <Skeleton width="100px" height="40px" className="rounded" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const UserCardSkeleton = () => {
+  return (
+    <div className="text-gray-700 mb-4 flex flex-col md:flex-row items-center md:items-end gap-6 border border-gray-300 w-full p-4 rounded-2xl shadow-xl bg-gray-50">
+      <div className="info w-full">
+        <div className="mb-2">
+          <Skeleton width={150} />
+        </div>
+        <div className="mb-2">
+          <Skeleton width={200} />
+        </div>
+        <div className="mb-2">
+          <Skeleton width={100} />
+        </div>
+        <div className="mb-2">
+          <Skeleton width={250} />
+        </div>
+        <div className="mb-2">
+          <Skeleton width={100} />
+        </div>
+        <div className="w-full flex gap-2 md:justify-end">
+          <Skeleton width={75} height={32} className="rounded-lg" />
+          <Skeleton width={75} height={32} className="rounded-lg" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export {
   OrderCardSkeleton,
   ProductCardSkeleton,
   HomeCategorySectionSkeleton,
   ProductListCardSkeleton,
   OrderItemSkeleton,
+  CategoryListCardSkeleton,
+  UserCardSkeleton,
 };

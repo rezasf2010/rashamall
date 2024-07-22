@@ -168,15 +168,16 @@ const ProductEditForm = () => {
       });
 
       if (res.status === 200) {
+        toast.success("محصول با موفقیت به روز رسانی شد");
         router.push(`/admin/dashboard/products-list`);
       } else if (res.status === 401 || res.status === 403) {
         toast.error("Permission denied");
       } else {
-        toast.error("Something went wrong");
+        toast.error("مشکل در بروزرسانی محصول");
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error("مشکل در بروزرسانی محصول");
     }
   };
 

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { fetchCategories } from "@/utils/requests";
 import CategoryListCard from "@/componentsAdmin/CategoryListCard";
+import { CategoryListCardSkeleton } from "@/ui/skeletons";
 import { toast } from "react-toastify";
 
 const CategoryListPage = () => {
@@ -55,14 +56,18 @@ const CategoryListPage = () => {
           <h2 className="text-lg md:text-3xl text-center font-semibold mb-6">
             لیست دسته بندی کالاها
           </h2>
-          {categories.map((category) => (
-            <CategoryListCard
-              key={category._id}
-              category={category}
-              categories={categories}
-              onDelete={handleDeleteCategory}
-            />
-          ))}
+          {loading
+            ? Array(5)
+                .fill()
+                .map((_, index) => <CategoryListCardSkeleton key={index} />)
+            : categories.map((category) => (
+                <CategoryListCard
+                  key={category._id}
+                  category={category}
+                  categories={categories}
+                  onDelete={handleDeleteCategory}
+                />
+              ))}
         </div>
       </div>
     </div>
