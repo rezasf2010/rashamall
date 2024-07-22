@@ -55,7 +55,7 @@ const AdminLogin = () => {
         <div className="mb-4 flex flex-col items-start md:flex-row md:items-center justify-center">
           <label
             htmlFor="username"
-            className="w-1/4 pr-2 text-gray-700 font-bold mb-2"
+            className="w-full md:w-1/4 pr-2 text-gray-700 font-bold mb-2"
           >
             نام کاربری
           </label>
@@ -73,7 +73,7 @@ const AdminLogin = () => {
         <div className="mb-4 flex flex-col items-start md:flex-row md:items-center justify-center">
           <label
             htmlFor="password"
-            className="w-1/4 pr-2 text-gray-700 font-bold mb-2"
+            className="w-full md:w-1/4 pr-2 text-gray-700 font-bold mb-2"
           >
             رمز عبور
           </label>

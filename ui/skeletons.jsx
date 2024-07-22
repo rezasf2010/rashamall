@@ -102,37 +102,32 @@ const ProductListCardSkeleton = () => {
   );
 };
 
-//   const OrderCardAdminSkeleton = () => {
-//     return (
-//       <div className="animate-pulse text-gray-700 mb-4 flex flex-col md:flex-row items-center md:items-end gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
-//         <div className="info w-full flex flex-col gap-3">
-//           <div className="order-time bg-gray-200 h-4 rounded w-3/4"></div>
-//           <div className="orderer bg-gray-200 h-4 rounded w-1/2"></div>
-//           <div className="orderer-mobile bg-gray-200 h-4 rounded w-1/3"></div>
-//           <div className="orderer-address bg-gray-200 h-4 rounded w-1/4"></div>
-//         </div>
-//         <div className="w-full flex justify-center md:justify-end">
-//           <div className="bg-gray-200 h-8 w-24 rounded"></div>
-//         </div>
-//       </div>
-//     );
-//   };
-
-// const OrderItemSkeleton = () => {
-//     return (
-//       <tr className="animate-pulse">
-//         <td className="px-1 py-2 text-center bg-gray-200 rounded h-4"></td>
-//         <td className="px-1 py-2 text-center bg-gray-200 rounded h-4"></td>
-//         <td className="px-1 py-2 text-center bg-gray-200 rounded h-4"></td>
-//         <td className="px-1 py-2 text-center bg-gray-200 rounded h-4"></td>
-//         <td className="px-1 py-2 text-center bg-gray-200 rounded h-4"></td>
-//       </tr>
-//     );
-//   };
+const OrderItemSkeleton = () => {
+  return (
+    <tr className="animate-pulse">
+      <td className="px-1 py-2 text-center">
+        <Skeleton width={100} height={20} />
+      </td>
+      <td className="px-1 py-2 text-center">
+        <Skeleton width={100} height={20} />
+      </td>
+      <td className="px-1 py-2 text-center">
+        <Skeleton width={100} height={20} />
+      </td>
+      <td className="px-1 py-2 text-center">
+        <Skeleton width={100} height={20} />
+      </td>
+      <td className="px-1 py-2 text-center">
+        <Skeleton width={100} height={20} />
+      </td>
+    </tr>
+  );
+};
 
 export {
   OrderCardSkeleton,
   ProductCardSkeleton,
   HomeCategorySectionSkeleton,
   ProductListCardSkeleton,
+  OrderItemSkeleton,
 };
