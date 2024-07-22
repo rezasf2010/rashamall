@@ -149,6 +149,27 @@ async function fetchOrder(orderId) {
   }
 }
 
+// Fetch single category
+async function fetchCategory(CategoryId) {
+  try {
+    //Handle the case where the domain is not available yet
+    if (!apiDomain) {
+      return null;
+    }
+
+    const res = await fetch(`${apiDomain}/categories/${CategoryId}`);
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 export {
   fetchCategories,
   fetchBrands,
@@ -157,4 +178,5 @@ export {
   fetchUsers,
   fetchOrders,
   fetchOrder,
+  fetchCategory,
 };

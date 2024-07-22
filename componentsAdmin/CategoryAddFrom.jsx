@@ -168,7 +168,8 @@ const CategoryAddFrom = () => {
                   type="text"
                   id="mainCategoryNameEn"
                   name="mainCategoryNameEn"
-                  className="mt-1 block w-full p-2 border rounded text-end"
+                  className="mt-1 block w-full p-2 border rounded"
+                  style={{ direction: "ltr" }}
                   value={categoryData.mainCategoryNameEn || ""}
                   onChange={handleChange}
                   required
@@ -235,7 +236,8 @@ const CategoryAddFrom = () => {
                   type="text"
                   id="subCategoryNameEn"
                   name="subCategoryNameEn"
-                  className="mt-1 block w-full p-2 border rounded text-end"
+                  className="mt-1 block w-full p-2 border rounded"
+                  style={{ direction: "ltr" }}
                   value={categoryData.subCategoryNameEn || ""}
                   onChange={handleChange}
                   required
