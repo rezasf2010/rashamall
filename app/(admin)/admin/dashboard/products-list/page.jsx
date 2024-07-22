@@ -27,9 +27,9 @@ const ProductsListPage = () => {
   }, []);
 
   return (
-    <div className=" w-full bg-blue-50 gap-4 flex flex-col items-center">
-      <div className="w-11/12 m-auto py-16">
-        <div className="bg-white min-h-3/4 flex flex-col items-center px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+    <div className=" w-full gap-4 flex flex-col items-center">
+      <div className="w-11/12 m-1 md:m-auto">
+        <div className="bg-white min-h-3/4 flex flex-col items-center px-2 sm:px-4 py-4 md:px-6 mb-4 shadow-md rounded-md border">
           <h2 className="text-lg md:text-3xl text-center font-semibold mb-6">
             لیست کالاها
           </h2>

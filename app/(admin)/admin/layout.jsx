@@ -15,7 +15,9 @@ const AdminLayout = ({ children }) => {
       <html lang="fa">
         <body className="flex flex-row min-h-screen">
           <AdminNavbar />
-          <main className="flex-grow px-6 py-16 lg:mr-64">{children}</main>
+          <main className="flex-grow bg-blue-50 px-6 py-16 lg:mr-64">
+            {children}
+          </main>
           <ToastContainer theme="colored" />
         </body>
       </html>
