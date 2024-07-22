@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { fetchProduct } from "@/utils/requests";
-import SpinnerH from "@/components/SpinnerH";
+import { OrderItemSkeleton } from "@/ui/skeletons";
 
 const OrderItem = ({ item, index }) => {
   const [itemObj, setItemObj] = useState({});
@@ -25,13 +25,7 @@ const OrderItem = ({ item, index }) => {
   }, [productId]);
 
   if (loading) {
-    return (
-      <tr className="flex justify-center">
-        <td colSpan="5">
-          <SpinnerH loading={loading} />
-        </td>
-      </tr>
-    );
+    return <OrderItemSkeleton key={index} />;
   }
 
   return (

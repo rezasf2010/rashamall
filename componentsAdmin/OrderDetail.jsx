@@ -4,7 +4,6 @@ import { useParams } from "next/navigation";
 import { convertToJalaali } from "@/utils/calenderConvert";
 import { fetchUsers, fetchOrder } from "@/utils/requests";
 import Spinner from "@/components/Spinner";
-import SpinnerH from "@/components/SpinnerH";
 import OrderItem from "./OrderItem";
 import Link from "next/link";
 
@@ -89,17 +88,9 @@ const OrderDetail = () => {
             </tr>
           </thead>
           <tbody>
-            {loading ? (
-              <tr>
-                <td colSpan="5">
-                  <SpinnerH loading={loading} />
-                </td>
-              </tr>
-            ) : (
-              order.items.map((item, index) => (
-                <OrderItem key={item._id} item={item} index={index} />
-              ))
-            )}
+            {order.items.map((item, index) => (
+              <OrderItem key={item._id} item={item} index={index} />
+            ))}
           </tbody>
           <tfoot className="w-full bg-gray-200">
             <tr>

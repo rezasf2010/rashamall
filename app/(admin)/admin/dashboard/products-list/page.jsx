@@ -1,20 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { fetchProducts } from "@/utils/requests";
+import { fetchCategories, fetchProducts } from "@/utils/requests";
 import ProductListCard from "@/componentsAdmin/ProductListCard";
 import { ProductListCardSkeleton } from "@/ui/skeletons";
-
-import React from "react";
+import { toast } from "react-toastify";
 
 const ProductsListPage = () => {
+  const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
+        const categories = await fetchCategories();
         const products = await fetchProducts();
+        setCategories(categories);
         setProducts(products);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -25,6 +27,30 @@ const ProductsListPage = () => {
 
     fetchProductsData();
   }, []);
+
+  const handleDeleteProduct = async (productId) => {
+    const confirmed = window.confirm("آیا از حذف این کالا اطمینان دارید؟");
+
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/api/products/1/1/${productId}`, {
+        method: "DELETE",
+      });
+
+      if (res.status === 200) {
+        setProducts((prevProducts) =>
+          prevProducts.filter((product) => product._id !== productId),
+        );
+        toast.success("محصول حذف شد");
+      } else {
+        toast.error("مشکل در حذف محصول");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("مشکل در حذف محصول");
+    }
+  };
 
   return (
     <div className=" w-full gap-4 flex flex-col items-center">
@@ -39,7 +65,12 @@ const ProductsListPage = () => {
                 <ProductListCardSkeleton key={index} />
               ))
             : products.map((product) => (
-                <ProductListCard key={product._id} product={product} />
+                <ProductListCard
+                  key={product._id}
+                  product={product}
+                  categories={categories}
+                  onDelete={handleDeleteProduct}
+                />
               ))}
         </div>
       </div>
