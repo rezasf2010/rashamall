@@ -1,5 +1,6 @@
 import AuthProvider from "@/components/AuthProvider";
 import AdminNavbar from "@/componentsAdmin/AdminNavbar";
+import { GlobalProvider } from "@/context/GlobalContext";
 import "@/assets/styles/globals.css";
 import "@/assets/styles/hero.css";
 import "photoswipe/dist/photoswipe.css";
@@ -12,15 +13,17 @@ import "react-toastify/dist/ReactToastify.css";
 const AdminLayout = ({ children }) => {
   return (
     <AuthProvider>
-      <html lang="fa">
-        <body className="flex flex-row min-h-screen">
-          <AdminNavbar />
-          <main className="flex-grow bg-blue-50 px-6 py-16 lg:mr-64">
-            {children}
-          </main>
-          <ToastContainer theme="colored" />
-        </body>
-      </html>
+      <GlobalProvider>
+        <html lang="fa">
+          <body className="flex flex-row min-h-screen">
+            <AdminNavbar />
+            <main className="flex-grow bg-blue-50 px-6 py-16 lg:mr-64">
+              {children}
+            </main>
+            <ToastContainer theme="colored" />
+          </body>
+        </html>
+      </GlobalProvider>
     </AuthProvider>
   );
 };

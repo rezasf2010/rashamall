@@ -54,6 +54,7 @@ const CheckoutPage = () => {
     formData.append("details", customer.details || "");
     formData.append("paymentMethod", customer.paymentMethod || "");
     formData.append("receiptImage", customer.receiptImage || "");
+    formData.append("isNew", true);
 
     try {
       const response = await axios.post("/api/orders", formData, {

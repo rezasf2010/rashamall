@@ -10,6 +10,7 @@ export function GlobalProvider({ children }) {
   const { data: session } = useSession();
   const [cartCount, setCartCount] = useState(0);
   const [cart, setCart] = useState({});
+  const [newOrderCount, setNewOrderCount] = useState(0);
 
   useEffect(() => {
     if (session?.user?.id && typeof window !== "undefined") {
@@ -73,6 +74,8 @@ export function GlobalProvider({ children }) {
         setCart,
         updateCart,
         clearCart,
+        newOrderCount,
+        setNewOrderCount,
       }}
     >
       {children}
