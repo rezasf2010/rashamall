@@ -2,9 +2,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FaChevronLeft, FaBars } from "react-icons/fa";
+import NewOrderCount from "./NewOrderCount";
+import { useGlobalContext } from "@/context/GlobalContext"; // Import the context
 
 const AdminNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { newOrderCount } = useGlobalContext();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -40,6 +43,7 @@ const AdminNavbar = () => {
               onClick={toggleMenu}
             >
               سفارشات
+              <NewOrderCount />
               <FaChevronLeft className="text-gray-400" />
             </Link>
 

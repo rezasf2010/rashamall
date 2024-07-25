@@ -170,6 +170,27 @@ async function fetchCategory(CategoryId) {
   }
 }
 
+// Fetch all posts
+const fetchPosts = async () => {
+  //Handle the case where the domain is not available yet
+  if (!apiDomain) {
+    return [];
+  }
+
+  try {
+    const res = await fetch(`${apiDomain}/posts`);
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
 export {
   fetchCategories,
   fetchBrands,
@@ -179,4 +200,5 @@ export {
   fetchOrders,
   fetchOrder,
   fetchCategory,
+  fetchPosts,
 };

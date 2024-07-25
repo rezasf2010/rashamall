@@ -46,6 +46,7 @@ export const POST = async (request) => {
     const details = formData.get("details");
     const paymentMethod = formData.get("paymentMethod");
     const receiptImageFile = formData.get("receiptImage");
+    const isNew = formData.get("isNew");
 
     // Upload single receipt image to Cloudinary
     let receiptImageUrl = "";
@@ -73,6 +74,7 @@ export const POST = async (request) => {
       details,
       paymentMethod,
       receiptImage: receiptImageUrl,
+      isNew,
     });
 
     console.log(newOrder);
