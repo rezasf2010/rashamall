@@ -7,7 +7,7 @@ import { useGlobalContext } from "@/context/GlobalContext";
 import { toast } from "react-toastify";
 import Link from "next/link";
 
-const OrderCardAdmin = ({ order }) => {
+const OrderCardAdmin = ({ order, onDelete }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isOrderNew, setIsOrderNew] = useState(order.isNew);
@@ -58,6 +58,26 @@ const OrderCardAdmin = ({ order }) => {
     }
   };
 
+  const handleDeleteClick = async () => {
+    if (window.confirm("آیا از حذف این سفارش اطمینان دارید؟")) {
+      try {
+        const res = await fetch(`/api/orders/${order._id}`, {
+          method: "DELETE",
+        });
+
+        if (res.status === 200) {
+          onDelete(order._id); // Remove order from UI
+          toast.success("سفارش با موفقیت حذف شد");
+        } else {
+          toast.error("مشکل در حذف سفارش");
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("مشکل در حذف سفارش");
+      }
+    }
+  };
+
   return (
     <div className=" relative text-gray-700 mb-4 flex flex-col md:flex-row items-center md:items-end  gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
       {isOrderNew && (
@@ -84,7 +104,7 @@ const OrderCardAdmin = ({ order }) => {
           {order.totalAmount.toLocaleString()} <span>تومان</span>
         </div>
       </div>
-      <div className="w-full flex justify-center md:justify-end">
+      <div className="w-full flex justify-center md:justify-end gap-2">
         <Link
           href={`/admin/dashboard/orders/${order._id}`}
           className="bg-blue-500 hover:bg-blue-600 text-white w-full md:w-auto px-4 py-1 md:py-2 rounded-lg text-center text-xs md:text-sm"
@@ -92,6 +112,12 @@ const OrderCardAdmin = ({ order }) => {
         >
           جزییات سفارش
         </Link>
+        <button
+          className="bg-red-500 hover:bg-red-600 text-white w-full md:w-auto px-4 py-1 md:py-2 rounded-lg text-center text-xs md:text-sm"
+          onClick={handleDeleteClick}
+        >
+          حذف
+        </button>
       </div>
     </div>
   );

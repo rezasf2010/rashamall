@@ -15,7 +15,13 @@ export const GET = async (request) => {
       return new Response("user ID is required", { status: 401 });
     }
 
-    const orders = await Order.find({});
+    const oldOrders = await Order.find({ isNew: false }).sort({
+      createdAt: -1,
+    }); //sorts opened orders in ascending order
+
+    const newOrders = await Order.find({ isNew: true }).sort({ createdAt: -1 }); //sorts new orders in ascending order
+
+    const orders = [...newOrders, ...oldOrders];
 
     return new Response(JSON.stringify(orders), { status: 200 });
   } catch (error) {
