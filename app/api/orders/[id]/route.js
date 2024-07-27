@@ -53,3 +53,33 @@ export const PUT = async (request, { params }) => {
     return new Response("Something went wrong", { status: 500 });
   }
 };
+
+// DELETE /api/orders/:id
+export const DELETE = async (request, { params }) => {
+  try {
+    await connectDB();
+
+    const { id } = params;
+
+    const sessionUser = await getSessionUser();
+
+    if (!sessionUser || !sessionUser.user) {
+      return new Response("User ID is required", { status: 401 });
+    }
+
+    const { userId } = sessionUser;
+
+    const order = await Order.findById(id);
+
+    if (!order) {
+      return new Response("Order not found", { status: 404 });
+    }
+
+    await order.deleteOne();
+
+    return new Response("Order deleted", { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new Response("Something went wrong", { status: 500 });
+  }
+};

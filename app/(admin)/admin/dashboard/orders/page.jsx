@@ -23,6 +23,12 @@ const AdminOrdersPage = () => {
     fetchAllOrders();
   }, []);
 
+  const handleDeleteOrder = (orderId) => {
+    setOrders((prevOrders) =>
+      prevOrders.filter((order) => order._id !== orderId),
+    );
+  };
+
   return (
     <section className="w-full">
       <div className="w-11/12 m-auto">
@@ -39,7 +45,11 @@ const AdminOrdersPage = () => {
               <p>سفارشی موجود نیست</p>
             ) : (
               orders.map((order) => (
-                <OrderCardAdmin key={order._id} order={order} />
+                <OrderCardAdmin
+                  key={order._id}
+                  order={order}
+                  onDelete={handleDeleteOrder}
+                />
               ))
             )}
           </div>
