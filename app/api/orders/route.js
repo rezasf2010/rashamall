@@ -89,8 +89,6 @@ export const POST = async (request) => {
       orderNum: neworderNum,
     });
 
-    console.log(newOrder);
-
     const savedOrder = await newOrder.save();
 
     await User.findByIdAndUpdate(sessionUser.userId, {

@@ -7,23 +7,14 @@ const MessageSchema = new Schema(
       ref: "User",
       required: true,
     },
-    product: {
-      type: Schema.Types.ObjectId,
-      ref: "Product",
-      required: true,
-    },
-    name: {
-      type: String,
-      required: [true, "Name is required"],
-    },
     email: {
       type: String,
       required: [true, "Email is required"],
     },
-    phone: {
+    subject: {
       type: String,
     },
-    body: {
+    message: {
       type: String,
     },
     read: {

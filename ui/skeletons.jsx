@@ -193,6 +193,24 @@ const PostListCardSkeleton = () => {
   );
 };
 
+const MessageCardSkeleton = () => {
+  return (
+    <div className="relative text-gray-700 mb-4 flex flex-col md:flex-row items-center md:items-end gap-6 border border-gray-300 bg-gray-50 bg-opacity-30 w-full p-4 rounded-2xl shadow-xl">
+      <div className="info w-full flex flex-col gap-3">
+        <Skeleton width={150} height={20} />
+        <Skeleton width={200} height={20} />
+        <Skeleton width={100} height={20} />
+        <Skeleton width={200} height={20} />
+        <Skeleton width={150} height={20} />
+      </div>
+      <div className="w-full flex justify-center md:justify-end gap-2">
+        <Skeleton width={100} height={40} />
+        <Skeleton width={100} height={40} />
+      </div>
+    </div>
+  );
+};
+
 export {
   OrderCardSkeleton,
   ProductCardSkeleton,
@@ -202,4 +220,5 @@ export {
   CategoryListCardSkeleton,
   UserCardSkeleton,
   PostListCardSkeleton,
+  MessageCardSkeleton,
 };

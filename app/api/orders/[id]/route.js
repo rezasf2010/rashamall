@@ -35,8 +35,6 @@ export const PUT = async (request, { params }) => {
 
     const order = await Order.findById(id);
 
-    console.log(order);
-
     if (!order) {
       return new Response("Order not found", { status: 404 });
     }
