@@ -4,6 +4,7 @@ import ProductImages from "./ProductImages";
 import { FaTimes, FaCheck } from "react-icons/fa";
 import AddToCart from "./AddToCart";
 import ShareButtons from "./ShareButtons";
+import Bookmark from "./Bookmark";
 
 const ProductDetails = ({ product }) => {
   const discountedPrice = product.is_onSale
@@ -52,21 +53,24 @@ const ProductDetails = ({ product }) => {
             )}
           </div>
           <div className="flex flex-col sm:flex-row justify-between lg:flex-col lg: gap-4">
-            {product._stock_status === "in stock" ? (
-              <div
-                className={`flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center bg-blue-50 text-blue-500`}
-              >
-                <p>موجود</p>
-                <FaCheck className="inline-block text-blue-500" />
-              </div>
-            ) : (
-              <div
-                className={`flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center bg-red-50 text-red-500`}
-              >
-                <p>ناموجود</p>
-                <FaTimes className="inline-block text-red-500" />
-              </div>
-            )}
+            <div className="flex items-center justify-around sm:gap-6">
+              {product._stock_status === "in stock" ? (
+                <div
+                  className={`flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center bg-blue-50 text-blue-500`}
+                >
+                  <p>موجود</p>
+                  <FaCheck className="inline-block text-blue-500" />
+                </div>
+              ) : (
+                <div
+                  className={`flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center bg-red-50 text-red-500`}
+                >
+                  <p>ناموجود</p>
+                  <FaTimes className="inline-block text-red-500" />
+                </div>
+              )}
+              <Bookmark product={product} />
+            </div>
             <AddToCart productId={product._id} price={discountedPrice} />
           </div>
           <div className="mt-4">
