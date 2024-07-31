@@ -9,7 +9,7 @@ import { set } from "mongoose";
 const UserInfo = ({ customer, setCustomer }) => {
   const { data: session } = useSession();
   const [mounted, setMounted] = useState(false);
-  const [isNewUser, setIsNewUser] = useState(false);
+  const [isNewUser, setisNewUser] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -37,7 +37,7 @@ const UserInfo = ({ customer, setCustomer }) => {
           const user = response.data;
 
           if (!user) {
-            setIsNewUser(true);
+            setisNewUser(true);
           } else {
             setFormData({
               name: user.name || session.user.name,
@@ -65,6 +65,10 @@ const UserInfo = ({ customer, setCustomer }) => {
     fetchUserData();
   }, [session]);
 
+  useEffect(() => {
+    setCustomer(formData);
+  }, [formData, setCustomer]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -87,8 +91,6 @@ const UserInfo = ({ customer, setCustomer }) => {
       }));
     }
   };
-
-  setCustomer(formData);
 
   return (
     mounted && (

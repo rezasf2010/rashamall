@@ -10,7 +10,7 @@ import Link from "next/link";
 const OrderCardAdmin = ({ order, onDelete }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isOrderNew, setIsOrderNew] = useState(order.isNew);
+  const [isOrderNew, setIsOrderNew] = useState(order.isNewOrder);
 
   const { setNewOrderCount } = useGlobalContext();
 
@@ -43,8 +43,8 @@ const OrderCardAdmin = ({ order, onDelete }) => {
       });
 
       if (res.status === 200) {
-        const { isNew } = await res.json();
-        setIsOrderNew(isNew);
+        const { isNewOrder } = await res.json();
+        setIsOrderNew(isNewOrder);
         setNewOrderCount((prevCount) => {
           if (isOrderNew) {
             return prevCount - 1;
@@ -93,6 +93,10 @@ const OrderCardAdmin = ({ order, onDelete }) => {
 
         <div className="orderer">
           <span className="font-semibold">سفارش دهنده :</span> {user[0].name}
+        </div>
+
+        <div className="order-number">
+          <span className="font-semibold">شماره فاکتور :</span> {order.orderNum}
         </div>
 
         <div className="orderer-mobile">
