@@ -49,9 +49,14 @@ const OrderSchema = new Schema(
     receiptImage: {
       type: String,
     },
-    isNew: {
+    isNewOrder: {
       type: Boolean,
       default: true,
+    },
+    orderNum: {
+      type: Number,
+      required: true,
+      unique: true,
     },
   },
   {

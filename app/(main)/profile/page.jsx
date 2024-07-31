@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { fetchUsers } from "@/utils/requests";
 import { useSession } from "next-auth/react";
 import profileDefault from "@/assets/images/profile.png";
 import Spinner from "@/components/Spinner";
@@ -13,7 +14,30 @@ const ProfilePage = () => {
   const profileName = session?.user?.name;
   const profileEmail = session?.user?.email;
 
-  const [loading, setLoading] = useState(false);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsersData = async () => {
+      try {
+        const users = await fetchUsers();
+
+        setUsers(users);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsersData();
+  }, []);
+
+  const currentUser = users.find((user) => user._id === session.user.id);
+
+  if (loading) {
+    return <Spinner loading={loading} />;
+  }
 
   return (
     <section className="bg-blue-50 w-full">
@@ -26,7 +50,7 @@ const ProfilePage = () => {
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">نام : </span>
                   {"  "}
-                  {profileName}
+                  {currentUser?.name ? currentUser.name : profileName}
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">ایمیل :</span>
@@ -36,17 +60,17 @@ const ProfilePage = () => {
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">تلفن :</span>
                   {"  "}
-                  (تلفن)
+                  {currentUser.mobile}
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">آدرس :</span>
                   {"  "}
-                  (آدرس)
+                  {currentUser.address.city}, {currentUser.address.street}
                 </h2>
                 <h2 className="text-xl mb-8">
-                  <span className="font-bold">تاریخ تولد :</span>
+                  <span className="font-bold">تلفن ثابت :</span>
                   {"  "}
-                  (تاریخ تولد)
+                  {currentUser.phone}
                 </h2>
               </div>
               <div className="mb-8">

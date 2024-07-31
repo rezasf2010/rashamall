@@ -15,11 +15,13 @@ export const GET = async (request) => {
       return new Response("user ID is required", { status: 401 });
     }
 
-    const oldOrders = await Order.find({ isNew: false }).sort({
+    const oldOrders = await Order.find({ isNewOrder: false }).sort({
       createdAt: -1,
     }); //sorts opened orders in ascending order
 
-    const newOrders = await Order.find({ isNew: true }).sort({ createdAt: -1 }); //sorts new orders in ascending order
+    const newOrders = await Order.find({ isNewOrder: true }).sort({
+      createdAt: -1,
+    }); //sorts new orders in ascending order
 
     const orders = [...newOrders, ...oldOrders];
 
@@ -43,8 +45,6 @@ export const POST = async (request) => {
 
     const formData = await request.formData(); // Initialize formData
 
-    console.log(formData);
-
     const userId = sessionUser.userId;
     const items = JSON.parse(formData.get("items"));
     const totalQuantity = Number(formData.get("totalQuantity"));
@@ -52,7 +52,7 @@ export const POST = async (request) => {
     const details = formData.get("details");
     const paymentMethod = formData.get("paymentMethod");
     const receiptImageFile = formData.get("receiptImage");
-    const isNew = formData.get("isNew");
+    const isNewOrder = formData.get("isNewOrder");
 
     // Upload single receipt image to Cloudinary
     let receiptImageUrl = "";
@@ -72,6 +72,11 @@ export const POST = async (request) => {
       receiptImageUrl = result.secure_url;
     }
 
+    // Get the latest order number and increment it
+    const lastOrder = await Order.findOne().sort({ orderNum: -1 }).exec();
+    const neworderNum =
+      lastOrder && lastOrder.orderNum ? lastOrder.orderNum + 1 : 1001;
+
     const newOrder = new Order({
       user: userId,
       items,
@@ -80,7 +85,8 @@ export const POST = async (request) => {
       details,
       paymentMethod,
       receiptImage: receiptImageUrl,
-      isNew,
+      isNewOrder,
+      orderNum: neworderNum,
     });
 
     console.log(newOrder);

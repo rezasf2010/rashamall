@@ -8,7 +8,7 @@ export const GET = async (request) => {
   try {
     await connectDB();
 
-    const newOrdersCount = await Order.countDocuments({ isNew: true });
+    const newOrdersCount = await Order.countDocuments({ isNewOrder: true });
 
     return new Response(JSON.stringify(newOrdersCount), { status: 200 });
   } catch (error) {

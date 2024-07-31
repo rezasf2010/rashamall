@@ -54,7 +54,7 @@ const CheckoutPage = () => {
     formData.append("details", customer.details || "");
     formData.append("paymentMethod", customer.paymentMethod || "");
     formData.append("receiptImage", customer.receiptImage || "");
-    formData.append("isNew", true);
+    formData.append("isNewOrder", true);
 
     try {
       const response = await axios.post("/api/orders", formData, {
@@ -76,8 +76,6 @@ const CheckoutPage = () => {
 
     setLoading(false);
   };
-
-  console.log(customer);
 
   return (
     <div className=" w-11/12 mx-auto">

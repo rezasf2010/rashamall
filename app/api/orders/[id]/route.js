@@ -41,9 +41,9 @@ export const PUT = async (request, { params }) => {
       return new Response("Order not found", { status: 404 });
     }
 
-    // Update order isNew status
-    if (order.isNew) {
-      order.isNew = false;
+    // Update order isNewOrder status
+    if (order.isNewOrder) {
+      order.isNewOrder = false;
       await order.save();
     }
 
