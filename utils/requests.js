@@ -129,25 +129,25 @@ const fetchOrders = async () => {
 };
 
 // Fetch all messages
-// const fetchMessages = async () => {
-//   //Handle the case where the domain is not available yet
-//   if (!apiDomain) {
-//     return [];
-//   }
+const fetchMessages = async () => {
+  //Handle the case where the domain is not available yet
+  if (!apiDomain) {
+    return [];
+  }
 
-//   try {
-//     const res = await fetch(`${apiDomain}/messages`);
+  try {
+    const res = await fetch(`${apiDomain}/messages`);
 
-//     if (!res.ok) {
-//       throw new Error("Failed to fetch data");
-//     }
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
 
-//     return res.json();
-//   } catch (error) {
-//     console.log(error);
-//     return [];
-//   }
-// };
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
 // Fetch single order
 async function fetchOrder(orderId) {
@@ -170,26 +170,26 @@ async function fetchOrder(orderId) {
   }
 }
 
-// // Fetch single message
-// async function fetchMessage(messageId) {
-//   try {
-//     //Handle the case where the domain is not available yet
-//     if (!apiDomain) {
-//       return null;
-//     }
+// Fetch single message
+async function fetchMessage(messageId) {
+  try {
+    //Handle the case where the domain is not available yet
+    if (!apiDomain) {
+      return null;
+    }
 
-//     const res = await fetch(`${apiDomain}/messages/${messageId}`);
+    const res = await fetch(`${apiDomain}/messages/${messageId}`);
 
-//     if (!res.ok) {
-//       throw new Error("Failed to fetch data");
-//     }
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
 
-//     return res.json();
-//   } catch (error) {
-//     console.log(error);
-//     return null;
-//   }
-// }
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
 
 // Fetch single category
 async function fetchCategory(CategoryId) {
@@ -243,6 +243,6 @@ export {
   fetchOrder,
   fetchCategory,
   fetchPosts,
-  // fetchMessages,
-  // fetchMessage,
+  fetchMessages,
+  fetchMessage,
 };
