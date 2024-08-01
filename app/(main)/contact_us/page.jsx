@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ContactUsIcons from "@/components/ContactUsIcons";
-import MessageForm from "@/components/MessageForm";
+// import MessageForm from "@/components/MessageForm";
 
 const ContactUsPage = () => {
   return (
@@ -48,7 +48,7 @@ const ContactUsPage = () => {
           ارسال پیام
         </h2>
 
-        <MessageForm />
+        {/* <MessageForm /> */}
       </div>
     </div>
   );
