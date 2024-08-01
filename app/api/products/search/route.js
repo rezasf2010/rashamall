@@ -1,6 +1,8 @@
 import connectDB from "@/config/database";
 import Product from "@/models/Product";
 
+export const dynamic = "force-dynamic";
+
 //GET /api/products/search
 export const GET = async (request) => {
   try {
