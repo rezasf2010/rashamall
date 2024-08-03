@@ -17,7 +17,7 @@ const OrderCard = ({ order }) => {
     <div className=" text-gray-700 mb-4 flex items-center gap-6 border border-gray-300 bg-gray-50 w-full p-4 rounded-2xl shadow-xl">
       <div className=" w-full">
         <div className="info mb-3 w-full">
-          <div className="p-2 w-full flex justify-between mb-3">
+          <div className="p-2 w-full flex flex-col gap-3 md:flex-row justify-between mb-3">
             <div className="font-bold">
               شماره فاکتور :{"   "}
               <span className="px-1 border-b border-gray-700 text-center ">

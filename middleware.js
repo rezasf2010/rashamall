@@ -1,7 +1,7 @@
 export { default } from "next-auth/middleware";
 
 export const config = {
-  matcher: ["/admin/:path*", "/profile", "/products/saved"],
+  matcher: ["/profile", "/products/saved"],
 };
 
 // import { getToken } from "next-auth/jwt";

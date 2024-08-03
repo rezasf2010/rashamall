@@ -1,15 +1,30 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FaChevronLeft, FaBars } from "react-icons/fa";
 import NewOrderCount from "./NewOrderCount";
 import NewMessagesCount from "./NewMessagesCount";
+import { auth } from "@/utils/firebaseConfig";
+import { signOut } from "firebase/auth";
 
 const AdminNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handelSignOut = async () => {
+    try {
+      await signOut(auth); // Sign out the user
+      console.log("User signed out successfully");
+      // Optionally, redirect the user to a different page or show a message
+      router.push("/login");
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
   };
 
   return (
@@ -120,7 +135,10 @@ const AdminNavbar = () => {
             </Link>
           </div>
         </div>
-        <div className="mb-8 mt-16 border border-orange-500 py-2 px-4 rounded-lg bg bg-orange-500 text-white">
+        <div
+          onClick={handelSignOut}
+          className="mb-8 mt-16 border border-orange-500 py-2 px-4 rounded-lg bg bg-orange-500 text-white"
+        >
           sign out
         </div>
       </nav>

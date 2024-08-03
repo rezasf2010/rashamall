@@ -7,12 +7,6 @@ export const GET = async (request) => {
   try {
     await connectDB();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
-
     const oldMessagess = await Message.find({ read: true }).sort({
       createdAt: -1,
     }); //sorts opened messagess in ascending messages

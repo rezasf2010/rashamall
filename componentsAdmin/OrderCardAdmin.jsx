@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { convertToJalaali } from "@/utils/calenderConvert";
 import { fetchUsers } from "@/utils/requests";
 import { OrderCardSkeleton } from "@/ui/skeletons";
-import { useGlobalContext } from "@/context/GlobalContext";
+import { useAdminGlobalContext } from "@/context/AdminGlobalContext";
 import { toast } from "react-toastify";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ const OrderCardAdmin = ({ order, onDelete }) => {
   const [loading, setLoading] = useState(true);
   const [isOrderNew, setIsOrderNew] = useState(order.isNewOrder);
 
-  const { setNewOrderCount } = useGlobalContext();
+  const { setNewOrderCount } = useAdminGlobalContext();
 
   useEffect(() => {
     const fetchData = async () => {

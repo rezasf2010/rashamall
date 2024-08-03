@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import SpinnerH from "@/components/SpinnerH";
 import UserInfo from "@/components/UserInfo";
 import { useSession } from "next-auth/react";
-import { useGlobalContext } from "@/context/GlobalContext";
+import { useGlobalContext } from "@/context/UserGlobalContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 

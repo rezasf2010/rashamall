@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { useGlobalContext } from "@/context/GlobalContext";
+import { useGlobalContext } from "@/context/UserGlobalContext";
 import { toast } from "react-toastify";
 
 const AddToCart = ({ productId, price }) => {

@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
-import { GlobalProvider } from "@/context/GlobalContext";
+import { GlobalProvider } from "@/context/UserGlobalContext";
 import "@/assets/styles/globals.css";
 import "@/assets/styles/hero.css";
 import "photoswipe/dist/photoswipe.css";

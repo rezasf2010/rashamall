@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { convertToJalaali } from "@/utils/calenderConvert";
 import { fetchUsers } from "@/utils/requests";
 import { MessageCardSkeleton } from "@/ui/skeletons";
-import { useGlobalContext } from "@/context/GlobalContext";
+import { useAdminGlobalContext } from "@/context/AdminGlobalContext";
 import { toast } from "react-toastify";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ const MessageCardAdmin = ({ message, onDelete }) => {
   const [loading, setLoading] = useState(true);
   const [isMessageNew, setIsMessageNew] = useState(!message.read);
 
-  const { setNewMessageCount } = useGlobalContext();
+  const { setNewMessageCount } = useAdminGlobalContext();
 
   useEffect(() => {
     const fetchData = async () => {
