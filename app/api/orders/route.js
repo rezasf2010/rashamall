@@ -9,12 +9,6 @@ export const GET = async (request) => {
   try {
     await connectDB();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
-
     const oldOrders = await Order.find({ isNewOrder: false }).sort({
       createdAt: -1,
     }); //sorts opened orders in ascending order

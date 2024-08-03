@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useGlobalContext } from "@/context/GlobalContext";
+import { useGlobalContext } from "@/context/UserGlobalContext";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 

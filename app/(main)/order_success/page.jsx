@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import CartProduct from "@/components/CartProduct";
-import { useGlobalContext } from "@/context/GlobalContext";
+import { useGlobalContext } from "@/context/UserGlobalContext";
 import SpinnerH from "@/components/SpinnerH";
 import { fetchProducts } from "@/utils/requests";
 

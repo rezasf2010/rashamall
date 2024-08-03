@@ -1,9 +1,9 @@
 "use client";
 import { useEffect } from "react";
-import { useGlobalContext } from "@/context/GlobalContext";
+import { useAdminGlobalContext } from "@/context/AdminGlobalContext";
 
 const NewOrderCount = () => {
-  const { newMessageCount, setNewMessageCount } = useGlobalContext();
+  const { newMessageCount, setNewMessageCount } = useAdminGlobalContext();
 
   useEffect(() => {
     const fetchNewMessagesCount = async () => {
