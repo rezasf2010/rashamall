@@ -53,7 +53,7 @@ const ProductDetails = ({ product }) => {
             )}
           </div>
           <div className="flex flex-col sm:flex-row justify-between lg:flex-col lg: gap-4">
-            <div className="flex items-center justify-around sm:gap-6">
+            <div className="flex items-center justify-between px-4 sm:gap-6">
               {product._stock_status === "in stock" ? (
                 <div
                   className={`flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center bg-blue-50 text-blue-500`}
