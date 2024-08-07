@@ -10,12 +10,9 @@ const useAuth = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const router = useRouter();
 
-  console.log(authenticated);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user);
         setAuthenticated(true);
       } else {
         setAuthenticated(false);

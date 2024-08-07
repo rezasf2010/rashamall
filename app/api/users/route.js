@@ -1,7 +1,5 @@
 import connectDB from "@/config/database";
 import User from "@/models/User";
-import { getSessionUser } from "@/utils/getSessionUser";
-import cloudinary from "@/config/cloudinary";
 
 // GET /api/users
 export const GET = async (request) => {
@@ -21,19 +19,12 @@ export const GET = async (request) => {
 export const POST = async (request) => {
   try {
     await connectDB();
-    const sessionUser = await getSessionUser(request);
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
 
     const formData = await request.formData();
-    const images = formData
-      .getAll("images")
-      .filter((image) => image.name !== "");
 
     const userData = {
       name: formData.get("name"),
-      username: formData.get("username"),
+      username: formData.get("username") || formData.get("name").slice(0, 20),
       mobile: formData.get("mobile"),
       phone: formData.get("phone"),
       email: formData.get("email"),
@@ -44,21 +35,6 @@ export const POST = async (request) => {
         zip: formData.get("address.zip"),
       },
     };
-
-    const imageUploadPromises = [];
-    for (const image of images) {
-      const imageBuffer = await image.arrayBuffer();
-      const imageArray = Array.from(new Uint8Array(imageBuffer));
-      const imageData = Buffer.from(imageArray);
-      const imageBase64 = imageData.toString("base64");
-      const result = await cloudinary.uploader.upload(
-        `data:image/png;base64,${imageBase64}`,
-        { folder: "user" },
-      );
-      imageUploadPromises.push(result.secure_url);
-    }
-    const uploadedImages = await Promise.all(imageUploadPromises);
-    userData.receipt_image = uploadedImages;
 
     const existingUser = await User.findOne({ email: userData.email });
     if (existingUser) {

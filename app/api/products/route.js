@@ -1,7 +1,6 @@
 import connectDB from "@/config/database";
 import Product from "@/models/Product";
 import cloudinary from "@/config/cloudinary";
-import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET /api/products
 export const GET = async (request) => {
@@ -21,14 +20,6 @@ export const GET = async (request) => {
 export const POST = async (request) => {
   try {
     await connectDB();
-
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
-
-    const { userId } = sessionUser;
 
     const formData = await request.formData();
 
@@ -78,7 +69,6 @@ export const POST = async (request) => {
       discount: formData.get("discount")
         ? parseInt(formData.get("discount"), 10)
         : 0,
-      _stock: formData.get("stock"),
       _stock_status: formData.get("_stock_status"),
     };
 

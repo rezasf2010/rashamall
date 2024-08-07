@@ -74,9 +74,6 @@ const ProductSchema = new Schema(
       type: Number,
       default: 0,
     },
-    _stock: {
-      type: Number,
-    },
     _stock_status: {
       type: String,
     },

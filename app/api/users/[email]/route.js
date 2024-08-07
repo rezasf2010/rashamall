@@ -1,7 +1,7 @@
-// /pages/api/users/[email].js
 import connectDB from "@/config/database";
 import User from "@/models/User";
 
+//GET /pages/api/users/[email].js
 export async function GET(req, { params }) {
   const { email } = params;
 
@@ -22,6 +22,7 @@ export async function GET(req, { params }) {
   }
 }
 
+//POST /pages/api/users/[email].js
 export async function POST(request) {
   try {
     await connectDB();
@@ -80,3 +81,66 @@ export async function POST(request) {
     return new Response("Failed to add user", { status: 500 });
   }
 }
+
+// PUT /api/users/[email].js
+export async function PUT(request, { params }) {
+  const { email } = params;
+
+  await connectDB();
+
+  try {
+    const formData = await request.formData();
+
+    // Create the updated user data object
+    const updatedUserData = {
+      name: formData.get("name"),
+      username: formData.get("username"),
+      mobile: formData.get("mobile"),
+      phone: formData.get("phone"),
+      address: {
+        street: formData.get("address.street"),
+        city: formData.get("address.city"),
+        state: formData.get("address.state"),
+        zip: formData.get("address.zip"),
+      },
+    };
+
+    // Update user in database
+    const updatedUser = await User.findOneAndUpdate(
+      { email },
+      updatedUserData,
+      { new: true, runValidators: true }, // Options to return the updated document and validate it
+    );
+
+    if (!updatedUser) {
+      return new Response(JSON.stringify({ message: "User not found" }), {
+        status: 404,
+      });
+    }
+
+    return new Response(JSON.stringify(updatedUser), { status: 200 });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return new Response("Failed to update user", { status: 500 });
+  }
+}
+
+// DELETE /api/posts/:email
+export const DELETE = async (request, { params }) => {
+  try {
+    const userId = params.email;
+
+    await connectDB();
+
+    const user = await User.findById(userId);
+
+    if (!user) return new Response("User Not Found", { status: 404 });
+
+    await User.deleteOne();
+
+    return new Response("User deleted", { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new Response("Something went wrong", { status: 500 });
+  }
+};

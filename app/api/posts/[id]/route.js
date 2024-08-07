@@ -1,6 +1,5 @@
 import connectDB from "@/config/database";
 import Post from "@/models/Post";
-import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET /api/posts/:id
 export const GET = async (request, { params }) => {
@@ -25,12 +24,6 @@ export const DELETE = async (request, { params }) => {
 
     await connectDB();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
-
     const post = await Post.findById(postId);
 
     if (!post) return new Response("Post Not Found", { status: 404 });
@@ -49,14 +42,7 @@ export const PUT = async (request, { params }) => {
   try {
     await connectDB();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
-
     const { id } = params;
-    const { userId } = sessionUser;
 
     const formData = await request.formData();
 

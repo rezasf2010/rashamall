@@ -57,7 +57,8 @@ const OrderDetail = () => {
           </div>
 
           <div className="orderer-mobile">
-            <span className="font-semibold">تلفن همراه :</span> {user[0].mobile}
+            <span className="font-semibold">تلفن همراه :</span> 0
+            {user[0].mobile}
           </div>
         </div>
 

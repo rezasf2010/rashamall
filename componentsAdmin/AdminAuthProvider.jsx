@@ -6,8 +6,6 @@ import Spinner from "@/components/Spinner";
 const AdminAuthProvider = ({ children }) => {
   const { loading, authenticated } = useAuth();
 
-  console.log(authenticated);
-
   if (loading) {
     return <Spinner loading={loading} />;
   }

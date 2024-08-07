@@ -41,7 +41,7 @@ const ProfilePage = () => {
 
   return (
     <section className="bg-blue-50 w-full">
-      <div className="w-full m-auto py-24 ">
+      <div className="mx-6 md:mx-12 py-24 ">
         <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
           <h1 className="text-3xl font-bold mb-4">حساب کاربری</h1>
           <div className="flex flex-col md:flex-row">
@@ -59,8 +59,7 @@ const ProfilePage = () => {
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">تلفن :</span>
-                  {"  "}
-                  {currentUser.mobile}
+                  {"  "}0{currentUser.mobile}
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">آدرس :</span>
@@ -69,9 +68,13 @@ const ProfilePage = () => {
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">تلفن ثابت :</span>
-                  {"  "}
-                  {currentUser.phone}
+                  {"  "}0{currentUser.phone}
                 </h2>
+                <Link href={`/profile/${currentUser._id}`}>
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                    ویرایش اطلاعات
+                  </button>
+                </Link>
               </div>
               <div className="mb-8">
                 <Image
