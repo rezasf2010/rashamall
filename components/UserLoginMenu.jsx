@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FaCartPlus } from "react-icons/fa";
 import profileDefault from "@/assets/images/profile.png";
 import googleLogo from "@/assets/images/google-color-icon.png";
@@ -12,7 +14,14 @@ const UserLoginMenu = ({
   isProfileMenuOpen,
   setIsProfileMenuOpen,
 }) => {
+  const router = useRouter();
   const profileImage = session?.user?.image;
+
+  const handleSignOut = () => {
+    setIsProfileMenuOpen(false);
+    const redirectUrl = router.asPath || "/"; // Fallback to homepage if router.asPath is empty
+    signOut({ callbackUrl: redirectUrl }); // Redirect to the previous page or homepage
+  };
 
   return (
     <div className="">
@@ -128,10 +137,7 @@ const UserLoginMenu = ({
                   کالا های ذخیره شده
                 </Link>
                 <button
-                  onClick={() => {
-                    setIsProfileMenuOpen(false);
-                    signOut();
-                  }}
+                  onClick={handleSignOut}
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex="-1"
