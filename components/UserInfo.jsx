@@ -41,7 +41,7 @@ const UserInfo = ({ customer, setCustomer }) => {
           } else {
             setFormData({
               name: user.name || session.user.name,
-              username: user.username || "",
+              username: user.username || session.user.name.slice(0, 20),
               mobile: user.mobile || "",
               phone: user.phone || "",
               email: user.email || session.user.email,
@@ -51,9 +51,6 @@ const UserInfo = ({ customer, setCustomer }) => {
                 state: user.address?.state || "",
                 zip: user.address?.zip || "",
               },
-              details: user.details || "",
-              paymentMethod: user.paymentMethod || "",
-              receiptImage: null,
             });
           }
         } catch (error) {
@@ -64,10 +61,6 @@ const UserInfo = ({ customer, setCustomer }) => {
 
     fetchUserData();
   }, [session]);
-
-  useEffect(() => {
-    setCustomer(formData);
-  }, [formData, setCustomer]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -91,6 +84,10 @@ const UserInfo = ({ customer, setCustomer }) => {
       }));
     }
   };
+
+  useEffect(() => {
+    setCustomer(formData);
+  }, [formData, setCustomer]);
 
   return (
     mounted && (

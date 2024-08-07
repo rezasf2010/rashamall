@@ -30,7 +30,6 @@ const ProductEditForm = () => {
     services: [],
     is_onSale: false,
     discount: "",
-    _stock: "",
     _stock_status: "",
   });
   const [loading, setLoading] = useState(true);
@@ -117,12 +116,6 @@ const ProductEditForm = () => {
       is_onSale: checked,
       discount: checked ? fields.discount : "", // Clear discount if not on sale
     }));
-  };
-
-  const handleStockChange = (e) => {
-    const value = e.target.value;
-    const stockStatus = value > 0 ? "in stock" : "out of stock";
-    setFields({ ...fields, _stock: value, _stock_status: stockStatus });
   };
 
   const handleStockStatusChange = (e) => {
@@ -386,26 +379,6 @@ const ProductEditForm = () => {
             />
           </div>
         )}
-
-        <div className="mb-4">
-          <label
-            htmlFor="stock"
-            className="flex pr-2 text-gray-700 font-bold mb-2"
-          >
-            موجودی
-          </label>
-          <input
-            type="number"
-            id="stock"
-            name="stock"
-            className="border border-gray-300 rounded w-full py-2 px-3 mb-2 "
-            placeholder="مثال: 12"
-            required
-            value={fields._stock}
-            onChange={handleStockChange}
-            min="0"
-          />
-        </div>
 
         <div className="mb-4">
           <label

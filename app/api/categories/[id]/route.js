@@ -1,6 +1,5 @@
 import connectDB from "@/config/database";
 import Category from "@/models/Category";
-import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET /api/categories/:id
 export const GET = async (request, { params }) => {
@@ -25,12 +24,6 @@ export const DELETE = async (request, { params }) => {
 
     await connectDB();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
-
     const category = await Category.findById(categoryId);
 
     if (!category) return new Response("Category Not Found", { status: 404 });
@@ -48,12 +41,6 @@ export const DELETE = async (request, { params }) => {
 export const PUT = async (request, { params }) => {
   try {
     await connectDB();
-
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("User ID is required", { status: 401 });
-    }
 
     // Helper function to convert names to slugs
     function convertToSlug(name) {

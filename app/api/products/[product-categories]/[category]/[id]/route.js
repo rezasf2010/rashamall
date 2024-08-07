@@ -1,6 +1,5 @@
 import connectDB from "@/config/database";
 import Product from "@/models/Product";
-import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET /api/products/:id
 export const GET = async (request, { params }) => {
@@ -25,12 +24,6 @@ export const DELETE = async (request, { params }) => {
 
     await connectDB();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
-
     const product = await Product.findById(productId);
 
     if (!product) return new Response("Product Not Found", { status: 404 });
@@ -49,14 +42,7 @@ export const PUT = async (request, { params }) => {
   try {
     await connectDB();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
-
     const { id } = params;
-    const { userId } = sessionUser;
 
     const formData = await request.formData();
 
@@ -108,7 +94,6 @@ export const PUT = async (request, { params }) => {
       discount: formData.get("discount")
         ? parseInt(formData.get("discount"), 10)
         : 0,
-      _stock: formData.get("stock"),
       _stock_status: formData.get("_stock_status"),
     };
 

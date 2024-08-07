@@ -1,6 +1,5 @@
 import connectDB from "@/config/database";
 import Category from "@/models/Category";
-import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET /api/categories
 export const GET = async (request) => {
@@ -19,12 +18,6 @@ export const GET = async (request) => {
 export const POST = async (request) => {
   try {
     await connectDB();
-
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response("user ID is required", { status: 401 });
-    }
 
     const formData = await request.formData();
 

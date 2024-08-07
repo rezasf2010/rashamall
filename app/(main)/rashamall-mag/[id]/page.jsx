@@ -35,7 +35,7 @@ const PostPage = () => {
   const post = posts.find((post) => post._id === postId);
 
   return (
-    <div className=" mx-12 py-8 px-4 md:px-8">
+    <div className="w-full mx-12 py-8 px-4 md:px-8">
       {/* Main Title */}
       <h1 className="text-xl md:text-3xl font-bold text-gray-800 mb-6">
         {post.mainTitle}

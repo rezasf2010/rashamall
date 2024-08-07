@@ -48,6 +48,8 @@ const CheckoutPage = () => {
 
     const formData = new FormData();
     formData.append("user", userId);
+    formData.append("name", customer.name);
+    formData.append("username", customer.username);
     formData.append("items", JSON.stringify(orderItems));
     formData.append("totalQuantity", totalQuantity);
     formData.append("totalAmount", totalAmount);

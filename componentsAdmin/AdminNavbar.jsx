@@ -30,14 +30,14 @@ const AdminNavbar = () => {
   return (
     <div className="relative">
       <button
-        className=" border border-blue-200 p-2 rounded bg-blue-100 shadow-md fixed top-2 right-4 lg:hidden flex items-center gap-2 z-50"
+        className=" border border-blue-200 p-2 rounded bg-blue-100 shadow-md absolute top-2 right-4 lg:hidden flex items-center gap-2 z-50"
         onClick={toggleMenu}
       >
         <div className="text-lg font-semibold">Menu</div>
         <FaBars className="text-2xl" />
       </button>
       <nav
-        className={`w-64 fixed right-0 top-14 lg:top-0 flex flex-col justify-between items-center bg-blue-100 h-full text-gray-700 transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"} lg:translate-x-0 z-40`}
+        className={`w-64 absolute right-0 top-14 lg:top-0 flex flex-col justify-between items-center bg-blue-100 text-gray-700 transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"} lg:translate-x-0 z-40`}
       >
         <div className="flex flex-col items-center">
           <h2 className="p-5 font-bold text-xl">پنل مدیریت</h2>

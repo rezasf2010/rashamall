@@ -1,6 +1,5 @@
 import connectDB from "@/config/database";
 import Order from "@/models/Order";
-import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET /api/orders/:id
 export const GET = async (request, { params }) => {
@@ -24,14 +23,6 @@ export const PUT = async (request, { params }) => {
     await connectDB();
 
     const { id } = params;
-
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.user) {
-      return new Response("User ID is required", { status: 401 });
-    }
-
-    const { userId } = sessionUser;
 
     const order = await Order.findById(id);
 
@@ -58,14 +49,6 @@ export const DELETE = async (request, { params }) => {
     await connectDB();
 
     const { id } = params;
-
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.user) {
-      return new Response("User ID is required", { status: 401 });
-    }
-
-    const { userId } = sessionUser;
 
     const order = await Order.findById(id);
 

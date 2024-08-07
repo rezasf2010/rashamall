@@ -44,11 +44,9 @@ const ProductListCard = ({ product, categories, onDelete }) => {
         </div>
 
         <div className="flex items-center mb-2 gap-2">
-          <span className="font-bold">موجودی : </span>
+          <span className="font-bold">وضعیت موجودی : </span>
           {"  "}
-          <div className="w-12 p-1 border border-gray-300 rounded text-center">
-            {product._stock}
-          </div>
+          {product._stock_status}
         </div>
 
         <div className="w-full flex gap-2 md:justify-end">
