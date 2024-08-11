@@ -49,9 +49,9 @@ const MagListPage = () => {
   };
 
   return (
-    <div className=" w-full gap-4 flex flex-col items-center">
-      <div className="w-11/12 m-1 md:m-auto">
-        <div className="bg-white min-h-3/4 flex flex-col items-center px-2 sm:px-4 py-4 md:px-6 mb-4 shadow-md rounded-md border">
+    <div className=" w-full">
+      <div className="lg:w-11/12 lg:m-auto flex justify-center">
+        <div className="bg-white w-full min-h-3/4 flex flex-col items-center px-2 sm:px-4 py-4 md:px-6 mb-4 shadow-md rounded-md border">
           <h2 className="text-lg md:text-3xl text-center font-semibold mb-6">
             لیست مقاله ها
           </h2>

@@ -34,7 +34,11 @@ const OrderCardAdmin = ({ order, onDelete }) => {
   }
 
   const persianDateAndTime = convertToJalaali(order.date);
-  const user = users.filter((user) => user._id === order.user);
+  const user = users.find((user) => user._id === order.user);
+
+  // Ensure user exists before accessing its properties
+  const userName = user?.name || "Unknown";
+  const userMobile = user?.mobile || "Unknown";
 
   const handelOpenClick = async () => {
     try {
@@ -93,7 +97,7 @@ const OrderCardAdmin = ({ order, onDelete }) => {
         </div>
 
         <div className="orderer">
-          <span className="font-semibold">سفارش دهنده :</span> {user[0].name}
+          <span className="font-semibold">سفارش دهنده :</span> {userName}
         </div>
 
         <div className="order-number">
@@ -101,7 +105,7 @@ const OrderCardAdmin = ({ order, onDelete }) => {
         </div>
 
         <div className="orderer-mobile">
-          <span className="font-semibold">تلفن همراه :</span> {user[0].mobile}
+          <span className="font-semibold">تلفن همراه :</span> {userMobile}
         </div>
 
         <div className="orderer-adress">

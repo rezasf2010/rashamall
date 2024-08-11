@@ -34,7 +34,10 @@ const MessageCardAdmin = ({ message, onDelete }) => {
   }
 
   const persianDateAndTime = convertToJalaali(message.updatedAt);
-  const user = users.filter((user) => user._id === message.sender);
+  const user = users.find((user) => user._id === message.sender);
+
+  // Ensure user exists before accessing its properties
+  const userName = user?.name || "Unknown";
 
   const handelOpenClick = async () => {
     try {
@@ -93,7 +96,7 @@ const MessageCardAdmin = ({ message, onDelete }) => {
         </div>
 
         <div className="sender">
-          <span className="font-semibold">فرستنده :</span> {user[0].name}
+          <span className="font-semibold">فرستنده :</span> {userName}
         </div>
 
         <div className="subject">
