@@ -13,7 +13,7 @@ const ProductListCard = ({ product, categories, onDelete }) => {
   }, [categories, product.sub_category]);
 
   return (
-    <div className="text-gray-700 mb-4 flex flex-col sm:flex-row items-center gap-6 border border-gray-300 bg-gray-50 w-full mx-2 md:w-3/4 sm:w-full p-4 rounded-2xl shadow-xl">
+    <div className="text-gray-700 mb-4 flex flex-col sm:flex-row items-center gap-6 border border-gray-300 bg-gray-50 w-full mx-2 p-4 rounded-2xl shadow-xl">
       <Image
         src={product.images[0]}
         alt=""
