@@ -34,7 +34,7 @@ const OrderDetail = () => {
   }, []);
 
   const persianDateAndTime = order.date ? convertToJalaali(order.date) : "N/A";
-  const user = users.filter((user) => user._id === order.user);
+  const user = users.find((user) => user._id === order.user);
 
   if (loading) {
     return <Spinner loading={loading} />;
@@ -42,40 +42,40 @@ const OrderDetail = () => {
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
+      <h2 className="text-lg md:text-2xl text-center font-semibold md:mb-3">
         جزییات سفارش مشتری
       </h2>
       <div className="border border-gray-200 rounded-xl shadow-xl p-3 flex flex-col gap-3">
-        <div className="order-time">
+        <div className="order-time text-sm sm:text-base">
           <span className="font-semibold">زمان سفارش :</span>{" "}
           {persianDateAndTime}
         </div>
 
         <div className="flex flex-col gap-3 md:flex-row md: justify-between">
-          <div className="orderer">
-            <span className="font-semibold">سفارش دهنده :</span> {user[0].name}
+          <div className="orderer text-sm sm:text-base">
+            <span className="font-semibold">سفارش دهنده :</span> {user.name}
           </div>
 
-          <div className="orderer-mobile">
-            <span className="font-semibold">تلفن همراه :</span> 0
-            {user[0].mobile}
+          <div className="orderer-mobile text-sm sm:text-base">
+            <span className="font-semibold">تلفن همراه :</span> 0{user.mobile}
           </div>
         </div>
 
         <div className="flex flex-col gap-3 md:flex-row md: justify-between">
-          <div className="orderer-adress">
+          <div className="orderer-adress text-sm sm:text-base">
             <span className="font-semibold">آدرس :</span>{" "}
-            {`${user[0].address.state}, ${user[0].address.city}, ${user[0].address.street}`}
+            {`${user.address.state}, ${user.address.city}, ${user.address.street}`}
           </div>
 
-          <div className="orderer-zip">
-            <span className="font-semibold">کدپستی :</span>{" "}
-            {user[0].address.zip}
+          <div className="orderer-zip text-sm sm:text-base">
+            <span className="font-semibold">کدپستی :</span> {user.address.zip}
           </div>
         </div>
       </div>
 
-      <h4 className="text-xl font-semibold my-3">لیست کالاهای سفارشی</h4>
+      <h4 className="text-lg md:text-xl font-semibold md:my-3">
+        لیست کالاهای سفارشی
+      </h4>
 
       <div className="border border-gray-200 shadow-xl">
         <table className="w-full bg-white text-xs md:text-sm lg:text-base">
@@ -109,14 +109,14 @@ const OrderDetail = () => {
 
       <div className="flex justify-center gap-3 mt-6">
         <Link href="/admin/dashboard/orders" passHref>
-          <button className="px-4 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500">
+          <button className="px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base bg-gray-400 text-white rounded-lg hover:bg-gray-500">
             بازگشت
           </button>
         </Link>
-        <button className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+        <button className="px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base bg-green-500 text-white rounded-lg hover:bg-green-600">
           تایید
         </button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+        <button className="px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base bg-blue-500 text-white rounded-lg hover:bg-blue-600">
           چاپ سفارش
         </button>
       </div>

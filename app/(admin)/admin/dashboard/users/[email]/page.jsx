@@ -114,9 +114,9 @@ const AdminUserDetailPage = () => {
 
   return (
     mounted && (
-      <section className="bg-blue-50 w-full">
-        <div className="mx-6 lg:mx-12 py-24">
-          <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+      <section className=" w-full">
+        <div className="lg:w-11/12 lg:m-auto flex justify-center">
+          <div className="bg-white w-full px-2 py-4 md:px-6 md:py-8 mb-4 shadow-md rounded-md border">
             <h1 className="text-xl lg:text-3xl text-center font-bold mb-4">
               ویرایش اطلاعات
             </h1>
@@ -209,12 +209,14 @@ const AdminUserDetailPage = () => {
                   required
                 />
               </div>
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-              >
-                ذخیره اطلاعات
-              </button>
+              <div className="flex w-full justify-center">
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-white w-full md:w-1/2 px-4 py-2 rounded"
+                >
+                  ذخیره اطلاعات
+                </button>
+              </div>
             </form>
           </div>
         </div>
