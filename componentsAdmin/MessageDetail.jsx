@@ -43,28 +43,28 @@ const MessageDetail = () => {
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
+      <h2 className="text-lg sm:text-xl md:text-3xl text-center font-semibold mb-6">
         جزییات پیام
       </h2>
       <div className="border border-gray-200 rounded-xl shadow-xl p-3 flex flex-col gap-3">
-        <div className="message-time">
+        <div className="message-time text-sm sm:text-base">
           <span className="font-semibold">زمان پیام :</span>{" "}
           {persianDateAndTime}
         </div>
 
-        <div className="orderer">
+        <div className="orderer text-sm sm:text-base">
           <span className="font-semibold">فرستنده :</span> {user.name}
         </div>
 
-        <div className="orderer">
+        <div className="orderer text-sm sm:text-base">
           <span className="font-semibold">ایمیل :</span> {user.email}
         </div>
 
-        <div className="orderer">
+        <div className="orderer text-sm sm:text-base">
           <span className="font-semibold">موضوع پیام :</span> {message.subject}
         </div>
 
-        <div className="orderer">
+        <div className="orderer text-sm sm:text-base">
           <span className="font-semibold">متن پیام :</span> {message.body}
         </div>
 
