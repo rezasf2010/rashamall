@@ -46,6 +46,12 @@ export const PUT = async (request, { params }) => {
 
     const formData = await request.formData();
 
+    // Parse the JSON string back into an array if images are provided
+    let updatedImages;
+    if (formData.get("images")) {
+      updatedImages = JSON.parse(formData.get("images"));
+    }
+
     //Converting product name to slug
     function convertToSlug(name) {
       return name.toLowerCase().replace(/\s+/g, "-");
@@ -77,28 +83,63 @@ export const PUT = async (request, { params }) => {
       return new Response("Product does not exist", { status: 404 });
     }
 
-    // Create productData object for database
+    // // Create productData object for database
+    // const productData = {
+    //   name: formData.get("name"),
+    //   slug: convertToSlug(formData.get("name")),
+    //   brand: formData.get("brand"),
+    //   main_category: formData.get("mainCategory"),
+    //   sub_category: formData.get("subCategory"),
+    //   price: formData.get("price"),
+    //   description: formData.get("description"),
+    //   specifications,
+    //   features,
+    //   services,
+    //   comments,
+    //   is_onSale: formData.get("is_onSale") === "on", // Convert to boolean
+    //   discount: formData.get("discount")
+    //     ? parseInt(formData.get("discount"), 10)
+    //     : 0,
+    //   _stock_status: formData.get("_stock_status"),
+    // };
+
+    // Create a productData object for database update
     const productData = {
-      name: formData.get("name"),
-      slug: convertToSlug(formData.get("name")),
-      brand: formData.get("brand"),
-      main_category: formData.get("mainCategory"),
-      sub_category: formData.get("subCategory"),
-      price: formData.get("price"),
-      description: formData.get("description"),
-      specifications,
-      features,
-      services,
-      comments,
-      is_onSale: formData.get("is_onSale") === "on", // Convert to boolean
-      discount: formData.get("discount")
-        ? parseInt(formData.get("discount"), 10)
-        : 0,
-      _stock_status: formData.get("_stock_status"),
+      ...(formData.get("name") && {
+        name: formData.get("name"),
+        slug: convertToSlug(formData.get("name")),
+      }),
+      ...(formData.get("brand") && { brand: formData.get("brand") }),
+      ...(formData.get("mainCategory") && {
+        main_category: formData.get("mainCategory"),
+      }),
+      ...(formData.get("subCategory") && {
+        sub_category: formData.get("subCategory"),
+      }),
+      ...(formData.get("price") && { price: formData.get("price") }),
+      ...(formData.get("description") && {
+        description: formData.get("description"),
+      }),
+      ...(updatedImages && { images: updatedImages }), // Add or update the images
+      ...(specifications.length && { specifications }),
+      ...(features.length && { features }),
+      ...(services.length && { services }),
+      ...(comments.length && { comments }),
+      ...(formData.get("is_onSale") !== null && {
+        is_onSale: formData.get("is_onSale") === "on",
+      }),
+      ...(formData.get("discount") && {
+        discount: parseInt(formData.get("discount"), 10) || 0,
+      }),
+      ...(formData.get("_stock_status") && {
+        _stock_status: formData.get("_stock_status"),
+      }),
     };
 
     // Update product in database
-    const updatedProduct = await Product.findByIdAndUpdate(id, productData);
+    const updatedProduct = await Product.findByIdAndUpdate(id, productData, {
+      new: true,
+    });
 
     return new Response(JSON.stringify(updatedProduct), {
       status: 200,

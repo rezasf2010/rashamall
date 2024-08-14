@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import SpecAddInput from "@/componentsAdmin/SpecAddInput";
 import FeaturesAddInput from "@/componentsAdmin/FeaturesAddInput";
 import ServicesAddInput from "@/componentsAdmin/ServicesAddInput";
@@ -400,9 +401,14 @@ const ProductEditForm = () => {
           </select>
         </div>
 
-        <div>
+        <div className="flex justify-center gap-3 mt-6 items-center">
+          <Link href="/admin/dashboard/products-list" passHref>
+            <button className="px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base bg-gray-400 text-white rounded-lg hover:bg-gray-500">
+              بازگشت
+            </button>
+          </Link>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold px-2 sm:px-4 py-1 sm:py-2 rounded-full w-full focus:outline-none focus:shadow-outline"
             type="submit"
           >
             بروز رسانی محصول

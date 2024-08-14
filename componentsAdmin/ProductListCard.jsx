@@ -51,6 +51,14 @@ const ProductListCard = ({ product, categories, onDelete }) => {
 
         <div className="w-full flex gap-2 md:justify-end">
           <Link
+            href={`/admin/dashboard/product-edit/${product._id}/images`}
+            className="w-1/2 flex md:justify-end md:w-auto"
+          >
+            <button className="w-full md:w-auto text-sm font-semibold px-4 py-2 bg-green-300 rounded-lg hover:bg-green-400">
+              ویرایش عکس ها
+            </button>
+          </Link>
+          <Link
             href={`/admin/dashboard/product-edit/${product._id}`}
             className="w-1/2 flex md:justify-end md:w-auto"
           >
