@@ -1,4 +1,5 @@
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
+import axios from "axios";
 
 // Fetch all categories
 const fetchCategories = async () => {
@@ -233,6 +234,50 @@ const fetchPosts = async () => {
   }
 };
 
+const deleteImageFromCloudinary = async (imageUrl) => {
+  const publicId = extractPublicId(imageUrl);
+
+  const response = await axios.delete(`/api/cloudinary/${publicId}`);
+
+  return response.data;
+};
+
+// const addImagesToCloudinary = async (files) => {
+//   const uploadPromises = Array.from(files)
+//   .map((file) => {
+//     const formData = new FormData();
+//     formData.append("file", file);
+//     formData.append("upload_preset", "rashamall_upload_preset"); // Replace with your actual preset
+
+//     return axios.post(`https://api.cloudinary.com/rezasf/v1_1/rashamall/image/upload`, formData)
+//       .then((response) => response.data.secure_url);
+//   });
+
+//   return Promise.all(uploadPromises);
+// };
+
+const addImagesToCloudinary = async (files) => {
+  const fileBase64Strings = await Promise.all(
+    Array.from(files).map(async (file) => {
+      const arrayBuffer = await file.arrayBuffer();
+      return Buffer.from(new Uint8Array(arrayBuffer)).toString("base64");
+    }),
+  );
+
+  const response = await axios.post("/api/uploadImage", {
+    files: fileBase64Strings,
+  });
+
+  return response.data;
+};
+
+const extractPublicId = (imageUrl) => {
+  const parts = imageUrl.split("/");
+  const publicIdWithExtension = parts[parts.length - 1];
+  const publicId = publicIdWithExtension.split(".")[0];
+  return publicId;
+};
+
 export {
   fetchCategories,
   fetchBrands,
@@ -245,4 +290,7 @@ export {
   fetchPosts,
   fetchMessages,
   fetchMessage,
+  deleteImageFromCloudinary,
+  addImagesToCloudinary,
+  extractPublicId,
 };
