@@ -67,3 +67,12 @@
   -webkit-appearance: none;
   margin: 0;
 }
+
+.sticky-navbar {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it stays above other content */
+  background-color: #f8f9fa; /* Background color (same as the navbar) */
+  padding: 10px 0; /* Optional padding */
+}

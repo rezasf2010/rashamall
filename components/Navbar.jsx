@@ -71,19 +71,19 @@ const Navbar = () => {
           </Link>
           <div className="w-full px-2 lg:flex lg:flex-row lg:justify-between lg:items-center">
             <div className="w-full sm:flex sm:gap-2 md:gap-1 md:items-center lg:gap-1 xl:gap-4 md:w-full lg:w-2/3">
-              <div className="flex justify-around gap-6 my-4 sm:my-2 sm:gap-2 md:my-2 md:justify-around lg:justify-around md:gap-1 lg:gap-3">
+              <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:my-2 md:justify-around lg:justify-around md:gap-1 lg:gap-3 md:w-1/2">
                 <Link
-                  className="w-full border border-gray-400 py-2 px-12 rounded text-xs text-center sm:text-center"
+                  className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center"
                   href="/onsale"
                 >
                   کالاهای حراجی
                 </Link>
-                {/* <Link
+                <Link
                   className="w-1/2 border border-gray-400 p-2 rounded text-xs text-center sm:text-center"
                   href="/comparison"
                 >
                   مقایسه کالاها
-                </Link> */}
+                </Link>
               </div>
               <div className="flex justify-around gap-6 my-4 sm:w-1/2 sm:my-2 sm:gap-2 md:my-2 md:justify-around lg:justify-around md:gap-1 lg:gap-3 md:w-1/2">
                 <Link

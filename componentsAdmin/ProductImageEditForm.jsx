@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import axios from "axios";
 
 const ProductImageEditForm = ({ product, onImageDelete, onImageAdd }) => {
   const [images, setImages] = useState(product.images || []);
@@ -51,12 +50,12 @@ const ProductImageEditForm = ({ product, onImageDelete, onImageAdd }) => {
       </div>
       <div className="flex gap-4 items-center mt-4">
         <Link href="/admin/dashboard/products-list" passHref>
-          <button className="px-2 sm:px-4 py-1 sm:py-2 text-sm sm:text-base bg-gray-400 text-white rounded-lg hover:bg-gray-500">
+          <button className="px-2 py-1 sm:px-4 sm:py-2 text-sm bg-gray-400 text-white rounded-lg hover:bg-gray-500">
             بازگشت
           </button>
         </Link>
         <div className="">
-          <label className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+          <label className="px-2 py-1 sm:px-4 sm:py-2 text-sm cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
             افزودن عکس
             <input
               type="file"
