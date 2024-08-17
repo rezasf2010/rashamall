@@ -4,8 +4,8 @@ import MessageForm from "@/components/MessageForm";
 
 const ContactUsPage = () => {
   return (
-    <div className="mt-12 px-6 w-full md:w-4/5 flex flex-col items-center">
-      <h1 className="flex text-3xl font-bold text-gray-700 border-b-2 border-gray-700 p-2 mr-4 w-fit">
+    <div className="mt-12 px-6 w-full lg:w-11/12 flex flex-col items-center">
+      <h1 className="w-full lg:w-11/12 flex p-2 md:p-4 text-gray-700 text-lg md:text-2xl font-bold border-b-2 border-blue-500 mb-6">
         تماس با راشامال
       </h1>
 
