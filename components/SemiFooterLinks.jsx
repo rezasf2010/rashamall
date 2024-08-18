@@ -38,13 +38,21 @@ const SemiFooterLinks = () => {
 
       {/* Logo Section */}
       <div className="w-full sm:w-auto flex justify-center sm:justify-start mb-4 sm:mb-0">
-        <Image
-          src={trustLogo}
-          alt="نشانه اعتماد الکترونیک"
-          width={120}
-          height={120}
-          className="h-auto"
-        />
+        <Link
+          href="https://logo.samandehi.ir/Verify.aspx?id=272840&p=uiwkjyoeuiwkmcsiaodsobpd"
+          passHref
+          legacyBehavior
+        >
+          <a target="_blank" rel="noopener noreferrer">
+            <Image
+              src={trustLogo}
+              alt="نشانه اعتماد الکترونیک"
+              width={120}
+              height={120}
+              className="h-auto"
+            />
+          </a>
+        </Link>
       </div>
     </div>
   );

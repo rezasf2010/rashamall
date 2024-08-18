@@ -20,6 +20,7 @@ const Navbar = () => {
   const [loading, setLoading] = useState(true);
   const [providers, setProviders] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [hideOnScroll, setHideOnScroll] = useState(false);
 
   useEffect(() => {
     const fetchCategoriesData = async () => {
@@ -49,10 +50,33 @@ const Navbar = () => {
     .filter((category) => category.parent === null)
     .sort((a, b) => a._id.localeCompare(b._id));
 
+  // Scroll event to hide the specific div
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 200) {
+        // You can adjust the scroll threshold (50) to your preference
+        setHideOnScroll(true);
+      } else {
+        setHideOnScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="border border-blue-400 flex w-full">
+    <nav className="sticky top-0 z-50 border border-blue-400 flex w-full">
       <div className="w-full bg-blue-200 ">
-        <div className="md:border-b md:border-blue-400 px-4 flex flex-col sm:flex-row gap-2 sm:justify-around items-center md:px-1 ">
+        <div
+          className={`md:border-b md:border-blue-400 px-4 flex flex-col sm:flex-row gap-2 sm:justify-around items-center md:px-1 ${
+            hideOnScroll ? "hidden" : ""
+          }`}
+        >
           {/* Logo */}
           <Link
             className="flex flex-shrink-0 bg-blue-200 items-center px-2 justify-center"
