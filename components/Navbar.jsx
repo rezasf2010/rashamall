@@ -54,7 +54,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-      if (currentScroll > 200) {
+      if (currentScroll > 50) {
         // You can adjust the scroll threshold (50) to your preference
         setHideOnScroll(true);
       } else {
@@ -73,8 +73,10 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 border border-blue-400 flex w-full">
       <div className="w-full bg-blue-200 ">
         <div
-          className={`md:border-b md:border-blue-400 px-4 flex flex-col sm:flex-row gap-2 sm:justify-around items-center md:px-1 ${
-            hideOnScroll ? "hidden" : ""
+          className={`md:border-b md:border-blue-400 px-4 flex flex-col sm:flex-row gap-2 sm:justify-around items-center md:px-1 transition-all duration-500 ease-in-out ${
+            hideOnScroll
+              ? "opacity-0 h-0 overflow-hidden"
+              : "opacity-100 h-auto"
           }`}
         >
           {/* Logo */}
