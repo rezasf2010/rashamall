@@ -54,7 +54,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-      if (currentScroll > 50) {
+      if (currentScroll > 1000) {
         // You can adjust the scroll threshold (50) to your preference
         setHideOnScroll(true);
       } else {

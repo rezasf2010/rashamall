@@ -68,11 +68,26 @@
   margin: 0;
 }
 
-.sticky-navbar {
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Ensure it stays above other content */
-  background-color: #f8f9fa; /* Background color (same as the navbar) */
-  padding: 10px 0; /* Optional padding */
+@media print {
+  body * {
+    visibility: hidden; /* Force hide everything */
+  }
+
+  .print,
+  .print * {
+    visibility: visible; /* Force show only the print div */
+  }
+
+  .print {
+    position: absolute;
+    top: 3rem;
+    width: 90%;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  @page {
+    margin: 0;
+    size: auto;
+  }
 }
