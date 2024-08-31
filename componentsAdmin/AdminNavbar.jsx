@@ -137,7 +137,7 @@ const AdminNavbar = () => {
         </div>
         <div
           onClick={handelSignOut}
-          className="mb-8 mt-16 border border-orange-500 py-2 px-4 rounded-lg bg bg-orange-500 text-white"
+          className="mb-8 mt-16 border border-orange-500 py-2 px-4 rounded-lg bg bg-orange-500 text-white cursor-pointer"
         >
           sign out
         </div>
