@@ -242,20 +242,6 @@ const deleteImageFromCloudinary = async (imageUrl) => {
   return response.data;
 };
 
-// const addImagesToCloudinary = async (files) => {
-//   const uploadPromises = Array.from(files)
-//   .map((file) => {
-//     const formData = new FormData();
-//     formData.append("file", file);
-//     formData.append("upload_preset", "rashamall_upload_preset"); // Replace with your actual preset
-
-//     return axios.post(`https://api.cloudinary.com/rezasf/v1_1/rashamall/image/upload`, formData)
-//       .then((response) => response.data.secure_url);
-//   });
-
-//   return Promise.all(uploadPromises);
-// };
-
 const addImagesToCloudinary = async (files) => {
   const fileBase64Strings = await Promise.all(
     Array.from(files).map(async (file) => {
