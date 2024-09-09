@@ -71,7 +71,11 @@ const ProductDetails = ({ product }) => {
               )}
               <Bookmark product={product} />
             </div>
-            <AddToCart productId={product._id} price={discountedPrice} />
+            <AddToCart
+              productId={product._id}
+              price={discountedPrice}
+              status={product._stock_status}
+            />
           </div>
           <div className="mt-4">
             <ShareButtons product={product} />

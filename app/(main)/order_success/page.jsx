@@ -1,32 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import CartProduct from "@/components/CartProduct";
-import { useGlobalContext } from "@/context/UserGlobalContext";
-import SpinnerH from "@/components/SpinnerH";
-import { fetchProducts } from "@/utils/requests";
 
 const OrderSuccessPage = () => {
-  const [products, setProducts] = useState([]);
-  const { cart } = useGlobalContext();
-  const [loading, setLoading] = useState(true);
   const [secondsLeft, setSecondsLeft] = useState(20);
   const router = useRouter();
-
-  useEffect(() => {
-    const fetchProductsData = async () => {
-      try {
-        const products = await fetchProducts();
-        setProducts(products);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProductsData();
-  }, [cart]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -40,10 +18,6 @@ const OrderSuccessPage = () => {
 
     return () => clearInterval(timer);
   }, [secondsLeft, router]);
-
-  if (loading) {
-    return <SpinnerH loading={loading} />;
-  }
 
   const handleReturnHome = () => {
     router.push("/"); // Change this to your actual next step route

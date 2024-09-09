@@ -15,9 +15,9 @@ const ProductsListPage = () => {
     const fetchProductsData = async () => {
       try {
         const categories = await fetchCategories();
-        const products = await fetchProducts();
+        const data = await fetchProducts();
         setCategories(categories);
-        setProducts(products);
+        setProducts(data.totalProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {

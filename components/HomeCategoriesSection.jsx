@@ -15,10 +15,10 @@ const HomeCategoriesSection = () => {
     const fetchData = async () => {
       try {
         const categories = await fetchCategories();
-        const products = await fetchProducts();
+        const data = await fetchProducts();
         const brands = await fetchBrands();
         setCategories(categories);
-        setProducts(products);
+        setProducts(data.totalProducts);
         setBrands(brands);
       } catch (error) {
         console.error("Error fetching data:", error);

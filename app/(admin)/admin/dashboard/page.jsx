@@ -15,10 +15,10 @@ const AdminDashboardPage = () => {
     const fetchData = async () => {
       try {
         const orders = await fetchOrders();
-        const products = await fetchProducts();
+        const data = await fetchProducts();
         const posts = await fetchPosts();
         setOrders(orders);
-        setProducts(products);
+        setProducts(data.totalProducts);
         setPosts(posts);
       } catch (error) {
         console.error("Error fetching orders:", error);
