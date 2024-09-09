@@ -7,9 +7,22 @@ export const GET = async (request) => {
   try {
     await connectDB();
 
-    const products = await Product.find({});
+    const page = request.nextUrl.searchParams.get("page") || 1;
+    const pageSize = request.nextUrl.searchParams.get("pageSize") || 9;
 
-    return new Response(JSON.stringify(products), { status: 200 });
+    const skip = (page - 1) * pageSize;
+
+    const total = await Product.countDocuments({});
+    const products = await Product.find({}).skip(skip).limit(pageSize);
+    const totalProducts = await Product.find({});
+
+    const result = {
+      total,
+      products,
+      totalProducts,
+    };
+
+    return new Response(JSON.stringify(result), { status: 200 });
   } catch (error) {
     console.log(error);
     return new Response("Something went wrong", { status: 500 });

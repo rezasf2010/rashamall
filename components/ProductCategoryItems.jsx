@@ -11,8 +11,8 @@ const ProductCategoryItems = ({ categoryId }) => {
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
-        const products = await fetchProducts();
-        setProducts(products);
+        const data = await fetchProducts();
+        setProducts(data.totalProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {

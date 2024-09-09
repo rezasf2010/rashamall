@@ -6,7 +6,7 @@ import { useGlobalContext } from "@/context/UserGlobalContext";
 import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
 
-const AddToCart = ({ productId, price }) => {
+const AddToCart = ({ productId, price, status }) => {
   const { data: session } = useSession();
   const { cart, updateCart, cartCount } = useGlobalContext();
   const [numberOfOrder, setNumberOfOrder] = useState(0);
@@ -42,6 +42,7 @@ const AddToCart = ({ productId, price }) => {
           <button
             className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm w-full"
             onClick={handleAddToCart}
+            disabled={status != "in stock"}
           >
             افزودن به سبد خرید
           </button>
