@@ -1,21 +1,29 @@
-"use Client";
-import { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
-import Spinner from "@/components/Spinner";
-import Pagination from "@/components/pagination";
+"use client";
 
-const ProductCategoryItems = ({ categoryId }) => {
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Spinner from "@/components/Spinner";
+import Breadcrumb from "@/components/Breadcrumb";
+import Pagination from "@/components/pagination";
+import ProductCard from "@/components/ProductCard";
+
+const BrandNamePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const params = useParams();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(9);
   const [totalItems, setTotalItems] = useState(0);
+
+  const brandId = params.brand_id;
+
+  const [brandName, brandObjectId] = brandId.split("-");
 
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
         const res = await fetch(
-          `/api/products/${categoryId}?page=${page}&pageSize=${pageSize}`,
+          `/api/brands/${brandObjectId}?page=${page}&pageSize=${pageSize}`,
         );
 
         if (!res.ok) {
@@ -35,6 +43,12 @@ const ProductCategoryItems = ({ categoryId }) => {
     fetchProductsData();
   }, [page, pageSize]);
 
+  const pathSegments = [
+    { name: "خانه", link: "/" },
+    { name: "همه کالاها", link: "/products" },
+    { name: brandName },
+  ];
+
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
@@ -42,15 +56,15 @@ const ProductCategoryItems = ({ categoryId }) => {
   return loading ? (
     <Spinner loading={loading} />
   ) : (
-    <section className="px-4 py-6">
+    <section className="w-full flex flex-col my-6 pr-6">
+      <div className="flex flex-col items-start">
+        <Breadcrumb pathSegments={pathSegments} />
+      </div>
       <div className="container-xl lg:container m-auto">
         {products.length === 0 ? (
-          <p className="text-center text-xl font-semibold mt-10">
-            {" "}
-            کالایی یافت نشد!{" "}
-          </p>
+          <p> کالایی یافت نشد! </p>
         ) : (
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:place-items-center">
+          <div className="py-6 grid grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}
@@ -67,4 +81,4 @@ const ProductCategoryItems = ({ categoryId }) => {
   );
 };
 
-export default ProductCategoryItems;
+export default BrandNamePage;
