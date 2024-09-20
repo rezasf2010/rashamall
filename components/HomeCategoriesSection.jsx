@@ -36,32 +36,35 @@ const HomeCategoriesSection = () => {
     .slice(0, 3);
 
   //Finding products by their category (ie. coffeMaker)
-  const coffeMakerCategory = categories.filter(
+  const coffeMakerCategory = categories.find(
     (category) => category.slug === "coffee-maker",
   );
+
   const coffeeMakers = products.filter(
-    (product) => product.sub_category === coffeMakerCategory[0]._id,
+    (product) => product.sub_category === coffeMakerCategory._id,
+  );
+
+  const mainCategory = categories.find(
+    (category) => category._id === coffeMakerCategory.parent,
   );
 
   //Finding products by their brand (ie. hisense)
-  const brand = brands.filter((brand) => brand.slug === "hisense");
+  const brand = brands.find((brand) => brand.slug === "hisense");
   const hisenseProducts = products.filter(
-    (product) => product.brand === brand[0]._id,
+    (product) => product.brand === brand._id,
   );
 
   //Finding products by their category and brand (ie. Hisense air-conditioner)
-  const airConditionerCategory = categories.filter(
+  const airConditionerCategory = categories.find(
     (category) => category.slug === "air-conditioner",
   );
 
-  const airConditionerBrand = brands.filter(
-    (brand) => brand.slug === "hisense",
-  );
+  const airConditionerBrand = brands.find((brand) => brand.slug === "hisense");
 
   const hisenseAirConditioners = products.filter(
     (product) =>
-      product.sub_category === airConditionerCategory[0]._id &&
-      product.brand === airConditionerBrand[0]._id,
+      product.sub_category === airConditionerCategory._id &&
+      product.brand === airConditionerBrand._id,
   );
 
   return loading ? (
@@ -74,10 +77,15 @@ const HomeCategoriesSection = () => {
     </div>
   ) : (
     <div className="w-11/12 flex flex-col gap-12 items-center">
-      <HomeCategorySection heading="جدیدترین ها" products={newestProducts} />
+      <HomeCategorySection
+        heading="جدیدترین ها"
+        products={newestProducts}
+        route="/products"
+      />
       <HomeCategorySection
         heading="محصولات اسپرسوساز"
         products={coffeeMakers}
+        route={`/products/${mainCategory.slug}/${coffeMakerCategory.slug}-${coffeMakerCategory._id}`}
       />
       <HomeCategorySection
         heading="انواع کولر گازی هایسنس"
@@ -86,6 +94,7 @@ const HomeCategoriesSection = () => {
       <HomeCategorySection
         heading="انواع کالاهای هایسنس"
         products={hisenseProducts}
+        route={`/brands/${brand.slug}-${brand._id}`}
       />
     </div>
   );
