@@ -11,6 +11,9 @@ module.exports = {
       fontFamily: {
         sans: ["iransansx", "tahoma"],
       },
+      maxWidth: {
+        'custom': '1440px',
+      },
     },
     screens: {
       "sm": "640px",

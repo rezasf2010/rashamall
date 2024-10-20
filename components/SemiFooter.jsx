@@ -9,15 +9,15 @@ import SemiFooterLinks from "./SemiFooterLinks";
 const SemiFooter = () => {
   return (
     <div className="bg-gray-100 w-full flex flex-col items-center text-gray-700">
-      <div className=" w-full flex flex-col md:flex-row items-center md:items-start justify-center">
-        <div className="w-full md:w-1/2 h-full  flex justify-around gap-3">
-          <div className="w-1/2  p-4 flex flex-col items-center justify-around">
+      <div className="max-w-8xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-center">
+        <div className="w-full md:w-1/2 h-full flex justify-around gap-3">
+          <div className="w-1/2 p-4 flex flex-col items-center justify-around">
             <Image
               src={call}
               width={0}
               height={0}
               sizes="100vw"
-              className="w-1/2 h-auto  lg:h-40"
+              className="w-1/2 h-auto lg:h-40"
               priority={true}
               alt="call"
             />
@@ -37,7 +37,7 @@ const SemiFooter = () => {
               width={0}
               height={0}
               sizes="100vw"
-              className="w-1/2 h-auto  lg:h-40"
+              className="w-1/2 h-auto lg:h-40"
               priority={true}
               alt="return"
             />

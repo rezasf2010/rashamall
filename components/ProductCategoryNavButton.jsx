@@ -36,7 +36,7 @@ const ProductCategoryNavButton = ({
         </Link>
         {hasChildren && (
           <button
-            onClick={() => setOpenDropdown(isOpen ? null : _id)}
+            onMouseEnter={() => setOpenDropdown(isOpen ? null : _id)}
             className="mt-1 mr-1 lg:mr-3"
             aria-label="Toggle menu"
           >

@@ -23,8 +23,8 @@ const MainLayout = ({ children }) => {
   return (
     <AuthProvider>
       <GlobalProvider>
-        <html lang="fa">
-          <body className="w-full flex flex-col items-center">
+        <html lang="fa" className="flex justify-center">
+          <body className="max-w-custom mx-auto flex flex-col items-center">
             <Navbar />
             <main className="w-full flex flex-col items-center">
               {children}

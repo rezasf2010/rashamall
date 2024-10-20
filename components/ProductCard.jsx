@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="bg-gray-50 w-44 min-h-80 p-2 md:w-80 md:h-[28rem] lg:h-[28rem] lg:w-72 hxlg:w-80 2xl:w-96 rounded-xl shadow-2xl relative border border-gray-200 flex flex-col justify-between">
+    <div className="bg-white w-44 min-h-80 p-2 md:w-80 md:h-[28rem] lg:h-[28rem] lg:w-72 hxlg:w-80 2xl:w-96 rounded-xl shadow-2xl relative border border-gray-200 flex flex-col justify-between">
       <div>
         <div className="w-full h-auto md:max-h-[20rem] md:h-2/3 flex rounded-t-xl justify-center items-center">
           <Image
@@ -50,7 +50,7 @@ const ProductCard = ({ product }) => {
         >
           <p>{product._stock_status === "in stock" ? "موجود" : "ناموجود"}</p>
         </div>
-        <div className="relative px-4 py-2 flex flex-col md:h-1/3">
+        <div className="relative py-2 flex flex-col md:h-1/3">
           <h3 className="text-xs mb-2 font-[600] md:text-sm lg:text-base">
             {product.name}
           </h3>

@@ -47,7 +47,8 @@ const AdminDashboardPage = () => {
   return (
     <div className="w-full">
       <div className="lg:w-11/12 lg:m-auto flex justify-center">
-        <div className="bg-white w-full flex justify-center px-6 py-8 mb-4 shadow-md rounded-md border">
+        <div className="bg-white w-full flex flex-col justify-center items-start px-6 py-8 mb-4 shadow-md rounded-md border">
+          <h1 className="text-gray-700 font-bold text-2xl p-2 border-b-2 border-gray-700">داشبورد</h1>
           <div className="w-full text-gray-700 p-2 md:p-6 grid grid-cols-2 md:grid-cols-3 gap-3">
             <div className="border border-gray-300 bg-gray-50 rounded-2xl shadow-xl p-2 text-center flex flex-col gap-3">
               تعداد کل سفارش ها

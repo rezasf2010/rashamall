@@ -21,6 +21,10 @@ const CategoryDropdownItem = ({
       aria-orientation="vertical"
       aria-labelledby="category-menu-button"
       tabIndex="-1"
+      onMouseLeave={() => {
+        handleDropdownOpen(false);
+        setIsMobileMenuOpen(false);
+      }}
     >
       {subCategories.map((subCategory) => (
         <Link
