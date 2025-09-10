@@ -1,8 +1,8 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
-import { FaChevronDown, FaChevronLeft } from "react-icons/fa";
-import CategoryDropdownItem from "./CategoryDropdownItem";
+'use client';
+import { useState } from 'react';
+import Link from 'next/link';
+import { FaChevronDown, FaChevronLeft } from 'react-icons/fa';
+import CategoryDropdownItem from './CategoryDropdownItem';
 
 const ProductCategoryNavButton = ({
   category,
@@ -20,7 +20,7 @@ const ProductCategoryNavButton = ({
     <div className="relative">
       <div
         className={`relative border border-gray-400 flex p-2 rounded-lg text-sm focus:outline-none focus:bg-blue-300 focus:ring-1 focus:ring-offset-1 focus:ring-offset-gray-800 md:text-xs ${
-          !hasChildren ? "" : "justify-between"
+          !hasChildren ? '' : 'justify-between'
         }`}
       >
         <Link

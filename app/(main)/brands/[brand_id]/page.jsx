@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import Spinner from "@/components/Spinner";
-import Breadcrumb from "@/components/Breadcrumb";
-import Pagination from "@/components/pagination";
-import ProductCard from "@/components/ProductCard";
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import Spinner from '@/components/Spinner';
+import Breadcrumb from '@/components/Breadcrumb';
+import Pagination from '@/components/pagination';
+import ProductCard from '@/components/ProductCard';
 
 const BrandNamePage = () => {
   const [products, setProducts] = useState([]);
@@ -17,24 +17,22 @@ const BrandNamePage = () => {
 
   const brandId = params.brand_id;
 
-  const [brandName, brandObjectId] = brandId.split("-");
+  const [brandName, brandObjectId] = brandId.split('-');
 
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
-        const res = await fetch(
-          `/api/brands/${brandObjectId}?page=${page}&pageSize=${pageSize}`,
-        );
+        const res = await fetch(`/api/brands/${brandObjectId}?page=${page}&pageSize=${pageSize}`);
 
         if (!res.ok) {
-          throw new Error("Failed to fetch data");
+          throw new Error('Failed to fetch data');
         }
 
         const data = await res.json();
         setProducts(data.products);
         setTotalItems(data.total);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -44,8 +42,8 @@ const BrandNamePage = () => {
   }, [page, pageSize]);
 
   const pathSegments = [
-    { name: "خانه", link: "/" },
-    { name: "همه کالاها", link: "/products" },
+    { name: 'خانه', link: '/' },
+    { name: 'همه کالاها', link: '/products' },
     { name: brandName },
   ];
 

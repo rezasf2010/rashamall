@@ -1,8 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
 
 const ProductListCard = ({ product, categories, onDelete }) => {
   const [productCategory, setProductCategory] = useState(null);
@@ -27,25 +25,25 @@ const ProductListCard = ({ product, categories, onDelete }) => {
       <div className="info w-full">
         <div className="mb-2 ">
           <span className="font-semibold"> نام کالا :</span>
-          {"  "}
+          {'  '}
           {product.name}
         </div>
 
         <div className="mb-2">
-          <span className="font-semibold">قیمت : </span> {"  "}
+          <span className="font-semibold">قیمت : </span> {'  '}
           {product.price.toLocaleString()}
-          {"  "}
+          {'  '}
           <span>تومان</span>
         </div>
 
         <div className="mb-2">
-          <span className="font-semibold">گروه کالا : </span> {"  "}
+          <span className="font-semibold">گروه کالا : </span> {'  '}
           {productCategory?.fa_name}
         </div>
 
         <div className="flex items-center mb-2 gap-2">
           <span className="font-bold">وضعیت موجودی : </span>
-          {"  "}
+          {'  '}
           {product._stock_status}
         </div>
 

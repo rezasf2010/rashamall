@@ -1,9 +1,9 @@
-import connectDB from "@/config/database";
-import User from "@/models/User";
-import Product from "@/models/Product";
-import { getSessionUser } from "@/utils/getSessionUser";
+import connectDB from '@/config/database';
+import User from '@/models/User';
+import Product from '@/models/Product';
+import { getSessionUser } from '@/utils/getSessionUser';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 // GET /api/bookmarks
 export const GET = async () => {
@@ -13,7 +13,7 @@ export const GET = async () => {
     const sessionUser = await getSessionUser();
 
     if (!sessionUser || !sessionUser.userId) {
-      return new Response("User ID is required", { status: 401 });
+      return new Response('User ID is required', { status: 401 });
     }
 
     const { userId } = sessionUser;
@@ -22,7 +22,7 @@ export const GET = async () => {
     const user = await User.findOne({ _id: userId });
 
     if (!user) {
-      return new Response("User not found", { status: 404 });
+      return new Response('User not found', { status: 404 });
     }
 
     // Get users bookmarks
@@ -31,7 +31,7 @@ export const GET = async () => {
     return new Response(JSON.stringify(bookmarks), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };
 
@@ -45,7 +45,7 @@ export const POST = async (request) => {
     const sessionUser = await getSessionUser();
 
     if (!sessionUser || !sessionUser.userId) {
-      return new Response("User ID is required", { status: 401 });
+      return new Response('User ID is required', { status: 401 });
     }
 
     const { userId } = sessionUser;
@@ -61,12 +61,12 @@ export const POST = async (request) => {
     if (isBookmarked) {
       // if already bookmarked, remove it
       user.savedProducts.pull(productId);
-      message = "کالا با موفقیت از لیست ذخیره حذف شد";
+      message = 'کالا با موفقیت از لیست ذخیره حذف شد';
       isBookmarked = false;
     } else {
       // if not Bookmarked, add it
       user.savedProducts.push(productId);
-      message = "کالا با موفقیت به لیست ذخیره اضافه شد";
+      message = 'کالا با موفقیت به لیست ذخیره اضافه شد';
       isBookmarked = true;
     }
 
@@ -77,6 +77,6 @@ export const POST = async (request) => {
     });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };

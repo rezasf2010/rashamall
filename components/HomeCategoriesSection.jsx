@@ -1,9 +1,8 @@
-"use client";
-import { useState, useEffect } from "react";
-import { fetchCategories, fetchProducts, fetchBrands } from "@/utils/requests";
-import SpinnerH from "./SpinnerH";
-import HomeCategorySection from "./HomeCategorySection";
-import { HomeCategorySectionSkeleton } from "@/ui/skeletons";
+'use client';
+import { useState, useEffect, useMemo } from 'react';
+import { fetchCategories, fetchProducts, fetchBrands } from '@/utils/requests';
+import HomeCategorySection from './HomeCategorySection';
+import { HomeCategorySectionSkeleton } from '@/ui/skeletons';
 
 const HomeCategoriesSection = () => {
   const [categories, setCategories] = useState([]);
@@ -12,89 +11,116 @@ const HomeCategoriesSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       try {
-        const categories = await fetchCategories();
-        const data = await fetchProducts();
-        const brands = await fetchBrands();
-        setCategories(categories);
-        setProducts(data.totalProducts);
-        setBrands(brands);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+        const [catsRes, prodsRes, brandsRes] = await Promise.all([
+          fetchCategories(),
+          fetchProducts(),
+          fetchBrands(),
+        ]);
+
+        // Normalize shapes to arrays
+        const cats = Array.isArray(catsRes) ? catsRes : [];
+        const prods = Array.isArray(prodsRes?.totalProducts)
+          ? prodsRes.totalProducts
+          : Array.isArray(prodsRes?.products)
+            ? prodsRes.products
+            : Array.isArray(prodsRes)
+              ? prodsRes
+              : [];
+        const brs = Array.isArray(brandsRes) ? brandsRes : [];
+
+        setCategories(cats);
+        setProducts(prods);
+        setBrands(brs);
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        setCategories([]);
+        setProducts([]);
+        setBrands([]);
       } finally {
         setLoading(false);
       }
-    };
-
-    fetchData();
+    })();
   }, []);
 
-  //Finding the last 3 products that are added to the database
-  const newestProducts = products
-    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    .slice(0, 3);
+  // Safeguard inputs
+  const list = Array.isArray(products) ? products : [];
 
-  //Finding products by their category (ie. coffeMaker)
-  const coffeMakerCategory = categories.find(
-    (category) => category.slug === "coffee-maker",
-  );
+  // Newest 3 products (copy before sort to avoid mutating state)
+  const newestProducts = useMemo(() => {
+    return [...list]
+      .sort((a, b) => new Date(b?.createdAt ?? 0).getTime() - new Date(a?.createdAt ?? 0).getTime())
+      .slice(0, 3);
+  }, [list]);
 
-  const coffeeMakers = products.filter(
-    (product) => product.sub_category === coffeMakerCategory._id,
-  );
+  // Helpers to find safely
+  const findCategoryBySlug = (slug) => categories.find((c) => c?.slug === slug) || null;
+  const findBrandBySlug = (slug) => brands.find((b) => b?.slug === slug) || null;
+  const findCategoryById = (id) => categories.find((c) => c?._id === id) || null;
 
-  const mainCategory = categories.find(
-    (category) => category._id === coffeMakerCategory.parent,
-  );
+  // Coffee maker
+  const coffeeMakerCat = findCategoryBySlug('coffee-maker');
+  const mainCategory = coffeeMakerCat ? findCategoryById(coffeeMakerCat.parent) : null;
 
-  //Finding products by their brand (ie. hisense)
-  const brand = brands.find((brand) => brand.slug === "hisense");
-  const hisenseProducts = products.filter(
-    (product) => product.brand === brand._id,
-  );
+  const coffeeMakers = useMemo(() => {
+    if (!coffeeMakerCat?._id) return [];
+    return list.filter((p) => p?.sub_category === coffeeMakerCat._id);
+  }, [list, coffeeMakerCat]);
 
-  //Finding products by their category and brand (ie. Hisense air-conditioner)
-  const airConditionerCategory = categories.find(
-    (category) => category.slug === "air-conditioner",
-  );
+  // Hisense brand
+  const hisense = findBrandBySlug('hisense');
+  const hisenseProducts = useMemo(() => {
+    if (!hisense?._id) return [];
+    return list.filter((p) => p?.brand === hisense._id);
+  }, [list, hisense]);
 
-  const airConditionerBrand = brands.find((brand) => brand.slug === "hisense");
+  // Hisense air conditioners
+  const airConditionerCat = findCategoryBySlug('air-conditioner');
+  const hisenseAirConditioners = useMemo(() => {
+    if (!airConditionerCat?._id || !hisense?._id) return [];
+    return list.filter(
+      (p) => p?.sub_category === airConditionerCat._id && p?.brand === hisense._id,
+    );
+  }, [list, airConditionerCat, hisense]);
 
-  const hisenseAirConditioners = products.filter(
-    (product) =>
-      product.sub_category === airConditionerCategory._id &&
-      product.brand === airConditionerBrand._id,
-  );
-
-  return loading ? (
-    <div className="w-11/12 flex flex-col gap-12 items-center">
-      {Array(5)
-        .fill()
-        .map((_, index) => (
-          <HomeCategorySectionSkeleton key={index} />
+  if (loading) {
+    return (
+      <div className="w-11/12 flex flex-col gap-12 items-center">
+        {Array.from({ length: 5 }).map((_, idx) => (
+          <HomeCategorySectionSkeleton key={idx} />
         ))}
-    </div>
-  ) : (
+      </div>
+    );
+  }
+
+  // Optional: empty state guard (so page doesn’t crash)
+  if (!list.length) {
+    return <div className="w-11/12 text-sm text-gray-500 py-8">محصولی برای نمایش موجود نیست.</div>;
+  }
+
+  // Build safe routes (fallbacks if slugs missing)
+  const coffeeRoute =
+    coffeeMakerCat?.slug && coffeeMakerCat?._id && mainCategory?.slug
+      ? `/products/${mainCategory.slug}/${coffeeMakerCat.slug}-${coffeeMakerCat._id}`
+      : '/products';
+
+  const hisenseRoute =
+    hisense?.slug && hisense?._id ? `/brands/${hisense.slug}-${hisense._id}` : '/brands';
+
+  return (
     <div className="w-11/12 flex flex-col gap-12 items-center">
-      <HomeCategorySection
-        heading="جدیدترین ها"
-        products={newestProducts}
-        route="/products"
-      />
+      <HomeCategorySection heading="جدیدترین ها" products={newestProducts} route="/products" />
       <HomeCategorySection
         heading="محصولات اسپرسوساز"
         products={coffeeMakers}
-        route={`/products/${mainCategory.slug}/${coffeMakerCategory.slug}-${coffeMakerCategory._id}`}
+        route={coffeeRoute}
       />
-      <HomeCategorySection
-        heading="انواع کولر گازی هایسنس"
-        products={hisenseAirConditioners}
-      />
+      <HomeCategorySection heading="انواع کولر گازی هایسنس" products={hisenseAirConditioners} />
       <HomeCategorySection
         heading="انواع کالاهای هایسنس"
         products={hisenseProducts}
-        route={`/brands/${brand.slug}-${brand._id}`}
+        route={hisenseRoute}
       />
     </div>
   );

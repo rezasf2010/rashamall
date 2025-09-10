@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import provincesAndCities from "@/assets/data/provinceCityInfo.json";
+import { useState, useEffect } from 'react';
+import provincesAndCities from '@/assets/data/provinceCityInfo.json';
 
 const ProvinceCitySelect = ({ formData, setFormData }) => {
-  const [selectedProvince, setSelectedProvince] = useState("");
+  const [selectedProvince, setSelectedProvince] = useState('');
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const ProvinceCitySelect = ({ formData, setFormData }) => {
     setCities(provincesAndCities[province] || []);
     setFormData({
       ...formData,
-      address: { ...formData.address, state: province, city: "" },
+      address: { ...formData.address, state: province, city: '' },
     });
   };
 
@@ -39,7 +39,7 @@ const ProvinceCitySelect = ({ formData, setFormData }) => {
           id="state"
           name="address.state"
           className="mt-1 block w-full p-2 border rounded"
-          value={formData.address.state || ""}
+          value={formData.address.state || ''}
           onChange={handleProvinceChange}
           required
         >
@@ -62,7 +62,7 @@ const ProvinceCitySelect = ({ formData, setFormData }) => {
           id="city"
           name="address.city"
           className="mt-1 block w-full p-2 border rounded"
-          value={formData.address.city || ""}
+          value={formData.address.city || ''}
           onChange={handleCityChange}
           required
         >

@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import trustLogo from "@/assets/images/trust-logo.png";
+import Image from 'next/image';
+import Link from 'next/link';
+import trustLogo from '@/assets/images/trust-logo.png';
 
 const SemiFooterLinks = () => {
   return (

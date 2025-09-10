@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import InfoBox from "./InfoBox";
-import InfoImageOne from "@/assets/images/infoBox1.jpg";
-import InfoImageTwo from "@/assets/images/infoBox2.jpg";
-import InfoImageThree from "@/assets/images/infoBox3.jpg";
+import Image from 'next/image';
+import Link from 'next/link';
+import InfoBox from './InfoBox';
+import InfoImageOne from '@/assets/images/infoBox1.jpg';
+import InfoImageTwo from '@/assets/images/infoBox2.jpg';
+import InfoImageThree from '@/assets/images/infoBox3.jpg';
 
 const InfoBoxes = () => {
   return (

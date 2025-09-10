@@ -1,22 +1,22 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model, models } from 'mongoose';
 
 const UserSchema = new Schema(
   {
     email: {
       type: String,
-      unique: [true, "Email already exists"],
-      required: [true, "Email is required"],
+      unique: [true, 'Email already exists'],
+      required: [true, 'Email is required'],
     },
     username: {
       type: String,
     },
     name: {
       type: String,
-      required: [true, "name is required"],
+      required: [true, 'name is required'],
     },
     mobile: {
       type: Number,
-      required: [true, "mobile is required"],
+      required: [true, 'mobile is required'],
     },
     phone: {
       type: Number,
@@ -41,13 +41,13 @@ const UserSchema = new Schema(
     savedProducts: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Product",
+        ref: 'Product',
       },
     ],
     orders: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Order",
+        ref: 'Order',
       },
     ],
   },
@@ -56,6 +56,6 @@ const UserSchema = new Schema(
   },
 );
 
-const User = models.User || model("User", UserSchema);
+const User = models.User || model('User', UserSchema);
 
 export default User;

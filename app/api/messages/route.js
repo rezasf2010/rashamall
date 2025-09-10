@@ -1,9 +1,9 @@
-import connectDB from "@/config/database";
-import Message from "@/models/Message";
-import { getSessionUser } from "@/utils/getSessionUser";
+import connectDB from '@/config/database';
+import Message from '@/models/Message';
+import { getSessionUser } from '@/utils/getSessionUser';
 
 // GET /api/messages
-export const GET = async (request) => {
+export const GET = async () => {
   try {
     await connectDB();
 
@@ -20,7 +20,7 @@ export const GET = async (request) => {
     return new Response(JSON.stringify(messagess), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };
 
@@ -32,7 +32,7 @@ export const POST = async (request) => {
     const sessionUser = await getSessionUser();
 
     if (!sessionUser || !sessionUser.userId) {
-      return new Response(JSON.stringify({ error: "User not logged in" }), {
+      return new Response(JSON.stringify({ error: 'User not logged in' }), {
         status: 401,
       });
     }
@@ -50,13 +50,10 @@ export const POST = async (request) => {
 
     await newMessage.save();
 
-    return new Response(
-      JSON.stringify({ message: "Message sent successfully" }),
-      { status: 200 },
-    );
+    return new Response(JSON.stringify({ message: 'Message sent successfully' }), { status: 200 });
   } catch (error) {
-    console.error("Error sending message:", error);
-    return new Response(JSON.stringify({ error: "Something went wrong" }), {
+    console.error('Error sending message:', error);
+    return new Response(JSON.stringify({ error: 'Something went wrong' }), {
       status: 500,
     });
   }

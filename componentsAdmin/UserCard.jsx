@@ -1,9 +1,8 @@
-"use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
+'use client';
+import { useState, useEffect } from 'react';
 
 const UserCard = ({ user, onDelete }) => {
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
 
   useEffect(() => {
     if (user.address) {
@@ -18,7 +17,7 @@ const UserCard = ({ user, onDelete }) => {
       <div className="info w-full">
         <div className="mb-2 text-sm sm:text-base">
           <span className="font-semibold">نام کاربر: </span>
-          {user.name || "N/A"}
+          {user.name || 'N/A'}
         </div>
         <div className="mb-2 text-sm sm:text-base">
           <span className="font-semibold">ایمیل: </span>
@@ -26,7 +25,7 @@ const UserCard = ({ user, onDelete }) => {
         </div>
         <div className="mb-2 text-sm sm:text-base">
           <span className="font-semibold">نام کاربری: </span>
-          {user.username || "N/A"}
+          {user.username || 'N/A'}
         </div>
         {address && (
           <div className="mb-2 text-sm sm:text-base">
@@ -36,7 +35,7 @@ const UserCard = ({ user, onDelete }) => {
         )}
         <div className="mb-2 text-sm sm:text-base">
           <span className="font-semibold">موبایل: </span>
-          {`0${user.mobile}` || "N/A"}
+          {`0${user.mobile}` || 'N/A'}
         </div>
         <div className="w-full flex gap-2 md:justify-end">
           <Link

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
-import Spinner from "@/components/Spinner";
-import Pagination from "@/components/pagination";
-import { fetchProducts } from "@/utils/requests";
+import { useState, useEffect } from 'react';
+import ProductCard from './ProductCard';
+import Spinner from '@/components/Spinner';
+import Pagination from '@/components/pagination';
+import { fetchProducts } from '@/utils/requests';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -16,19 +16,17 @@ const Products = () => {
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
-        const res = await fetch(
-          `/api/products?page=${page}&pageSize=${pageSize}`,
-        );
+        const res = await fetch(`/api/products?page=${page}&pageSize=${pageSize}`);
 
         if (!res.ok) {
-          throw new Error("Failed to fetch data");
+          throw new Error('Failed to fetch data');
         }
 
         const data = await res.json();
         setProducts(data.products);
         setTotalItems(data.total);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }

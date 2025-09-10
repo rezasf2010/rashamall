@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Slider from "react-slick";
-import ProductSearchForm from "./ProductSearchForm";
-import Image from "next/image";
-import heroImg1 from "@/assets/images/heroImg1.jpg";
-import heroImg2 from "@/assets/images/heroImg2.jpg";
-import heroImg3 from "@/assets/images/heroImg3.jpg";
-import { FaGreaterThan, FaLessThan } from "react-icons/fa";
+import Slider from 'react-slick';
+import ProductSearchForm from './ProductSearchForm';
+import Image from 'next/image';
+import heroImg1 from '@/assets/images/heroImg1.jpg';
+import heroImg2 from '@/assets/images/heroImg2.jpg';
+import heroImg3 from '@/assets/images/heroImg3.jpg';
+import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
 
 const Hero = () => {
   const images = [heroImg1, heroImg2, heroImg3];
@@ -23,24 +23,24 @@ const Hero = () => {
     appendDots: (dots) => (
       <div
         style={{
-          position: "absolute",
-          bottom: "10px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
+          position: 'absolute',
+          bottom: '10px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
         }}
       >
-        <ul style={{ margin: "0px" }}> {dots} </ul>
+        <ul style={{ margin: '0px' }}> {dots} </ul>
       </div>
     ),
     customPaging: (i) => (
       <div
         style={{
-          width: "5px",
-          height: "5px",
-          borderRadius: "50%",
-          background: "#9d9e9f",
+          width: '5px',
+          height: '5px',
+          borderRadius: '50%',
+          background: '#9d9e9f',
         }}
       />
     ),
@@ -76,11 +76,11 @@ const NextArrow = (props) => {
       className={className}
       style={{
         ...style,
-        color: "#9d9e9f",
-        opacity: "70%",
-        display: "block",
-        right: "10px",
-        zIndex: "1",
+        color: '#9d9e9f',
+        opacity: '70%',
+        display: 'block',
+        right: '10px',
+        zIndex: '1',
       }}
       onClick={onClick}
     />
@@ -94,11 +94,11 @@ const PrevArrow = (props) => {
       className={className}
       style={{
         ...style,
-        color: "#9d9e9f",
-        opacity: "70%",
-        display: "block",
-        left: "10px",
-        zIndex: "1",
+        color: '#9d9e9f',
+        opacity: '70%',
+        display: 'block',
+        left: '10px',
+        zIndex: '1',
       }}
       onClick={onClick}
     />

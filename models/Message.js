@@ -1,15 +1,15 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model, models } from 'mongoose';
 
 const MessageSchema = new Schema(
   {
     sender: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     email: {
       type: String,
-      required: [true, "Email is required"],
+      required: [true, 'Email is required'],
     },
     subject: {
       type: String,
@@ -27,6 +27,6 @@ const MessageSchema = new Schema(
   },
 );
 
-const Message = models.Message || model("Message", MessageSchema);
+const Message = models.Message || model('Message', MessageSchema);
 
 export default Message;

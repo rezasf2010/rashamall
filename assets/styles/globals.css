@@ -1,64 +1,62 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+/* After (Tailwind v4): */
+@import 'tailwindcss';
 
 @layer base {
   body {
     font-family: iransansx, tahoma;
     direction: rtl; /* Reverse the direction */
     overflow-x: hidden;
-    -moz-font-feature-settings: "ss02", "ss03", "ss04";
-    -webkit-font-feature-settings: "ss02", "ss03", "ss04";
-    font-feature-settings: "ss02", "ss03", "ss04";
+    -moz-font-feature-settings: 'ss02', 'ss03', 'ss04';
+    -webkit-font-feature-settings: 'ss02', 'ss03', 'ss04';
+    font-feature-settings: 'ss02', 'ss03', 'ss04';
   }
 
   @supports (font-variation-settings: normal) {
     body {
-      font-family: "iransansxv", tahoma;
+      font-family: 'iransansxv', tahoma;
     }
   }
 }
 
 /* Add your font-face definitions */
 @font-face {
-  font-family: "iransansxv";
+  font-family: 'iransansxv';
   src:
-    url("/fonts/IRANSansXV.woff") format("woff-variations"),
-    url("/fonts/IRANSansXV.woff2") format("woff-variations"),
-    /* will be the standard and works in Safari now */
-      url("/fonts/IRANSansXV.woff") format("woff");
+    url('/fonts/IRANSansXV.woff') format('woff-variations'),
+    url('/fonts/IRANSansXV.woff2') format('woff-variations'),
+    /* will be the standard and works in Safari now */ url('/fonts/IRANSansXV.woff') format('woff');
   font-weight: 100 1000;
   font-display: fallback;
 }
 
 @font-face {
   font-family: iransansx;
-  src: url("/fonts/IRANSansX-Regular.woff") format("woff");
+  src: url('/fonts/IRANSansX-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: iransansx;
-  src: url("/fonts/IRANSansXV.woff") format("woff");
+  src: url('/fonts/IRANSansXV.woff') format('woff');
   font-weight: 700;
 }
 
 /* Define the ss02, ss03, and ss04 utility classes in case you need to apply them selectively */
 .ss02 {
-  -moz-font-feature-settings: "ss02";
-  -webkit-font-feature-settings: "ss02";
-  font-feature-settings: "ss02";
+  -moz-font-feature-settings: 'ss02';
+  -webkit-font-feature-settings: 'ss02';
+  font-feature-settings: 'ss02';
 }
 
 .ss03 {
-  -moz-font-feature-settings: "ss03";
-  -webkit-font-feature-settings: "ss03";
-  font-feature-settings: "ss03";
+  -moz-font-feature-settings: 'ss03';
+  -webkit-font-feature-settings: 'ss03';
+  font-feature-settings: 'ss03';
 }
 
 .ss04 {
-  -moz-font-feature-settings: "ss04";
-  -webkit-font-feature-settings: "ss04";
-  font-feature-settings: "ss04";
+  -moz-font-feature-settings: 'ss04';
+  -webkit-font-feature-settings: 'ss04';
+  font-feature-settings: 'ss04';
 }
 
 /* For Chrome, Safari, Edge, Opera */

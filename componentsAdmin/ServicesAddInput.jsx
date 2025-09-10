@@ -1,8 +1,6 @@
-import { useState } from "react";
-
 const AdminServicesAddInput = ({ services, setServices }) => {
   const handleAddService = () => {
-    setServices([...services, ""]);
+    setServices([...services, '']);
   };
 
   const handleRemoveService = (index) => {

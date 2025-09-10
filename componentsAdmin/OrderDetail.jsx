@@ -1,11 +1,8 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { convertToJalaali } from "@/utils/calenderConvert";
-import { fetchUsers, fetchOrder } from "@/utils/requests";
-import Spinner from "@/components/Spinner";
-import OrderItem from "./OrderItem";
-import Link from "next/link";
+'use client';
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { convertToJalaali } from '@/utils/calenderConvert';
+import { fetchUsers, fetchOrder } from '@/utils/requests';
 
 const OrderDetail = () => {
   const [order, setOrder] = useState({});
@@ -24,7 +21,7 @@ const OrderDetail = () => {
         setUsers(users);
         setOrder(order);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -33,7 +30,7 @@ const OrderDetail = () => {
     fetchData();
   }, []);
 
-  const persianDateAndTime = order.date ? convertToJalaali(order.date) : "N/A";
+  const persianDateAndTime = order.date ? convertToJalaali(order.date) : 'N/A';
   const user = users.find((user) => user._id === order.user);
 
   if (loading) {
@@ -47,13 +44,10 @@ const OrderDetail = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="print flex flex-col gap-6">
-        <h2 className="text-lg md:text-2xl text-center font-semibold mb-6">
-          جزییات سفارش مشتری
-        </h2>
+        <h2 className="text-lg md:text-2xl text-center font-semibold mb-6">جزییات سفارش مشتری</h2>
         <div className="border border-gray-200 rounded-xl shadow-xl p-3 flex flex-col gap-3 mb-3">
           <div className="order-time text-sm sm:text-base">
-            <span className="font-semibold">زمان سفارش :</span>{" "}
-            {persianDateAndTime}
+            <span className="font-semibold">زمان سفارش :</span> {persianDateAndTime}
           </div>
 
           <div className="flex flex-col gap-3 md:flex-row md: justify-between">
@@ -68,7 +62,7 @@ const OrderDetail = () => {
 
           <div className="flex flex-col gap-3 md:flex-row md: justify-between">
             <div className="orderer-adress text-sm sm:text-base">
-              <span className="font-semibold">آدرس :</span>{" "}
+              <span className="font-semibold">آدرس :</span>{' '}
               {`${user.address.state}, ${user.address.city}, ${user.address.street}`}
             </div>
 
@@ -78,9 +72,7 @@ const OrderDetail = () => {
           </div>
         </div>
 
-        <h4 className="text-lg my-3 mx-4 md:text-xl font-semibold md:my-6">
-          لیست کالاهای سفارشی
-        </h4>
+        <h4 className="text-lg my-3 mx-4 md:text-xl font-semibold md:my-6">لیست کالاهای سفارشی</h4>
 
         <div className="border border-gray-200 shadow-xl">
           <table className="w-full bg-white text-xs md:text-sm lg:text-base">

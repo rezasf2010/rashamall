@@ -1,7 +1,6 @@
-"use client";
+'use client';
 
-import useAuth from "@/utils/adminAuth";
-import Spinner from "@/components/Spinner";
+import useAuth from '@/utils/adminAuth';
 
 const AdminAuthProvider = ({ children }) => {
   const { loading, authenticated } = useAuth();

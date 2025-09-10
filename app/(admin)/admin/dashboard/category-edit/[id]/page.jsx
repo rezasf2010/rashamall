@@ -1,4 +1,4 @@
-import CategoryEditForm from "@/componentsAdmin/CategoryEditForm";
+import CategoryEditForm from '@/componentsAdmin/CategoryEditForm';
 
 const CategoryEditPage = () => {
   return (

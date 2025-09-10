@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const PaymentInfo = ({ formData, setFormData }) => {
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState('');
   const [receiptImage, setReceiptImage] = useState(null);
 
   const handlePaymentChange = (e) => {
@@ -23,7 +23,7 @@ const PaymentInfo = ({ formData, setFormData }) => {
             type="radio"
             name="paymentMethod"
             value="payAtPlace"
-            checked={paymentMethod === "payAtPlace"}
+            checked={paymentMethod === 'payAtPlace'}
             onChange={handlePaymentChange}
           />
           <span className="ml-2">پرداخت در محل</span>
@@ -35,18 +35,16 @@ const PaymentInfo = ({ formData, setFormData }) => {
             type="radio"
             name="paymentMethod"
             value="cardToCard"
-            checked={paymentMethod === "cardToCard"}
+            checked={paymentMethod === 'cardToCard'}
             onChange={handlePaymentChange}
           />
           <span className="ml-2">پرداخت از طریق کارت به کارت</span>
         </label>
       </div>
-      {paymentMethod === "cardToCard" && (
+      {paymentMethod === 'cardToCard' && (
         <div className="mb-4">
           <div className="mb-4">
-            <label className="block text-gray-700 font-bold">
-              شماره کارت: 1234-5678-9012-3456
-            </label>
+            <label className="block text-gray-700 font-bold">شماره کارت: 1234-5678-9012-3456</label>
           </div>
           <div>
             <label htmlFor="receiptImage" className="block text-gray-700">

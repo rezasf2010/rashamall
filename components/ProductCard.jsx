@@ -1,8 +1,8 @@
-"use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ProductCardSkeleton } from "@/ui/skeletons";
+'use client';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ProductCardSkeleton } from '@/ui/skeletons';
 
 const ProductCard = ({ product }) => {
   const [loading, setLoading] = useState(true);
@@ -43,29 +43,23 @@ const ProductCard = ({ product }) => {
         )}
         <div
           className={`absolute top-[10px] right-[10px] flex justify-center items-center px-2 md:px-4 py-2 rounded-lg text-xs md:text-base md:font-bold text-center bg-${
-            product._stock_status === "in stock"
-              ? "blue-50 text-blue-500"
-              : "red-50 text-red-500"
+            product._stock_status === 'in stock' ? 'blue-50 text-blue-500' : 'red-50 text-red-500'
           }`}
         >
-          <p>{product._stock_status === "in stock" ? "موجود" : "ناموجود"}</p>
+          <p>{product._stock_status === 'in stock' ? 'موجود' : 'ناموجود'}</p>
         </div>
         <div className="relative px-4 py-2 flex flex-col md:h-1/3">
-          <h3 className="text-xs mb-2 font-[600] md:text-sm lg:text-base">
-            {product.name}
-          </h3>
+          <h3 className="text-xs mb-2 font-[600] md:text-sm lg:text-base">{product.name}</h3>
           <div className="text-end text-xs md:text-sm font-[500] text-green-900 mb-4">
             {product.is_onSale ? (
               <div className="flex flex-col">
                 <span className="line-through text-green-900">
                   {Math.ceil(product.price).toLocaleString()} تومان
                 </span>
-                <span className="text-red-400">
-                  {discountedPrice.toLocaleString()} تومان
-                </span>
+                <span className="text-red-400">{discountedPrice.toLocaleString()} تومان</span>
               </div>
             ) : (
-              product.price.toLocaleString() + " تومان"
+              product.price.toLocaleString() + ' تومان'
             )}
           </div>
         </div>

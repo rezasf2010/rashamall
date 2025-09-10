@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
-import pay from "@/assets/images/pay-rashamall.png";
-import ret from "@/assets/images/return-rashamall.png";
-import call from "@/assets/images/tamas-rashamall.png";
-import guarantee from "@/assets/images/zemanat-rashamall.png";
-import SemiFooterLinks from "./SemiFooterLinks";
+import React from 'react';
+import Image from 'next/image';
+import pay from '@/assets/images/pay-rashamall.png';
+import ret from '@/assets/images/return-rashamall.png';
+import call from '@/assets/images/tamas-rashamall.png';
+import guarantee from '@/assets/images/zemanat-rashamall.png';
+import SemiFooterLinks from './SemiFooterLinks';
 
 const SemiFooter = () => {
   return (
@@ -21,13 +21,10 @@ const SemiFooter = () => {
               priority={true}
               alt="call"
             />
-            <h4 className=" font-bold text-xl text-center ">
-              پشتیبانی 9 صبح تا 6 عصر
-            </h4>
+            <h4 className=" font-bold text-xl text-center ">پشتیبانی 9 صبح تا 6 عصر</h4>
             <p className="text-sm text-wrap text-center hidden lg:block">
-              کارشناسان ما در بخش پشتیبانی در پیام رسان واتساپ یا از طریق تلفن
-              های تماس از ساعت 9 صبح تا 6 عصر آماده خدمت رسانی به شما عزیزان
-              هستند
+              کارشناسان ما در بخش پشتیبانی در پیام رسان واتساپ یا از طریق تلفن های تماس از ساعت 9
+              صبح تا 6 عصر آماده خدمت رسانی به شما عزیزان هستند
             </p>
           </div>
 
@@ -41,9 +38,7 @@ const SemiFooter = () => {
               priority={true}
               alt="return"
             />
-            <h4 className=" font-bold text-xl text-center ">
-              7 روز تضمین بازگشت کالا
-            </h4>
+            <h4 className=" font-bold text-xl text-center ">7 روز تضمین بازگشت کالا</h4>
             <p className="text-sm text-wrap text-center hidden lg:block">
               7 روز ضمانت بازگشت کالا در صورت ایراد فنی
             </p>
@@ -79,8 +74,8 @@ const SemiFooter = () => {
             />
             <h4 className=" font-bold text-xl text-center ">فقط محصولات اصل</h4>
             <p className="text-sm text-wrap text-center hidden lg:block">
-              تمام محصولات راشامال اصل، دست اول و برخی محصولات باگارانتی رسمی
-              شرکتی عرضه میشود، و تمام گوشی های همراه، رجیستر شده می باشند
+              تمام محصولات راشامال اصل، دست اول و برخی محصولات باگارانتی رسمی شرکتی عرضه میشود، و
+              تمام گوشی های همراه، رجیستر شده می باشند
             </p>
           </div>
         </div>

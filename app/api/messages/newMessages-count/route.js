@@ -1,10 +1,10 @@
-import connectDB from "@/config/database";
-import Message from "@/models/Message";
+import connectDB from '@/config/database';
+import Message from '@/models/Message';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 // GET /api/messages/newMessages-count
-export const GET = async (request) => {
+export const GET = async () => {
   try {
     await connectDB();
 
@@ -13,6 +13,6 @@ export const GET = async (request) => {
     return new Response(JSON.stringify(newMessageCount), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };

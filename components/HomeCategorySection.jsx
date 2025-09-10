@@ -1,9 +1,9 @@
-"use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import ProductCard from "./ProductCard";
-import { FaArrowLeft } from "react-icons/fa";
-import { HomeCategorySectionSkeleton } from "@/ui/skeletons";
+'use client';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import ProductCard from './ProductCard';
+import { FaArrowLeft } from 'react-icons/fa';
+import { HomeCategorySectionSkeleton } from '@/ui/skeletons';
 
 const HomeCategorySection = ({ heading, backgroundColor, products, route }) => {
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ const HomeCategorySection = ({ heading, backgroundColor, products, route }) => {
             <FaArrowLeft />
           </Link>
         ) : (
-          ""
+          ''
         )}
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">

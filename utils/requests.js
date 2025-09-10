@@ -1,18 +1,14 @@
-const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
-import axios from "axios";
+import axios from 'axios';
+
+const API_BASE = process.env.NEXT_PUBLIC_API_DOMAIN?.trim() || 'http://localhost:3000/api';
 
 // Fetch all categories
 const fetchCategories = async () => {
-  //Handle the case where the domain is not available yet
-  if (!apiDomain) {
-    return [];
-  }
-
   try {
-    const res = await fetch(`${apiDomain}/categories`);
+    const res = await fetch(`${API_BASE}/categories`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -24,16 +20,11 @@ const fetchCategories = async () => {
 
 // Fetch all brands
 const fetchBrands = async () => {
-  //Handle the case where the domain is not available yet
-  if (!apiDomain) {
-    return [];
-  }
-
   try {
-    const res = await fetch(`${apiDomain}/brands`);
+    const res = await fetch(`${API_BASE}/brands`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -46,15 +37,10 @@ const fetchBrands = async () => {
 // Fetch all products
 async function fetchProducts() {
   try {
-    //Handle the case where the domain is not available yet
-    if (!apiDomain) {
-      return [];
-    }
-
-    const res = await fetch(`${apiDomain}/products`, { cache: "no-store" });
+    const res = await fetch(`${API_BASE}/products`, { cache: 'no-store' });
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -67,17 +53,10 @@ async function fetchProducts() {
 // Fetch single product
 async function fetchProduct(mainCategoryId, subCategoryId, productId) {
   try {
-    //Handle the case where the domain is not available yet
-    if (!apiDomain) {
-      return null;
-    }
-
-    const res = await fetch(
-      `${apiDomain}/products/${mainCategoryId}/${subCategoryId}/${productId}`,
-    );
+    const res = await fetch(`${API_BASE}/products/${mainCategoryId}/${subCategoryId}/${productId}`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -89,16 +68,11 @@ async function fetchProduct(mainCategoryId, subCategoryId, productId) {
 
 // Fetch all users
 const fetchUsers = async () => {
-  //Handle the case where the domain is not available yet
-  if (!apiDomain) {
-    return [];
-  }
-
   try {
-    const res = await fetch(`${apiDomain}/users`);
+    const res = await fetch(`${API_BASE}/users`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -110,16 +84,11 @@ const fetchUsers = async () => {
 
 // Fetch all orders
 const fetchOrders = async () => {
-  //Handle the case where the domain is not available yet
-  if (!apiDomain) {
-    return [];
-  }
-
   try {
-    const res = await fetch(`${apiDomain}/orders`);
+    const res = await fetch(`${API_BASE}/orders`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -131,16 +100,11 @@ const fetchOrders = async () => {
 
 // Fetch all messages
 const fetchMessages = async () => {
-  //Handle the case where the domain is not available yet
-  if (!apiDomain) {
-    return [];
-  }
-
   try {
-    const res = await fetch(`${apiDomain}/messages`);
+    const res = await fetch(`${API_BASE}/messages`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -153,15 +117,10 @@ const fetchMessages = async () => {
 // Fetch single order
 async function fetchOrder(orderId) {
   try {
-    //Handle the case where the domain is not available yet
-    if (!apiDomain) {
-      return null;
-    }
-
-    const res = await fetch(`${apiDomain}/orders/${orderId}`);
+    const res = await fetch(`${API_BASE}/orders/${orderId}`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -174,15 +133,10 @@ async function fetchOrder(orderId) {
 // Fetch single message
 async function fetchMessage(messageId) {
   try {
-    //Handle the case where the domain is not available yet
-    if (!apiDomain) {
-      return null;
-    }
-
-    const res = await fetch(`${apiDomain}/messages/${messageId}`);
+    const res = await fetch(`${API_BASE}/messages/${messageId}`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -195,15 +149,10 @@ async function fetchMessage(messageId) {
 // Fetch single category
 async function fetchCategory(CategoryId) {
   try {
-    //Handle the case where the domain is not available yet
-    if (!apiDomain) {
-      return null;
-    }
-
-    const res = await fetch(`${apiDomain}/categories/${CategoryId}`);
+    const res = await fetch(`${API_BASE}/categories/${CategoryId}`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -215,16 +164,11 @@ async function fetchCategory(CategoryId) {
 
 // Fetch all posts
 const fetchPosts = async () => {
-  //Handle the case where the domain is not available yet
-  if (!apiDomain) {
-    return [];
-  }
-
   try {
-    const res = await fetch(`${apiDomain}/posts`);
+    const res = await fetch(`${API_BASE}/posts`);
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data');
     }
 
     return res.json();
@@ -246,11 +190,11 @@ const addImagesToCloudinary = async (files) => {
   const fileBase64Strings = await Promise.all(
     Array.from(files).map(async (file) => {
       const arrayBuffer = await file.arrayBuffer();
-      return Buffer.from(new Uint8Array(arrayBuffer)).toString("base64");
+      return Buffer.from(new Uint8Array(arrayBuffer)).toString('base64');
     }),
   );
 
-  const response = await axios.post("/api/uploadImage", {
+  const response = await axios.post('/api/uploadImage', {
     files: fileBase64Strings,
   });
 
@@ -258,9 +202,9 @@ const addImagesToCloudinary = async (files) => {
 };
 
 const extractPublicId = (imageUrl) => {
-  const parts = imageUrl.split("/");
+  const parts = imageUrl.split('/');
   const publicIdWithExtension = parts[parts.length - 1];
-  const publicId = publicIdWithExtension.split(".")[0];
+  const publicId = publicIdWithExtension.split('.')[0];
   return publicId;
 };
 

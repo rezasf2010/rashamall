@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 const AdminSpecAddInput = ({ specifications, setSpecifications }) => {
   const handleChange = (index, event) => {
@@ -9,7 +9,7 @@ const AdminSpecAddInput = ({ specifications, setSpecifications }) => {
   };
 
   const handleAddRow = () => {
-    setSpecifications([...specifications, { key: "", value: "" }]);
+    setSpecifications([...specifications, { key: '', value: '' }]);
   };
 
   const handleRemoveRow = (index) => {
@@ -19,9 +19,7 @@ const AdminSpecAddInput = ({ specifications, setSpecifications }) => {
 
   return (
     <div className="mb-4 p-4">
-      <label className="flex  pr-2 text-gray-700 font-bold mb-2">
-        مشخصات فنی
-      </label>
+      <label className="flex  pr-2 text-gray-700 font-bold mb-2">مشخصات فنی</label>
       {specifications.map((spec, index) => (
         <div key={index} className="flex gap-2 mb-2 items-center">
           <input

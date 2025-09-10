@@ -1,7 +1,7 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import image from "@/assets/images/infoBox1.jpg";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import image from '@/assets/images/infoBox1.jpg';
 
 const MagCard = ({ post }) => {
   return (
@@ -20,9 +20,7 @@ const MagCard = ({ post }) => {
         </div>
 
         <div className="relative px-4 py-2 flex flex-col md:h-1/3">
-          <h3 className="text-xs mb-2 font-[600] md:text-sm lg:text-base">
-            {post.mainTitle}
-          </h3>
+          <h3 className="text-xs mb-2 font-[600] md:text-sm lg:text-base">{post.mainTitle}</h3>
           <div className="text-end text-xs md:text-sm font-[500] text-green-900 mb-4"></div>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import connectDB from "@/config/database";
-import User from "@/models/User";
-import GoogleProvider from "next-auth/providers/google";
+import connectDB from '@/config/database';
+import User from '@/models/User';
+import GoogleProvider from 'next-auth/providers/google';
 
 export const authOptions = {
   providers: [
@@ -9,9 +9,9 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorization: {
         params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
+          prompt: 'consent',
+          access_type: 'offline',
+          response_type: 'code',
         },
       },
     }),
@@ -33,7 +33,7 @@ export const authOptions = {
           username,
           name: profile.name, // Ensure the name is stored
           image: profile.picture,
-          mobile: "09",
+          mobile: '09',
         });
       }
       // 4. Return true to allow sign in

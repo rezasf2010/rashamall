@@ -1,5 +1,5 @@
-import React from "react";
-import MessageDetail from "@/componentsAdmin/MessageDetail";
+import React from 'react';
+import MessageDetail from '@/componentsAdmin/MessageDetail';
 
 const AdminMessagePage = () => {
   return (

@@ -1,24 +1,24 @@
-import connectDB from "@/config/database";
-import Category from "@/models/Category";
+import connectDB from '@/config/database';
+import Category from '@/models/Category';
 
 // GET /api/categories/:id
-export const GET = async (request, { params }) => {
+export const GET = async ({ params }) => {
   try {
     await connectDB();
 
     const category = await Category.findById(params.id);
 
-    if (!category) return new Response("Category Not Found", { status: 404 });
+    if (!category) return new Response('Category Not Found', { status: 404 });
 
     return new Response(JSON.stringify(category), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };
 
 // DELETE /api/categories/:id
-export const DELETE = async (request, { params }) => {
+export const DELETE = async ({ params }) => {
   try {
     const categoryId = params.id;
 
@@ -26,14 +26,14 @@ export const DELETE = async (request, { params }) => {
 
     const category = await Category.findById(categoryId);
 
-    if (!category) return new Response("Category Not Found", { status: 404 });
+    if (!category) return new Response('Category Not Found', { status: 404 });
 
     await category.deleteOne();
 
-    return new Response("Category deleted", { status: 200 });
+    return new Response('Category deleted', { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };
 
@@ -44,17 +44,17 @@ export const PUT = async (request, { params }) => {
 
     // Helper function to convert names to slugs
     function convertToSlug(name) {
-      return name.toLowerCase().replace(/\s+/g, "-");
+      return name.toLowerCase().replace(/\s+/g, '-');
     }
 
     const { id } = params;
     const formData = await request.formData();
 
     // Extracting form data
-    const categoryType = formData.get("type");
-    const mainCategoryName = formData.get("mainCategoryName");
-    const subCategoryName = formData.get("subCategoryName");
-    const subCategoryNameEn = formData.get("subCategoryNameEn");
+    const categoryType = formData.get('type');
+    const mainCategoryName = formData.get('mainCategoryName');
+    const subCategoryName = formData.get('subCategoryName');
+    const subCategoryNameEn = formData.get('subCategoryNameEn');
 
     // Prepare category data
     let categoryData = {
@@ -62,10 +62,10 @@ export const PUT = async (request, { params }) => {
       name: subCategoryNameEn,
       fa_slug: convertToSlug(subCategoryName),
       slug: convertToSlug(subCategoryNameEn),
-      date_added: new Date().toISOString().split("T")[0], // Current date in YYYY-MM-DD format
+      date_added: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
     };
 
-    if (categoryType === "sub") {
+    if (categoryType === 'sub') {
       categoryData.parent = mainCategoryName;
     } else {
       categoryData.parent = null;
@@ -77,12 +77,12 @@ export const PUT = async (request, { params }) => {
     });
 
     if (!updatedCategory) {
-      return new Response("Category Not Found", { status: 404 });
+      return new Response('Category Not Found', { status: 404 });
     }
 
     return new Response(JSON.stringify(updatedCategory), { status: 200 });
   } catch (error) {
-    console.error("Error updating category:", error);
-    return new Response("Something went wrong", { status: 500 });
+    console.error('Error updating category:', error);
+    return new Response('Something went wrong', { status: 500 });
   }
 };

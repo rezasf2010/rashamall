@@ -1,10 +1,10 @@
-import Image from "next/image";
-import SpecificationCard from "./SpecificationCard";
-import ProductImages from "./ProductImages";
-import { FaTimes, FaCheck } from "react-icons/fa";
-import AddToCart from "./AddToCart";
-import ShareButtons from "./ShareButtons";
-import Bookmark from "./Bookmark";
+import Image from 'next/image';
+import SpecificationCard from './SpecificationCard';
+import ProductImages from './ProductImages';
+import { FaTimes, FaCheck } from 'react-icons/fa';
+import AddToCart from './AddToCart';
+import ShareButtons from './ShareButtons';
+import Bookmark from './Bookmark';
 
 const ProductDetails = ({ product }) => {
   const discountedPrice = product.is_onSale
@@ -43,18 +43,15 @@ const ProductDetails = ({ product }) => {
                 <span className="line-through text-gray-700">
                   {Math.ceil(product.price).toLocaleString()} تومان
                 </span>
-                <span className="text-red-400">
-                  {" "}
-                  {discountedPrice.toLocaleString()} تومان
-                </span>
+                <span className="text-red-400"> {discountedPrice.toLocaleString()} تومان</span>
               </div>
             ) : (
-              product.price.toLocaleString() + " تومان"
+              product.price.toLocaleString() + ' تومان'
             )}
           </div>
           <div className="flex flex-col sm:flex-row justify-between lg:flex-col lg: gap-4">
             <div className="flex items-center justify-between px-4 sm:gap-6">
-              {product._stock_status === "in stock" ? (
+              {product._stock_status === 'in stock' ? (
                 <div
                   className={`flex justify-center items-center gap-6 px-4 py-2 rounded-lg font-bold text-center bg-blue-50 text-blue-500`}
                 >
@@ -80,9 +77,7 @@ const ProductDetails = ({ product }) => {
           <div className="mt-4">
             <ShareButtons product={product} />
           </div>
-          <p className="text-orange-500 my-6">
-            لطفا برای خرید محصول با ما تماس بگیرید
-          </p>
+          <p className="text-orange-500 my-6">لطفا برای خرید محصول با ما تماس بگیرید</p>
           <p className="font-semibold">(پرداخت درب منزل برای شهر تهران)</p>
         </div>
       </div>

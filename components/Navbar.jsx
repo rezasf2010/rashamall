@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "@/assets/images/rashamall-logo.png";
-import ProductCategoryNavButton from "@/components/ProductCategoryNavButton";
-import UserLoginMenu from "./UserLoginMenu";
-import { fetchCategories } from "@/utils/requests";
-import SpinnerH from "./SpinnerH";
-import { FaChevronDown, FaChevronLeft } from "react-icons/fa";
-import ContactUsIcons from "./ContactUsIcons";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import logo from '@/assets/images/rashamall-logo.png';
+import ProductCategoryNavButton from '@/components/ProductCategoryNavButton';
+import UserLoginMenu from './UserLoginMenu';
+import { fetchCategories } from '@/utils/requests';
+import SpinnerH from './SpinnerH';
+import { FaChevronDown, FaChevronLeft } from 'react-icons/fa';
+import ContactUsIcons from './ContactUsIcons';
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -28,7 +28,7 @@ const Navbar = () => {
         const categories = await fetchCategories();
         setCategories(categories);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        console.error('Error fetching categories:', error);
       } finally {
         setLoading(false);
       }
@@ -62,10 +62,10 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -74,9 +74,7 @@ const Navbar = () => {
       <div className="w-full bg-blue-200 ">
         <div
           className={`md:border-b md:border-blue-400 px-4 flex flex-col sm:flex-row gap-2 sm:justify-around items-center md:px-1 transition-all duration-500 ease-in-out ${
-            hideOnScroll
-              ? "opacity-0 h-0 overflow-hidden"
-              : "opacity-100 h-auto"
+            hideOnScroll ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100 h-auto'
           }`}
         >
           {/* Logo */}

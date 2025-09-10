@@ -1,7 +1,7 @@
-import connectDB from "@/config/database";
-import Product from "@/models/Product";
+import connectDB from '@/config/database';
+import Product from '@/models/Product';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 //GET /api/products/search
 export const GET = async (request) => {
@@ -10,9 +10,9 @@ export const GET = async (request) => {
 
     const { searchParams } = new URL(request.url);
 
-    const searchQuery = searchParams.get("query");
+    const searchQuery = searchParams.get('query');
 
-    const queryPattern = new RegExp(searchQuery, "i");
+    const queryPattern = new RegExp(searchQuery, 'i');
 
     // match querypatterns against database
     let query = {
@@ -21,8 +21,8 @@ export const GET = async (request) => {
         { slug: queryPattern },
         { description: queryPattern },
         { features: queryPattern },
-        { "specifications.key": queryPattern },
-        { "specifications.value": queryPattern },
+        { 'specifications.key': queryPattern },
+        { 'specifications.value': queryPattern },
       ],
     };
 
@@ -31,6 +31,6 @@ export const GET = async (request) => {
     return new Response(JSON.stringify(products), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };

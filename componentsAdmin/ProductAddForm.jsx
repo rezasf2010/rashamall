@@ -1,35 +1,32 @@
-"use client";
-import { useState, useEffect } from "react";
-import SpecAddInput from "@/componentsAdmin/SpecAddInput";
-import FeaturesAddInput from "@/componentsAdmin/FeaturesAddInput";
-import ServicesAddInput from "@/componentsAdmin/ServicesAddInput";
-import { fetchCategories, fetchBrands } from "@/utils/requests";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+'use client';
+import { useState, useEffect } from 'react';
+import { fetchCategories, fetchBrands } from '@/utils/requests';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const ProductAddForm = () => {
   const router = useRouter();
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [mounted, setMounted] = useState(false);
-  const [selectedMainCategory, setSelectedMainCategory] = useState("");
+  const [selectedMainCategory, setSelectedMainCategory] = useState('');
   const [subCategories, setSubCategories] = useState([]);
 
   const initialFields = {
-    name: "",
-    slug: "",
-    brand: "",
-    main_category: "",
-    sub_category: "",
-    price: "",
-    description: "",
+    name: '',
+    slug: '',
+    brand: '',
+    main_category: '',
+    sub_category: '',
+    price: '',
+    description: '',
     specifications: [],
     features: [],
     services: [],
     images: [],
     is_onSale: false,
-    discount: "",
-    _stock_status: "",
+    discount: '',
+    _stock_status: '',
   };
 
   const [fields, setFields] = useState(initialFields);
@@ -43,7 +40,7 @@ const ProductAddForm = () => {
         setCategories(categories);
         setBrands(brands);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
 
@@ -92,7 +89,7 @@ const ProductAddForm = () => {
     setFields((prevFields) => ({
       ...prevFields,
       is_onSale: checked,
-      discount: checked ? fields.discount : "", // Clear discount if not on sale
+      discount: checked ? fields.discount : '', // Clear discount if not on sale
     }));
   };
 
@@ -104,8 +101,8 @@ const ProductAddForm = () => {
     const { name, value } = e.target;
 
     // Check if nested property
-    if (name.includes(".")) {
-      const [outerKey, innerKey] = name.split(".");
+    if (name.includes('.')) {
+      const [outerKey, innerKey] = name.split('.');
 
       setFields((prevFields) => ({
         ...prevFields,
@@ -151,40 +148,35 @@ const ProductAddForm = () => {
     try {
       const formData = new FormData(e.target);
 
-      const res = await fetch("/api/products", {
-        method: "POST",
+      const res = await fetch('/api/products', {
+        method: 'POST',
         body: formData,
-        encType: "multipart/form-data",
+        encType: 'multipart/form-data',
       });
 
       if (res.status === 200) {
-        toast.success("محصول با موفقیت افزوده شد");
+        toast.success('محصول با موفقیت افزوده شد');
         setFields(initialFields); // Reset form fields to initial state
-        setSelectedMainCategory(""); // Reset main category selection
+        setSelectedMainCategory(''); // Reset main category selection
         router.push(`/admin/dashboard/add`);
       } else if (res.status === 401 || res.status === 403) {
-        toast.error("Permission denied");
+        toast.error('Permission denied');
       } else {
-        toast.error("مشکل در افزودن محصول");
+        toast.error('مشکل در افزودن محصول');
       }
     } catch (error) {
       console.log(error);
-      toast.error("مشکل در افزودن محصول");
+      toast.error('مشکل در افزودن محصول');
     }
   };
 
   return (
     mounted && (
       <form onSubmit={handleSubmit}>
-        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
-          افزودن محصول جدید
-        </h2>
+        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">افزودن محصول جدید</h2>
 
         <div className="mb-4">
-          <label
-            htmlFor="mainCategory"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="mainCategory" className="flex  pr-2 text-gray-700 font-bold mb-2">
             گروه اصلی
           </label>
           <select
@@ -207,10 +199,7 @@ const ProductAddForm = () => {
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="subCategory"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="subCategory" className="flex  pr-2 text-gray-700 font-bold mb-2">
             گروه فرعی
           </label>
           <select
@@ -234,10 +223,7 @@ const ProductAddForm = () => {
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="brand"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="brand" className="flex  pr-2 text-gray-700 font-bold mb-2">
             برند
           </label>
           <select
@@ -263,10 +249,7 @@ const ProductAddForm = () => {
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="name" className="flex  pr-2 text-gray-700 font-bold mb-2">
             نام محصول
           </label>
           <input
@@ -282,10 +265,7 @@ const ProductAddForm = () => {
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="price"
-            className="flex pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="price" className="flex pr-2 text-gray-700 font-bold mb-2">
             قیمت (تومان)
           </label>
           <input
@@ -302,10 +282,7 @@ const ProductAddForm = () => {
         </div>
 
         <div className="mb-4 ">
-          <label
-            htmlFor="description"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="description" className="flex  pr-2 text-gray-700 font-bold mb-2">
             توضیحات
           </label>
           <textarea
@@ -335,10 +312,7 @@ const ProductAddForm = () => {
         />
 
         <div className="mb-4 flex items-center gap-2">
-          <label
-            htmlFor="is_onSale"
-            className="flex pr-2 text-gray-700 font-bold"
-          >
+          <label htmlFor="is_onSale" className="flex pr-2 text-gray-700 font-bold">
             تخفیف دارد
           </label>
           <input
@@ -354,10 +328,7 @@ const ProductAddForm = () => {
 
         {fields.is_onSale && (
           <div className="mb-4">
-            <label
-              htmlFor="discount"
-              className="flex pr-2 text-gray-700 font-bold mb-2"
-            >
+            <label htmlFor="discount" className="flex pr-2 text-gray-700 font-bold mb-2">
               درصد تخفیف
             </label>
             <input
@@ -375,10 +346,7 @@ const ProductAddForm = () => {
         )}
 
         <div className="mb-4">
-          <label
-            htmlFor="_stock_status"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="_stock_status" className="flex  pr-2 text-gray-700 font-bold mb-2">
             وضعیت موجودی
           </label>
           <select
@@ -395,10 +363,7 @@ const ProductAddForm = () => {
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="images"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="images" className="flex  pr-2 text-gray-700 font-bold mb-2">
             عکس محصول (حداکثر 4 عکس)
           </label>
           <input

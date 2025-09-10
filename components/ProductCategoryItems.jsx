@@ -1,8 +1,8 @@
-"use Client";
-import { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
-import Spinner from "@/components/Spinner";
-import Pagination from "@/components/pagination";
+'use Client';
+import { useState, useEffect } from 'react';
+import ProductCard from './ProductCard';
+import Spinner from '@/components/Spinner';
+import Pagination from '@/components/pagination';
 
 const ProductCategoryItems = ({ categoryId }) => {
   const [products, setProducts] = useState([]);
@@ -14,19 +14,17 @@ const ProductCategoryItems = ({ categoryId }) => {
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
-        const res = await fetch(
-          `/api/products/${categoryId}?page=${page}&pageSize=${pageSize}`,
-        );
+        const res = await fetch(`/api/products/${categoryId}?page=${page}&pageSize=${pageSize}`);
 
         if (!res.ok) {
-          throw new Error("Failed to fetch data");
+          throw new Error('Failed to fetch data');
         }
 
         const data = await res.json();
         setProducts(data.products);
         setTotalItems(data.total);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -45,10 +43,7 @@ const ProductCategoryItems = ({ categoryId }) => {
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto">
         {products.length === 0 ? (
-          <p className="text-center text-xl font-semibold mt-10">
-            {" "}
-            کالایی یافت نشد!{" "}
-          </p>
+          <p className="text-center text-xl font-semibold mt-10"> کالایی یافت نشد! </p>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:place-items-center">
             {products.map((product) => (
