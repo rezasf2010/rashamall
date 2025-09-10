@@ -35,6 +35,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
+          <div>this is just for test</div>
         </div>
       </footer>
     </div>
