@@ -2,7 +2,7 @@ import connectDB from '@/config/database';
 import Product from '@/models/Product';
 
 // GET /api/products/:id
-export const GET = async ({ params }) => {
+export const GET = async (request, { params }) => {
   try {
     await connectDB();
 
@@ -18,7 +18,7 @@ export const GET = async ({ params }) => {
 };
 
 // DELETE /api/products/:id
-export const DELETE = async ({ params }) => {
+export const DELETE = async (request, { params }) => {
   try {
     const productId = params.id;
 
