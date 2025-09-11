@@ -1,18 +1,16 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { FaArrowAltCircleRight } from "react-icons/fa";
-import ProductCard from "@/components/ProductCard";
-import Spinner from "@/components/Spinner";
-import Breadcrumb from "@/components/Breadcrumb";
+'use client';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import ProductCard from '@/components/ProductCard';
+import Spinner from '@/components/Spinner';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const SearchResultsPage = () => {
   const searchParams = useSearchParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const query = searchParams.get("query");
+  const query = searchParams.get('query');
 
   useEffect(() => {
     const fetchSearchResults = async () => {
@@ -27,7 +25,7 @@ const SearchResultsPage = () => {
         }
       } catch (error) {
         console.log(error);
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -37,8 +35,8 @@ const SearchResultsPage = () => {
   }, [query]);
 
   const pathSegments = [
-    { name: "خانه", link: "/" },
-    { name: "همه کالاها", link: "/products" },
+    { name: 'خانه', link: '/' },
+    { name: 'همه کالاها', link: '/products' },
   ];
 
   return loading ? (

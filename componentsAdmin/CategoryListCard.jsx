@@ -1,9 +1,8 @@
-"use Client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
+'use Client';
+import { useState, useEffect } from 'react';
 
 const CategoryListCard = ({ category, categories, onDelete }) => {
-  const [parentCategory, setParentCategory] = useState("");
+  const [parentCategory, setParentCategory] = useState('');
 
   useEffect(() => {
     if (category.parent) {
@@ -15,7 +14,7 @@ const CategoryListCard = ({ category, categories, onDelete }) => {
   return (
     <div
       className={`text-gray-700 mb-4 flex flex-col md:flex-row items-center md:items-end gap-6 border border-gray-300 w-full p-4 rounded-2xl shadow-xl ${
-        category.parent === null ? "bg-green-50" : "bg-gray-50"
+        category.parent === null ? 'bg-green-50' : 'bg-gray-50'
       }`}
     >
       <div className="info w-full">

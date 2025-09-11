@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/utils/firebaseConfig";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/utils/firebaseConfig';
 
 const AdminLogin = () => {
   // const auth = getAuth(); // Ensure auth is initialized
   const router = useRouter();
-  const [user, setUser] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
+  const [user, setUser] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,9 +23,9 @@ const AdminLogin = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, user.email, user.password);
-      router.push("/admin/dashboard");
-    } catch (err) {
-      setError("Email or password is incorrect");
+      router.push('/admin/dashboard');
+    } catch {
+      setError('Email or password is incorrect');
     }
 
     console.log(auth);
@@ -33,16 +33,11 @@ const AdminLogin = () => {
 
   return (
     <div className="w-3/4">
-      <h2 className="text-lg md:text-2xl text-center font-semibold mb-6">
-        ورود به بخش مدیریت
-      </h2>
+      <h2 className="text-lg md:text-2xl text-center font-semibold mb-6">ورود به بخش مدیریت</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4 flex flex-col items-start md:flex-row md:items-center justify-center">
-          <label
-            htmlFor="email"
-            className="w-full md:w-1/4 pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="email" className="w-full md:w-1/4 pr-2 text-gray-700 font-bold mb-2">
             ایمیل
           </label>
           <input
@@ -57,10 +52,7 @@ const AdminLogin = () => {
         </div>
 
         <div className="mb-4 flex flex-col items-start md:flex-row md:items-center justify-center">
-          <label
-            htmlFor="password"
-            className="w-full md:w-1/4 pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="password" className="w-full md:w-1/4 pr-2 text-gray-700 font-bold mb-2">
             رمز عبور
           </label>
           <input

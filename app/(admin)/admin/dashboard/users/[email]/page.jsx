@@ -1,10 +1,10 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
-import { toast } from "react-toastify";
-import ProvinceCitySelect from "@/components/ProvinceCitySelect";
-import Spinner from "@/components/Spinner";
-import axios from "axios";
+'use client';
+import { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { toast } from 'react-toastify';
+import ProvinceCitySelect from '@/components/ProvinceCitySelect';
+import Spinner from '@/components/Spinner';
+import axios from 'axios';
 
 const AdminUserDetailPage = () => {
   const { email } = useParams();
@@ -13,17 +13,17 @@ const AdminUserDetailPage = () => {
   //   const [user, setUser] = useState(null);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isNewUser, setisNewUser] = useState(false);
+  const [, setisNewUser] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    username: "",
-    mobile: "",
-    phone: "",
+    name: '',
+    username: '',
+    mobile: '',
+    phone: '',
     address: {
-      street: "",
-      city: "",
-      state: "",
-      zip: "",
+      street: '',
+      city: '',
+      state: '',
+      zip: '',
     },
   });
 
@@ -42,19 +42,19 @@ const AdminUserDetailPage = () => {
             setFormData({
               name: user.name,
               username: user.username,
-              mobile: user.mobile || "",
-              phone: user.phone || "",
+              mobile: user.mobile || '',
+              phone: user.phone || '',
               email: user.email,
               address: {
-                street: user.address?.street || "",
-                city: user.address?.city || "",
-                state: user.address?.state || "",
-                zip: user.address?.zip || "",
+                street: user.address?.street || '',
+                city: user.address?.city || '',
+                state: user.address?.state || '',
+                zip: user.address?.zip || '',
               },
             });
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          console.error('Error fetching user data:', error);
         } finally {
           setLoading(false);
         }
@@ -67,8 +67,8 @@ const AdminUserDetailPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name.includes(".")) {
-      const [outerKey, innerKey] = name.split(".");
+    if (name.includes('.')) {
+      const [outerKey, innerKey] = name.split('.');
       setFormData((prevFormData) => ({
         ...prevFormData,
         [outerKey]: {
@@ -90,21 +90,21 @@ const AdminUserDetailPage = () => {
       const formData = new FormData(e.target);
 
       const res = await fetch(`/api/users/${email}`, {
-        method: "PUT",
+        method: 'PUT',
         body: formData,
       });
 
       if (res.status === 200) {
-        toast.success("ویرایش اطلاعات با موفقیت انجام شد");
+        toast.success('ویرایش اطلاعات با موفقیت انجام شد');
         router.push(`/admin/dashboard/users`);
       } else if (res.status === 401 || res.status === 403) {
-        toast.error("Permission denied");
+        toast.error('Permission denied');
       } else {
-        toast.error("مشکل در بروزرسانی اطلاعات");
+        toast.error('مشکل در بروزرسانی اطلاعات');
       }
     } catch (error) {
       console.log(error);
-      toast.error("مشکل در بروزرسانی اطلاعات");
+      toast.error('مشکل در بروزرسانی اطلاعات');
     }
   };
 
@@ -117,9 +117,7 @@ const AdminUserDetailPage = () => {
       <section className=" w-full">
         <div className="lg:w-11/12 lg:m-auto flex justify-center">
           <div className="bg-white w-full px-2 py-4 md:px-6 md:py-8 mb-4 shadow-md rounded-md border">
-            <h1 className="text-xl lg:text-3xl text-center font-bold mb-4">
-              ویرایش اطلاعات
-            </h1>
+            <h1 className="text-xl lg:text-3xl text-center font-bold mb-4">ویرایش اطلاعات</h1>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="name" className="block text-gray-700">
@@ -130,7 +128,7 @@ const AdminUserDetailPage = () => {
                   id="name"
                   name="name"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={formData.name || ""}
+                  value={formData.name || ''}
                   onChange={handleChange}
                   required
                 />
@@ -144,7 +142,7 @@ const AdminUserDetailPage = () => {
                   id="username"
                   name="username"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={formData.username || ""}
+                  value={formData.username || ''}
                   onChange={handleChange}
                   required
                 />
@@ -158,7 +156,7 @@ const AdminUserDetailPage = () => {
                   id="mobile"
                   name="mobile"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={formData.mobile || ""}
+                  value={formData.mobile || ''}
                   onChange={handleChange}
                   required
                 />
@@ -172,7 +170,7 @@ const AdminUserDetailPage = () => {
                   id="phone"
                   name="phone"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={formData.phone || ""}
+                  value={formData.phone || ''}
                   onChange={handleChange}
                   required
                 />
@@ -186,15 +184,12 @@ const AdminUserDetailPage = () => {
                   id="address.street"
                   name="address.street"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={formData.address.street || ""}
+                  value={formData.address.street || ''}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <ProvinceCitySelect
-                formData={formData}
-                setFormData={setFormData}
-              />
+              <ProvinceCitySelect formData={formData} setFormData={setFormData} />
               <div className="mb-4">
                 <label htmlFor="address.zip" className="block text-gray-700">
                   کد پستی
@@ -204,7 +199,7 @@ const AdminUserDetailPage = () => {
                   id="address.zip"
                   name="address.zip"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={formData.address.zip || ""}
+                  value={formData.address.zip || ''}
                   onChange={handleChange}
                   required
                 />

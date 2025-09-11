@@ -1,21 +1,19 @@
-"use client";
-import { useState, useEffect } from "react";
-import MagazinePostSection from "./MagazinePostSection";
-import MagazinePostTags from "./MagazinePostTags";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+'use client';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const MagazinePostAddForm = () => {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
   const initialFields = {
-    mainTitle: "",
-    slug: "",
-    intro: "",
+    mainTitle: '',
+    slug: '',
+    intro: '',
     sections: [],
     tags: [],
-    outro: "",
+    outro: '',
     images: [],
   };
 
@@ -63,39 +61,34 @@ const MagazinePostAddForm = () => {
     try {
       const formData = new FormData(e.target);
 
-      const res = await fetch("/api/posts", {
-        method: "POST",
+      const res = await fetch('/api/posts', {
+        method: 'POST',
         body: formData,
-        encType: "multipart/form-data",
+        encType: 'multipart/form-data',
       });
 
       if (res.status === 200) {
-        toast.success("مقاله با موفقیت افزوده شد");
+        toast.success('مقاله با موفقیت افزوده شد');
         setFields(initialFields); // Reset form fields to initial state
         router.push(`/admin/dashboard/mag-add`);
       } else if (res.status === 401 || res.status === 403) {
-        toast.error("Permission denied");
+        toast.error('Permission denied');
       } else {
-        toast.error("مشکل در افزودن مقاله");
+        toast.error('مشکل در افزودن مقاله');
       }
     } catch (error) {
       console.log(error);
-      toast.error("مشکل در افزودن مقاله");
+      toast.error('مشکل در افزودن مقاله');
     }
   };
 
   return (
     mounted && (
       <form onSubmit={handleSubmit}>
-        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
-          افزودن پست جدید
-        </h2>
+        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">افزودن پست جدید</h2>
 
         <div className="mb-4">
-          <label
-            htmlFor="mainTitle"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="mainTitle" className="flex  pr-2 text-gray-700 font-bold mb-2">
             عنوان پست
           </label>
           <input
@@ -111,10 +104,7 @@ const MagazinePostAddForm = () => {
         </div>
 
         <div className="mb-4 ">
-          <label
-            htmlFor="intro"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="intro" className="flex  pr-2 text-gray-700 font-bold mb-2">
             متن شروع
           </label>
           <textarea
@@ -128,16 +118,10 @@ const MagazinePostAddForm = () => {
           ></textarea>
         </div>
 
-        <MagazinePostSection
-          sections={fields.sections}
-          setSections={handleSectionsChange}
-        />
+        <MagazinePostSection sections={fields.sections} setSections={handleSectionsChange} />
 
         <div className="mb-4 ">
-          <label
-            htmlFor="outro"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="outro" className="flex  pr-2 text-gray-700 font-bold mb-2">
             متن پایانی
           </label>
           <textarea
@@ -151,16 +135,10 @@ const MagazinePostAddForm = () => {
           ></textarea>
         </div>
 
-        <MagazinePostTags
-          tags={fields.tags}
-          setTags={(tags) => setFields({ ...fields, tags })}
-        />
+        <MagazinePostTags tags={fields.tags} setTags={(tags) => setFields({ ...fields, tags })} />
 
         <div className="mb-4">
-          <label
-            htmlFor="images"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="images" className="flex  pr-2 text-gray-700 font-bold mb-2">
             عکس مربوط به پست (حداکثر 2 عکس)
           </label>
           <input

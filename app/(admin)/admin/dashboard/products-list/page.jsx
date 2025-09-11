@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { fetchCategories, fetchProducts } from "@/utils/requests";
-import ProductListCard from "@/componentsAdmin/ProductListCard";
-import { ProductListCardSkeleton } from "@/ui/skeletons";
-import { toast } from "react-toastify";
+import { useState, useEffect } from 'react';
+import { fetchCategories, fetchProducts } from '@/utils/requests';
+import ProductListCard from '@/componentsAdmin/ProductListCard';
+import { ProductListCardSkeleton } from '@/ui/skeletons';
+import { toast } from 'react-toastify';
 
 const ProductsListPage = () => {
   const [categories, setCategories] = useState([]);
@@ -19,7 +19,7 @@ const ProductsListPage = () => {
         setCategories(categories);
         setProducts(data.totalProducts);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -29,26 +29,24 @@ const ProductsListPage = () => {
   }, []);
 
   const handleDeleteProduct = async (productId) => {
-    const confirmed = window.confirm("آیا از حذف این کالا اطمینان دارید؟");
+    const confirmed = window.confirm('آیا از حذف این کالا اطمینان دارید؟');
 
     if (!confirmed) return;
 
     try {
       const res = await fetch(`/api/products/1/1/${productId}`, {
-        method: "DELETE",
+        method: 'DELETE',
       });
 
       if (res.status === 200) {
-        setProducts((prevProducts) =>
-          prevProducts.filter((product) => product._id !== productId),
-        );
-        toast.success("محصول حذف شد");
+        setProducts((prevProducts) => prevProducts.filter((product) => product._id !== productId));
+        toast.success('محصول حذف شد');
       } else {
-        toast.error("مشکل در حذف محصول");
+        toast.error('مشکل در حذف محصول');
       }
     } catch (error) {
       console.log(error);
-      toast.error("مشکل در حذف محصول");
+      toast.error('مشکل در حذف محصول');
     }
   };
 
@@ -56,14 +54,10 @@ const ProductsListPage = () => {
     <div className=" w-full">
       <div className="lg:w-11/12 lg:m-auto flex justify-center">
         <div className="bg-white w-full min-h-3/4 flex flex-col items-center px-2 sm:px-4 py-4 md:px-6 mb-4 shadow-md rounded-md border">
-          <h2 className="text-lg md:text-3xl text-center font-semibold mb-6">
-            لیست کالاها
-          </h2>
+          <h2 className="text-lg md:text-3xl text-center font-semibold mb-6">لیست کالاها</h2>
 
           {loading
-            ? Array.from({ length: 5 }).map((_, index) => (
-                <ProductListCardSkeleton key={index} />
-              ))
+            ? Array.from({ length: 5 }).map((_, index) => <ProductListCardSkeleton key={index} />)
             : products.map((product) => (
                 <ProductListCard
                   key={product._id}

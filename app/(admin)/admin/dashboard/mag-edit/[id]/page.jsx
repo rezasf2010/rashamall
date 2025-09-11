@@ -1,4 +1,4 @@
-import MagazinePostEditForm from "@/componentsAdmin/MagazinePostEditForm";
+import MagazinePostEditForm from '@/componentsAdmin/MagazinePostEditForm';
 
 const PostEditPage = () => {
   return (

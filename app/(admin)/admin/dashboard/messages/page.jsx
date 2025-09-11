@@ -1,8 +1,8 @@
-"use client";
-import { useState, useEffect } from "react";
-import { fetchMessages } from "@/utils/requests";
-import MessageCardAdmin from "@/componentsAdmin/MessageCardAdmin";
-import { MessageCardSkeleton } from "@/ui/skeletons";
+'use client';
+import { useState, useEffect } from 'react';
+import { fetchMessages } from '@/utils/requests';
+import MessageCardAdmin from '@/componentsAdmin/MessageCardAdmin';
+import { MessageCardSkeleton } from '@/ui/skeletons';
 const AdminMessagesPage = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ const AdminMessagesPage = () => {
         const messages = await fetchMessages();
         setMessages(messages);
       } catch (error) {
-        console.error("Error fetching messages:", error);
+        console.error('Error fetching messages:', error);
       } finally {
         setLoading(false);
       }
@@ -23,18 +23,14 @@ const AdminMessagesPage = () => {
   }, []);
 
   const handleDeleteMessage = (messageId) => {
-    setMessages((prevMessages) =>
-      prevMessages.filter((message) => message._id !== messageId),
-    );
+    setMessages((prevMessages) => prevMessages.filter((message) => message._id !== messageId));
   };
 
   return (
     <section className="w-full">
       <div className="lg:w-11/12 lg:m-auto flex justify-center">
         <div className="bg-white w-full px-6 py-8 mb-4 shadow-md rounded-md bmessage">
-          <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
-            لیست پیام ها
-          </h2>
+          <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">لیست پیام ها</h2>
           <div className="">
             {loading ? (
               Array(5)

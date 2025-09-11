@@ -1,11 +1,8 @@
-import ProductsOnSale from "@/components/ProductsOnSale";
-import Breadcrumb from "@/components/Breadcrumb";
+import ProductsOnSale from '@/components/ProductsOnSale';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const OnSalePage = () => {
-  const pathSegments = [
-    { name: "خانه", link: "/" },
-    { name: "کالا های حراجی" },
-  ];
+  const pathSegments = [{ name: 'خانه', link: '/' }, { name: 'کالا های حراجی' }];
   return (
     <div className="w-full flex flex-col my-6 pr-6">
       <div className="flex flex-col items-start">

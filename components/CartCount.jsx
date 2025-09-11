@@ -1,6 +1,6 @@
-"use client";
-import { useEffect } from "react";
-import { useGlobalContext } from "@/context/UserGlobalContext";
+'use client';
+import { useEffect } from 'react';
+import { useGlobalContext } from '@/context/UserGlobalContext';
 
 const CartCount = ({ session }) => {
   const { cartCount } = useGlobalContext();

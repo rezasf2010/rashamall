@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model, models } from 'mongoose';
 
 // Specification Schema
 const SpecificationSchema = new Schema({
@@ -25,17 +25,17 @@ const ProductSchema = new Schema(
     },
     brand: {
       type: Schema.Types.ObjectId,
-      ref: "Brand",
+      ref: 'Brand',
       required: true,
     },
     main_category: {
       type: Schema.Types.ObjectId,
-      ref: "Category",
+      ref: 'Category',
       required: true,
     },
     sub_category: {
       type: Schema.Types.ObjectId,
-      ref: "Category",
+      ref: 'Category',
       required: true,
     },
     price: {
@@ -83,6 +83,6 @@ const ProductSchema = new Schema(
   },
 );
 
-const Product = models.Product || model("Product", ProductSchema);
+const Product = models.Product || model('Product', ProductSchema);
 
 export default Product;

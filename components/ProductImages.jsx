@@ -1,5 +1,5 @@
-import Image from "next/image";
-import { Gallery, Item } from "react-photoswipe-gallery";
+import Image from 'next/image';
+import { Gallery, Item } from 'react-photoswipe-gallery';
 
 const ProductImages = ({ images }) => {
   return (
@@ -7,12 +7,7 @@ const ProductImages = ({ images }) => {
       <section className="p-4 rounded-xl shadow-lg">
         <div className="container mx-auto">
           {images.length === 1 ? (
-            <Item
-              original={images[0]}
-              thumbnail={images[0]}
-              width="400"
-              height="400"
-            >
+            <Item original={images[0]} thumbnail={images[0]} width="400" height="400">
               {({ ref, open }) => (
                 <Image
                   ref={ref}
@@ -30,12 +25,7 @@ const ProductImages = ({ images }) => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="md:col-span-2">
-                <Item
-                  original={images[0]}
-                  thumbnail={images[0]}
-                  width="400"
-                  height="400"
-                >
+                <Item original={images[0]} thumbnail={images[0]} width="400" height="400">
                   {({ ref, open }) => (
                     <Image
                       ref={ref}
@@ -55,12 +45,7 @@ const ProductImages = ({ images }) => {
                 <div className="grid grid-cols-3 gap-1">
                   {images.slice(1).map((image, index) => (
                     <div key={index} className="col-span-1">
-                      <Item
-                        original={image}
-                        thumbnail={image}
-                        width="400"
-                        height="400"
-                      >
+                      <Item original={image} thumbnail={image} width="400" height="400">
                         {({ ref, open }) => (
                           <Image
                             ref={ref}

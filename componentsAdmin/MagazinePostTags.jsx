@@ -1,8 +1,6 @@
-import React from "react";
-
 const magazinePostTags = ({ tags, setTags }) => {
   const handleAddTag = () => {
-    setTags([...tags, ""]);
+    setTags([...tags, '']);
   };
 
   const handleRemoveTag = (index) => {

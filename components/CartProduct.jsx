@@ -1,9 +1,9 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { useGlobalContext } from "@/context/UserGlobalContext";
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useGlobalContext } from '@/context/UserGlobalContext';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const CartProduct = ({ product, quantity }) => {
   const { updateCart } = useGlobalContext();
@@ -58,15 +58,15 @@ const CartProduct = ({ product, quantity }) => {
       <div className="info">
         <div className="font-bold mb-2 ">{product.name}</div>
         <div className="mb-2">
-          <span className="font-bold">قیمت : </span> {"  "}
+          <span className="font-bold">قیمت : </span> {'  '}
           {unitPrice.toLocaleString()}
-          {"  "}
+          {'  '}
           <span>تومان</span>
         </div>
         <div className="flex items-center mb-2 gap-2">
           <span className="font-bold">تعداد : </span>
-          {"  "}
-          {pathname === "/order_success" ? (
+          {'  '}
+          {pathname === '/order_success' ? (
             <div className="w-12 p-1 bg-gray-100 border border-gray-300 rounded text-center">
               {productQuantity}
             </div>
@@ -96,9 +96,9 @@ const CartProduct = ({ product, quantity }) => {
         </div>
         <div className="mb-2">
           <span className="font-bold">مجموع :</span>
-          {"  "}
+          {'  '}
           {totalPrice.toLocaleString()}
-          {"  "}
+          {'  '}
           <span>تومان</span>
         </div>
       </div>

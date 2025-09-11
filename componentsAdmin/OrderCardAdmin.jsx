@@ -1,11 +1,9 @@
-"use client";
-import { useState, useEffect } from "react";
-import { convertToJalaali } from "@/utils/calenderConvert";
-import { fetchUsers } from "@/utils/requests";
-import { OrderCardSkeleton } from "@/ui/skeletons";
-import { useAdminGlobalContext } from "@/context/AdminGlobalContext";
-import { toast } from "react-toastify";
-import Link from "next/link";
+'use client';
+import { useState, useEffect } from 'react';
+import { convertToJalaali } from '@/utils/calenderConvert';
+import { fetchUsers } from '@/utils/requests';
+import { useAdminGlobalContext } from '@/context/AdminGlobalContext';
+import { toast } from 'react-toastify';
 
 const OrderCardAdmin = ({ order, onDelete }) => {
   const [users, setUsers] = useState([]);
@@ -20,7 +18,7 @@ const OrderCardAdmin = ({ order, onDelete }) => {
         const users = await fetchUsers();
         setUsers(users);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -37,13 +35,13 @@ const OrderCardAdmin = ({ order, onDelete }) => {
   const user = users.find((user) => user._id === order.user);
 
   // Ensure user exists before accessing its properties
-  const userName = user?.name || "Unknown";
-  const userMobile = user?.mobile || "Unknown";
+  const userName = user?.name || 'Unknown';
+  const userMobile = user?.mobile || 'Unknown';
 
   const handelOpenClick = async () => {
     try {
       const res = await fetch(`/api/orders/${order._id}`, {
-        method: "PUT",
+        method: 'PUT',
       });
 
       if (res.status === 200) {
@@ -58,27 +56,27 @@ const OrderCardAdmin = ({ order, onDelete }) => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("something went wrong");
+      toast.error('something went wrong');
     }
   };
 
   const handleDeleteClick = async () => {
-    if (window.confirm("آیا از حذف این سفارش اطمینان دارید؟")) {
+    if (window.confirm('آیا از حذف این سفارش اطمینان دارید؟')) {
       try {
         const res = await fetch(`/api/orders/${order._id}`, {
-          method: "DELETE",
+          method: 'DELETE',
         });
 
         if (res.status === 200) {
           onDelete(order._id); // Remove order from UI
           isOrderNew && setNewOrderCount((prevCount) => prevCount - 1);
-          toast.success("سفارش با موفقیت حذف شد");
+          toast.success('سفارش با موفقیت حذف شد');
         } else {
-          toast.error("مشکل در حذف سفارش");
+          toast.error('مشکل در حذف سفارش');
         }
       } catch (error) {
         console.log(error);
-        toast.error("مشکل در حذف سفارش");
+        toast.error('مشکل در حذف سفارش');
       }
     }
   };
@@ -92,8 +90,7 @@ const OrderCardAdmin = ({ order, onDelete }) => {
       )}
       <div className="info w-full flex flex-col gap-3">
         <div className="order-time">
-          <span className="font-semibold">زمان سفارش :</span>{" "}
-          {persianDateAndTime}
+          <span className="font-semibold">زمان سفارش :</span> {persianDateAndTime}
         </div>
 
         <div className="orderer">
@@ -109,8 +106,8 @@ const OrderCardAdmin = ({ order, onDelete }) => {
         </div>
 
         <div className="orderer-adress">
-          <span className="font-semibold">مبلغ کل :</span>{" "}
-          {order.totalAmount.toLocaleString()} <span>تومان</span>
+          <span className="font-semibold">مبلغ کل :</span> {order.totalAmount.toLocaleString()}{' '}
+          <span>تومان</span>
         </div>
       </div>
       <div className="w-full flex justify-center md:justify-end gap-2">

@@ -1,6 +1,5 @@
-import Link from "next/link";
-import ContactUsIcons from "@/components/ContactUsIcons";
-import MessageForm from "@/components/MessageForm";
+import ContactUsIcons from '@/components/ContactUsIcons';
+import MessageForm from '@/components/MessageForm';
 
 const ContactUsPage = () => {
   return (

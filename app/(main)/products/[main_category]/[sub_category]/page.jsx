@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import ProductCategoryItems from "@/components/ProductCategoryItems";
-import { fetchCategories } from "@/utils/requests";
-import Spinner from "@/components/Spinner";
-import Breadcrumb from "@/components/Breadcrumb";
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import ProductCategoryItems from '@/components/ProductCategoryItems';
+import { fetchCategories } from '@/utils/requests';
+import Spinner from '@/components/Spinner';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const CategoryPage = () => {
   const [categories, setCategories] = useState([]);
@@ -15,7 +15,7 @@ const CategoryPage = () => {
   const subCategory = params.sub_category;
   const mainCategory = params.main_category;
 
-  const subCategoryId = subCategory.split("-").pop();
+  const subCategoryId = subCategory.split('-').pop();
 
   useEffect(() => {
     const fetchCategoriesData = async () => {
@@ -23,7 +23,7 @@ const CategoryPage = () => {
         const categories = await fetchCategories();
         setCategories(categories);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        console.error('Error fetching categories:', error);
       } finally {
         setLoading(false);
       }
@@ -32,27 +32,20 @@ const CategoryPage = () => {
     fetchCategoriesData();
   }, []);
 
-  const categoryObj = categories.filter(
-    (category) => category._id === subCategoryId,
-  );
+  const categoryObj = categories.filter((category) => category._id === subCategoryId);
 
-  const mainCategoryObj = categories.filter(
-    (category) => category.slug === mainCategory,
-  );
+  const mainCategoryObj = categories.filter((category) => category.slug === mainCategory);
 
-  const pageTitle = categoryObj.length > 0 ? categoryObj[0].fa_name : "";
+  const pageTitle = categoryObj.length > 0 ? categoryObj[0].fa_name : '';
 
-  const mainCategoryTitle =
-    mainCategoryObj.length > 0 ? mainCategoryObj[0].fa_name : "";
+  const mainCategoryTitle = mainCategoryObj.length > 0 ? mainCategoryObj[0].fa_name : '';
 
   const mainCategoryPath =
-    mainCategoryObj.length > 0
-      ? `${mainCategoryObj[0].slug}-${mainCategoryObj[0]._id}`
-      : "";
+    mainCategoryObj.length > 0 ? `${mainCategoryObj[0].slug}-${mainCategoryObj[0]._id}` : '';
 
   const pathSegments = [
-    { name: "خانه", link: "/" },
-    { name: "همه کالاها", link: "/products" },
+    { name: 'خانه', link: '/' },
+    { name: 'همه کالاها', link: '/products' },
     { name: mainCategoryTitle, link: `/products/${mainCategoryPath}` },
     { name: pageTitle },
   ];
