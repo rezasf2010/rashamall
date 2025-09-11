@@ -1,29 +1,28 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import ProvinceCitySelect from "./ProvinceCitySelect";
-import PaymentInfo from "./PaymentInfo";
-import axios from "axios";
-import { set } from "mongoose";
+'use client';
+import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import ProvinceCitySelect from './ProvinceCitySelect';
+import PaymentInfo from './PaymentInfo';
+import axios from 'axios';
 
-const UserInfo = ({ customer, setCustomer }) => {
+const UserInfo = ({ setCustomer }) => {
   const { data: session } = useSession();
   const [mounted, setMounted] = useState(false);
-  const [isNewUser, setisNewUser] = useState(false);
+  const [, setisNewUser] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    username: "",
-    mobile: "",
-    phone: "",
-    email: "",
+    name: '',
+    username: '',
+    mobile: '',
+    phone: '',
+    email: '',
     address: {
-      street: "",
-      city: "",
-      state: " ",
-      zip: "",
+      street: '',
+      city: '',
+      state: ' ',
+      zip: '',
     },
-    details: "",
-    paymentMethod: "",
+    details: '',
+    paymentMethod: '',
     receiptImage: null,
   });
 
@@ -42,19 +41,19 @@ const UserInfo = ({ customer, setCustomer }) => {
             setFormData({
               name: user.name || session.user.name,
               username: user.username || session.user.name.slice(0, 20),
-              mobile: user.mobile || "",
-              phone: user.phone || "",
+              mobile: user.mobile || '',
+              phone: user.phone || '',
               email: user.email || session.user.email,
               address: {
-                street: user.address?.street || "",
-                city: user.address?.city || "",
-                state: user.address?.state || "",
-                zip: user.address?.zip || "",
+                street: user.address?.street || '',
+                city: user.address?.city || '',
+                state: user.address?.state || '',
+                zip: user.address?.zip || '',
               },
             });
           }
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          console.error('Error fetching user data:', error);
         }
       }
     };
@@ -66,8 +65,8 @@ const UserInfo = ({ customer, setCustomer }) => {
     const { name, value } = e.target;
 
     // Check if nested property
-    if (name.includes(".")) {
-      const [outerKey, innerKey] = name.split(".");
+    if (name.includes('.')) {
+      const [outerKey, innerKey] = name.split('.');
 
       setFormData((prevFromData) => ({
         ...prevFromData,
@@ -103,7 +102,7 @@ const UserInfo = ({ customer, setCustomer }) => {
                 id="name"
                 name="name"
                 className="mt-1 block w-full p-2 border rounded"
-                value={formData.name || ""}
+                value={formData.name || ''}
                 onChange={handleChange}
                 required
               />
@@ -118,7 +117,7 @@ const UserInfo = ({ customer, setCustomer }) => {
               id="mobile"
               name="mobile"
               className="input-number mt-1 block w-full p-2 border rounded"
-              value={formData.mobile || ""}
+              value={formData.mobile || ''}
               onChange={handleChange}
               required
             />
@@ -132,7 +131,7 @@ const UserInfo = ({ customer, setCustomer }) => {
               id="phone"
               name="phone"
               className="input-number mt-1 block w-full p-2 border rounded"
-              value={formData.phone || ""}
+              value={formData.phone || ''}
               onChange={handleChange}
             />
           </div>
@@ -145,7 +144,7 @@ const UserInfo = ({ customer, setCustomer }) => {
               id="email"
               name="email"
               className="mt-1 block w-full p-2 border rounded text-end"
-              value={formData.email || ""}
+              value={formData.email || ''}
               onChange={handleChange}
               required
             />
@@ -161,7 +160,7 @@ const UserInfo = ({ customer, setCustomer }) => {
                 id="street"
                 name="address.street"
                 className="mt-1 w-full p-2 border rounded"
-                value={formData.address.street || ""}
+                value={formData.address.street || ''}
                 onChange={handleChange}
                 required
               />
@@ -175,7 +174,7 @@ const UserInfo = ({ customer, setCustomer }) => {
                 id="zip"
                 name="address.zip"
                 className="input-number mt-1 block w-full p-2 border rounded"
-                value={formData.address.zip || ""}
+                value={formData.address.zip || ''}
                 onChange={handleChange}
                 required
               />
@@ -192,7 +191,7 @@ const UserInfo = ({ customer, setCustomer }) => {
               name="details"
               rows="4"
               className="mt-1 block w-full p-2 border rounded resize-none"
-              value={formData.details || ""}
+              value={formData.details || ''}
               onChange={handleChange}
             />
           </div>

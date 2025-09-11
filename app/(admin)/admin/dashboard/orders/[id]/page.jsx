@@ -1,5 +1,4 @@
-import React from "react";
-import OrderDetail from "@/componentsAdmin/OrderDetail";
+import OrderDetail from '@/componentsAdmin/OrderDetail';
 
 const OrderDetailPge = () => {
   return (

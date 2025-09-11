@@ -1,8 +1,8 @@
-import Products from "@/components/Products";
-import Breadcrumb from "@/components/Breadcrumb";
+import Products from '@/components/Products';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const ProductsPage = () => {
-  const pathSegments = [{ name: "خانه", link: "/" }, { name: "همه کالاها" }];
+  const pathSegments = [{ name: 'خانه', link: '/' }, { name: 'همه کالاها' }];
 
   return (
     <div className="w-full flex flex-col my-6 pr-6">

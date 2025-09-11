@@ -1,8 +1,11 @@
-import connectDB from "@/config/database";
-import Category from "@/models/Category";
+import connectDB from '@/config/database';
+import Category from '@/models/Category';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 // GET /api/categories
-export const GET = async (request) => {
+export const GET = async () => {
   await connectDB();
 
   const categories = await Category.find({});
@@ -10,7 +13,7 @@ export const GET = async (request) => {
     return new Response(JSON.stringify(categories), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };
 
@@ -24,39 +27,38 @@ export const POST = async (request) => {
     // Function to format date as "YYYY-MM-DD"
     function formatDate(date) {
       const d = new Date(date);
-      let month = "" + (d.getMonth() + 1);
-      let day = "" + d.getDate();
+      let month = '' + (d.getMonth() + 1);
+      let day = '' + d.getDate();
       const year = d.getFullYear();
 
-      if (month.length < 2) month = "0" + month;
-      if (day.length < 2) day = "0" + day;
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
 
-      return [year, month, day].join("-");
+      return [year, month, day].join('-');
     }
 
     //Converting category name to slug
     function convertToSlug(name) {
-      return name.toLowerCase().replace(/\s+/g, "-");
+      return name.toLowerCase().replace(/\s+/g, '-');
     }
 
     //check if its mainCategory or subCategory
-    const categoryType = formData.get("categoryType");
+    const categoryType = formData.get('categoryType');
 
     //Get fa_name of category
     const faName =
-      categoryType === "mainCategory"
-        ? formData.get("mainCategoryName")
-        : formData.get("subCategoryName");
+      categoryType === 'mainCategory'
+        ? formData.get('mainCategoryName')
+        : formData.get('subCategoryName');
 
     //Get name of category
     const enName =
-      categoryType === "mainCategory"
-        ? formData.get("mainCategoryNameEn")
-        : formData.get("subCategoryNameEn");
+      categoryType === 'mainCategory'
+        ? formData.get('mainCategoryNameEn')
+        : formData.get('subCategoryNameEn');
 
     // If its subCategory get parentCategory Id else return parent null
-    const parent =
-      categoryType === "subCategory" ? formData.get("mainCategoryName") : null;
+    const parent = categoryType === 'subCategory' ? formData.get('mainCategoryName') : null;
 
     const categoryData = {
       name: enName,
@@ -70,15 +72,13 @@ export const POST = async (request) => {
     const newCategory = new Category(categoryData);
     await newCategory.save();
 
-    return Response.redirect(
-      `${process.env.NEXT_PUBLIC_DOMAIN}/admin/dashboard/category-add`,
-    );
+    return Response.redirect(`${process.env.NEXT_PUBLIC_DOMAIN}/admin/dashboard/category-add`);
 
     // return new Response(JSON.stringify({ message: "Success" }), {
     //   status: 200,
     // });
   } catch (error) {
-    console.error("Error adding category:", error);
-    return new Response("Failded to add category", { status: 500 });
+    console.error('Error adding category:', error);
+    return new Response('Failded to add category', { status: 500 });
   }
 };

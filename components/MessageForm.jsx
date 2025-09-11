@@ -1,13 +1,13 @@
-"use client";
-import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+'use client';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const MessageForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    body: "",
+    name: '',
+    email: '',
+    subject: '',
+    body: '',
   });
 
   const handleChange = (e) => {
@@ -18,29 +18,29 @@ const MessageForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/messages", {
-        method: "POST",
+      const res = await fetch('/api/messages', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
 
       if (res.status === 401) {
-        toast.error("ابتدا وارد حساب کاربری شوید");
+        toast.error('ابتدا وارد حساب کاربری شوید');
         return;
       }
 
       if (res.ok) {
-        toast.success("پیام شما با موفقیت ارسال شد");
-        setFormData({ name: "", email: "", subject: "", body: "" });
+        toast.success('پیام شما با موفقیت ارسال شد');
+        setFormData({ name: '', email: '', subject: '', body: '' });
       } else {
         const errorData = await res.json();
-        toast.error(errorData.error || "Something went wrong");
+        toast.error(errorData.error || 'Something went wrong');
       }
     } catch (error) {
-      console.error("Failed to send message", error);
-      toast.error("Something went wrong");
+      console.error('Failed to send message', error);
+      toast.error('Something went wrong');
     }
   };
 
@@ -50,11 +50,8 @@ const MessageForm = () => {
       className="border border-blue-200 shadow-lg mx-8 p-3 rounded-lg flex flex-col items-center"
     >
       <div className="flex flex-col items-start sm:flex-row gap-4 sm:items-center mb-4 w-full">
-        <label
-          htmlFor="name"
-          className="p-2 font-bold text-gray-700  flex-shrink-0"
-        >
-          نام و نام خانوادگی:{" "}
+        <label htmlFor="name" className="p-2 font-bold text-gray-700  flex-shrink-0">
+          نام و نام خانوادگی:{' '}
         </label>
         <input
           type="text"
@@ -67,7 +64,7 @@ const MessageForm = () => {
       </div>
       <div className="flex flex-col items-start sm:flex-row gap-4 sm:items-center mb-4 w-full">
         <label htmlFor="email" className="p-2 font-bold text-gray-700">
-          ایمیل:{" "}
+          ایمیل:{' '}
         </label>
         <input
           type="email"
@@ -80,7 +77,7 @@ const MessageForm = () => {
       </div>
       <div className="flex flex-col items-start sm:flex-row gap-4 sm:items-center mb-4 w-full">
         <label htmlFor="subject" className="p-2 font-bold text-gray-700">
-          موضوع:{" "}
+          موضوع:{' '}
         </label>
         <input
           type="text"
@@ -93,7 +90,7 @@ const MessageForm = () => {
       </div>
       <div className="flex flex-col items-start sm:flex-row gap-4 sm:items-center mb-4 w-full">
         <label htmlFor="message" className="p-2 font-bold text-gray-700">
-          پیام:{" "}
+          پیام:{' '}
         </label>
         <textarea
           id="message"

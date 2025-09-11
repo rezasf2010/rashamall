@@ -1,10 +1,10 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import CartProduct from "@/components/CartProduct";
-import { useGlobalContext } from "@/context/UserGlobalContext";
-import SpinnerH from "@/components/SpinnerH";
-import { fetchProducts } from "@/utils/requests";
+'use client';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import CartProduct from '@/components/CartProduct';
+import { useGlobalContext } from '@/context/UserGlobalContext';
+import SpinnerH from '@/components/SpinnerH';
+import { fetchProducts } from '@/utils/requests';
 
 const CartPage = () => {
   const [products, setProducts] = useState([]);
@@ -18,7 +18,7 @@ const CartPage = () => {
         const data = await fetchProducts();
         setProducts(data.totalProducts);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -41,7 +41,7 @@ const CartPage = () => {
   }, 0);
 
   const handleNext = () => {
-    router.push("/checkout");
+    router.push('/checkout');
   };
 
   return (
@@ -65,9 +65,9 @@ const CartPage = () => {
       <div className=" top left sum w-full lg:w-1/3">
         <div className="border border-gray-300 bg-blue-50 w-full md:w-full p-4 rounded-2xl shadow-2xl">
           <h4 className="font-bold text-lg mb-4">جمع کل سبد خرید</h4>
-          <span className="font-bold">مجموع : </span> {"  "}
+          <span className="font-bold">مجموع : </span> {'  '}
           {totalCartPrice.toLocaleString()}
-          {"  "}
+          {'  '}
           <span>تومان</span>
         </div>
         <div className="flex justify-between mt-4">

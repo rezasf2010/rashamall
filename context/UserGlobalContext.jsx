@@ -1,6 +1,6 @@
-"use client";
-import { createContext, useContext, useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
+'use client';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 
 // Create context
 const GlobalContext = createContext();
@@ -14,7 +14,7 @@ export function GlobalProvider({ children }) {
   const [newMessageCount, setNewMessageCount] = useState(0);
 
   useEffect(() => {
-    if (session?.user?.id && typeof window !== "undefined") {
+    if (session?.user?.id && typeof window !== 'undefined') {
       const userCartKey = `cart_${session.user.id}`;
       // Get the saved cart for the logged-in user from localStorage
       const savedCart = JSON.parse(localStorage.getItem(userCartKey)) || {};
@@ -38,17 +38,11 @@ export function GlobalProvider({ children }) {
         } else {
           newCart[productId] = { quantity, price };
         }
-        const newCartCount = Object.values(newCart).reduce(
-          (acc, item) => acc + item.quantity,
-          0,
-        );
+        const newCartCount = Object.values(newCart).reduce((acc, item) => acc + item.quantity, 0);
         setCartCount(newCartCount);
-        if (typeof window !== "undefined") {
+        if (typeof window !== 'undefined') {
           localStorage.setItem(userCartKey, JSON.stringify(newCart));
-          localStorage.setItem(
-            `cartCount_${session.user.id}`,
-            JSON.stringify(newCartCount),
-          );
+          localStorage.setItem(`cartCount_${session.user.id}`, JSON.stringify(newCartCount));
         }
         return newCart;
       });
@@ -60,7 +54,7 @@ export function GlobalProvider({ children }) {
       const userCartKey = `cart_${session.user.id}`;
       setCart({});
       setCartCount(0);
-      if (typeof window !== "undefined") {
+      if (typeof window !== 'undefined') {
         localStorage.removeItem(userCartKey);
         localStorage.removeItem(`cartCount_${session.user.id}`);
       }

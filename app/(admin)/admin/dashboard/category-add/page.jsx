@@ -1,4 +1,4 @@
-import CategoryAddFrom from "@/componentsAdmin/CategoryAddFrom";
+import CategoryAddFrom from '@/componentsAdmin/CategoryAddFrom';
 
 const CategoryAddPage = () => {
   return (

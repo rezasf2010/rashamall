@@ -1,11 +1,11 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { convertToJalaali } from "@/utils/calenderConvert";
-import { fetchUsers, fetchOrder } from "@/utils/requests";
-import Spinner from "@/components/Spinner";
-import OrderItem from "@/componentsAdmin/OrderItem";
-import Link from "next/link";
+'use client';
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { convertToJalaali } from '@/utils/calenderConvert';
+import { fetchUsers, fetchOrder } from '@/utils/requests';
+import Spinner from '@/components/Spinner';
+import OrderItem from '@/componentsAdmin/OrderItem';
+import Link from 'next/link';
 
 const OrderDetail = () => {
   const [order, setOrder] = useState({});
@@ -24,7 +24,7 @@ const OrderDetail = () => {
         setUsers(users);
         setOrder(order);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -33,7 +33,7 @@ const OrderDetail = () => {
     fetchData();
   }, []);
 
-  const persianDateAndTime = order.date ? convertToJalaali(order.date) : "N/A";
+  const persianDateAndTime = order.date ? convertToJalaali(order.date) : 'N/A';
   const user = users.filter((user) => user._id === order.user);
 
   if (loading) {
@@ -47,43 +47,36 @@ const OrderDetail = () => {
   return (
     <div className="flex flex-col gap-3 w-full mt-6 px-8">
       <div className="print">
-        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
-          جزییات سفارش
-        </h2>
+        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">جزییات سفارش</h2>
 
         <div className="border border-gray-200 rounded-xl shadow-xl p-3 flex flex-col gap-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
             <div className="order-time">
-              <span className="font-semibold">زمان سفارش :</span>{" "}
-              {persianDateAndTime}
+              <span className="font-semibold">زمان سفارش :</span> {persianDateAndTime}
             </div>
             <div className="order-number">
-              <span className="font-semibold">شماره فاکتور :</span>{" "}
-              {order.orderNum}
+              <span className="font-semibold">شماره فاکتور :</span> {order.orderNum}
             </div>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-between">
             <div className="orderer">
-              <span className="font-semibold">سفارش دهنده :</span>{" "}
-              {user[0].name}
+              <span className="font-semibold">سفارش دهنده :</span> {user[0].name}
             </div>
 
             <div className="orderer-mobile">
-              <span className="font-semibold">تلفن همراه :</span>{" "}
-              {user[0].mobile}
+              <span className="font-semibold">تلفن همراه :</span> {user[0].mobile}
             </div>
           </div>
 
           <div className="flex flex-col gap-3 md:flex-row md: justify-between">
             <div className="orderer-adress">
-              <span className="font-semibold">آدرس :</span>{" "}
+              <span className="font-semibold">آدرس :</span>{' '}
               {`${user[0].address.state}, ${user[0].address.city}, ${user[0].address.street}`}
             </div>
 
             <div className="orderer-zip">
-              <span className="font-semibold">کدپستی :</span>{" "}
-              {user[0].address.zip}
+              <span className="font-semibold">کدپستی :</span> {user[0].address.zip}
             </div>
           </div>
         </div>

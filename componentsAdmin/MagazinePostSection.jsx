@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 const MagazinePostSection = ({ sections, setSections }) => {
   const handleChange = (index, event) => {
@@ -9,7 +9,7 @@ const MagazinePostSection = ({ sections, setSections }) => {
   };
 
   const handleAddRow = () => {
-    setSections([...sections, { title: "", paragraph: "" }]);
+    setSections([...sections, { title: '', paragraph: '' }]);
   };
 
   const handleRemoveRow = (index) => {
@@ -18,9 +18,7 @@ const MagazinePostSection = ({ sections, setSections }) => {
   };
   return (
     <div className="mb-4 p-4">
-      <label className="flex  pr-2 text-gray-700 font-bold mb-2">
-        پاراگراف ها
-      </label>
+      <label className="flex  pr-2 text-gray-700 font-bold mb-2">پاراگراف ها</label>
       {sections.map((section, index) => (
         <div key={index} className="flex flex-col gap-2 mb-2 justify-start">
           <div className="flex gap-2">

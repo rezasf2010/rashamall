@@ -1,10 +1,10 @@
-"use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { useSession } from "next-auth/react";
-import { useGlobalContext } from "@/context/UserGlobalContext";
-import { toast } from "react-toastify";
-import { FaTrash } from "react-icons/fa";
+'use client';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useGlobalContext } from '@/context/UserGlobalContext';
+import { toast } from 'react-toastify';
+import { FaTrash } from 'react-icons/fa';
 
 const AddToCart = ({ productId, price, status }) => {
   const { data: session } = useSession();
@@ -21,7 +21,7 @@ const AddToCart = ({ productId, price, status }) => {
 
   const handleAddToCart = () => {
     if (!session) {
-      toast.error("ابتدا وارد حساب کاربری شوید");
+      toast.error('ابتدا وارد حساب کاربری شوید');
       return;
     }
     const newQuantity = numberOfOrder + 1;
@@ -42,7 +42,7 @@ const AddToCart = ({ productId, price, status }) => {
           <button
             className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm w-full"
             onClick={handleAddToCart}
-            disabled={status != "in stock"}
+            disabled={status != 'in stock'}
           >
             افزودن به سبد خرید
           </button>
@@ -61,7 +61,7 @@ const AddToCart = ({ productId, price, status }) => {
               className="bg-blue-500 text-white w-9 h-9 rounded-lg flex items-center justify-center"
               onClick={handleRemoveFromCart}
             >
-              {numberOfOrder === 1 ? <FaTrash /> : "-"}
+              {numberOfOrder === 1 ? <FaTrash /> : '-'}
             </button>
           </div>
         )}

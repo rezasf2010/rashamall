@@ -1,10 +1,8 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { convertToJalaali } from "@/utils/calenderConvert";
-import { fetchUsers, fetchMessage } from "@/utils/requests";
-import Spinner from "@/components/Spinner";
-import Link from "next/link";
+'use client';
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { convertToJalaali } from '@/utils/calenderConvert';
+import { fetchUsers, fetchMessage } from '@/utils/requests';
 
 const MessageDetail = () => {
   const [message, setMessage] = useState({});
@@ -23,7 +21,7 @@ const MessageDetail = () => {
         setUsers(users);
         setMessage(message);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -32,9 +30,7 @@ const MessageDetail = () => {
     fetchData();
   }, []);
 
-  const persianDateAndTime = message.updatedAt
-    ? convertToJalaali(message.updatedAt)
-    : "N/A";
+  const persianDateAndTime = message.updatedAt ? convertToJalaali(message.updatedAt) : 'N/A';
   const user = users.find((user) => user._id === message.sender);
 
   if (loading) {
@@ -43,13 +39,10 @@ const MessageDetail = () => {
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-lg sm:text-xl md:text-3xl text-center font-semibold mb-6">
-        جزییات پیام
-      </h2>
+      <h2 className="text-lg sm:text-xl md:text-3xl text-center font-semibold mb-6">جزییات پیام</h2>
       <div className="border border-gray-200 rounded-xl shadow-xl p-3 flex flex-col gap-3">
         <div className="message-time text-sm sm:text-base">
-          <span className="font-semibold">زمان پیام :</span>{" "}
-          {persianDateAndTime}
+          <span className="font-semibold">زمان پیام :</span> {persianDateAndTime}
         </div>
 
         <div className="orderer text-sm sm:text-base">

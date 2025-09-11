@@ -1,8 +1,8 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { toast } from "react-toastify";
-import SpinnerH from "./SpinnerH";
+'use client';
+import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { toast } from 'react-toastify';
+import SpinnerH from './SpinnerH';
 
 const Bookmark = ({ product }) => {
   const { data: session } = useSession();
@@ -19,10 +19,10 @@ const Bookmark = ({ product }) => {
 
     const checkBookmarkStatus = async () => {
       try {
-        const res = await fetch("/api/bookmarks/check", {
-          method: "POST",
+        const res = await fetch('/api/bookmarks/check', {
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             productId: product._id,
@@ -45,15 +45,15 @@ const Bookmark = ({ product }) => {
 
   const handleClick = async () => {
     if (!userId) {
-      toast.error("ابتدا وارد حساب کاربری شوید");
+      toast.error('ابتدا وارد حساب کاربری شوید');
       return;
     }
 
     try {
-      const res = await fetch("/api/bookmarks", {
-        method: "POST",
+      const res = await fetch('/api/bookmarks', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           productId: product._id,
@@ -67,7 +67,7 @@ const Bookmark = ({ product }) => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error('Something went wrong');
     }
   };
 

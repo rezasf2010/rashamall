@@ -1,12 +1,8 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { FaChevronLeft, FaBars } from "react-icons/fa";
-import NewOrderCount from "./NewOrderCount";
-import NewMessagesCount from "./NewMessagesCount";
-import { auth } from "@/utils/firebaseConfig";
-import { signOut } from "firebase/auth";
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { auth } from '@/utils/firebaseConfig';
+import { signOut } from 'firebase/auth';
 
 const AdminNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,11 +15,11 @@ const AdminNavbar = () => {
   const handelSignOut = async () => {
     try {
       await signOut(auth); // Sign out the user
-      console.log("User signed out successfully");
+      console.log('User signed out successfully');
       // Optionally, redirect the user to a different page or show a message
-      router.push("/login");
+      router.push('/login');
     } catch (error) {
-      console.error("Error signing out:", error);
+      console.error('Error signing out:', error);
     }
   };
 
@@ -37,7 +33,7 @@ const AdminNavbar = () => {
         <FaBars className="text-2xl" />
       </button>
       <nav
-        className={`w-64 absolute right-0 top-14 lg:top-0 flex flex-col justify-between items-center bg-blue-100 text-gray-700 transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"} lg:translate-x-0 z-40`}
+        className={`w-64 absolute right-0 top-14 lg:top-0 flex flex-col justify-between items-center bg-blue-100 text-gray-700 transition-transform duration-300 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} lg:translate-x-0 z-40`}
       >
         <div className="flex flex-col items-center">
           <h2 className="p-5 font-bold text-xl">پنل مدیریت</h2>

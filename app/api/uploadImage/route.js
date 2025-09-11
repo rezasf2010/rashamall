@@ -1,4 +1,7 @@
-import cloudinary from "@/config/cloudinary";
+import cloudinary from '@/config/cloudinary';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 // POST/api/uploadImage
 export const POST = async (request) => {
@@ -10,12 +13,12 @@ export const POST = async (request) => {
     const uploadPromises = [];
 
     for (const file of files) {
-      const imageBuffer = Buffer.from(file, "base64");
+      const imageBuffer = Buffer.from(file, 'base64');
 
       const result = await cloudinary.uploader.upload(
-        `data:image/png;base64,${imageBuffer.toString("base64")}`,
+        `data:image/png;base64,${imageBuffer.toString('base64')}`,
         {
-          folder: "rashamall",
+          folder: 'rashamall',
         },
       );
 
@@ -25,7 +28,7 @@ export const POST = async (request) => {
     const uploadedImages = await Promise.all(uploadPromises);
 
     return new Response(JSON.stringify(uploadedImages), { status: 200 });
-  } catch (error) {
-    return new Response("Something went wrong", { status: 500 });
+  } catch {
+    return new Response('Something went wrong', { status: 500 });
   }
 };

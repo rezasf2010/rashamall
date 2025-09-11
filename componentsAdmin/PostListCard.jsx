@@ -1,15 +1,13 @@
-"use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { toast } from "react-toastify";
+'use client';
+import { useState, useEffect } from 'react';
 
 const PostListCard = ({ post, onDelete }) => {
-  const [formattedDate, setFormattedDate] = useState("");
+  const [formattedDate, setFormattedDate] = useState('');
 
   useEffect(() => {
     const date = new Date(post.publishedDate);
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const formatted = date.toLocaleDateString("fa-IR", options);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formatted = date.toLocaleDateString('fa-IR', options);
     setFormattedDate(formatted);
   }, [post.publishedDate]);
 

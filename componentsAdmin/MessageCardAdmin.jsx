@@ -1,11 +1,9 @@
-"use client";
-import { useState, useEffect } from "react";
-import { convertToJalaali } from "@/utils/calenderConvert";
-import { fetchUsers } from "@/utils/requests";
-import { MessageCardSkeleton } from "@/ui/skeletons";
-import { useAdminGlobalContext } from "@/context/AdminGlobalContext";
-import { toast } from "react-toastify";
-import Link from "next/link";
+'use client';
+import { useState, useEffect } from 'react';
+import { convertToJalaali } from '@/utils/calenderConvert';
+import { fetchUsers } from '@/utils/requests';
+import { useAdminGlobalContext } from '@/context/AdminGlobalContext';
+import { toast } from 'react-toastify';
 
 const MessageCardAdmin = ({ message, onDelete }) => {
   const [users, setUsers] = useState([]);
@@ -20,7 +18,7 @@ const MessageCardAdmin = ({ message, onDelete }) => {
         const users = await fetchUsers();
         setUsers(users);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -37,12 +35,12 @@ const MessageCardAdmin = ({ message, onDelete }) => {
   const user = users.find((user) => user._id === message.sender);
 
   // Ensure user exists before accessing its properties
-  const userName = user?.name || "Unknown";
+  const userName = user?.name || 'Unknown';
 
   const handelOpenClick = async () => {
     try {
       const res = await fetch(`/api/messages/${message._id}`, {
-        method: "PUT",
+        method: 'PUT',
       });
 
       if (res.status === 200) {
@@ -57,27 +55,27 @@ const MessageCardAdmin = ({ message, onDelete }) => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("something went wrong");
+      toast.error('something went wrong');
     }
   };
 
   const handleDeleteClick = async () => {
-    if (window.confirm("آیا از حذف این پیام اطمینان دارید؟")) {
+    if (window.confirm('آیا از حذف این پیام اطمینان دارید؟')) {
       try {
         const res = await fetch(`/api/messages/${message._id}`, {
-          method: "DELETE",
+          method: 'DELETE',
         });
 
         if (res.status === 200) {
           onDelete(message._id); // Remove message from UI
           isMessageNew && setNewMessageCount((prevCount) => prevCount - 1);
-          toast.success("پیام با موفقیت حذف شد");
+          toast.success('پیام با موفقیت حذف شد');
         } else {
-          toast.error("مشکل در حذف پیام");
+          toast.error('مشکل در حذف پیام');
         }
       } catch (error) {
         console.log(error);
-        toast.error("مشکل در حذف پیام");
+        toast.error('مشکل در حذف پیام');
       }
     }
   };
@@ -91,8 +89,7 @@ const MessageCardAdmin = ({ message, onDelete }) => {
       )}
       <div className="info w-full flex flex-col gap-3">
         <div className="message-time">
-          <span className="font-semibold">زمان پیام :</span>{" "}
-          {persianDateAndTime}
+          <span className="font-semibold">زمان پیام :</span> {persianDateAndTime}
         </div>
 
         <div className="sender">

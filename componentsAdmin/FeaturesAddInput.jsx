@@ -1,8 +1,6 @@
-import { useState } from "react";
-
 const FeaturesAddInput = ({ features, setFeatures }) => {
   const handleAddFeature = () => {
-    setFeatures([...features, ""]);
+    setFeatures([...features, '']);
   };
 
   const handleRemoveFeature = (index) => {

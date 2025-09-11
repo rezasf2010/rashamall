@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import ProductCard from "@/components/ProductCard";
-import { toast } from "react-toastify";
-import Spinner from "@/components/Spinner";
-import Breadcrumb from "@/components/Breadcrumb";
+import { useState, useEffect } from 'react';
+import ProductCard from '@/components/ProductCard';
+import { toast } from 'react-toastify';
+import Spinner from '@/components/Spinner';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const SavedProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -13,17 +13,17 @@ const SavedProductsPage = () => {
   useEffect(() => {
     const fetchSavedProducts = async () => {
       try {
-        const res = await fetch("/api/bookmarks");
+        const res = await fetch('/api/bookmarks');
 
         if (res.status === 200) {
           const data = await res.json();
           setProducts(data);
         } else {
           console.log(res.statusText);
-          toast.error("failed to fetch saved products");
+          toast.error('failed to fetch saved products');
         }
       } catch (error) {
-        console.error("failed to fetch saved products", error);
+        console.error('failed to fetch saved products', error);
       } finally {
         setLoading(false);
       }
@@ -32,10 +32,7 @@ const SavedProductsPage = () => {
     fetchSavedProducts();
   }, []);
 
-  const pathSegments = [
-    { name: "خانه", link: "/" },
-    { name: "کالاهای ذخیره شده" },
-  ];
+  const pathSegments = [{ name: 'خانه', link: '/' }, { name: 'کالاهای ذخیره شده' }];
 
   if (loading) {
     return <Spinner loading={loading} />;

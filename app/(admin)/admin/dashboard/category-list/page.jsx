@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { fetchCategories } from "@/utils/requests";
-import CategoryListCard from "@/componentsAdmin/CategoryListCard";
-import { CategoryListCardSkeleton } from "@/ui/skeletons";
-import { toast } from "react-toastify";
+import { useState, useEffect } from 'react';
+import { fetchCategories } from '@/utils/requests';
+import CategoryListCard from '@/componentsAdmin/CategoryListCard';
+import { CategoryListCardSkeleton } from '@/ui/skeletons';
+import { toast } from 'react-toastify';
 
 const CategoryListPage = () => {
   const [categories, setCategories] = useState([]);
@@ -16,7 +16,7 @@ const CategoryListPage = () => {
         const categories = await fetchCategories();
         setCategories(categories);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -26,26 +26,26 @@ const CategoryListPage = () => {
   }, []);
 
   const handleDeleteCategory = async (categoryId) => {
-    const confirmed = window.confirm("آیا از حذف این دسته بندی اطمینان دارید؟");
+    const confirmed = window.confirm('آیا از حذف این دسته بندی اطمینان دارید؟');
 
     if (!confirmed) return;
 
     try {
       const res = await fetch(`/api/categories/${categoryId}`, {
-        method: "DELETE",
+        method: 'DELETE',
       });
 
       if (res.status === 200) {
         setCategories((prevCategories) =>
           prevCategories.filter((category) => category._id !== categoryId),
         );
-        toast.success("دسته بندی با موفقیت حذف شد");
+        toast.success('دسته بندی با موفقیت حذف شد');
       } else {
-        toast.error("مشکل در حذف دسته بندی");
+        toast.error('مشکل در حذف دسته بندی');
       }
     } catch (error) {
       console.log(error);
-      toast.error("مشکل در حذف دسته بندی");
+      toast.error('مشکل در حذف دسته بندی');
     }
   };
 

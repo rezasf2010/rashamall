@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 const OrderCard = ({ order }) => {
-  const [formattedDate, setFormattedDate] = useState("");
+  const [formattedDate, setFormattedDate] = useState('');
 
   useEffect(() => {
     const date = new Date(order.updatedAt);
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    const formatted = date.toLocaleDateString("fa-IR", options);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formatted = date.toLocaleDateString('fa-IR', options);
     setFormattedDate(formatted);
   }, [order.updatedAt]);
 
@@ -19,28 +19,26 @@ const OrderCard = ({ order }) => {
         <div className="info mb-3 w-full">
           <div className="p-2 w-full flex flex-col gap-3 md:flex-row justify-between mb-3">
             <div className="font-bold">
-              شماره فاکتور :{"   "}
-              <span className="px-1 border-b border-gray-700 text-center ">
-                {order.orderNum}
-              </span>
+              شماره فاکتور :{'   '}
+              <span className="px-1 border-b border-gray-700 text-center ">{order.orderNum}</span>
             </div>
 
             <div className="font-bold ">
-              تاریخ :{"   "}
+              تاریخ :{'   '}
               <span className="px-1 text-center ">{formattedDate}</span>
             </div>
           </div>
 
           <div className="font-bold mb-3 ">
-            تعداد کالاها :{"   "}
+            تعداد کالاها :{'   '}
             <span className="px-1 text-center ">{order.totalQuantity}</span>
           </div>
 
           <div className="mb-2">
             <span className="font-bold">مجموع قیمت :</span>
-            {"  "}
+            {'  '}
             {order.totalAmount.toLocaleString()}
-            {"  "}
+            {'  '}
             <span>تومان</span>
           </div>
         </div>

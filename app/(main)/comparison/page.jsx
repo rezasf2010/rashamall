@@ -1,10 +1,7 @@
-import Breadcrumb from "@/components/Breadcrumb";
+import Breadcrumb from '@/components/Breadcrumb';
 
 const ComparisonPage = () => {
-  const pathSegments = [
-    { name: "خانه", link: "/" },
-    { name: "مقایسه کالا ها" },
-  ];
+  const pathSegments = [{ name: 'خانه', link: '/' }, { name: 'مقایسه کالا ها' }];
 
   return (
     <div className="w-full flex flex-col items-center my-6 md:items-start md:mr-12">

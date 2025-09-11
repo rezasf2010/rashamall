@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import MagCard from "@/components/MagCard";
-import Spinner from "@/components/Spinner";
-import { fetchPosts } from "@/utils/requests";
-import Breadcrumb from "@/components/Breadcrumb";
+import { useState, useEffect } from 'react';
+import MagCard from '@/components/MagCard';
+import Spinner from '@/components/Spinner';
+import { fetchPosts } from '@/utils/requests';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const MagazinePage = () => {
   const [posts, setPosts] = useState([]);
@@ -16,7 +16,7 @@ const MagazinePage = () => {
         const posts = await fetchPosts();
         setPosts(posts);
       } catch (error) {
-        console.error("Error fetching posts:", error);
+        console.error('Error fetching posts:', error);
       } finally {
         setLoading(false);
       }
@@ -25,7 +25,7 @@ const MagazinePage = () => {
     fetchPostsData();
   }, []);
 
-  const pathSegments = [{ name: "خانه", link: "/" }, { name: "مجله راشامال" }];
+  const pathSegments = [{ name: 'خانه', link: '/' }, { name: 'مجله راشامال' }];
 
   return loading ? (
     <Spinner loading={loading} />

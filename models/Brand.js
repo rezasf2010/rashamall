@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model, models } from 'mongoose';
 
 // Brand Schema
 const BrandSchema = new Schema(
@@ -14,7 +14,7 @@ const BrandSchema = new Schema(
     categories: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Category",
+        ref: 'Category',
         required: true,
       },
     ],
@@ -39,6 +39,6 @@ const BrandSchema = new Schema(
   },
 );
 
-const Brand = models.Brand || model("Brand", BrandSchema);
+const Brand = models.Brand || model('Brand', BrandSchema);
 
 export default Brand;

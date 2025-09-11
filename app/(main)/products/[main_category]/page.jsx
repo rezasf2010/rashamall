@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
-import ProductCategoryItems from "@/components/ProductCategoryItems";
-import { fetchCategories } from "@/utils/requests";
-import Spinner from "@/components/Spinner";
-import Breadcrumb from "@/components/Breadcrumb";
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import ProductCategoryItems from '@/components/ProductCategoryItems';
+import { fetchCategories } from '@/utils/requests';
+import Spinner from '@/components/Spinner';
+import Breadcrumb from '@/components/Breadcrumb';
 
 const ProductCategoryPage = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const pathName = usePathname();
-  const categoryId = pathName.split("-").pop();
+  const categoryId = pathName.split('-').pop();
 
   useEffect(() => {
     const fetchCategoriesData = async () => {
@@ -19,7 +19,7 @@ const ProductCategoryPage = () => {
         const categories = await fetchCategories();
         setCategories(categories);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        console.error('Error fetching categories:', error);
       } finally {
         setLoading(false);
       }
@@ -28,15 +28,13 @@ const ProductCategoryPage = () => {
     fetchCategoriesData();
   }, []);
 
-  const categoryObj = categories.filter(
-    (category) => category._id === categoryId,
-  );
+  const categoryObj = categories.filter((category) => category._id === categoryId);
 
-  const pageTitle = categoryObj.length > 0 ? categoryObj[0].fa_name : "";
+  const pageTitle = categoryObj.length > 0 ? categoryObj[0].fa_name : '';
 
   const pathSegments = [
-    { name: "خانه", link: "/" },
-    { name: "همه کالاها", link: "/products" },
+    { name: 'خانه', link: '/' },
+    { name: 'همه کالاها', link: '/products' },
     { name: pageTitle },
   ];
 

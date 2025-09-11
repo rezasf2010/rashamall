@@ -1,17 +1,17 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const ProductSearchForm = () => {
-  const [searchField, setSearchField] = useState("");
+  const [searchField, setSearchField] = useState('');
 
   const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (searchField === "") {
-      router.push("/products");
+    if (searchField === '') {
+      router.push('/products');
     } else {
       const query = `?query=${searchField}`;
 

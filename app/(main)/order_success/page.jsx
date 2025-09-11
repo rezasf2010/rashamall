@@ -1,6 +1,6 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+'use client';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const OrderSuccessPage = () => {
   const [secondsLeft, setSecondsLeft] = useState(20);
@@ -13,21 +13,19 @@ const OrderSuccessPage = () => {
 
     if (secondsLeft === 0) {
       clearInterval(timer);
-      router.push("/");
+      router.push('/');
     }
 
     return () => clearInterval(timer);
   }, [secondsLeft, router]);
 
   const handleReturnHome = () => {
-    router.push("/"); // Change this to your actual next step route
+    router.push('/'); // Change this to your actual next step route
   };
 
   return (
     <div className="w-full my-12 px-6 flex flex-col  items-center justify-center">
-      <h2 className="font-bold text-xl text-green-700 text-center mb-6">
-        با سپاس از خرید شما
-      </h2>
+      <h2 className="font-bold text-xl text-green-700 text-center mb-6">با سپاس از خرید شما</h2>
       <h2 className="font-bold text-xl text-green-700 text-center mb-6">
         سفارش شما با موفقیت ثبت شد. به زودی با شما تماس می گیریم ...
       </h2>

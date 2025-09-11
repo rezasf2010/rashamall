@@ -1,7 +1,5 @@
-"use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+import { useState, useEffect } from 'react';
 
 const ProductImageEditForm = ({ product, onImageDelete, onImageAdd }) => {
   const [images, setImages] = useState(product.images || []);
@@ -21,9 +19,7 @@ const ProductImageEditForm = ({ product, onImageDelete, onImageAdd }) => {
 
   return (
     <div className="w-full">
-      <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
-        ویرایش عکس ها
-      </h2>
+      <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">ویرایش عکس ها</h2>
       <div className="flex flex-col gap-4 sm:flex-row">
         {images.map((image, index) => (
           <div

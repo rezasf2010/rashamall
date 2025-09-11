@@ -1,15 +1,15 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-const InfoBox = ({ heading, backgroundColor, buttonInfo, children }) => {
+const InfoBox = ({ buttonInfo, children }) => {
   return (
     <div className="rounded-xl shadow-xl">
       <div>{children}</div>
       {buttonInfo && (
         <Link
-          href={buttonInfo ? buttonInfo.link : "/"}
+          href={buttonInfo ? buttonInfo.link : '/'}
           className={` inline-block text-white rounded-lg px-4 py-2 hover:opacity-80 `}
         >
-          {buttonInfo ? buttonInfo.text : ""}
+          {buttonInfo ? buttonInfo.text : ''}
         </Link>
       )}
     </div>

@@ -1,21 +1,19 @@
-"use client";
-import { useState, useEffect } from "react";
-import MagazinePostSection from "./MagazinePostSection";
-import MagazinePostTags from "./MagazinePostTags";
-import { useRouter, useParams } from "next/navigation";
-import { toast } from "react-toastify";
+'use client';
+import { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const MagazinePostEditForm = () => {
   const { id } = useParams();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [fields, setFields] = useState({
-    mainTitle: "",
-    slug: "",
-    intro: "",
+    mainTitle: '',
+    slug: '',
+    intro: '',
     sections: [],
     tags: [],
-    outro: "",
+    outro: '',
   });
 
   useEffect(() => {
@@ -26,7 +24,7 @@ const MagazinePostEditForm = () => {
         setFields(post);
         setMounted(true);
       } catch (error) {
-        console.error("Error fetching post data:", error);
+        console.error('Error fetching post data:', error);
       }
     };
 
@@ -54,37 +52,32 @@ const MagazinePostEditForm = () => {
       const formData = new FormData(e.target);
 
       const res = await fetch(`/api/posts/${id}`, {
-        method: "PUT",
+        method: 'PUT',
         body: formData,
-        encType: "multipart/form-data",
+        encType: 'multipart/form-data',
       });
 
       if (res.status === 200) {
-        toast.success("مقاله با موفقیت به روز رسانی شد");
+        toast.success('مقاله با موفقیت به روز رسانی شد');
         router.push(`/admin/dashboard/mag-list`);
       } else if (res.status === 401 || res.status === 403) {
-        toast.error("Permission denied");
+        toast.error('Permission denied');
       } else {
-        toast.error("مشکل در بروزرسانی مقاله");
+        toast.error('مشکل در بروزرسانی مقاله');
       }
     } catch (error) {
       console.log(error);
-      toast.error("مشکل در بروزرسانی مقاله");
+      toast.error('مشکل در بروزرسانی مقاله');
     }
   };
 
   return (
     mounted && (
       <form onSubmit={handleSubmit}>
-        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
-          ویرایش پست
-        </h2>
+        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">ویرایش پست</h2>
 
         <div className="mb-4">
-          <label
-            htmlFor="mainTitle"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="mainTitle" className="flex  pr-2 text-gray-700 font-bold mb-2">
             عنوان پست
           </label>
           <input
@@ -100,10 +93,7 @@ const MagazinePostEditForm = () => {
         </div>
 
         <div className="mb-4 ">
-          <label
-            htmlFor="intro"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="intro" className="flex  pr-2 text-gray-700 font-bold mb-2">
             متن شروع
           </label>
           <textarea
@@ -117,16 +107,10 @@ const MagazinePostEditForm = () => {
           ></textarea>
         </div>
 
-        <MagazinePostSection
-          sections={fields.sections}
-          setSections={handleSectionsChange}
-        />
+        <MagazinePostSection sections={fields.sections} setSections={handleSectionsChange} />
 
         <div className="mb-4 ">
-          <label
-            htmlFor="outro"
-            className="flex  pr-2 text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="outro" className="flex  pr-2 text-gray-700 font-bold mb-2">
             متن پایانی
           </label>
           <textarea
@@ -140,10 +124,7 @@ const MagazinePostEditForm = () => {
           ></textarea>
         </div>
 
-        <MagazinePostTags
-          tags={fields.tags}
-          setTags={(tags) => setFields({ ...fields, tags })}
-        />
+        <MagazinePostTags tags={fields.tags} setTags={(tags) => setFields({ ...fields, tags })} />
 
         <div>
           <button

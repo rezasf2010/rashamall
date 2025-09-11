@@ -1,20 +1,19 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { fetchCategories, fetchCategory } from "@/utils/requests";
-import { useRouter, useParams } from "next/navigation";
-import Spinner from "@/components/Spinner";
-import { toast } from "react-toastify";
+import { useState, useEffect } from 'react';
+import { fetchCategories, fetchCategory } from '@/utils/requests';
+import { useRouter, useParams } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const CategoryEditForm = () => {
   const { id } = useParams();
   const router = useRouter();
 
   const [fields, setFields] = useState({
-    type: "main", // Assume type is "main" by default, update based on fetched data if needed
-    mainCategoryName: "",
-    subCategoryName: "",
-    subCategoryNameEn: "",
+    type: 'main', // Assume type is "main" by default, update based on fetched data if needed
+    mainCategoryName: '',
+    subCategoryName: '',
+    subCategoryNameEn: '',
   });
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,15 +25,15 @@ const CategoryEditForm = () => {
         const categories = await fetchCategories();
 
         setFields({
-          type: category.parent ? "sub" : "main",
-          mainCategoryName: category.parent || "",
+          type: category.parent ? 'sub' : 'main',
+          mainCategoryName: category.parent || '',
           subCategoryName: category.fa_name,
           subCategoryNameEn: category.name,
         });
 
         setCategories(categories);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -55,19 +54,19 @@ const CategoryEditForm = () => {
       const formData = new FormData(e.target);
 
       const res = await fetch(`/api/categories/${id}`, {
-        method: "PUT",
+        method: 'PUT',
         body: formData,
       });
 
       if (res.status === 200) {
-        toast.success("دسته بندی با موفقیت به روز رسانی شد");
-        router.push("/admin/dashboard/category-list");
+        toast.success('دسته بندی با موفقیت به روز رسانی شد');
+        router.push('/admin/dashboard/category-list');
       } else {
-        toast.error("مشکل در بروزرسانی دسته بندی");
+        toast.error('مشکل در بروزرسانی دسته بندی');
       }
     } catch (error) {
-      console.error("Error updating category:", error);
-      toast.error("مشکل در بروزرسانی دسته بندی");
+      console.error('Error updating category:', error);
+      toast.error('مشکل در بروزرسانی دسته بندی');
     }
   };
 
@@ -78,9 +77,7 @@ const CategoryEditForm = () => {
       <div className="w-11/12 m-auto">
         <div className="bg-white px-3 md:px-6 py-8 mb-4 shadow-md rounded-md border">
           <form onSubmit={handleSubmit}>
-            <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">
-              ویرایش دسته بندی
-            </h2>
+            <h2 className="text-xl md:text-3xl text-center font-semibold mb-6">ویرایش دسته بندی</h2>
 
             <div className="mb-4 flex justify-around">
               <label className="flex items-center gap-2 text-gray-700 font-bold mb-2">
@@ -88,7 +85,7 @@ const CategoryEditForm = () => {
                   type="radio"
                   name="type"
                   value="main"
-                  checked={fields.type === "main"}
+                  checked={fields.type === 'main'}
                   onChange={handleChange}
                 />
                 دسته اصلی
@@ -98,14 +95,14 @@ const CategoryEditForm = () => {
                   type="radio"
                   name="type"
                   value="sub"
-                  checked={fields.type === "sub"}
+                  checked={fields.type === 'sub'}
                   onChange={handleChange}
                 />
                 دسته فرعی
               </label>
             </div>
 
-            {fields.type === "sub" && (
+            {fields.type === 'sub' && (
               <div className="mb-4">
                 <label
                   htmlFor="mainCategoryName"
@@ -133,10 +130,7 @@ const CategoryEditForm = () => {
             )}
 
             <div className="mb-4">
-              <label
-                htmlFor="subCategoryName"
-                className="flex pr-2 text-gray-700 font-bold mb-2"
-              >
+              <label htmlFor="subCategoryName" className="flex pr-2 text-gray-700 font-bold mb-2">
                 نام دسته بندی فرعی
               </label>
               <input
@@ -156,7 +150,7 @@ const CategoryEditForm = () => {
                 htmlFor="subCategoryNameEn"
                 className="flex pr-2 gap-2 text-gray-700 font-bold mb-2"
               >
-                نام دسته بندی فرعی {"  "}
+                نام دسته بندی فرعی {'  '}
                 <span className="text-blue-500 font-semibold">(English)</span>
               </label>
               <input
@@ -164,7 +158,7 @@ const CategoryEditForm = () => {
                 id="subCategoryNameEn"
                 name="subCategoryNameEn"
                 className="border border-gray-300 rounded w-full py-2 px-3 mb-2"
-                style={{ direction: "ltr" }}
+                style={{ direction: 'ltr' }}
                 placeholder="نام دسته بندی فرعی (English)"
                 required
                 value={fields.subCategoryNameEn}

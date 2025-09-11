@@ -1,22 +1,22 @@
-"use client";
-import { useState, useEffect } from "react";
-import { fetchCategories } from "@/utils/requests";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+'use client';
+import { useState, useEffect } from 'react';
+import { fetchCategories } from '@/utils/requests';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const CategoryAddFrom = () => {
   const router = useRouter();
   const [categories, setCategories] = useState([]);
-  const [categoryType, setCategoryType] = useState("");
+  const [categoryType, setCategoryType] = useState('');
   const [mounted, setMounted] = useState(true);
-  const [selectedMainCategory, setSelectedMainCategory] = useState("");
+  const [selectedMainCategory, setSelectedMainCategory] = useState('');
 
   const initialCategoryData = {
-    categoryType: "",
-    mainCategoryName: "",
-    mainCategoryNameEn: "",
-    subCategoryName: "",
-    subCategoryNameEn: "",
+    categoryType: '',
+    mainCategoryName: '',
+    mainCategoryNameEn: '',
+    subCategoryName: '',
+    subCategoryNameEn: '',
   };
 
   const [categoryData, setCategoryData] = useState(initialCategoryData);
@@ -46,7 +46,7 @@ const CategoryAddFrom = () => {
         const categories = await fetchCategories();
         setCategories(categories);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
 
@@ -58,10 +58,10 @@ const CategoryAddFrom = () => {
     .sort((a, b) => a._id.localeCompare(b._id));
 
   useEffect(() => {
-    if (categoryType === "subCategory") {
+    if (categoryType === 'subCategory') {
       setCategoryData((prevCategoryData) => ({
         ...prevCategoryData,
-        mainCategoryNameEn: "",
+        mainCategoryNameEn: '',
       }));
     }
   }, [categoryType]);
@@ -72,26 +72,26 @@ const CategoryAddFrom = () => {
     try {
       const formData = new FormData(e.target);
 
-      const res = await fetch("/api/categories", {
-        method: "POST",
+      const res = await fetch('/api/categories', {
+        method: 'POST',
         body: formData,
-        encType: "multipart/form-data",
+        encType: 'multipart/form-data',
       });
 
       if (res.status === 200) {
-        toast.success("دسته بندی با موفقیت افزوده شد");
-        setCategoryType("");
+        toast.success('دسته بندی با موفقیت افزوده شد');
+        setCategoryType('');
         setCategoryData(initialCategoryData);
-        setSelectedMainCategory("");
+        setSelectedMainCategory('');
         router.push(`/admin/dashboard/category-add`);
       } else if (res.status === 401 || res.status === 403) {
-        toast.error("Permission denied");
+        toast.error('Permission denied');
       } else {
-        toast.error("مشکل در افزودن دسته بندی");
+        toast.error('مشکل در افزودن دسته بندی');
       }
     } catch (error) {
       console.log(error);
-      toast.error("مشکل در افزودن دسته بندی");
+      toast.error('مشکل در افزودن دسته بندی');
     }
   };
 
@@ -104,9 +104,7 @@ const CategoryAddFrom = () => {
 
         <div className="my-4 py-4 px-8 border border-gray-300 shadow-xl bg-gray-100 rounded-xl">
           <div className="mt-4 ">
-            <h2 className="text-sm md:text-xl font-bold mb-4 ">
-              نوع دسته بندی را انتخاب نمایید
-            </h2>
+            <h2 className="text-sm md:text-xl font-bold mb-4 ">نوع دسته بندی را انتخاب نمایید</h2>
           </div>
 
           <div className="flex justify-around items-center">
@@ -116,7 +114,7 @@ const CategoryAddFrom = () => {
                   type="radio"
                   name="categoryType"
                   value="mainCategory"
-                  checked={categoryType === "mainCategory"}
+                  checked={categoryType === 'mainCategory'}
                   onChange={handleCategoryChange}
                 />
                 <span className="ml-2 text-sm md:text-base">دسته اصلی </span>
@@ -128,7 +126,7 @@ const CategoryAddFrom = () => {
                   type="radio"
                   name="categoryType"
                   value="subCategory"
-                  checked={categoryType === "subCategory"}
+                  checked={categoryType === 'subCategory'}
                   onChange={handleCategoryChange}
                 />
                 <span className="ml-2 text-sm md:text-base">دسته فرعی</span>
@@ -136,7 +134,7 @@ const CategoryAddFrom = () => {
             </div>
           </div>
 
-          {categoryType === "mainCategory" && (
+          {categoryType === 'mainCategory' && (
             <div>
               <div className="my-4">
                 <label
@@ -150,7 +148,7 @@ const CategoryAddFrom = () => {
                   id="mainCategoryName"
                   name="mainCategoryName"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={categoryData.mainCategoryName || ""}
+                  value={categoryData.mainCategoryName || ''}
                   onChange={handleChange}
                   required
                 />
@@ -161,16 +159,15 @@ const CategoryAddFrom = () => {
                   htmlFor="mainCategoryNameEn"
                   className="block text-gray-700 font-bold px-3 text-sm md:text-base"
                 >
-                  نام دسته بندی اصلی{" "}
-                  <span className="text-blue-500 font-semibold">(English)</span>
+                  نام دسته بندی اصلی <span className="text-blue-500 font-semibold">(English)</span>
                 </label>
                 <input
                   type="text"
                   id="mainCategoryNameEn"
                   name="mainCategoryNameEn"
                   className="mt-1 block w-full p-2 border rounded"
-                  style={{ direction: "ltr" }}
-                  value={categoryData.mainCategoryNameEn || ""}
+                  style={{ direction: 'ltr' }}
+                  value={categoryData.mainCategoryNameEn || ''}
                   onChange={handleChange}
                   required
                 />
@@ -178,7 +175,7 @@ const CategoryAddFrom = () => {
             </div>
           )}
 
-          {categoryType === "subCategory" && (
+          {categoryType === 'subCategory' && (
             <div className="my-4">
               <div className="mb-4">
                 <label
@@ -218,7 +215,7 @@ const CategoryAddFrom = () => {
                   id="subCategoryName"
                   name="subCategoryName"
                   className="mt-1 block w-full p-2 border rounded"
-                  value={categoryData.subCategoryName || ""}
+                  value={categoryData.subCategoryName || ''}
                   onChange={handleChange}
                   required
                 />
@@ -229,16 +226,15 @@ const CategoryAddFrom = () => {
                   htmlFor="subCategoryNameEn"
                   className="block text-gray-700 font-bold px-3 text-sm md:text-base"
                 >
-                  نام دسته بندی فرعی{" "}
-                  <span className="text-blue-500 font-semibold">(English)</span>
+                  نام دسته بندی فرعی <span className="text-blue-500 font-semibold">(English)</span>
                 </label>
                 <input
                   type="text"
                   id="subCategoryNameEn"
                   name="subCategoryNameEn"
                   className="mt-1 block w-full p-2 border rounded"
-                  style={{ direction: "ltr" }}
-                  value={categoryData.subCategoryNameEn || ""}
+                  style={{ direction: 'ltr' }}
+                  value={categoryData.subCategoryNameEn || ''}
                   onChange={handleChange}
                   required
                 />

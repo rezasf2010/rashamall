@@ -1,8 +1,10 @@
-"use client";
-import { useState, useEffect } from "react";
-import { fetchPosts, fetchProducts, fetchOrders } from "@/utils/requests";
-import Spinner from "@/components/Spinner";
-import { useAdminGlobalContext } from "@/context/AdminGlobalContext";
+'use client';
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import { fetchPosts, fetchProducts, fetchOrders } from '@/utils/requests';
+import { useAdminGlobalContext } from '@/context/AdminGlobalContext';
+
+const Spinner = dynamic(() => import('@/components/Spinner'), { ssr: false });
 
 const AdminDashboardPage = () => {
   const { newOrderCount, newMessageCount } = useAdminGlobalContext();
@@ -21,7 +23,7 @@ const AdminDashboardPage = () => {
         setProducts(data.totalProducts);
         setPosts(posts);
       } catch (error) {
-        console.error("Error fetching orders:", error);
+        console.error('Error fetching orders:', error);
       } finally {
         setLoading(false);
       }
@@ -37,9 +39,7 @@ const AdminDashboardPage = () => {
   const totalOrdersCount = orders.length;
   const totalProductsCount = products.length;
 
-  const inStockProducts = products.filter(
-    (product) => product._stock_status === "in stock",
-  );
+  const inStockProducts = products.filter((product) => product._stock_status === 'in stock');
   const inStockProductsCount = inStockProducts.length;
 
   const totalPostsCount = posts.length;
@@ -51,39 +51,27 @@ const AdminDashboardPage = () => {
           <div className="w-full text-gray-700 p-2 md:p-6 grid grid-cols-2 md:grid-cols-3 gap-3">
             <div className="border border-gray-300 bg-gray-50 rounded-2xl shadow-xl p-2 text-center flex flex-col gap-3">
               تعداد کل سفارش ها
-              <div className="font-bold text-blue-800 text-xl">
-                {totalOrdersCount}
-              </div>
+              <div className="font-bold text-blue-800 text-xl">{totalOrdersCount}</div>
             </div>
             <div className="border border-gray-300 bg-gray-50 rounded-2xl shadow-xl p-2 text-center flex flex-col gap-3">
               سفارش های جدید
-              <div className="font-bold text-blue-800 text-xl">
-                {newOrderCount}
-              </div>
+              <div className="font-bold text-blue-800 text-xl">{newOrderCount}</div>
             </div>
             <div className="border border-gray-300 bg-gray-50 rounded-2xl shadow-xl p-2 text-center flex flex-col gap-3">
               تعداد پیام های جدید
-              <div className="font-bold text-blue-800 text-xl">
-                {newMessageCount}
-              </div>
+              <div className="font-bold text-blue-800 text-xl">{newMessageCount}</div>
             </div>
             <div className="border border-gray-300 bg-gray-50 rounded-2xl shadow-xl p-2 text-center flex flex-col gap-3">
               تعداد کالاها
-              <div className="font-bold text-blue-800 text-xl">
-                {totalProductsCount}
-              </div>
+              <div className="font-bold text-blue-800 text-xl">{totalProductsCount}</div>
             </div>
             <div className="border border-gray-300 bg-gray-50 rounded-2xl shadow-xl p-2 text-center flex flex-col gap-3">
               تعداد کالاهای موجود
-              <div className="font-bold text-blue-800 text-xl">
-                {inStockProductsCount}
-              </div>
+              <div className="font-bold text-blue-800 text-xl">{inStockProductsCount}</div>
             </div>
             <div className="border border-gray-300 bg-gray-50 rounded-2xl shadow-xl p-2 text-center flex flex-col gap-3">
               تعداد مقالات
-              <div className="font-bold text-blue-800 text-xl">
-                {totalPostsCount}
-              </div>
+              <div className="font-bold text-blue-800 text-xl">{totalPostsCount}</div>
             </div>
           </div>
         </div>

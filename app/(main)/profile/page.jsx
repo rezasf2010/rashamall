@@ -1,12 +1,11 @@
-"use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { fetchUsers } from "@/utils/requests";
-import { useSession } from "next-auth/react";
-import profileDefault from "@/assets/images/profile.png";
-import Spinner from "@/components/Spinner";
-import { toast } from "react-toastify";
+'use client';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { fetchUsers } from '@/utils/requests';
+import { useSession } from 'next-auth/react';
+import profileDefault from '@/assets/images/profile.png';
+import Spinner from '@/components/Spinner';
 
 const ProfilePage = () => {
   const { data: session } = useSession();
@@ -24,7 +23,7 @@ const ProfilePage = () => {
 
         setUsers(users);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -49,26 +48,26 @@ const ProfilePage = () => {
               <div>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">نام : </span>
-                  {"  "}
+                  {'  '}
                   {currentUser?.name ? currentUser.name : profileName}
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">ایمیل :</span>
-                  {"  "}
+                  {'  '}
                   {profileEmail}
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">تلفن :</span>
-                  {"  "}0{currentUser?.mobile}
+                  {'  '}0{currentUser?.mobile}
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">آدرس :</span>
-                  {"  "}
+                  {'  '}
                   {currentUser?.address?.city}, {currentUser?.address?.street}
                 </h2>
                 <h2 className="text-xl mb-8">
                   <span className="font-bold">تلفن ثابت :</span>
-                  {"  "}0{currentUser?.phone}
+                  {'  '}0{currentUser?.phone}
                 </h2>
                 <Link href={`/profile/${currentUser._id}`}>
                   <button className="bg-blue-500 text-white px-4 py-2 rounded">

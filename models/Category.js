@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model, models } from 'mongoose';
 
 const CategorySchema = new Schema(
   {
@@ -18,7 +18,7 @@ const CategorySchema = new Schema(
     },
     parent: {
       type: Schema.Types.ObjectId,
-      ref: "Category",
+      ref: 'Category',
     },
     date_added: {
       type: String,
@@ -29,6 +29,6 @@ const CategorySchema = new Schema(
   },
 );
 
-const Category = models.Category || model("Category", CategorySchema);
+const Category = models.Category || model('Category', CategorySchema);
 
 export default Category;

@@ -1,6 +1,6 @@
-"use client";
-import { useEffect } from "react";
-import { useAdminGlobalContext } from "@/context/AdminGlobalContext";
+'use client';
+import { useEffect } from 'react';
+import { useAdminGlobalContext } from '@/context/AdminGlobalContext';
 
 const NewOrderCount = () => {
   const { newOrderCount, setNewOrderCount } = useAdminGlobalContext();
@@ -8,9 +8,7 @@ const NewOrderCount = () => {
   useEffect(() => {
     const fetchNewOrdersCount = async () => {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_DOMAIN}/orders/newOrders-count`,
-        );
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/orders/newOrders-count`);
 
         if (res.status === 200) {
           const data = await res.json();

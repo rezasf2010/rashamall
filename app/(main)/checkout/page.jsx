@@ -1,11 +1,11 @@
-"use client";
-import { useState, useEffect } from "react";
-import SpinnerH from "@/components/SpinnerH";
-import UserInfo from "@/components/UserInfo";
-import { useSession } from "next-auth/react";
-import { useGlobalContext } from "@/context/UserGlobalContext";
-import axios from "axios";
-import { toast } from "react-toastify";
+'use client';
+import { useState, useEffect } from 'react';
+import SpinnerH from '@/components/SpinnerH';
+import UserInfo from '@/components/UserInfo';
+import { useSession } from 'next-auth/react';
+import { useGlobalContext } from '@/context/UserGlobalContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const CheckoutPage = () => {
   const [customer, setCustomer] = useState({});
@@ -37,44 +37,38 @@ const CheckoutPage = () => {
       };
     });
 
-    const totalQuantity = orderItems.reduce(
-      (sum, item) => sum + item.quantity,
-      0,
-    );
-    const totalAmount = orderItems.reduce(
-      (sum, item) => sum + item.totalPrice,
-      0,
-    );
+    const totalQuantity = orderItems.reduce((sum, item) => sum + item.quantity, 0);
+    const totalAmount = orderItems.reduce((sum, item) => sum + item.totalPrice, 0);
 
     const formData = new FormData();
-    formData.append("user", userId);
-    formData.append("name", customer.name);
-    formData.append("username", customer.username);
-    formData.append("items", JSON.stringify(orderItems));
-    formData.append("totalQuantity", totalQuantity);
-    formData.append("totalAmount", totalAmount);
-    formData.append("details", customer.details || "");
-    formData.append("paymentMethod", customer.paymentMethod || "");
-    formData.append("receiptImage", customer.receiptImage || "");
-    formData.append("isNewOrder", true);
+    formData.append('user', userId);
+    formData.append('name', customer.name);
+    formData.append('username', customer.username);
+    formData.append('items', JSON.stringify(orderItems));
+    formData.append('totalQuantity', totalQuantity);
+    formData.append('totalAmount', totalAmount);
+    formData.append('details', customer.details || '');
+    formData.append('paymentMethod', customer.paymentMethod || '');
+    formData.append('receiptImage', customer.receiptImage || '');
+    formData.append('isNewOrder', true);
 
     try {
-      const response = await axios.post("/api/orders", formData, {
+      const response = await axios.post('/api/orders', formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       });
       if (response.status === 200) {
-        toast.success("سفارش شما با موفقیت ثبت شد");
+        toast.success('سفارش شما با موفقیت ثبت شد');
         clearCart(); // Clear the cart after placing the order
       }
     } catch (error) {
-      console.error("Error placing order:", error);
-      toast.error("ثبت سفارش انجام نشد");
+      console.error('Error placing order:', error);
+      toast.error('ثبت سفارش انجام نشد');
     }
 
     // Trigger form submission
-    document.getElementById("orderForm").submit();
+    document.getElementById('orderForm').submit();
 
     setLoading(false);
   };
@@ -97,7 +91,7 @@ const CheckoutPage = () => {
             className="bg-blue-500 text-white min-h-9 py-2 px-4 rounded hover:bg-blue-600"
             onClick={handleAddToOrders}
           >
-            {loading ? <SpinnerH loading={loading} /> : "ثبت سفارش"}
+            {loading ? <SpinnerH loading={loading} /> : 'ثبت سفارش'}
           </button>
         </form>
       </div>

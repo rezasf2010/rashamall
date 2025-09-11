@@ -1,8 +1,8 @@
-"use client";
-import { useState, useEffect } from "react";
-import { fetchOrders } from "@/utils/requests";
-import OrderCardAdmin from "@/componentsAdmin/OrderCardAdmin";
-import { OrderCardSkeleton } from "@/ui/skeletons";
+'use client';
+import { useState, useEffect } from 'react';
+import { fetchOrders } from '@/utils/requests';
+import OrderCardAdmin from '@/componentsAdmin/OrderCardAdmin';
+import { OrderCardSkeleton } from '@/ui/skeletons';
 
 const AdminOrdersPage = () => {
   const [orders, setOrders] = useState([]);
@@ -14,7 +14,7 @@ const AdminOrdersPage = () => {
         const orders = await fetchOrders();
         setOrders(orders);
       } catch (error) {
-        console.error("Error fetching orders:", error);
+        console.error('Error fetching orders:', error);
       } finally {
         setLoading(false);
       }
@@ -24,9 +24,7 @@ const AdminOrdersPage = () => {
   }, []);
 
   const handleDeleteOrder = (orderId) => {
-    setOrders((prevOrders) =>
-      prevOrders.filter((order) => order._id !== orderId),
-    );
+    setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
   };
 
   return (
@@ -45,11 +43,7 @@ const AdminOrdersPage = () => {
               <p>سفارشی موجود نیست</p>
             ) : (
               orders.map((order) => (
-                <OrderCardAdmin
-                  key={order._id}
-                  order={order}
-                  onDelete={handleDeleteOrder}
-                />
+                <OrderCardAdmin key={order._id} order={order} onDelete={handleDeleteOrder} />
               ))
             )}
           </div>

@@ -1,5 +1,10 @@
-import connectDB from "@/config/database";
-import User from "@/models/User";
+import connectDB from '@/config/database';
+import User from '@/models/User';
+import { Buffer } from 'buffer';
+import cloudinary from '@/config/cloudinary';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 //GET /pages/api/users/[email].js
 export async function GET(req, { params }) {
@@ -10,13 +15,14 @@ export async function GET(req, { params }) {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return new Response(JSON.stringify({ message: "User not found" }), {
+      return new Response(JSON.stringify({ message: 'User not found' }), {
         status: 404,
       });
     }
     return new Response(JSON.stringify(user), { status: 200 });
   } catch (error) {
-    return new Response(JSON.stringify({ message: "Server error" }), {
+    console.log(error);
+    return new Response(JSON.stringify({ message: 'Server error' }), {
       status: 500,
     });
   }
@@ -29,21 +35,19 @@ export async function POST(request) {
 
     const formData = await request.formData();
 
-    const images = formData
-      .getAll("images")
-      .filter((image) => image.name !== "");
+    const images = formData.getAll('images').filter((image) => image.name !== '');
 
     const userData = {
-      name: formData.get("name"),
-      username: formData.get("username"),
-      mobile: formData.get("mobile"),
-      phone: formData.get("phone"),
-      email: formData.get("email"),
+      name: formData.get('name'),
+      username: formData.get('username'),
+      mobile: formData.get('mobile'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
       address: {
-        street: formData.get("address.street"),
-        city: formData.get("address.city"),
-        state: formData.get("address.state"),
-        zip: formData.get("address.zip"),
+        street: formData.get('address.street'),
+        city: formData.get('address.city'),
+        state: formData.get('address.state'),
+        zip: formData.get('address.zip'),
       },
     };
 
@@ -54,14 +58,11 @@ export async function POST(request) {
       const imageArray = Array.from(new Uint8Array(imageBuffer));
       const imageData = Buffer.from(imageArray);
 
-      const imageBase64 = imageData.toString("base64");
+      const imageBase64 = imageData.toString('base64');
 
-      const result = await cloudinary.uploader.upload(
-        `data:image/png;base64,${imageBase64}`,
-        {
-          folder: "user",
-        },
-      );
+      const result = await cloudinary.uploader.upload(`data:image/png;base64,${imageBase64}`, {
+        folder: 'user',
+      });
 
       imageUploadPromises.push(result.secure_url);
     }
@@ -73,12 +74,12 @@ export async function POST(request) {
     const newUser = new User(userData);
     await newUser.save();
 
-    return new Response(JSON.stringify({ message: "Success" }), {
+    return new Response(JSON.stringify({ message: 'Success' }), {
       status: 200,
     });
   } catch (error) {
-    console.error("Error adding user:", error);
-    return new Response("Failed to add user", { status: 500 });
+    console.error('Error adding user:', error);
+    return new Response('Failed to add user', { status: 500 });
   }
 }
 
@@ -93,15 +94,15 @@ export async function PUT(request, { params }) {
 
     // Create the updated user data object
     const updatedUserData = {
-      name: formData.get("name"),
-      username: formData.get("username"),
-      mobile: formData.get("mobile"),
-      phone: formData.get("phone"),
+      name: formData.get('name'),
+      username: formData.get('username'),
+      mobile: formData.get('mobile'),
+      phone: formData.get('phone'),
       address: {
-        street: formData.get("address.street"),
-        city: formData.get("address.city"),
-        state: formData.get("address.state"),
-        zip: formData.get("address.zip"),
+        street: formData.get('address.street'),
+        city: formData.get('address.city'),
+        state: formData.get('address.state'),
+        zip: formData.get('address.zip'),
       },
     };
 
@@ -113,20 +114,20 @@ export async function PUT(request, { params }) {
     );
 
     if (!updatedUser) {
-      return new Response(JSON.stringify({ message: "User not found" }), {
+      return new Response(JSON.stringify({ message: 'User not found' }), {
         status: 404,
       });
     }
 
     return new Response(JSON.stringify(updatedUser), { status: 200 });
   } catch (error) {
-    console.error("Error updating user:", error);
-    return new Response("Failed to update user", { status: 500 });
+    console.error('Error updating user:', error);
+    return new Response('Failed to update user', { status: 500 });
   }
 }
 
 // DELETE /api/posts/:email
-export const DELETE = async (request, { params }) => {
+export const DELETE = async ({ params }) => {
   try {
     const userId = params.email;
 
@@ -134,13 +135,13 @@ export const DELETE = async (request, { params }) => {
 
     const user = await User.findById(userId);
 
-    if (!user) return new Response("User Not Found", { status: 404 });
+    if (!user) return new Response('User Not Found', { status: 404 });
 
     await User.deleteOne();
 
-    return new Response("User deleted", { status: 200 });
+    return new Response('User deleted', { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response("Something went wrong", { status: 500 });
+    return new Response('Something went wrong', { status: 500 });
   }
 };
