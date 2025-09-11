@@ -1,8 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import { FaArrowAltCircleRight } from 'react-icons/fa';
 import ProductCard from '@/components/ProductCard';
 import Spinner from '@/components/Spinner';
 import Breadcrumb from '@/components/Breadcrumb';

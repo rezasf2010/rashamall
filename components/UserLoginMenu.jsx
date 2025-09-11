@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { FaCartPlus } from 'react-icons/fa';
 import profileDefault from '@/assets/images/profile.png';
 import googleLogo from '@/assets/images/google-color-icon.png';
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import CartCount from './CartCount';
 
 const UserLoginMenu = ({ session, providers, isProfileMenuOpen, setIsProfileMenuOpen }) => {

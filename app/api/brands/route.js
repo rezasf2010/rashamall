@@ -1,6 +1,9 @@
 import connectDB from '@/config/database';
 import Brand from '@/models/Brand';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // GET /api/brands
 export const GET = async () => {
   try {

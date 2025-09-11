@@ -1,6 +1,9 @@
 'use client';
 
 import useAuth from '@/utils/adminAuth';
+import dynamic from 'next/dynamic';
+
+const Spinner = dynamic(() => import('@/components/Spinner'), { ssr: false });
 
 const AdminAuthProvider = ({ children }) => {
   const { loading, authenticated } = useAuth();

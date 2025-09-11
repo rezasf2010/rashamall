@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import provincesAndCities from '@/assets/data/provinceCityInfo.json';
 
 const ProvinceCitySelect = ({ formData, setFormData }) => {
-  const [selectedProvince, setSelectedProvince] = useState('');
+  const [, setSelectedProvince] = useState('');
   const [cities, setCities] = useState([]);
 
   useEffect(() => {

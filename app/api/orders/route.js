@@ -3,8 +3,10 @@ import Order from '@/models/Order';
 import User from '@/models/User';
 import cloudinary from '@/config/cloudinary';
 import { Buffer } from 'buffer';
-import { getSessionUser } from '@/utils/getSessionUser';
+import { getToken } from 'next-auth/jwt';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 // GET api/orders
 export const GET = async () => {
   try {
@@ -32,15 +34,12 @@ export const POST = async (request) => {
   await connectDB();
 
   try {
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response('user ID is required', { status: 401 });
-    }
+    const token = await getToken({ req: request });
+    const userId = token?.sub;
+    if (!userId) return new Response('Unauthorized', { status: 401 });
 
     const formData = await request.formData(); // Initialize formData
 
-    const userId = sessionUser.userId;
     const items = JSON.parse(formData.get('items'));
     const totalQuantity = Number(formData.get('totalQuantity'));
     const totalAmount = Number(formData.get('totalAmount'));
@@ -82,7 +81,7 @@ export const POST = async (request) => {
 
     const savedOrder = await newOrder.save();
 
-    await User.findByIdAndUpdate(sessionUser.userId, {
+    await User.findByIdAndUpdate(userId, {
       $push: { orders: savedOrder._id },
     });
 

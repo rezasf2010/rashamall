@@ -1,8 +1,8 @@
 import connectDB from '@/config/database';
 import Order from '@/models/Order';
 
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-
 // GET /api/orders/newOrders-count
 export const GET = async () => {
   try {

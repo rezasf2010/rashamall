@@ -34,7 +34,7 @@ const Hero = () => {
         <ul style={{ margin: '0px' }}> {dots} </ul>
       </div>
     ),
-    customPaging: (i) => (
+    customPaging: () => (
       <div
         style={{
           width: '5px',

@@ -1,6 +1,9 @@
 import connectDB from '@/config/database';
 import Category from '@/models/Category';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // GET /api/categories
 export const GET = async () => {
   await connectDB();

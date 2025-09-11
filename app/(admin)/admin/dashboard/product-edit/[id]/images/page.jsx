@@ -1,12 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import {
-  fetchProduct,
-  deleteImageFromCloudinary,
-  addImagesToCloudinary,
-  extractPublicId,
-} from '@/utils/requests';
+import { fetchProduct, deleteImageFromCloudinary, addImagesToCloudinary } from '@/utils/requests';
 import Spinner from '@/components/Spinner';
 import ProductImageEditForm from '@/componentsAdmin/ProductImageEditForm';
 import { toast } from 'react-toastify';

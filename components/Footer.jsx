@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import logo from '@/assets/images/rashamall-logo.png';
 import SemiFooter from './SemiFooter';

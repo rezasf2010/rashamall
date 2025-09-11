@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import ProvinceCitySelect from '@/components/ProvinceCitySelect';
@@ -9,13 +9,12 @@ import axios from 'axios';
 
 const UserEditInfoPage = () => {
   const { data: session } = useSession();
-  const { id } = useParams();
   const router = useRouter();
 
   //   const [user, setUser] = useState(null);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isNewUser, setisNewUser] = useState(false);
+  const [, setisNewUser] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     username: '',

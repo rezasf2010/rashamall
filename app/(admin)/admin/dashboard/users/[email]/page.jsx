@@ -13,7 +13,7 @@ const AdminUserDetailPage = () => {
   //   const [user, setUser] = useState(null);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isNewUser, setisNewUser] = useState(false);
+  const [, setisNewUser] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     username: '',

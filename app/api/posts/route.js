@@ -3,6 +3,9 @@ import Post from '@/models/Post';
 import cloudinary from '@/config/cloudinary';
 import { Buffer } from 'buffer';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // GET /api/posts
 export const GET = async () => {
   try {

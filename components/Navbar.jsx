@@ -10,7 +10,7 @@ import { fetchCategories } from '@/utils/requests';
 import SpinnerH from './SpinnerH';
 import { FaChevronDown, FaChevronLeft } from 'react-icons/fa';
 import ContactUsIcons from './ContactUsIcons';
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { useSession, getProviders } from 'next-auth/react';
 
 const Navbar = () => {
   const { data: session } = useSession();

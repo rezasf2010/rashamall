@@ -3,6 +3,9 @@ import User from '@/models/User';
 import { Buffer } from 'buffer';
 import cloudinary from '@/config/cloudinary';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 //GET /pages/api/users/[email].js
 export async function GET(req, { params }) {
   const { email } = params;

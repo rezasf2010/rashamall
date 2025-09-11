@@ -1,7 +1,7 @@
 import connectDB from '@/config/database';
 import User from '@/models/User';
 import Product from '@/models/Product';
-import { getSessionUser } from '@/utils/getSessionUser';
+import { getToken } from 'next-auth/jwt';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,13 +10,9 @@ export const GET = async () => {
   try {
     await connectDB();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response('User ID is required', { status: 401 });
-    }
-
-    const { userId } = sessionUser;
+    const token = await getToken({ req: request });
+    const userId = token?.sub;
+    if (!userId) return new Response('Unauthorized', { status: 401 });
 
     //find user in database
     const user = await User.findOne({ _id: userId });
@@ -42,13 +38,9 @@ export const POST = async (request) => {
 
     const { productId } = await request.json();
 
-    const sessionUser = await getSessionUser();
-
-    if (!sessionUser || !sessionUser.userId) {
-      return new Response('User ID is required', { status: 401 });
-    }
-
-    const { userId } = sessionUser;
+    const token = await getToken({ req: request });
+    const userId = token?.sub;
+    if (!userId) return new Response('Unauthorized', { status: 401 });
 
     //find user in database
     const user = await User.findOne({ _id: userId });

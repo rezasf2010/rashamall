@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 import { FaArrowLeft } from 'react-icons/fa';
 import { HomeCategorySectionSkeleton } from '@/ui/skeletons';
 
-const HomeCategorySection = ({ heading, backgroundColor, products, route }) => {
+const HomeCategorySection = ({ heading, products, route }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

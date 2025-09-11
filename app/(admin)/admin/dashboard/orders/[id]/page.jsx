@@ -1,4 +1,3 @@
-import React from 'react';
 import OrderDetail from '@/componentsAdmin/OrderDetail';
 
 const OrderDetailPge = () => {

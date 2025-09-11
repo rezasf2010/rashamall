@@ -1,5 +1,8 @@
 import cloudinary from '@/config/cloudinary';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // POST/api/uploadImage
 export const POST = async (request) => {
   try {

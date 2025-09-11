@@ -1,6 +1,9 @@
 import connectDB from '@/config/database';
 import Message from '@/models/Message';
-import { getSessionUser } from '@/utils/getSessionUser';
+import { getToken } from 'next-auth/jwt';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 // GET /api/messages
 export const GET = async () => {
@@ -29,15 +32,15 @@ export const POST = async (request) => {
   try {
     await connectDB();
 
-    const sessionUser = await getSessionUser();
+    const token = await getToken({ req: request });
+    const userId = token?.sub; // NextAuth puts user id in `sub`
 
-    if (!sessionUser || !sessionUser.userId) {
+    if (!userId) {
       return new Response(JSON.stringify({ error: 'User not logged in' }), {
         status: 401,
       });
     }
 
-    const { userId } = sessionUser;
     const { email, subject, body } = await request.json();
 
     // Create a new message

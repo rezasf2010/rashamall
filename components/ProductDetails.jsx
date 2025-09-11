@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import SpecificationCard from './SpecificationCard';
 import ProductImages from './ProductImages';
 import { FaTimes, FaCheck } from 'react-icons/fa';

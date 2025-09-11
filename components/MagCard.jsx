@@ -1,7 +1,5 @@
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import image from '@/assets/images/infoBox1.jpg';
 
 const MagCard = ({ post }) => {
   return (

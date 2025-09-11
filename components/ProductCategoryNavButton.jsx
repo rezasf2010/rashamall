@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import Link from 'next/link';
 import { FaChevronDown, FaChevronLeft } from 'react-icons/fa';
 import CategoryDropdownItem from './CategoryDropdownItem';
@@ -9,7 +8,6 @@ const ProductCategoryNavButton = ({
   categories,
   openDropdown,
   setOpenDropdown,
-  isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
   const { fa_name, _id, slug } = category;

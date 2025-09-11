@@ -2,6 +2,9 @@ import connectDB from '@/config/database';
 import Product from '@/models/Product';
 import cloudinary from '@/config/cloudinary';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // GET /api/products
 export const GET = async (request) => {
   try {

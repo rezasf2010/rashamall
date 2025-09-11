@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const InfoBox = ({ heading, backgroundColor, buttonInfo, children }) => {
+const InfoBox = ({ buttonInfo, children }) => {
   return (
     <div className="rounded-xl shadow-xl">
       <div>{children}</div>

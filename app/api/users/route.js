@@ -1,6 +1,9 @@
 import connectDB from '@/config/database';
 import User from '@/models/User';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // GET /api/users
 export const GET = async () => {
   try {

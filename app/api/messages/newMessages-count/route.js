@@ -1,6 +1,7 @@
 import connectDB from '@/config/database';
 import Message from '@/models/Message';
 
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 // GET /api/messages/newMessages-count

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useParams, usePathname } from 'next/navigation';
 
 const CategoryDropdownItem = ({
   handleDropdownOpen,

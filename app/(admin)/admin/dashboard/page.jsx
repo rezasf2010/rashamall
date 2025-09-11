@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { fetchPosts, fetchProducts, fetchOrders } from '@/utils/requests';
-import Spinner from '@/components/Spinner';
 import { useAdminGlobalContext } from '@/context/AdminGlobalContext';
+
+const Spinner = dynamic(() => import('@/components/Spinner'), { ssr: false });
 
 const AdminDashboardPage = () => {
   const { newOrderCount, newMessageCount } = useAdminGlobalContext();

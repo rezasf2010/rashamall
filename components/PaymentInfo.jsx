@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const PaymentInfo = ({ formData, setFormData }) => {
   const [paymentMethod, setPaymentMethod] = useState('');
-  const [receiptImage, setReceiptImage] = useState(null);
+  const [, setReceiptImage] = useState(null);
 
   const handlePaymentChange = (e) => {
     setPaymentMethod(e.target.value);

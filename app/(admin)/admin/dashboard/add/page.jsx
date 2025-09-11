@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import ProductAddForm from '@/componentsAdmin/ProductAddForm';
 
 const ProductAddPage = () => {

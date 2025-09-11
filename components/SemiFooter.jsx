@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from 'next/image';
 import pay from '@/assets/images/pay-rashamall.png';
 import ret from '@/assets/images/return-rashamall.png';
