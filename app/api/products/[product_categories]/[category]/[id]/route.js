@@ -6,7 +6,8 @@ export const GET = async (request, { params }) => {
   try {
     await connectDB();
 
-    const product = await Product.findById(params.id);
+    const { id } = await params;
+    const product = await Product.findById(id);
 
     if (!product) return new Response('Product Not Found', { status: 404 });
 
@@ -20,7 +21,7 @@ export const GET = async (request, { params }) => {
 // DELETE /api/products/:id
 export const DELETE = async (request, { params }) => {
   try {
-    const productId = params.id;
+    const { id: productId } = await params;
 
     await connectDB();
 
@@ -42,7 +43,7 @@ export const PUT = async (request, { params }) => {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     const formData = await request.formData();
 

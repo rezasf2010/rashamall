@@ -6,7 +6,8 @@ export const GET = async ({ params }) => {
   try {
     await connectDB();
 
-    const order = await Order.findById(params.id);
+    const { id } = await params;
+    const order = await Order.findById(id);
 
     if (!order) return new Response('Order Not Found', { status: 404 });
 
@@ -22,7 +23,7 @@ export const PUT = async ({ params }) => {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     const order = await Order.findById(id);
 
@@ -48,7 +49,7 @@ export const DELETE = async ({ params }) => {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     const order = await Order.findById(id);
 

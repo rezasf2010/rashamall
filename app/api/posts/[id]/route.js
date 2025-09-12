@@ -6,7 +6,8 @@ export const GET = async ({ params }) => {
   try {
     await connectDB();
 
-    const post = await Post.findById(params.id);
+    const { id } = await params;
+    const post = await Post.findById(id);
 
     if (!post) return new Response('Post Not Found', { status: 404 });
 
@@ -20,7 +21,7 @@ export const GET = async ({ params }) => {
 // DELETE /api/posts/:id
 export const DELETE = async (request, { params }) => {
   try {
-    const postId = params.id;
+    const { id: postId } = await params;
 
     await connectDB();
 
@@ -42,7 +43,7 @@ export const PUT = async (request, { params }) => {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     const formData = await request.formData();
 

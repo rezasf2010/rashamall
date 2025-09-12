@@ -6,7 +6,7 @@ export const GET = async (request, { params }) => {
   try {
     await connectDB();
 
-    const brandId = params.id;
+    const { id: brandId } = await params;
 
     const page = request.nextUrl.searchParams.get('page') || 1;
     const pageSize = request.nextUrl.searchParams.get('pageSize') || 9;
