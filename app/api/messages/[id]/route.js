@@ -6,7 +6,8 @@ export const GET = async ({ params }) => {
   try {
     await connectDB();
 
-    const message = await Message.findById(params.id);
+    const { id } = await params;
+    const message = await Message.findById(id);
 
     if (!message) return new Response('Message Not Found', { status: 404 });
 
@@ -22,7 +23,7 @@ export const PUT = async ({ params }) => {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     const message = await Message.findById(id);
 
@@ -50,7 +51,7 @@ export const DELETE = async ({ params }) => {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     const message = await Message.findById(id);
 

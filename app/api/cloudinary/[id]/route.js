@@ -1,7 +1,7 @@
 import cloudinary from '@/config/cloudinary';
 
 export const DELETE = async ({ params }) => {
-  const publicId = params.id;
+  const { id: publicId } = await params;
 
   try {
     await cloudinary.uploader.destroy(publicId);

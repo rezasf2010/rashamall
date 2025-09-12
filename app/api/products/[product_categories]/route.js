@@ -6,7 +6,7 @@ export const GET = async (request, { params }) => {
   try {
     await connectDB();
 
-    const productCategoryId = params.product_categories;
+    const { product_categories: productCategoryId } = await params;
 
     const page = request.nextUrl.searchParams.get('page') || 1;
     const pageSize = request.nextUrl.searchParams.get('pageSize') || 9;

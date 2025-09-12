@@ -6,7 +6,8 @@ export const GET = async ({ params }) => {
   try {
     await connectDB();
 
-    const category = await Category.findById(params.id);
+    const { id } = await params;
+    const category = await Category.findById(id);
 
     if (!category) return new Response('Category Not Found', { status: 404 });
 
@@ -20,7 +21,7 @@ export const GET = async ({ params }) => {
 // DELETE /api/categories/:id
 export const DELETE = async ({ params }) => {
   try {
-    const categoryId = params.id;
+    const { id: categoryId } = await params;
 
     await connectDB();
 
@@ -47,7 +48,7 @@ export const PUT = async (request, { params }) => {
       return name.toLowerCase().replace(/\s+/g, '-');
     }
 
-    const { id } = params;
+    const { id } = await params;
     const formData = await request.formData();
 
     // Extracting form data

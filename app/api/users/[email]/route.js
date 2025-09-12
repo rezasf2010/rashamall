@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 //GET /pages/api/users/[email].js
 export async function GET(req, { params }) {
-  const { email } = params;
+  const { email } = await params;
 
   await connectDB();
 
@@ -85,7 +85,7 @@ export async function POST(request) {
 
 // PUT /api/users/[email].js
 export async function PUT(request, { params }) {
-  const { email } = params;
+  const { email } = await params;
 
   await connectDB();
 
@@ -129,7 +129,7 @@ export async function PUT(request, { params }) {
 // DELETE /api/posts/:email
 export const DELETE = async ({ params }) => {
   try {
-    const userId = params.email;
+    const { email: userId } = await params;
 
     await connectDB();
 
