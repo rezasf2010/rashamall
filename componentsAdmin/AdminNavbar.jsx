@@ -3,6 +3,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/utils/firebaseConfig';
 import { signOut } from 'firebase/auth';
+import { FaBars, FaChevronLeft } from 'react-icons/fa';
+import Link from 'next/link';
+import NewOrderCount from './NewOrderCount';
+import NewMessagesCount from './NewMessagesCount';
 
 const AdminNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

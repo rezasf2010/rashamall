@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useAdminGlobalContext } from '@/context/AdminGlobalContext';
 
-const NewOrderCount = () => {
+const NewMessagesCount = () => {
   const { newMessageCount, setNewMessageCount } = useAdminGlobalContext();
 
   useEffect(() => {
@@ -31,4 +31,4 @@ const NewOrderCount = () => {
   );
 };
 
-export default NewOrderCount;
+export default NewMessagesCount;
